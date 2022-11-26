@@ -25,13 +25,13 @@ export class userLogin {
 
 }
 
-// export class sentMail {
-//    email: any;
+export class sentMail {
+   email: any;
 
-//    constructor(
-//        email: any,
-//    ) {  }
-// }
+   constructor(
+       email: any,
+   ) {  }
+}
 
 export class resendMail {
    email: string;
@@ -41,11 +41,11 @@ export class resendMail {
    ) {  }
 }
 
-// export class changePassword {
-//    password: string;
+export class changePassword {
+   password: string;
 
-//    constructor(
-//        password: string,
-//    ) {  }
-// }
+   constructor(
+       password: string,
+   ) {  }
+}
 

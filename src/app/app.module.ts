@@ -23,6 +23,7 @@ import { FailedLoginDialogComponent } from './failed-login-dialog/failed-login-d
 import { RegisterVerifyDialogComponent } from './register-verify-dialog/register-verify-dialog.component';
 import { PasswordChangeDialogComponent } from './password-change-dialog/password-change-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { PasswordResetFormComponent } from './password-reset-form/password-reset-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     FailedLoginDialogComponent,
     RegisterVerifyDialogComponent,
     PasswordChangeDialogComponent,
+    PasswordResetFormComponent,
   ],
   imports: [
     BrowserModule,
