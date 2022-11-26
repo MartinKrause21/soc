@@ -1,1 +1,45 @@
-<p>failed-login-dialog works!</p>
+
+<div id="container"> 
+    <div id="dialog-container"> </div>
+    <h2 mat-dialog-title id="title">Failed login</h2>
+    <h2 mat-dialog-title >Your passowrd or username is incorrect, please try it again.</h2>
+    <mat-dialog-content class="mat-typography">
+
+        Please verify account. If you dont recieve email, send it again.
+        <button mat-button class="open-email" (click)="sendButton()" >Send</button> 
+
+
+        <form #resendMail="ngForm" (ngSubmit)="onSubmit()" *ngIf="send"class="form-group">
+
+
+            <div class="form-group">
+
+                <mat-form-field id="input" class="h-10 w-full" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput required type="email" name="email" [(ngModel)]="model.email" #email="ngModel"
+                        pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$">
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                </mat-form-field>
+
+                <div id="resendMail" class="relative">
+                    <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                        Send
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-dialog-actions>
+</div>

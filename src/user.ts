@@ -33,13 +33,13 @@ export class userLogin {
 //    ) {  }
 // }
 
-// export class resendMail {
-//    email: string;
+export class resendMail {
+   email: string;
 
-//    constructor(
-//        email: string,
-//    ) {  }
-// }
+   constructor(
+       email: string,
+   ) {  }
+}
 
 // export class changePassword {
 //    password: string;
