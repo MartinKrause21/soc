@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,12 +17,18 @@ import {MatCardModule} from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 import {MatInputModule} from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { FailedLoginDialogComponent } from './failed-login-dialog/failed-login-dialog.component';
+import { RegisterVerifyDialogComponent } from './register-verify-dialog/register-verify-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    RegisterComponent,
+    FailedLoginDialogComponent,
+    RegisterVerifyDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     HttpClientModule, 
     MatInputModule, 
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
