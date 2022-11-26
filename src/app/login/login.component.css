@@ -3,16 +3,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
- 
 }
 
 #login-button {
     width: 150px;
-    background-color: #6a5be2;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+}
+
+#login-button:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#login-button:disabled {
+    background-color: #512ca077;
+    color: rgba(239, 227, 227, 0.796);
+    border-color: #5c78987d;
+    border-width: 0px;
 }
 
 #login-back {
-    background-image: linear-gradient(to right, rgba(186, 163, 163, 0.043), #6a5be2);
+    background-image: linear-gradient(to right, rgba(186, 163, 163, 0.043), #502ca0);
 }
 
 #service-bar{
@@ -27,6 +40,7 @@
 
 #forgot-pass-button {
     margin-left: 7px;
+    cursor: pointer;
 }
 
 

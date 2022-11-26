@@ -20,6 +20,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FailedLoginDialogComponent } from './failed-login-dialog/failed-login-dialog.component';
 import { RegisterVerifyDialogComponent } from './register-verify-dialog/register-verify-dialog.component';
+import { PasswordChangeDialogComponent } from './password-change-dialog/password-change-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { RegisterVerifyDialogComponent } from './register-verify-dialog/register
     RegisterComponent,
     FailedLoginDialogComponent,
     RegisterVerifyDialogComponent,
+    PasswordChangeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { RegisterVerifyDialogComponent } from './register-verify-dialog/register
     HttpClientModule, 
     MatInputModule, 
     FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
