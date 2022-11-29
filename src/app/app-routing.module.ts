@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { PasswordResetFormComponent } from './password-reset-form/password-reset-form.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'passw-reset-form', component: PasswordResetFormComponent },
+  { path: 'quiz-overview', component: QuizOverviewComponent },
   { path: 'quiz', component: QuizComponent },
+
 ];
 
 @NgModule({

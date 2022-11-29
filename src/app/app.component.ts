@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { user } from 'src/user';
+import { AuthService } from 'src/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +10,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  constructor(
+    private readonly loginService: AuthService,
+    private cookies: CookieService,
+  ){}
+
+  users: user[] = [];
+
+  loggedInUsername: string;
+
+  ngOnInit(): void {
+    this.loggedInUsername = this.cookies.get('username');
+  }
+
   showMenu = false;
   toggleNavbar(){
     this.showMenu = !this.showMenu;
   }
+
+  onlogout() { 
+    this.loginService.logout();
+    location.reload();
+  }
 }
+
+

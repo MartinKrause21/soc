@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { user, userLogin } from 'src/user';
-//import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 import {MatDialog} from '@angular/material/dialog';
 import { RegisterVerifyDialogComponent } from 'src/app/register-verify-dialog/register-verify-dialog.component';
 import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-login-dialog.component';
@@ -20,14 +20,14 @@ export class AuthService {
 
   constructor(
     private readonly httpClient: HttpClient,
-   //private cookies: CookieService,
+   private cookies: CookieService,
     private dialog : MatDialog, 
   ) { }
 
-    //   getToken(): string {
-    //     const authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
-    //     return 'Basic ' + btoa(authString);
-    //   }
+      getToken(): string {
+        const authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
+        return 'Basic ' + btoa(authString);
+      }
 
     //   isLoggedIn(): boolean {
     //     return !!(this.cookies.get('username') && this.cookies.get('password'));
@@ -45,9 +45,9 @@ export class AuthService {
             headers: this.headers,
           });
           const data_1 = await response.json();
-          //this.cookies.set('username', user.username);
+          this.cookies.set('username', user.username);
           //this.cookies.set('password', user.password );
-          window.location.href="/home-page" 
+          window.location.href="/home" 
     
         }
          catch (error) {
@@ -77,7 +77,7 @@ export class AuthService {
      }
    
      logout() : void { 
-       //this.cookies.delete ('username');
+       this.cookies.delete ('username');
        //this.cookies.delete('password');
        //this.cookies.delete('selectedRole');
        //this.userSubject.next();

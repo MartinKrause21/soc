@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { PasswordChangeDialogComponent } from './password-change-dialog/password
 import {MatDialogModule} from '@angular/material/dialog';
 import { PasswordResetFormComponent } from './password-reset-form/password-reset-form.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { QuizComponent } from './quiz/quiz.component';
     PasswordChangeDialogComponent,
     PasswordResetFormComponent,
     QuizComponent,
+    QuizOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import { QuizComponent } from './quiz/quiz.component';
     MatDialogModule,
     RouterModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
