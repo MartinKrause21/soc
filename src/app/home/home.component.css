@@ -1,4 +1,4 @@
-#main{
+  #main{
     margin-top: -15px;
   }
   
@@ -7,15 +7,15 @@
   }
   
   #special {
-    color: #6a5be2;
+    color: #502ca0;
   }
   
   #special2 {
-    background-color: #6a5be2;
+    background-color: #502ca0;
   }
 
   #pointer{
-    background-color: #6a5be2;
+    background-color: #502ca0;
     width: 50px;
     height: 50px;
     border-radius: 6px;
@@ -30,3 +30,5 @@
     margin-top: 15px;
     color: white;
   }
+
+
