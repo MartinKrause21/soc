@@ -84,24 +84,24 @@ export class AuthService {
        location.reload();
      }
 
-  //    changePassword( password : string){
+      changePassword( email:string, password : string){
 
-  //     fetch('http://localhost:8080/api/auth/change/password/' + password, {
-  //       method: 'PUT',
-  //       headers: new Headers({
-  //         'Content-Type': "application/json; charset=utf8",
-  //     }),
-  //   })
-  //   .then(() => {
-  //     console.log('Success!');
-  //     window.location.href="/login"
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error:' , error);
-  //     alert("faileeedddd")
-  //   });
+        fetch('http://localhost:8080/changePassword/'+ email + "/" + password, {
+          method: 'PUT',
+          headers: new Headers({
+            'Content-Type': "application/json; charset=utf8",
+        }),
+      })
+      .then(() => {
+        console.log('Success!');
+        //window.location.href="/login"
+      })
+      .catch((error) => {
+        console.error('Error:' , error);
+        alert("faileeedddd")
+      });
 
-  // }
+    }
 
       showFailDialog(): void {
         this.dialog.open(FailedLoginDialogComponent);
@@ -111,9 +111,9 @@ export class AuthService {
         this.dialog.open(RegisterVerifyDialogComponent);
       }
 
-      sendPasswordResetEmail(email: string) {
+    sendPasswordResetEmail(email: string) {
 
-        fetch('http://localhost:8080/password/forgot/' + email, {
+        fetch('http://localhost:8080/changePasswordEmail/' + email, {
           method: 'GET',
           headers: new Headers({
             'Content-Type': "application/json; charset=utf8",

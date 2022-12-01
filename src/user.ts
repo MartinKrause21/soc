@@ -42,10 +42,12 @@ export class resendMail {
 }
 
 export class changePassword {
+   email:string;
    password: string;
 
    constructor(
-       password: string,
+       email:string,
+       password: string
    ) {  }
 }
 

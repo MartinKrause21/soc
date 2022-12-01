@@ -17,13 +17,14 @@ export class PasswordResetFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  password: string = ''; 
+  password: string; 
+  email: string;
   confirmPassword: any ;
 
-  model = new changePassword('');
+  model = new changePassword('', '');
   
   onSubmit() {
-    //this.loginService.login(this.model);
+    this.loginService.changePassword(this.model.email, this.model.password);
     console.log(this.model);
   }
 }
