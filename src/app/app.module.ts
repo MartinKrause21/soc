@@ -27,6 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PasswordResetFormComponent } from './password-reset-form/password-reset-form.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
+import { VerifyPageComponent } from './verify-page/verify-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
     PasswordResetFormComponent,
     QuizComponent,
     QuizOverviewComponent,
+    VerifyPageComponent,
   ],
   imports: [
     BrowserModule,
