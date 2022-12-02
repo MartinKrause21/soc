@@ -28,6 +28,8 @@ import { PasswordResetFormComponent } from './password-reset-form/password-reset
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { VerifyPageComponent } from './verify-page/verify-page.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { VerifyPageComponent } from './verify-page/verify-page.component';
     QuizComponent,
     QuizOverviewComponent,
     VerifyPageComponent,
+    ProfilePageComponent,
+    CreateQuizComponent,
   ],
   imports: [
     BrowserModule,
