@@ -9,6 +9,8 @@ export class QrCodeConvertorComponent implements OnInit {
 
   constructor() { }
 
+  public QRcodeText:string;
+
   ngOnInit(): void {
   }
 

@@ -31,6 +31,8 @@ import { VerifyPageComponent } from './verify-page/verify-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.
     FormsModule,
     MatDialogModule,
     RouterModule,
+    QRCodeModule
+    
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -43,4 +43,18 @@
       </div>
   </div> -->
 
+  <div class="qr">
+    
+<div>
+    <qrcode [qrdata]="QRcodeText" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>url sem</mat-label>
+    <input matInput [(ngModel)]="QRcodeText" name="QRcodeText">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+</div>
   
+
