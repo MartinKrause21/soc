@@ -30,6 +30,7 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { VerifyPageComponent } from './verify-page/verify-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
     VerifyPageComponent,
     ProfilePageComponent,
     CreateQuizComponent,
+    QrCodeConvertorComponent,
   ],
   imports: [
     BrowserModule,
