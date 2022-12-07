@@ -130,4 +130,23 @@ export class AuthService {
   
     } 
 
+
+    verifyUser(username: string) {
+
+      fetch('http://localhost:8080/verify/' + username , {
+        method: 'GET',
+        headers: new Headers({
+          'Content-Type': "application/json; charset=utf8",
+      }),
+    })
+    .then(() => {
+      console.log('Success!');
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+      alert("faileeedddd")
+    });
+
+  }
+
 }

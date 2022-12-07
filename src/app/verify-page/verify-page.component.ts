@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-verify-page',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+  ) { 
+  }
+
+  username:string;
+  code:string;
 
   ngOnInit(): void {
+
+    this.authService.verifyUser(this.username);
+    console.log(this.username, this.code);
+    
   }
 
 }

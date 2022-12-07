@@ -1,0 +1,27 @@
+#container {
+    border-top: 20px solid;
+    border-color: #502ca0;
+}
+
+#description {
+    font-size: medium;
+}
+
+#service-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button {
+    width: 150px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+    margin: 7px;
+}
+
+#button:hover {
+    color: white;
+    background-color: #502ca0;
+}

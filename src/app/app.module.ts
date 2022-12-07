@@ -32,6 +32,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import {MatTabsModule} from '@angular/material/tabs';
+import { QuizStartComponent } from './quiz-start/quiz-start.component';
+import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 
 
 @NgModule({
@@ -50,6 +53,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     ProfilePageComponent,
     CreateQuizComponent,
     QrCodeConvertorComponent,
+    QuizStartComponent,
+    QrCodeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     FormsModule,
     MatDialogModule,
     RouterModule,
-    QRCodeModule
+    QRCodeModule, 
+    MatTabsModule
     
   ],
   providers: [CookieService],

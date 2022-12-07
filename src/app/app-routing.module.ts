@@ -10,6 +10,8 @@ import { VerifyPageComponent } from './verify-page/verify-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
+import { QuizStartComponent } from './quiz-start/quiz-start.component';
+import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'profile-page', component: ProfilePageComponent },
   { path: 'create-quiz', component: CreateQuizComponent },
   { path: 'qr-convertor', component: QrCodeConvertorComponent },
+  { path: 'quiz-start', component: QuizStartComponent },
+  { path: 'qr-dialog', component: QrCodeDialogComponent },
 
 ];
 

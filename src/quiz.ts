@@ -1,5 +1,5 @@
 
-export interface Quiiz {
+export interface Quiz {
     title: string; 
     questionList : Question[];
     favourite: boolean;

@@ -1,0 +1,33 @@
+#main{
+    margin-top: 55px;
+}
+
+#register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#register-button {
+    width: 150px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+}
+
+#register-button:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#register-button:disabled {
+    background-color: #512ca077;
+    color: rgba(239, 227, 227, 0.796);
+    border-color: #5c78987d;
+    border-width: 0px;
+}
+
+#login-back {
+    background-image: linear-gradient(to right, rgba(186, 163, 163, 0.043), #502ca0);
+}
