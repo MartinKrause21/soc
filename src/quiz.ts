@@ -1,8 +1,8 @@
 
 export interface Quiz {
-    title: string; 
+    name: string; 
     questionList : Question[];
-    favourite: boolean;
+    //favourite: boolean;
     description: string;
 }
 
@@ -14,5 +14,5 @@ export interface Question {
 export interface Answer {
     content: string; 
     correct: boolean;
-    difficulty: number;
+    //difficulty: number;
 }

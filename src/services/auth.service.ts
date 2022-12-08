@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
+import { Subject } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import { RegisterVerifyDialogComponent } from 'src/app/register-verify-dialog/register-verify-dialog.component';
 import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-login-dialog.component';
@@ -12,6 +13,8 @@ import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-l
 })
 
 export class AuthService {
+
+  userSubject = new Subject<void>();
 
   headers = new Headers();
   //authString: string;
@@ -65,7 +68,7 @@ export class AuthService {
          body: JSON.stringify(user),
        })
        .then(() => {
-         console.log('Success!');
+         console.log('create user Success!');
          //window.location.href="/login" 
          this.showRegisterVerifyialog();
        })
@@ -78,9 +81,9 @@ export class AuthService {
    
      logout() : void { 
        this.cookies.delete ('username');
-       //this.cookies.delete('password');
+       this.cookies.delete('password');
        //this.cookies.delete('selectedRole');
-       //this.userSubject.next();
+       this.userSubject.next();
        location.reload();
      }
 
@@ -93,8 +96,8 @@ export class AuthService {
         }),
       })
       .then(() => {
-        console.log('Success!');
-        window.location.href="/login"
+        console.log('passw reset Success!');
+        //window.location.href="/login"
       })
       .catch((error) => {
         console.error('Error:' , error);
@@ -120,7 +123,7 @@ export class AuthService {
         }),
       })
       .then(() => {
-        console.log('Success!');
+        console.log('passw email send Success!');
         //this.showPasswordDialog();
       })
       .catch((error) => {
@@ -131,16 +134,16 @@ export class AuthService {
     } 
 
 
-    verifyUser(username: string) {
+    verifyUser(code: string) {
 
-      fetch('http://localhost:8080/verify/' + username , {
+      fetch('http://localhost:8080/verify/' + code , {
         method: 'GET',
         headers: new Headers({
           'Content-Type': "application/json; charset=utf8",
       }),
     })
     .then(() => {
-      console.log('Success!');
+      console.log('verify Success!');
     })
     .catch((error) => {
       console.error('Error:' , error);

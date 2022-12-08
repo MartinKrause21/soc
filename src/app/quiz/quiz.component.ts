@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/quiz';
+import { Question, Quiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { MatDialog } from '@angular/material/dialog';
 import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -13,29 +14,33 @@ export class QuizComponent implements OnInit {
   constructor(
     private quizService: QuizService,
     private dialog : MatDialog,
+    private route: ActivatedRoute,
   ) { }
-
 
   answersQuestions: Question[] =[];
   selectedQuestion: Question;
   id: string
 
+  quizes : Quiz[];
+
   quizStart = true;
-  quiz = false;
+  quizShow = false;
 
   location = window.location.href;
 
   ngOnInit(): void {
 
-    console.log( window.location.href);
+    //console.log( window.location.href);
 
-  //   this.quizService.getQuizes(this.id).subscribe(response=> {
-  //     console.log(response); 
-  //     this.answersQuestions=response;
-  //     this.selectedQuestion=response[0]
+    this.id =String(this.route.snapshot.paramMap.get('name'));
 
-  //     //this.isContentLoaded = true
-  //  });
+    this.quizService.getQuizName(this.id).subscribe(response=> {
+      console.log(response); 
+      this.answersQuestions=response;
+      this.selectedQuestion=response[0]
+      //this.isContentLoaded = true
+   });
+
   }
 
   qrCodeDialog() {
@@ -44,7 +49,7 @@ export class QuizComponent implements OnInit {
 
   toggleData() {
     this.quizStart = !this.quizStart;
-    this.quiz = !this.quiz;
+    this.quizShow = !this.quizShow;
   }
 
 

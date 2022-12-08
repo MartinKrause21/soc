@@ -19,7 +19,9 @@ export class QuizService {
   users : user[] = [];
   headers = new Headers();
 
-  getQuizes(quizName: string):Observable <any[]>  {
-    return this.http.get<any[]>('http://localhost:8080/quiz/' + quizName)
+  getQuizName(quizName: string):Observable <any[]>  {
+    return this.http.get<any[]>('http://localhost:8080/get/quiz/' + quizName)
   }
+
+
 }
