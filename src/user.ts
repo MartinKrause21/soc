@@ -42,11 +42,9 @@ export class resendMail {
 }
 
 export class changePassword {
-   email:string;
    password: string;
 
    constructor(
-       email:string,
        password: string
    ) {  }
 }
