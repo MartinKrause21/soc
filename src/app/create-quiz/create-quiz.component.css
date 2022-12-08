@@ -1,4 +1,4 @@
-#main{
+/* #main{
     margin-top: 55px;
 }
 
@@ -30,4 +30,9 @@
 
 #login-back {
     background-image: linear-gradient(to right, rgba(186, 163, 163, 0.043), #502ca0);
+} */
+
+.container{
+    margin: 100px;
 }
+

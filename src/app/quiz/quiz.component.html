@@ -1,4 +1,31 @@
-<div class="flex items-center justify-center h-screen ">
+<div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
+
+  <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
+    <h1 class="text-lg text-gray-700"> Welcome in Quiz name  </h1>
+      <h1 id="description" class="text-gray-700"> This is quiz description </h1>
+
+     
+      <div id="service-bar" class="relative">
+      
+          <button id="button" type="button" (click)="toggleData()"
+              class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+              Start quiz
+          </button>
+      
+          <button id="button" type="button"  (click)="qrCodeDialog()"
+              class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+              QR code
+          </button>
+      
+      </div>
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="quiz" class="flex items-center justify-center h-screen ">
 
     <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
       <h1 class="text-lg text-gray-700"> Quiz name  </h1>
@@ -10,5 +37,3 @@
     </div>
 
 </div>
-
-<!-- border-t-[20px] border-indigo-800 -->

@@ -14,3 +14,9 @@
     color: white;
     background-color: #502ca0;
 }
+
+@media screen and (max-width: 639px) {
+    #block {
+      margin-top: 150px;
+    }
+  }

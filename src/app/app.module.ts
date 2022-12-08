@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -33,7 +33,6 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatTabsModule} from '@angular/material/tabs';
-import { QuizStartComponent } from './quiz-start/quiz-start.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 
 
@@ -53,7 +52,6 @@ import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component
     ProfilePageComponent,
     CreateQuizComponent,
     QrCodeConvertorComponent,
-    QuizStartComponent,
     QrCodeDialogComponent,
   ],
   imports: [
@@ -71,6 +69,7 @@ import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component
     HttpClientModule, 
     MatInputModule, 
     FormsModule,
+    ReactiveFormsModule,
     MatDialogModule,
     RouterModule,
     QRCodeModule, 

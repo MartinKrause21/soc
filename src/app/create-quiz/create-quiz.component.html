@@ -1,49 +1,38 @@
-<div id="main" class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div id="login-back"
-            class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-        </div>
-        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-            <div class="max-w-md mx-auto">
-                <div>
-                    <h1 class="text-2xl font-semibold"> Create new quiz </h1>
-                </div>
-                <div class="divide-y divide-gray-200">
-
-                    <form  #registerForm="ngForm"> 
-                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
-                            <mat-label>Username</mat-label>
-                            <input matInput required type="text">
-                            <mat-icon matSuffix>person</mat-icon>
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
-                            <mat-label>Email</mat-label>
-                            <input matInput  required type="email" pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"> 
-                            <mat-icon matSuffix>email</mat-icon>
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
-                            <mat-label>Password</mat-label>
-                            <input matInput required type="password">
-                            <mat-icon matSuffix>lock</mat-icon>
-                        </mat-form-field>
-
-
-                        <div id="register" class="relative">
-
-                            <button id="register-button" type="submit" 
-                            class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                             Create 
-                            </button>
-
-                        </div>
-
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">  
+    
+    <h1> Dynamically Add New Input Fields in Angular </h1>  
+      
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+        
+      <p>  
+        <label for="name">Product Name:</label>  
+        <input type="text" id="name" name="name" formControlName="name" class="form-control">  
+      </p>  
+      
+      <table class="table table-bordered" formArrayName="quantities">  
+        <tr>  
+          <th colspan="2">Add Multiple Quantity:</th>  
+          <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>  
+        </tr>  
+        <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">  
+          <td>  
+              Quantity :  
+              <input type="text" formControlName="qty" class="form-control">  
+          </td>  
+          <td>  
+              Price:  
+              <input type="text" formControlName="price" class="form-control">  
+          </td>  
+          <td>  
+              <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>  
+          </td>  
+        </tr>  
+      </table>  
+       
+      <button type="submit" class="btn btn-success">Submit</button>  
+        
+    </form>  
+        
+    <br/>  
+    {{this.productForm.value | json}}  
+  </div>  
