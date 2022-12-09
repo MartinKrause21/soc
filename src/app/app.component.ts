@@ -20,6 +20,7 @@ export class AppComponent {
   loggedInUsername: string;
 
   ngOnInit(): void {
+    console.log(this.cookies.get('username'))
     this.loggedInUsername = this.cookies.get('username');
   }
 

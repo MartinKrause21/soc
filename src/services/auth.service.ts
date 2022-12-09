@@ -41,7 +41,8 @@ export class AuthService {
         let authString = `${user.username}:${user.password}`
     
         this.headers.set('Authorization', 'Basic ' + btoa(authString))
-    
+        console.log(authString);
+        
         try {
           const response = await fetch('http://localhost:8080/login', {
             method: 'GET',
@@ -49,6 +50,9 @@ export class AuthService {
           });
           const data_1 = await response.json();
           this.cookies.set('username', user.username);
+          this.cookies.set('password', user.password);
+          console.log(this.cookies.get('username'));
+          
           //this.cookies.set('password', user.password );
           window.location.href="/home" 
     
@@ -69,6 +73,7 @@ export class AuthService {
        })
        .then(() => {
          console.log('create user Success!');
+         this.cookies.deleteAll();
          //window.location.href="/login" 
          this.showRegisterVerifyialog();
        })

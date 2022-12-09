@@ -2,7 +2,7 @@
 
   <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
     <h1 class="text-lg text-gray-700"> Welcome in {{id}}  </h1>
-      <h1 id="description" class="text-gray-700" *ngFor="let quiz of quizes" > {{quiz.description}} </h1>
+      <h1 id="description" class="text-gray-700"  > {{quiz.description}} </h1>
 
      
       <div id="service-bar" class="relative">
@@ -25,14 +25,13 @@
 
 
 
-<div *ngIf="quizShow" class="flex items-center justify-center h-screen ">
+<div *ngIf="quizShow" class="flex items-center justify-center h-screen " >
 
-    <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
-        <h1 class="text-lg text-gray-700"> This is quiz question </h1>
-
-            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide">answear1</button> <br> 
-            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide">answear2</button> <br> 
-            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide">answear3</button>
+    <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 " >
+        <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].content}}</h1>
+        <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
+            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide" (click)="sendAns(ans.content, ans.correct)">{{ans.content}}</button> <br> 
+          </span>
     </div>
 
 </div>

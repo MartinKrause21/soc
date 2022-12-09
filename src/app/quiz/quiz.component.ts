@@ -21,7 +21,10 @@ export class QuizComponent implements OnInit {
   selectedQuestion: Question;
   id: string
 
-  quizes : Quiz[];
+  quiz : Quiz;
+  questionList: Question[];
+  quizNum: number = 0;
+  score: number;
 
   quizStart = true;
   quizShow = false;
@@ -34,12 +37,12 @@ export class QuizComponent implements OnInit {
 
     this.id =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getQuizName(this.id).subscribe(response=> {
-      console.log(response); 
-      this.answersQuestions=response;
-      this.selectedQuestion=response[0]
-      //this.isContentLoaded = true
-   });
+    this.quizService.getQuiz(this.id).subscribe(respone =>{
+      console.log(respone);
+      
+      this.quiz = respone;
+      this.questionList = respone.questionList;
+    })
 
   }
 
@@ -53,4 +56,16 @@ export class QuizComponent implements OnInit {
   }
 
 
+  sendAns(ans: string, correct: boolean){
+    this.quizNum = this.quizNum + 1;
+
+    if(correct == true){
+      // this.quizService.setScore(this.score, this.id)
+      console.log("dobra odpoved ");
+    }
+    else if (correct == false) { 
+      console.log("zla odpoved");
+    }
+    
+  }
 }
