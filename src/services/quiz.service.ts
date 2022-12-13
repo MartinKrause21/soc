@@ -17,18 +17,31 @@ export class QuizService {
 
   quizes : Quiz[];
   users : user[] = [];
-  headers = new Headers();
+
+  authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
+
+  headerHttp = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'Basic ' + btoa(this.authString)
+  });
 
   getQuiz(quizName: string):Observable <any>  {
-    let authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
-
-
-    let headerHttp = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + btoa(authString)
-    });
     
-    return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`, { headers: headerHttp });
+
+
+    
+    
+    return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`, { headers: this.headerHttp });
+  }
+
+  setScore(score: number, quizName: string): Observable<any> {
+    console.log(score);
+    
+    return this.http.post(`http://localhost:8080/save/score/${quizName}/${score}`,  {headers: this.headerHttp});
+  }
+
+  getScore(): Observable<any>{
+    return this.http.get(`http://localhost:8080/score/{quizId}`, {headers: this.headerHttp})
   }
 
 

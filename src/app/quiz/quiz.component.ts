@@ -24,7 +24,7 @@ export class QuizComponent implements OnInit {
   quiz : Quiz;
   questionList: Question[];
   quizNum: number = 0;
-  score: number;
+  score: number = 0;
 
   quizStart = true;
   quizShow = false;
@@ -58,14 +58,17 @@ export class QuizComponent implements OnInit {
 
   sendAns(ans: string, correct: boolean){
     this.quizNum = this.quizNum + 1;
-
-    if(correct == true){
-      // this.quizService.setScore(this.score, this.id)
-      console.log("dobra odpoved ");
+    if(this.quizNum < this. questionList.length ){
+      if(correct == true){
+        this.score = this.score +10;
+        console.log("dobra odpoved " + this.score);
+      }
+      else if (correct == false) { 
+        console.log("zla odpoved" + this.score);
+      }
     }
-    else if (correct == false) { 
-      console.log("zla odpoved");
+    else {
+      this.quizService.setScore(this.score, this.id);
     }
-    
   }
 }

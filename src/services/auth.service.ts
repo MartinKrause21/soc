@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import { RegisterVerifyDialogComponent } from 'src/app/register-verify-dialog/register-verify-dialog.component';
 import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-login-dialog.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,9 @@ export class AuthService {
 
   constructor(
     private readonly httpClient: HttpClient,
-   private cookies: CookieService,
+    private cookies: CookieService,
     private dialog : MatDialog, 
+    private router: Router,
   ) { }
 
       getToken(): string {
@@ -54,7 +56,8 @@ export class AuthService {
           console.log(this.cookies.get('username'));
           
           //this.cookies.set('password', user.password );
-          window.location.href="/home" 
+          this.router.navigate(['home']);
+
     
         }
          catch (error) {
