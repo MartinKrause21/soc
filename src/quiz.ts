@@ -8,7 +8,7 @@ export interface Quiz {
 
 export interface Question {
     answerList: Answer[];
-    content: string;
+    questionContent: string;
 }
 
 export interface Answer {

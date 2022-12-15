@@ -34,6 +34,7 @@ import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatTabsModule} from '@angular/material/tabs';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
+import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component
     MatDialogModule,
     RouterModule,
     QRCodeModule, 
-    MatTabsModule
+    MatTabsModule,
+    NgxAbstractControlAsModule
     
   ],
   providers: [CookieService],

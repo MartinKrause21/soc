@@ -26,11 +26,6 @@ export class QuizService {
   });
 
   getQuiz(quizName: string):Observable <any>  {
-    
-
-
-    
-    
     return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`, { headers: this.headerHttp });
   }
 
@@ -42,6 +37,26 @@ export class QuizService {
 
   getScore(): Observable<any>{
     return this.http.get(`http://localhost:8080/score/{quizId}`, {headers: this.headerHttp})
+  }
+
+  addQuiz(quiz: Quiz) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch('http://localhost:8080/add/quiz', {  
+      method: 'POST',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
+      body: JSON.stringify(quiz),
+    })
+    .then(() => {
+      console.log('Success!');
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
   }
 
 
