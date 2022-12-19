@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';  
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'  
+import { FormGroup, FormControl, FormArray, FormBuilder, Form } from '@angular/forms'  
 import { QuizService } from 'src/services/quiz.service';
     
 @Component({  
@@ -10,47 +10,61 @@ import { QuizService } from 'src/services/quiz.service';
 })  
 export class CreateQuizComponent  {   
     
-  productForm: FormGroup;  
-     
+  quizForm: FormGroup;  
+       
   constructor(
-    private fb:FormBuilder,
+    private formBuilder:FormBuilder,
     private quizService: QuizService,
     ) {  
      
-    this.productForm = this.fb.group({  
+    this.quizForm = this.formBuilder.group({  
       name: '',  
       description: '',
-      questionList: this.fb.array([]) ,  
+      questionList: this.formBuilder.array([]) , 
     }); 
-    
-    this.productForm = this.fb.group({  
-      content: '',   
-    });  
   }  
     
   get questionList() : FormArray {  
-    return this.productForm.controls["questionList"] as FormArray  
+    return this.quizForm.controls["questionList"] as FormArray  
   }  
+
+  get answerList() :FormArray {
+    return this.quizForm.controls["answerList"] as FormArray 
+  }
      
   newQuestion(): FormGroup {  
-    return this.fb.group({  
+    return this.formBuilder.group({  
       questionContent: '',  
-      answerList: this.fb.array([]) ,  
+      answerList: this.formBuilder.array([]) ,  
+    })  
+  } 
+  
+  newAnswer(): FormGroup {  
+    return this.formBuilder.group({  
+      answeContent: '',  
     })  
   }  
      
   addQuestion() {  
     this.questionList.push(this.newQuestion());  
-  }  
-     
+  } 
   removeQuestion(i:number) {  
     this.questionList.removeAt(i);  
   }  
+
+  // -----------------------------------------------//  
+
+  addAnswer() {  
+    this.answerList.push(this.newAnswer());  
+  }  
+  removeAnswer(i:number) {  
+    this.answerList.removeAt(i);  
+  }  
      
   onSubmit() {  
-    this.quizService.addQuiz(this.productForm.value);
-    console.log(this.productForm.value);  
-    console.log(this.questionList);
+    this.quizService.addQuiz(this.quizForm.value);
+    console.log(this.quizForm.value);  
+    //console.log(this.questionList);
   }  
 
 }

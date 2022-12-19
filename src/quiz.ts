@@ -1,18 +1,16 @@
 
 export interface Quiz {
     name: string; 
+    description: string; 
     questionList : Question[];
-    //favourite: boolean;
-    description: string;
 }
 
 export interface Question {
-    answerList: Answer[];
     questionContent: string;
+    answerList: Answer[];
 }
 
 export interface Answer {
     content: string; 
     correct: boolean;
-    //difficulty: number;
 }

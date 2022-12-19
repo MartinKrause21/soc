@@ -1,22 +1,25 @@
 <div class="flex h-screen sm:mt-200 flex-col items-center justify-center space-y-6 px-4 sm:space-x-6 sm:space-y-0 m-10">
 
-    <form id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10" [formGroup]="productForm | asFormGroup" (ngSubmit)="onSubmit()">
+    <form id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10"
+        [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
 
-        <div> 
+        <div>
 
-        <p>
-            <label for="name">Quiz name:</label>
-            <input type="text" id="name" name="name" formControlName="name" class="form-control">
-        </p>
+            <p>
+                <label for="name">Quiz name:</label>
+                <input type="text" id="name" name="name" formControlName="name" class="form-control">
+            </p>
 
-        <p>
-            <label for="name">Description :</label>
-            <input type="text" id="description" name="description" formControlName="description" class="form-control">
-        </p>
+            <p>
+                <label for="name">Description :</label>
+                <input type="text" id="description" name="description" formControlName="description"
+                    class="form-control">
+            </p>
 
-        </div> 
+        </div>
 
-        <table class="flex flex-col items-center justify-center " >
+        <table class="flex flex-col items-center justify-center ">
+            
             <tr>
 
                 <th width="150px">
@@ -25,30 +28,53 @@
 
             </tr>
 
-            <ng-container formArrayName="questionList" >
-                <ng-container *ngFor="let question of questionList.controls; let i=index" >
+            <ng-container formArrayName="questionList">
+                <ng-container *ngFor="let question of questionList.controls; let i=index">
 
-            <tr class="flex flex-col items-center justify-center" [formGroup]="question | asFormGroup">
+                    <tr class="flex flex-col items-center justify-center" [formGroup]="question | asFormGroup">
 
-                <div > 
-                <td>
-                    Quesion :
-                    <input type="text" formControlName="questionContent" class="form-control">
-                </td> 
+                        <div>
+                            <td>
+                                Quesion :
+                                <input type="text" formControlName="questionContent" class="form-control">
+                            </td>
 
-                <td>
-                    Answer:
-                    <input type="text" formControlName="content" class="form-control">
-                </td>
+                            <tr>
 
-                <td>
-                    <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
-                </td>
+                                <th width="150px">
+                                    <button type="button" (click)="addAnswer()" class="btn btn-primary">Add answer</button>
+                                </th>
+                
+                            </tr>
 
-                </div>
 
-            </tr>
-            </ng-container>
+                            <ng-container formArrayName="questionList">
+                                <ng-container *ngFor="let answer of answerList.controls; let i=index">
+
+                                    <div [formGroup]="answer | asFormGroup"> 
+
+                                        <td>
+                                            Answer:
+                                            <input type="text" formControlName="answerContent" class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <button (click)="removeAnswer(i)" class="btn btn-danger">Remove answer</button>
+                                        </td>
+
+                                    </div>
+
+                                </ng-container>
+                            </ng-container>
+
+                            <td>
+                                <button (click)="removeQuestion(i)" class="btn btn-danger">Remove question</button>
+                            </td>
+
+                        </div>
+
+                    </tr>
+                </ng-container>
             </ng-container>
 
         </table>
@@ -60,6 +86,6 @@
     </form>
 
     <br />
-    {{this.productForm.value | json}}
+    {{this.quizForm.value | json}}
 
 </div>
