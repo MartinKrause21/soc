@@ -21,7 +21,8 @@ export class CreateQuizComponent  {
       name: '',  
       description: '',
       questionList: this.formBuilder.array([]) , 
-    }); 
+      answerList: this.formBuilder.array([]) , 
+    });
   }  
     
   get questionList() : FormArray {  
@@ -41,7 +42,7 @@ export class CreateQuizComponent  {
   
   newAnswer(): FormGroup {  
     return this.formBuilder.group({  
-      answeContent: '',  
+      answerContent: ''   
     })  
   }  
      

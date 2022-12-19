@@ -39,37 +39,38 @@
                                 <input type="text" formControlName="questionContent" class="form-control">
                             </td>
 
+
+                            <td>
+                                <button (click)="removeQuestion(i)" class="btn btn-danger">Remove question</button>
+                            </td>
+
+                            
                             <tr>
 
                                 <th width="150px">
                                     <button type="button" (click)="addAnswer()" class="btn btn-primary">Add answer</button>
                                 </th>
-                
+
                             </tr>
 
-
-                            <ng-container formArrayName="questionList">
+                            <ng-container formArrayName="answerList">
                                 <ng-container *ngFor="let answer of answerList.controls; let i=index">
-
+                
                                     <div [formGroup]="answer | asFormGroup"> 
-
+                
                                         <td>
                                             Answer:
                                             <input type="text" formControlName="answerContent" class="form-control">
                                         </td>
-
+                
                                         <td>
                                             <button (click)="removeAnswer(i)" class="btn btn-danger">Remove answer</button>
                                         </td>
-
+                
                                     </div>
-
+                
                                 </ng-container>
                             </ng-container>
-
-                            <td>
-                                <button (click)="removeQuestion(i)" class="btn btn-danger">Remove question</button>
-                            </td>
 
                         </div>
 
