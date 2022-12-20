@@ -21,7 +21,6 @@ export class CreateQuizComponent  {
       name: '',  
       description: '',
       questionList: this.formBuilder.array([]) , 
-      answerList: this.formBuilder.array([]) , 
     });
   }  
     
@@ -29,18 +28,19 @@ export class CreateQuizComponent  {
     return this.quizForm.controls["questionList"] as FormArray  
   }  
 
-  get answerList() :FormArray {
-    return this.quizForm.controls["answerList"] as FormArray 
+  answerList(questionIndex: number) :FormArray {
+    //return this.quizForm.controls["answerList"] as FormArray 
+    return this.questionList.controls [questionIndex].get("answerList") as FormArray
   }
      
   newQuestion(): FormGroup {  
     return this.formBuilder.group({  
-      questionContent: '',  
-      answerList: this.formBuilder.array([]) ,  
+      questionContent: '',   
+      answerList: this.formBuilder.array([]) , 
     })  
   } 
   
-  newAnswer(): FormGroup {  
+  newAnswer(): FormGroup { 
     return this.formBuilder.group({  
       answerContent: ''   
     })  
@@ -49,17 +49,19 @@ export class CreateQuizComponent  {
   addQuestion() {  
     this.questionList.push(this.newQuestion());  
   } 
-  removeQuestion(i:number) {  
-    this.questionList.removeAt(i);  
+  removeQuestion(questionIndex:number) {  
+    this.questionList.removeAt(questionIndex);  
   }  
 
   // -----------------------------------------------//  
 
-  addAnswer() {  
-    this.answerList.push(this.newAnswer());  
+  addAnswer(questionIndex:number) {  
+    //this.answerList.push(this.newAnswer());  
+    return this.answerList(questionIndex).push(this.newAnswer());
   }  
-  removeAnswer(i:number) {  
-    this.answerList.removeAt(i);  
+  removeAnswer(answerIndex:number, questionIndex:number) {  
+    //this.answerList.removeAt(answerIndex);  
+    return this.answerList(questionIndex).removeAt(answerIndex);
   }  
      
   onSubmit() {  

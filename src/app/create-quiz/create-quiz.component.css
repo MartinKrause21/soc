@@ -9,3 +9,9 @@ button{
     padding: 5px;
     margin: 5px;
 }
+
+#question{
+    background-color: rgba(113, 110, 110, 0.291);
+    border-radius: 5px;
+    border: 1px solid black;
+}

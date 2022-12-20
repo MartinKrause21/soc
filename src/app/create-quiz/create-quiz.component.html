@@ -28,33 +28,34 @@
 
             </tr>
 
-            <ng-container formArrayName="questionList">
-                <ng-container *ngFor="let question of questionList.controls; let i=index">
+        <div id="question">
+            <ng-container  formArrayName="questionList">
+                <ng-container *ngFor="let question of questionList.controls; let questionIndex=index">
 
                     <tr class="flex flex-col items-center justify-center" [formGroup]="question | asFormGroup">
 
                         <div>
                             <td>
-                                Quesion :
+                                Question :
                                 <input type="text" formControlName="questionContent" class="form-control">
                             </td>
 
 
                             <td>
-                                <button (click)="removeQuestion(i)" class="btn btn-danger">Remove question</button>
+                                <button (click)="removeQuestion(questionIndex)" class="btn btn-danger">Remove question</button>
                             </td>
 
                             
                             <tr>
 
                                 <th width="150px">
-                                    <button type="button" (click)="addAnswer()" class="btn btn-primary">Add answer</button>
+                                    <button type="button" (click)="addAnswer(questionIndex)" class="btn btn-primary">Add answer</button>
                                 </th>
 
                             </tr>
 
                             <ng-container formArrayName="answerList">
-                                <ng-container *ngFor="let answer of answerList.controls; let i=index">
+                                <ng-container *ngFor="let answer of answerList(questionIndex).controls; let answerIndex=index">
                 
                                     <div [formGroup]="answer | asFormGroup"> 
                 
@@ -64,7 +65,7 @@
                                         </td>
                 
                                         <td>
-                                            <button (click)="removeAnswer(i)" class="btn btn-danger">Remove answer</button>
+                                            <button (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger">Remove answer</button>
                                         </td>
                 
                                     </div>
@@ -77,6 +78,8 @@
                     </tr>
                 </ng-container>
             </ng-container>
+
+        </div>
 
         </table>
 
