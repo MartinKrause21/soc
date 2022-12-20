@@ -1,12 +1,20 @@
 
 import { Component } from '@angular/core';  
 import { FormGroup, FormControl, FormArray, FormBuilder, Form } from '@angular/forms'  
+import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material/tooltip';
 import { QuizService } from 'src/services/quiz.service';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 1000,
+  hideDelay: 0,
+  touchendHideDelay: 1000,
+};
     
 @Component({  
   selector: 'app-create-quiz',
   templateUrl: './create-quiz.component.html',
-  styleUrls: ['./create-quiz.component.css']
+  styleUrls: ['./create-quiz.component.css'],
+  providers: [{provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}],
 })  
 export class CreateQuizComponent  {   
     

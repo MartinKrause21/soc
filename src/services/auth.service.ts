@@ -57,8 +57,6 @@ export class AuthService {
           
           //this.cookies.set('password', user.password );
           this.router.navigate(['home']);
-
-    
         }
          catch (error) {
           console.log('Error:', error);

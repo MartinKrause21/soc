@@ -1,7 +1,4 @@
-#container {
-    border-top: 20px solid;
-    border-color: #502ca0;
-}
+
 
 button{
     border: 1px solid black;
@@ -10,8 +7,66 @@ button{
     margin: 5px;
 }
 
+#quiz-info{
+    margin-bottom: 15px;
+}
+
+#questionForm{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
 #question{
-    background-color: rgba(113, 110, 110, 0.291);
-    border-radius: 5px;
-    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#back {
+    background-image: linear-gradient(to right, rgba(186, 163, 163, 0.043), #502ca0);
+}
+
+#create{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button {
+    width: 150px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+}
+
+#button:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#button-del{
+    width: 50px;
+    height: 50px ;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+#button-del:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#icon{
+    vertical-align: middle;
+}
+
+#icon-btn{
+    margin-top: 2px;
+}
+
+#span{  
+    vertical-align: middle;
 }

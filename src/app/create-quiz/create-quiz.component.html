@@ -1,95 +1,144 @@
-<div class="flex h-screen sm:mt-200 flex-col items-center justify-center space-y-6 px-4 sm:space-x-6 sm:space-y-0 m-10">
+<div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
 
-    <form id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10"
-        [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
-
-        <div>
-
-            <p>
-                <label for="name">Quiz name:</label>
-                <input type="text" id="name" name="name" formControlName="name" class="form-control">
-            </p>
-
-            <p>
-                <label for="name">Description :</label>
-                <input type="text" id="description" name="description" formControlName="description"
-                    class="form-control">
-            </p>
-
+        <div id="back" class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
         </div>
 
-        <table class="flex flex-col items-center justify-center ">
-            
-            <tr>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="max-w-md mx-auto">
 
-                <th width="150px">
-                    <button type="button" (click)="addQuestion()" class="btn btn-primary">Add Question</button>
-                </th>
+                <div>
+                    <h1 class="text-2xl font-semibold"> Create your own quiz </h1>
+                </div>
 
-            </tr>
+                <div class="divide-y divide-gray-200">
+                    <form id="container" [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
 
-        <div id="question">
-            <ng-container  formArrayName="questionList">
-                <ng-container *ngFor="let question of questionList.controls; let questionIndex=index">
+                        <div id="quiz-info">
 
-                    <tr class="flex flex-col items-center justify-center" [formGroup]="question | asFormGroup">
+                            <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
+                                <mat-label> Quiz name </mat-label>
+                                <input matInput required type="text" name="username" formControlName="name"
+                                    class="form-control">
+                                <mat-icon matSuffix>description</mat-icon>
+                            </mat-form-field>
 
-                        <div>
-                            <td>
-                                Question :
-                                <input type="text" formControlName="questionContent" class="form-control">
-                            </td>
-
-
-                            <td>
-                                <button (click)="removeQuestion(questionIndex)" class="btn btn-danger">Remove question</button>
-                            </td>
-
-                            
-                            <tr>
-
-                                <th width="150px">
-                                    <button type="button" (click)="addAnswer(questionIndex)" class="btn btn-primary">Add answer</button>
-                                </th>
-
-                            </tr>
-
-                            <ng-container formArrayName="answerList">
-                                <ng-container *ngFor="let answer of answerList(questionIndex).controls; let answerIndex=index">
-                
-                                    <div [formGroup]="answer | asFormGroup"> 
-                
-                                        <td>
-                                            Answer:
-                                            <input type="text" formControlName="answerContent" class="form-control">
-                                        </td>
-                
-                                        <td>
-                                            <button (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger">Remove answer</button>
-                                        </td>
-                
-                                    </div>
-                
-                                </ng-container>
-                            </ng-container>
+                            <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
+                                <mat-label> Description </mat-label>
+                                <input matInput required type="text" name="description" formControlName="description"
+                                    class="form-control">
+                                <mat-icon matSuffix>info</mat-icon>
+                            </mat-form-field>
 
                         </div>
 
-                    </tr>
-                </ng-container>
-            </ng-container>
+                        <div class="flex flex-col items-center justify-center ">
 
+                            <tr>
+
+                                <button
+                                    class="transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                    (click)="addQuestion()" id="button" type="button">
+                                    <span id="span" class="ml-2"> Add question </span>
+                                    <mat-icon id="icon">add_box</mat-icon>
+                                </button>
+
+                            </tr>
+
+
+                            <div id="question">
+                                <ng-container formArrayName="questionList">
+                                    <ng-container
+                                        *ngFor="let question of questionList.controls; let questionIndex=index">
+
+                                        <tr class="justify-center" [formGroup]="question | asFormGroup">
+
+                                            <div>
+
+                                                <div id="questionForm" class="relative">
+
+                                                    <mat-form-field id="form-field-info" appearance="outline"
+                                                        class="h-10 w-full mb-4">
+                                                        <mat-label> Question </mat-label>
+                                                        <input matInput required type="text" name="description"
+                                                            formControlName="questionContent" class="form-control">
+                                                        <mat-icon matSuffix> text_fields</mat-icon>
+                                                    </mat-form-field>
+
+
+                                                    <td>
+                                                        <button id="button-del" (click)="removeQuestion(questionIndex)"
+                                                            class="btn btn-danger" matTooltip="Remove Question" [matTooltipPosition]="'above'">
+                                                            <mat-icon id="icon-btn">delete</mat-icon>
+                                                        </button>
+                                                    </td>
+
+                                                    <td>
+                                                        <button id="button-del" type="button"
+                                                            (click)="addAnswer(questionIndex)" class="btn btn-primary" matTooltip="Add answer" [matTooltipPosition]="'above'" >
+                                                            <mat-icon id="icon-btn">add_box</mat-icon>
+                                                        </button> 
+                                                    </td>
+
+
+                                                </div>
+
+
+                                                <ng-container formArrayName="answerList">
+                                                    <ng-container
+                                                        *ngFor="let answer of answerList(questionIndex).controls; let answerIndex=index">
+
+                                                        <div class="relative" id="questionForm"
+                                                            [formGroup]="answer | asFormGroup">
+
+                                                            <mat-form-field id="form-field-info" appearance="outline"
+                                                                class="h-10 w-full mb-4">
+                                                                <mat-label> Answer </mat-label>
+                                                                <input matInput required type="text" name="description"
+                                                                    formControlName="answerContent"
+                                                                    class="form-control">
+                                                                <mat-icon matSuffix> text_fields</mat-icon>
+                                                            </mat-form-field>
+
+                                                            <td>
+                                                                <button id="button-del"
+                                                                    (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger" matTooltip="Remove answer" [matTooltipPosition]="'above'"> 
+                                                                    <mat-icon id="icon-btn">delete</mat-icon>
+                                                                </button>
+                                                            </td>
+
+                                                        </div>
+
+                                                    </ng-container>
+                                                </ng-container>
+
+                                            </div>
+
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+
+                            </div>
+
+                        </div>
+
+                        <mat-divider> </mat-divider>
+
+                        <div id="create" class="relative mt-4">
+
+                            <button id="button" type="submit"
+                                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                Create quiz
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
         </div>
 
-        </table>
-
-        <mat-divider> </mat-divider>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-
-    </form>
-
-    <br />
-    {{this.quizForm.value | json}}
-
-</div>
+        <!-- <br />
+    {{this.quizForm.value | json}} -->
+    </div>

@@ -35,6 +35,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import {MatTabsModule} from '@angular/material/tabs';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
     RouterModule,
     QRCodeModule, 
     MatTabsModule,
-    NgxAbstractControlAsModule
+    NgxAbstractControlAsModule,
+    MatTooltipModule
     
   ],
   providers: [CookieService],
