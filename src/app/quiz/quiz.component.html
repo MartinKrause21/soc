@@ -33,7 +33,7 @@
     <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 " >
         <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
         <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide" (click)="sendAns(ans.answerContent, ans.correct)">{{ans.answerContent}}</button> <br> 
+            <button class="bg-indigo-600 px-8 py-2 mt-8 rounded-3xl text-gray-100 font-semibold uppercase tracking-wide" (click)="sendAns(ans.content, ans.correct)">{{ans.content}}</button> <br> 
           </span>
     </div>
 

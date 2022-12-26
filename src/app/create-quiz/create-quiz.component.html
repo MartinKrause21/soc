@@ -51,7 +51,7 @@
                                     <ng-container
                                         *ngFor="let question of questionList.controls; let questionIndex=index">
 
-                                        <tr class="justify-center" [formGroup]="question | asFormGroup">
+                                        <tr id="tr" class="justify-center" [formGroup]="question | asFormGroup">
 
                                             <div>
 
@@ -68,14 +68,14 @@
 
                                                     <td>
                                                         <button id="button-del" (click)="removeQuestion(questionIndex)"
-                                                            class="btn btn-danger" matTooltip="Remove Question" [matTooltipPosition]="'above'">
+                                                            class="btn btn-danger" >
                                                             <mat-icon id="icon-btn">delete</mat-icon>
                                                         </button>
                                                     </td>
 
                                                     <td>
                                                         <button id="button-del" type="button"
-                                                            (click)="addAnswer(questionIndex)" class="btn btn-primary" matTooltip="Add answer" [matTooltipPosition]="'above'" >
+                                                            (click)="addAnswer(questionIndex)" class="btn btn-primary" >
                                                             <mat-icon id="icon-btn">add_box</mat-icon>
                                                         </button> 
                                                     </td>
@@ -102,7 +102,7 @@
 
                                                             <td>
                                                                 <button id="button-del"
-                                                                    (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger" matTooltip="Remove answer" [matTooltipPosition]="'above'"> 
+                                                                    (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger"> 
                                                                     <mat-icon id="icon-btn">delete</mat-icon>
                                                                 </button>
                                                             </td>

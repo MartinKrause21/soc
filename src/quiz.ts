@@ -11,6 +11,6 @@ export interface Question {
 }
 
 export interface Answer {
-    answerContent: string; 
+    content: string; 
     correct: boolean;
 }

@@ -5,7 +5,7 @@ import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/ma
 import { QuizService } from 'src/services/quiz.service';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
-  showDelay: 1000,
+  showDelay: 1500,
   hideDelay: 0,
   touchendHideDelay: 1000,
 };

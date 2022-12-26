@@ -53,6 +53,7 @@ export class QuizService {
     })
     .then(() => {
       console.log('Success!');
+      
     })
     .catch((error) => {
       console.error('Error:' , error);
