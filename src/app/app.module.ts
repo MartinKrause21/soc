@@ -36,6 +36,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { CreateQuizDialogComponent } from './create-quiz-dialog/create-quiz-dialog.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CreateQuizComponent,
     QrCodeConvertorComponent,
     QrCodeDialogComponent,
+    CreateQuizDialogComponent,
   ],
   imports: [
     BrowserModule,

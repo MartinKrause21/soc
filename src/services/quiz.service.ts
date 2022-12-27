@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { Quiz } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
+import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class QuizService {
   constructor(
     private http: HttpClient,
     private cookies: CookieService,
+    private dialog : MatDialog, 
   ) { }
 
   quizes : Quiz[];
@@ -39,6 +42,10 @@ export class QuizService {
     return this.http.get(`http://localhost:8080/score/{quizId}`, {headers: this.headerHttp})
   }
 
+  createQuizDialog(): void {
+    this.dialog.open(CreateQuizDialogComponent);
+  }
+
   addQuiz(quiz: Quiz) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
@@ -53,7 +60,8 @@ export class QuizService {
     })
     .then(() => {
       console.log('Success!');
-      
+      this.createQuizDialog();
+
     })
     .catch((error) => {
       console.error('Error:' , error);

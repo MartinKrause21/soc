@@ -10,8 +10,15 @@ export class user {
       password: string,
       email: string,
    ) {  }
- 
 } 
+
+export class rofileUser{
+   role: string;
+
+   constructor(
+      role: string,
+   ) {  }
+}
 
 export class userLogin {
   
