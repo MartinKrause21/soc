@@ -24,3 +24,10 @@ export class allTeacherQuizes {
         description: string,
     ) {  }
 }
+export class quizUsers {
+    username: string;
+
+    constructor(
+        username: string,
+    ) {  }
+}

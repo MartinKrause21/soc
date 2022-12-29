@@ -11,6 +11,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
+import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'create-quiz', component: CreateQuizComponent },
   { path: 'qr-convertor', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
+  { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent },
 
 ];
 

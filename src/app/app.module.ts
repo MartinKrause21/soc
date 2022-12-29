@@ -38,6 +38,7 @@ import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateQuizDialogComponent } from './create-quiz-dialog/create-quiz-dialog.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     QrCodeConvertorComponent,
     QrCodeDialogComponent,
     CreateQuizDialogComponent,
+    AdminQuizDetailComponent,
   ],
   imports: [
     BrowserModule,

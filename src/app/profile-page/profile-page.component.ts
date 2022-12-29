@@ -24,9 +24,7 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizService.getAllTeacherQuizes().subscribe(allTeacherQuizes => { 
       this.allTeacherQuizes = allTeacherQuizes;
-
       console.log(allTeacherQuizes);
-      
     });
 
   }
