@@ -14,3 +14,13 @@ export interface Answer {
     content: string; 
     correct: boolean;
 }
+
+export class allTeacherQuizes {
+    name: string;
+    description: string;
+
+    constructor(
+        name: string,
+        description: string,
+    ) {  }
+}

@@ -37,6 +37,7 @@ import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component
 import { NgxAbstractControlAsModule } from 'ngx-abstract-control-as';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateQuizDialogComponent } from './create-quiz-dialog/create-quiz-dialog.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { CreateQuizDialogComponent } from './create-quiz-dialog/create-quiz-dial
     QRCodeModule, 
     MatTabsModule,
     NgxAbstractControlAsModule,
-    MatTooltipModule
+    MatTooltipModule, 
+    MatStepperModule
     
   ],
   providers: [CookieService],

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz } from '../quiz';
+import { Quiz, allTeacherQuizes } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -46,6 +46,10 @@ export class QuizService {
     this.dialog.open(CreateQuizDialogComponent);
   }
 
+  getAllTeacherQuizes(): Observable<allTeacherQuizes[]> {
+    return this.http.get<allTeacherQuizes[]>('http://localhost:8080/get/quiz/teacher',  {headers: this.headerHttp});
+  }
+
   addQuiz(quiz: Quiz) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
@@ -67,6 +71,8 @@ export class QuizService {
       console.error('Error:' , error);
     });
   }
+
+
 
 
 }

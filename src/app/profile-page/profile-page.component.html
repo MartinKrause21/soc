@@ -1,23 +1,122 @@
-<div class="p-16">
-    <div class="p-8 bg-white shadow mt-24 shadow-xl rounded-lg" >
-        <div class="grid grid-cols-1 md:grid-cols-3">
-        
-            <div class="relative">
-                <div
-                    class="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd" />
-                    </svg> 
-                </div>
-            </div>
+<!-- <div id="block"
+    class="flex h-screen sm:mt-200 items-center justify-center space-y-6 px-4 sm:space-x-6 sm:space-y-0 m-10">
 
-        </div>
-        <div class="mt-20 text-center border-b pb-12">
-            <h1 class="text-4xl font-medium text-gray-700"> {{loggedInUsername}} </h1>
-            <p class="font-light text-gray-600 mt-3">Role: ADMIN</p>
+    <div id="container" class="w-full bg-white font-semibold text-center items-center rounded-3xl shadow-lg p-10 ">
+
+
+        <h1 id="svg-holder"> asda sdas </h1>
+
+
+        <div class="tabs">
+
+            <mat-tab-group mat-align-tabs="center">
+
+
+                <mat-tab id="quiz-tab">
+
+                    <ng-template mat-tab-label>
+
+                        <img src="https://img.icons8.com/ios-filled/26/000000/gold-medal.png" /> Score
+
+                    </ng-template>
+
+                    <div class="info2">
+                        Your quizes:
+                    </div>
+
+                    <div id="quizCard" *ngFor="let quiz of allTeacherQuizes">
+
+                        <h1> {{quiz.name}} </h1>
+                        <h1> {{quiz.description}} </h1>
+
+                    </div>
+
+                </mat-tab>
+
+                <mat-tab id="changePassw-tab">
+
+                    <ng-template mat-tab-label>
+
+                        <mat-icon>refresh</mat-icon> Change password
+
+                    </ng-template>
+
+
+
+                </mat-tab>
+
+
+            </mat-tab-group>
 
         </div>
 
     </div>
-</div>
+
+</div> -->
+
+<body class="">
+    <div class="container mx-auto my-60">
+        <div>
+
+            <div class="bg-white relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto">
+                <div class="flex justify-center">
+                        <img src="https://img.icons8.com/material-rounded/48/null/user.png" alt="" class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110">
+                </div>
+                
+                <div class="mt-16">
+                    <h1 class="font-bold text-center text-3xl text-gray-900"> {{loggedInUsername}}</h1>
+                    <p class="text-center text-sm text-gray-400 font-medium"> Role: ADMIN</p>
+                    <p>
+                        <span>
+                            
+                        </span>
+                    </p>
+
+                    <mat-tab-group mat-align-tabs="center">
+
+
+                        <mat-tab id="quiz-tab">
+        
+                            <ng-template mat-tab-label>
+        
+                                <img src="https://img.icons8.com/ios-filled/26/000000/gold-medal.png" /> Score
+        
+                            </ng-template>
+        
+                            <div class="info2">
+                                Your quizes:
+                            </div>
+        
+                            <div id="quizCard" *ngFor="let quiz of allTeacherQuizes">
+        
+                                <h1> {{quiz.name}} </h1>
+                                <h1> {{quiz.description}} </h1>
+        
+                            </div>
+        
+                        </mat-tab>
+        
+                        <mat-tab id="changePassw-tab">
+        
+                            <ng-template mat-tab-label>
+        
+                                <mat-icon>refresh</mat-icon> Change password
+        
+                            </ng-template>
+        
+        
+        
+                        </mat-tab>
+        
+        
+                    </mat-tab-group>
+                  
+            
+
+                  
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
