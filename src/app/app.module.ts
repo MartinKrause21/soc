@@ -39,6 +39,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateQuizDialogComponent } from './create-quiz-dialog/create-quiz-dialog.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.component';
 
 
 @NgModule({
@@ -60,6 +63,7 @@ import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.
     QrCodeDialogComponent,
     CreateQuizDialogComponent,
     AdminQuizDetailComponent,
+    CopiedSnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,9 @@ import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.
     MatTabsModule,
     NgxAbstractControlAsModule,
     MatTooltipModule, 
-    MatStepperModule
+    MatStepperModule,
+    ClipboardModule, 
+    MatSnackBarModule
     
   ],
   providers: [CookieService],

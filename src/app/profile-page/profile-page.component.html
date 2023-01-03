@@ -59,7 +59,7 @@
 
             <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 mx-auto">
                 <div class="flex justify-center">
-                        <img src="https://avatars0.githubusercontent.com/u/35900628?v=4" alt="" class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110">
+                        <img src="../assets/images/profile-icon.png" class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110">
                 </div>
                 
                 <div class="mt-16">
@@ -91,11 +91,26 @@
                                 <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
                                 <h2 class="text-center text-gray-400 font-medium"> {{quiz.description}} </h2>
 
-                                <button id="login-button" type="button" routerLink="/admin-quiz-detail/{{quiz.name}}" 
-                                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                <mat-icon>info</mat-icon>
-                                </button> 
-        
+
+                                <div id="button-holder">
+                                    
+                                    <button id="button" type="button" routerLink="/admin-quiz-detail/{{quiz.name}}" 
+                                    class="py-2 mr-3 mb-3 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Results
+                                    </button> 
+            
+                                    <button id="button" type="button" (click)="copyText(quiz.name)" (cbOnSuccess)="isCopied = true"
+                                    class="py-2 mr-3 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Share
+                                    </button>
+
+                                    <button id="button" type="button" (click)="delete(quiz.name)" 
+                                    class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>delete</mat-icon>
+                                    </button> 
+
+                                </div>
+                             
                             </div>
         
                         </mat-tab>
@@ -109,7 +124,32 @@
         
                             </ng-template>
         
-        
+                            <form #resendMail="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+
+                                <div class="text-center text-xl text-gray-900"> 
+                                    If you want to cahnge your password write here your email. 
+                                </div>
+
+
+                                <div class="form-group">
+                    
+                                    <mat-form-field id="input" class="h-10 w-full" appearance="outline">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput required type="email" name="email" [(ngModel)]="model.email" #email="ngModel"
+                                            pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$">
+                                        <mat-icon matSuffix>alternate_email</mat-icon>
+                                    </mat-form-field>
+                    
+                                    <div id="resendMail" class="relative">
+                                        <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                                            class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                            Send
+                                        </button>
+                                    </div>
+                    
+                                </div>
+                    
+                            </form>
 
 
                         </mat-tab>

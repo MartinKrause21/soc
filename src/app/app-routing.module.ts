@@ -12,6 +12,7 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
+import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.component';
 
 
 const routes: Routes = [

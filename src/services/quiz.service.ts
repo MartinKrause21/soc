@@ -53,6 +53,10 @@ export class QuizService {
     return this.http.get<quizUsers[]>(`http://localhost:8080/users/${quizName}`,  {headers: this.headerHttp});
   }
 
+  deleteQuiz(quizName: string) {
+    return this.http.delete(`http://localhost:8080/delete/quiz/${quizName}`, {headers: this.headerHttp, responseType: 'text' });
+  }
+
   addQuiz(quiz: Quiz) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
