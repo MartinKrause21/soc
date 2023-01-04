@@ -24,17 +24,22 @@
                             <mat-icon matSuffix>email</mat-icon>
                         </mat-form-field>
 
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
+                        <mat-form-field appearance="outline" class="h-10 w-full">
                             <mat-label>Password</mat-label>
-                            <input matInput required type="password" name="password" [(ngModel)]="model.password">
-                            <mat-icon matSuffix>lock</mat-icon>
+                            <input matInput [type]="hide ? 'password' : 'text'" required name="password" [(ngModel)]="model.password">
+                            <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                         </mat-form-field>
 
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
+                        <mat-form-field appearance="outline" class="h-10 w-full">
                             <mat-label>Confirm password</mat-label>
-                            <input matInput type="password" name="confirmPassword" required #comfPassword="ngModel" [(ngModel)]="confirmPassword">
-                            <mat-icon matSuffix>check_circle</mat-icon>
+                            <input matInput [type]="hide2 ? 'password' : 'text'" required name="confirmPassword" #comfPassword="ngModel" [(ngModel)]="confirmPassword">
+                            <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
                         </mat-form-field>
+                        
 
                         <div class="alert" *ngIf = "comfPassword.touched && confirmPassword != model.password" > Password doesn´t match </div>
 

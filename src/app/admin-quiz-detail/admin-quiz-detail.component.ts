@@ -16,13 +16,13 @@ export class AdminQuizDetailComponent implements OnInit {
   ) { }
 
   public quizUsers : quizUsers [];
-  id: string
+  quizName: string
 
   ngOnInit(): void {
 
-    this.id =String(this.route.snapshot.paramMap.get('name'));
+    this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getAllUsersForQuiz(this.id).subscribe(quizUsers => { 
+    this.quizService.getAllUsersForQuiz(this.quizName).subscribe(quizUsers => { 
         this.quizUsers = quizUsers;
         console.log(quizUsers);
       });

@@ -1,58 +1,3 @@
-<!-- <div id="block"
-    class="flex h-screen sm:mt-200 items-center justify-center space-y-6 px-4 sm:space-x-6 sm:space-y-0 m-10">
-
-    <div id="container" class="w-full bg-white font-semibold text-center items-center rounded-3xl shadow-lg p-10 ">
-
-
-        <h1 id="svg-holder"> asda sdas </h1>
-
-
-        <div class="tabs">
-
-            <mat-tab-group mat-align-tabs="center">
-
-
-                <mat-tab id="quiz-tab">
-
-                    <ng-template mat-tab-label>
-
-                        <img src="https://img.icons8.com/ios-filled/26/000000/gold-medal.png" /> Score
-
-                    </ng-template>
-
-                    <div class="info2">
-                        Your quizes:
-                    </div>
-
-                    <div id="quizCard" *ngFor="let quiz of allTeacherQuizes">
-
-                        <h1> {{quiz.name}} </h1>
-                        <h1> {{quiz.description}} </h1>
-
-                    </div>
-
-                </mat-tab>
-
-                <mat-tab id="changePassw-tab">
-
-                    <ng-template mat-tab-label>
-
-                        <mat-icon>refresh</mat-icon> Change password
-
-                    </ng-template>
-
-
-
-                </mat-tab>
-
-
-            </mat-tab-group>
-
-        </div>
-
-    </div>
-
-</div> -->
 
     <div id="container" class="container mx-auto my-60 rounded-3xl shadow-lg w-4/6 sm:w-5/6">
         <div>
@@ -95,13 +40,13 @@
                                 <div id="button-holder">
                                     
                                     <button id="button" type="button" routerLink="/admin-quiz-detail/{{quiz.name}}" 
-                                    class="py-2 mr-3 mb-3 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Results
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>info</mat-icon>
                                     </button> 
             
                                     <button id="button" type="button" (click)="copyText(quiz.name)" (cbOnSuccess)="isCopied = true"
-                                    class="py-2 mr-3 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Share
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>share</mat-icon>
                                     </button>
 
                                     <button id="button" type="button" (click)="delete(quiz.name)" 

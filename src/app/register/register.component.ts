@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
   users: user[] = [];
 
   model = new user( '', '','' );
+
+  hide = true;
+  hide2= true;
   
   constructor(
     private readonly registerService: AuthService,

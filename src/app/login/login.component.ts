@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   model = new userLogin( '', '');
 
+  hide = true;
+
   constructor(
     private readonly loginService: AuthService,
     private dialog : MatDialog, 
