@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question, Quiz } from 'src/quiz';
+import { Question, Quiz, resultQuiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { MatDialog } from '@angular/material/dialog';
 import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
@@ -19,12 +19,15 @@ export class QuizComponent implements OnInit {
 
   answersQuestions: Question[] =[];
   selectedQuestion: Question;
-  id: string
+
+  quizName: string
 
   quiz : Quiz;
   questionList: Question[];
   quizNum: number = 0;
   score: number = 0;
+
+  resultQuiz : resultQuiz;
 
   quizStart = true;
   quizShow = false;
@@ -35,26 +38,26 @@ export class QuizComponent implements OnInit {
 
     //console.log( window.location.href);
 
-    this.id =String(this.route.snapshot.paramMap.get('name'));
+    this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getQuiz(this.id).subscribe(respone =>{
+    this.quizService.getQuiz(this.quizName).subscribe(respone =>{
       console.log(respone);
       
       this.quiz = respone;
       this.questionList = respone.questionList;
     })
-
   }
 
   qrCodeDialog() {
     this.dialog.open(QrCodeDialogComponent);
   }
 
-  toggleData() {
+  startQuiz() {
+    this.quizService.postResultQuiz(this.quizName);
+
     this.quizStart = !this.quizStart;
     this.quizShow = !this.quizShow;
   }
-
 
   sendAns(ans: string, correct: boolean){
     this.quizNum = this.quizNum + 1;
@@ -68,7 +71,7 @@ export class QuizComponent implements OnInit {
       }
     }
     else {
-      this.quizService.setScore(this.score, this.id);
+      this.quizService.setScore(this.score, this.quizName);
     }
   }
 }

@@ -15,6 +15,22 @@ export interface Answer {
     correct: boolean;
 }
 
+export interface resultQuiz {
+    name: string; 
+    description: string; 
+    questionList : Question[];
+}
+
+export interface resultQuestion {
+    questionContent: string;
+    answerList: Answer[];
+}
+
+export interface resultAnswer {
+    content: string; 
+    correct: boolean;
+}
+
 export class allTeacherQuizes {
     name: string;
     description: string;
@@ -31,3 +47,6 @@ export class quizUsers {
         username: string,
     ) {  }
 }
+
+
+

@@ -1,7 +1,7 @@
 <div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
 
   <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
-    <h1 class="text-lg text-gray-700"> Welcome in {{id}}  </h1>
+    <h1 class="text-lg text-gray-700"> Welcome in {{quizName}}  </h1>
       <h1 id="description" class="text-gray-700"  > {{quiz.description}} </h1>
 
       <h1 id="desc" class="text-gray-700"> If you are ready click start quiz and have fun!</h1>
@@ -10,7 +10,7 @@
       <div id="service-bar" class="relative">
         
       
-          <button id="button" type="button" (click)="toggleData()"
+          <button id="button" type="button" (click)="startQuiz()"
               class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
               Start quiz
           </button>

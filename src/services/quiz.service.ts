@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz, allTeacherQuizes, quizUsers } from '../quiz';
+import { Quiz, allTeacherQuizes, quizUsers, resultQuiz } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -20,6 +20,8 @@ export class QuizService {
 
   quizes : Quiz[];
   users : user[] = [];
+
+  resultQuiz : resultQuiz[];
 
   authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
 
@@ -79,7 +81,29 @@ export class QuizService {
     });
   }
 
+  // postResultQuiz(quizName: string) {
 
+  //   let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
+  //   fetch('http://localhost:8080/add/resultQuiz', {  
+  //     method: 'POST',
+  //     headers: new Headers({
+  //     'Authorization': 'Basic '+btoa(authString), 
+  //     'Content-Type': "application/json; charset=utf8",
+  //   }),
+  //     body: JSON.stringify(quizName),
+  //   })
+  //   .then(() => {
+  //     console.log('Success!');
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:' , error);
+  //   });
+  // }
+
+  postResultQuiz(quizName: string) {
+    const body = { quizName };
+    this.http.post('http://localhost:8080/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
+  }
 
 }
