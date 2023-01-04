@@ -22,3 +22,9 @@
     justify-content: center;
     align-items: center;
 }
+
+#container {
+    border-top: 20px solid;
+    border-color: #502ca0;
+    position: relative;
+}
