@@ -9,6 +9,7 @@ import { QuizService } from 'src/services/quiz.service';
   styleUrls: ['./admin-quiz-detail.component.css']
 })
 export class AdminQuizDetailComponent implements OnInit {
+  contentLoaded: boolean = true;
 
   constructor(
     private quizService: QuizService,
@@ -24,6 +25,7 @@ export class AdminQuizDetailComponent implements OnInit {
 
     this.quizService.getAllUsersForQuiz(this.quizName).subscribe(quizUsers => { 
         this.quizUsers = quizUsers;
+        this.contentLoaded = false;
         console.log(quizUsers);
       });
     }
