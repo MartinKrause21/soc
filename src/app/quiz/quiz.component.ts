@@ -40,11 +40,11 @@ export class QuizComponent implements OnInit {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getQuiz(this.quizName).subscribe(respone =>{
-      console.log(respone);
+    this.quizService.getQuiz(this.quizName).subscribe(response =>{
+      console.log(response);
       
-      this.quiz = respone;
-      this.questionList = respone.questionList;
+      this.quiz = response;
+      this.questionList = response.questionList;
     })
   }
 
@@ -59,8 +59,15 @@ export class QuizComponent implements OnInit {
     this.quizShow = !this.quizShow;
   }
 
-  sendAns(ans: string, correct: boolean){
+  ans : string;
+  question : string;
+
+  sendAns(ans: any, correct: boolean , question : string){
     this.quizNum = this.quizNum + 1;
+
+    this.quizService.updateResultQuiz( this.quizName, ans, question)
+    console.log(ans , question , this.quizName);
+
     if(this.quizNum < this. questionList.length ){
       if(correct == true){
         this.score = this.score +10;

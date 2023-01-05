@@ -81,29 +81,36 @@ export class QuizService {
     });
   }
 
-  // postResultQuiz(quizName: string) {
-
-  //   let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
-
-  //   fetch('http://localhost:8080/add/resultQuiz', {  
-  //     method: 'POST',
-  //     headers: new Headers({
-  //     'Authorization': 'Basic '+btoa(authString), 
-  //     'Content-Type': "application/json; charset=utf8",
-  //   }),
-  //     body: JSON.stringify(quizName),
-  //   })
-  //   .then(() => {
-  //     console.log('Success!');
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error:' , error);
-  //   });
-  // }
-
   postResultQuiz(quizName: string) {
     const body = { quizName };
     this.http.post('http://localhost:8080/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
+  }
+
+  // updateResultQuiz(quizName: string, ans: any, question : string ) {
+  //   const body = { "questionContent": question , "answerList": [ { "answeContent": ans.content, "correct": ans.correct} ] };
+  //   console.log("body:" + JSON.stringify (body));
+  //   return this.http.put(`http://localhost:8080/update/resultQuiz/${quizName}`, body, { headers: this.headerHttp })
+  // }
+
+  updateResultQuiz(quizName: string, ans: any, question : string) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch(`http://localhost:8080/update/resultQuiz/${quizName}`, {  
+      method: 'PUT',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
+      body: JSON.stringify({ "questionContent": question , "answerList": [ { "answerContent": ans.content, "correct": ans.correct} ]} ),
+    })
+    .then(() => {
+      console.log('Success!');
+
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
   }
 
 }
