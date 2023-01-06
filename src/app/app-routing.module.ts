@@ -12,7 +12,7 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
-import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.component';
+import { AdminUserDetailComponent } from './admin-user-detail/admin-user-detail.component';
 
 
 const routes: Routes = [
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'qr-convertor', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
   { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent },
+  { path: 'admin-user-detail/:name/:username', component: AdminUserDetailComponent },
 
 ];
 

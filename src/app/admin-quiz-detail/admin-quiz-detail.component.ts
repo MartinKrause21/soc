@@ -10,14 +10,15 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class AdminQuizDetailComponent implements OnInit {
   contentLoaded: boolean = true;
+  username: string;
+
+  public quizUsers : quizUsers [];
+  quizName: string;
 
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
   ) { }
-
-  public quizUsers : quizUsers [];
-  quizName: string
 
   ngOnInit(): void {
 
