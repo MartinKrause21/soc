@@ -12,14 +12,6 @@ export class user {
    ) {  }
 } 
 
-export class rofileUser{
-   role: string;
-
-   constructor(
-      role: string,
-   ) {  }
-}
-
 export class userLogin {
   
    username: string;

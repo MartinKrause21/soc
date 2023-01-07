@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { user, userLogin } from 'src/user';
+import { map, Observable } from 'rxjs';
+import {  user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,25 +18,32 @@ export class AuthService {
   userSubject = new Subject<void>();
 
   headers = new Headers();
-  //authString: string;
   users : user[] = [];
   username!: string;
+  role: string;
 
   constructor(
-    private readonly httpClient: HttpClient,
+    private readonly http: HttpClient,
     private cookies: CookieService,
     private dialog : MatDialog, 
     private router: Router,
   ) { }
+
+      authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
+
+      headerHttp = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa(this.authString)
+      });
 
       getToken(): string {
         const authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
         return 'Basic ' + btoa(authString);
       }
 
-    //   isLoggedIn(): boolean {
-    //     return !!(this.cookies.get('username') && this.cookies.get('password'));
-    //   }
+      getUserRole() {
+        return this.http.get<{role: string}>('http://localhost:8080/role',{ headers: this.headerHttp });
+      }
 
     async login(user: userLogin){
 
@@ -54,8 +61,7 @@ export class AuthService {
           this.cookies.set('username', user.username);
           this.cookies.set('password', user.password);
           console.log(this.cookies.get('username'));
-          
-          //this.cookies.set('password', user.password );
+
           this.router.navigate(['home']);
         }
          catch (error) {

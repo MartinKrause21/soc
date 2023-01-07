@@ -55,6 +55,10 @@ export class QuizService {
     return this.http.get<quizUsers[]>(`http://localhost:8080/users/${quizName}`,  {headers: this.headerHttp});
   }
 
+  getUserDetailsForQuiz(quizName:string , username: string): Observable<resultQuiz[]> {
+    return this.http.get<resultQuiz[]>(`http://localhost:8080/users/${quizName}/${username}`,  {headers: this.headerHttp});
+  }
+
   deleteQuiz(quizName: string) {
     return this.http.delete(`http://localhost:8080/delete/quiz/${quizName}`, {headers: this.headerHttp, responseType: 'text' });
   }
@@ -85,12 +89,6 @@ export class QuizService {
     const body = { quizName };
     this.http.post('http://localhost:8080/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
   }
-
-  // updateResultQuiz(quizName: string, ans: any, question : string ) {
-  //   const body = { "questionContent": question , "answerList": [ { "answeContent": ans.content, "correct": ans.correct} ] };
-  //   console.log("body:" + JSON.stringify (body));
-  //   return this.http.put(`http://localhost:8080/update/resultQuiz/${quizName}`, body, { headers: this.headerHttp })
-  // }
 
   updateResultQuiz(quizName: string, ans: any, question : string) {
 

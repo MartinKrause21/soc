@@ -3,10 +3,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allTeacherQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import { sentMail } from 'src/user';
+import {  sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,8 +22,17 @@ export class ProfilePageComponent implements OnInit {
     private quizService: QuizService,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private http : HttpClient
   ) { }
+
+
+  // authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
+
+  // headerHttp = new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   Authorization: 'Basic ' + btoa(this.authString)
+  // });
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   loggedInUsername: string;
@@ -37,6 +47,8 @@ export class ProfilePageComponent implements OnInit {
 
   isCopied = false;
 
+  role : string;
+
 
   ngOnInit(): void {
 
@@ -49,7 +61,15 @@ export class ProfilePageComponent implements OnInit {
       console.log(allTeacherQuizes);
     });
 
+    // this.http.get<{role: string}>('http://localhost:8080/role ',  {headers: this.headerHttp}).subscribe(response => {
+    //   this.role = response.role;
+    // });
+
+    this.authService.getUserRole().subscribe(response => {
+      this.role = response.role;
+    });
   }
+  
   onSubmit() {
     this.authService.sendPasswordResetEmail(this.model.email);
     console.log(this.model.email);
