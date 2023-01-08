@@ -1,0 +1,57 @@
+<div id="container" class="container mx-auto my-60 rounded-3xl shadow-lg w-4/6 sm:w-5/6">
+    <div>
+
+        <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 mx-auto">
+            <div class="flex justify-center">
+                <img src="../assets/images/0icon3.svg" alt=""
+                    class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-xl border-4 border-white transition duration-200 transform hover:scale-110">
+            </div>
+
+            <div class="mt-16">
+
+                <ng-template mat-tab-label>
+
+                    <img src="https://img.icons8.com/ios-filled/26/null/repository.png" /> Created quizes
+
+                </ng-template>
+
+                <h1 class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                    {{username}} results for quiz: {{quizName}}
+                </h1>
+
+                <!-- <div id="quizResults" *ngFor="let result of resultQuiz">
+
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{result.resultQuestionList}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                             {{result.description}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>I'm visible because I am open</p>
+                    </mat-expansion-panel>
+
+                </div> -->
+
+                <!-- <div id="cardd" *ngFor="let result of resultQuiz">
+                    <h3>{{ result.name }}</h3>
+                    <p>{{ result.description }}</p>
+
+                    <div *ngFor="let question of result.questionList">
+                      <h4>{{ question.questionContent }}</h4>
+
+                      <div *ngFor="let answer of question.answerList">
+                        <p>{{ answer.content }}</p>
+                        <p *ngIf="answer.correct">Correct</p>
+
+                      </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -25,8 +25,11 @@ export class AppComponent {
   }
 
   showMenu = false;
+  menuOpen = false;
+
   toggleNavbar(){
     this.showMenu = !this.showMenu;
+    this.menuOpen = !this.menuOpen;
   }
 
   onlogout() { 

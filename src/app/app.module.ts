@@ -42,6 +42,8 @@ import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detail2.component';
 
 
 @NgModule({
@@ -64,6 +66,7 @@ import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.compo
     CreateQuizDialogComponent,
     AdminQuizDetailComponent,
     CopiedSnackbarComponent,
+    AdminUserDetail2Component,
   ],
   imports: [
     BrowserModule,
@@ -89,10 +92,10 @@ import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.compo
     MatTooltipModule, 
     MatStepperModule,
     ClipboardModule, 
-    MatSnackBarModule
-    
+    MatSnackBarModule,
+    MatExpansionModule,    
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

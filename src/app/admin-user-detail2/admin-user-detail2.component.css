@@ -1,0 +1,11 @@
+
+#container {
+    border-top: 20px solid;
+    border-color: #502ca0;
+    position: relative;
+}
+
+#cardd {
+    border: 1px solid black;
+    border-radius: 4px;
+}

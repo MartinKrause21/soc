@@ -8,7 +8,7 @@
 	    <div class="text-white"> Queasy</div>
 
       <button id="butš" class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" (click)="toggleNavbar()">
-		<i> <mat-icon>menu</mat-icon> </i>
+		<i> <mat-icon *ngIf="!menuOpen" >menu</mat-icon> <mat-icon *ngIf="menuOpen" >close</mat-icon> </i>
       </button>
 
     </div>

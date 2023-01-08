@@ -15,21 +15,26 @@ export interface Answer {
     correct: boolean;
 }
 
+
+// --------------------------------
+
+
 export interface resultQuiz {
     name: string; 
     description: string; 
-    questionList : Question[];
+    questionList : resultQuestion[];
 }
 
 export interface resultQuestion {
     questionContent: string;
-    answerList: Answer[];
+    answerList: resultAnswer[];
 }
 
 export interface resultAnswer {
     content: string; 
     correct: boolean;
 }
+
 
 export class allTeacherQuizes {
     name: string;
