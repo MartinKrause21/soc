@@ -25,12 +25,12 @@ export class FailedLoginDialogComponent implements OnInit {
   model = new resendMail( '');
 
   onSubmit() {
-    //this.loginService.resendMail(this.model.email);
+    this.loginService.sendPasswordResetEmail(this.model.email);
     console.log(this.model);
   }
 
   sendButton(){
-    this.send = true;
+    this.send = !this.send;
   }
 
   close(){
