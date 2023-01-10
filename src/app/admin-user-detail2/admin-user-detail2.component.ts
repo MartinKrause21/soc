@@ -14,7 +14,9 @@ export class AdminUserDetail2Component implements OnInit {
   username : string
   quizName: string
 
-  public resultQuiz : resultQuiz [];
+  score: number;
+
+  public resultQuiz : any [] = [];
   public resultQuestionList : resultQuestion [] = [];
 
   constructor(
@@ -36,9 +38,11 @@ export class AdminUserDetail2Component implements OnInit {
     //   //this.resultQuestionList = response.resultQuestionList;
     // })
 
-    this.quizService.getUserDetailsForQuiz(this.quizName, this.username).subscribe(results => {
-      this.resultQuiz = results;
-      console.log(results);
+    this.quizService.getUserDetailsForQuiz(this.quizName, this.username).subscribe(result => {
+      this.resultQuiz[0] = result [0].resultQuiz.questionList;
+      console.log(this.resultQuiz[0]);
+      console.log(result);
+      this.score = result[0].score;
     });
 
     }

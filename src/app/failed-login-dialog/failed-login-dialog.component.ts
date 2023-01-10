@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { AuthService } from 'src/services/auth.service';
 import { resendMail } from 'src/user';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-failed-login-dialog',
@@ -14,6 +15,7 @@ export class FailedLoginDialogComponent implements OnInit {
 
   constructor(
     private loginService: AuthService,
+    public dialogRef: MatDialogRef<FailedLoginDialogComponent>,
   ) { }
 
   ngOnInit(): void {
@@ -30,4 +32,8 @@ export class FailedLoginDialogComponent implements OnInit {
   sendButton(){
     this.send = true;
   }
+
+  close(){
+    this.dialogRef.close();
+  } 
 }

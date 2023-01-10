@@ -35,20 +35,20 @@
 
                 </div> -->
 
-                <!-- <div id="cardd" *ngFor="let result of resultQuiz">
-                    <h3>{{ result.name }}</h3>
-                    <p>{{ result.description }}</p>
+                <div id="cardd">
+                    <h3>{{ score }}</h3>
 
-                    <div *ngFor="let question of result.questionList">
+                    <div *ngFor="let question of resultQuiz[0]">
                       <h4>{{ question.questionContent }}</h4>
 
                       <div *ngFor="let answer of question.answerList">
-                        <p>{{ answer.content }}</p>
+                        <p>{{ answer.answerContent }}</p>
                         <p *ngIf="answer.correct">Correct</p>
+                        <p *ngIf="!answer.correct">false</p>
 
                       </div>
                     </div>
-                </div> -->
+                </div> 
 
             </div>
         </div>

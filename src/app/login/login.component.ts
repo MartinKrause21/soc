@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { user, userLogin } from 'src/user';
 import { AuthService } from 'src/services/auth.service';
 import { PasswordChangeDialogComponent } from '../password-change-dialog/password-change-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   
   onSubmit() {
     this.loginService.login(this.model).then(()=>{
-      location.reload();
+      //location.reload();
     });
     console.log(this.model);
   }
