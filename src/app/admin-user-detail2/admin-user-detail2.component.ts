@@ -25,18 +25,12 @@ export class AdminUserDetail2Component implements OnInit {
   ) { }
 
   panelOpenState = false;
+  borderColor:string = 'none';
 
   ngOnInit(): void {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
     this.username =String(this.route.snapshot.paramMap.get('username'));
-
-    // this.quizService.getUserDetailsForQuiz(this.quizName, this.username).subscribe(response =>{
-    //   console.log(response);
-      
-    //   this.resultQuiz = response;
-    //   //this.resultQuestionList = response.resultQuestionList;
-    // })
 
     this.quizService.getUserDetailsForQuiz(this.quizName, this.username).subscribe(result => {
       this.resultQuiz[0] = result [0].resultQuiz.questionList;
@@ -46,6 +40,9 @@ export class AdminUserDetail2Component implements OnInit {
     });
 
     }
+
+    
+
 
 }
 
