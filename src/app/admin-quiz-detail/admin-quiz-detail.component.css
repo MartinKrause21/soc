@@ -5,6 +5,12 @@
     padding: 15px;
 }
 
+@media screen and (max-width: 1152px) {
+    #container {
+        border-radius: 0;
+    }
+}
+
 #button {
     width: 110px;
     border-radius: 4px;
