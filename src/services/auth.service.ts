@@ -45,6 +45,10 @@ export class AuthService {
         return this.http.get<{role: string}>('http://localhost:8080/role',{ headers: this.headerHttp });
       }
 
+      isLoggedIn(): boolean {
+        return !!(this.cookies.get('username') && this.cookies.get('password'));
+      }
+
     async login(user: userLogin){
 
         let authString = `${user.username}:${user.password}`
@@ -95,6 +99,7 @@ export class AuthService {
      logout() : void { 
        this.cookies.delete ('username');
        this.cookies.delete('password');
+       this.cookies.delete('role');
        //this.cookies.delete('selectedRole');
        this.userSubject.next();
        location.reload();

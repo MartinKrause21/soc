@@ -44,6 +44,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from './copied-snackbar/copied-snackbar.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detail2.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detai
     AdminQuizDetailComponent,
     CopiedSnackbarComponent,
     AdminUserDetail2Component,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,

@@ -65,9 +65,9 @@ export class ProfilePageComponent implements OnInit {
     //   this.role = response.role;
     // });
 
-    this.authService.getUserRole().subscribe(response => {
-      this.role = response.role;
-    });
+    // this.authService.getUserRole().subscribe(response => {
+    //   this.role = response.role;
+    // });
   }
   
   onSubmit() {

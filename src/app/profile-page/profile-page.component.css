@@ -2,6 +2,7 @@
     border-top: 20px solid;
     border-color: #502ca0;
     position: relative;
+    padding-bottom: 20px;
 }
 
 @media screen and (max-width: 1152px) {

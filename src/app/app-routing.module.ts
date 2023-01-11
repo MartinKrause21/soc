@@ -13,6 +13,9 @@ import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
 import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detail2.component';
+import { AuthGuard } from 'src/services/auth.guard';
+import { AdminGuard } from 'src/services/admin.guard';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 const routes: Routes = [
@@ -22,14 +25,15 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'changePassword/:email', component: PasswordResetFormComponent },
   { path: 'quiz-overview', component: QuizOverviewComponent },
-  { path: 'quiz/:name', component: QuizComponent },
+  { path: 'quiz/:name', component: QuizComponent, canActivate: [AuthGuard] },
   { path: 'verify/:code', component: VerifyPageComponent },
-  { path: 'profile-page', component: ProfilePageComponent },
-  { path: 'create-quiz', component: CreateQuizComponent },
+  { path: 'profile-page', component: ProfilePageComponent , canActivate: [AuthGuard]  },
+  { path: 'create-quiz', component: CreateQuizComponent, canActivate: [AdminGuard] },
   { path: 'qr-convertor', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
-  { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent },
-  { path: 'admin-user-detail/:name/:username', component: AdminUserDetail2Component },
+  { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
+  { path: 'admin-user-detail/:name/:username', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
+  { path: 'unauthorized', component: UnauthorizedComponent },
 
 ];
 
