@@ -32,4 +32,8 @@ export class RegisterComponent implements OnInit {
     this.registerService.createUser(this.model)
     console.log(this.model);
   }
+
+  get isPasswordEqual() {
+    return this.model.password === this.confirmPassword;
+  }
 }

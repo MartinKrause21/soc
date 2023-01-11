@@ -34,4 +34,8 @@ export class PasswordResetFormComponent implements OnInit {
     this.loginService.changePassword(this.email, this.model.password);
     console.log(this.model);
   }
+
+  get isPasswordEqual() {
+    return this.model.password === this.confirmPassword;
+  }
 }
