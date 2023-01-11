@@ -61,13 +61,7 @@ export class ProfilePageComponent implements OnInit {
       console.log(allTeacherQuizes);
     });
 
-    // this.http.get<{role: string}>('http://localhost:8080/role ',  {headers: this.headerHttp}).subscribe(response => {
-    //   this.role = response.role;
-    // });
-
-    // this.authService.getUserRole().subscribe(response => {
-    //   this.role = response.role;
-    // });
+    this.role = this.cookies.get('role');
   }
   
   onSubmit() {

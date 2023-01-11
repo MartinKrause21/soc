@@ -15,7 +15,7 @@
                     <mat-tab-group mat-align-tabs="center">
 
 
-                        <mat-tab id="quiz-tab">
+                        <mat-tab *ngIf="role !== 'USER' " id="admin-panel" >
         
                             <ng-template mat-tab-label>
         
@@ -63,7 +63,20 @@
         
                         </mat-tab>
 
+
+                        <mat-tab *ngIf="role !== 'ADMIN' " id="userResults-tab">
         
+                            <ng-template mat-tab-label>
+        
+                                <mat-icon>refresh</mat-icon> User Results
+        
+                            </ng-template>
+                              faf
+
+
+                        </mat-tab>
+
+                        
                         <mat-tab id="changePassw-tab">
         
                             <ng-template mat-tab-label>
