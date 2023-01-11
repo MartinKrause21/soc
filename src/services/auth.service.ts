@@ -115,7 +115,7 @@ export class AuthService {
       })
       .then(() => {
         console.log('passw reset Success!');
-        //window.location.href="/login"
+        window.location.href="/login"
       })
       .catch((error) => {
         console.error('Error:' , error);

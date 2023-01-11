@@ -22,6 +22,9 @@ export class PasswordResetFormComponent implements OnInit {
   email: string;
   confirmPassword: any ;
 
+  hide = true;
+  hide2= true;
+
   model = new changePassword('');
   
   onSubmit() {
