@@ -4,6 +4,9 @@ import { QuizService } from 'src/services/quiz.service';
 import { MatDialog } from '@angular/material/dialog';
 import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { guest } from 'src/user';
+import { AuthService } from 'src/services/auth.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -13,8 +16,10 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
+    private authService : AuthService,
     private dialog : MatDialog,
     private route: ActivatedRoute,
+    private cookies : CookieService,
   ) { }
 
   answersQuestions: Question[] =[];
@@ -32,6 +37,10 @@ export class QuizComponent implements OnInit {
   quizStart = true;
   quizShow = false;
 
+  loggedInUsername : string; 
+
+  model = new guest ( '' , '')
+
   location = window.location.href;
 
   ngOnInit(): void {
@@ -39,6 +48,8 @@ export class QuizComponent implements OnInit {
     //console.log( window.location.href);
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
+
+    this.loggedInUsername = this.cookies.get('username');
 
     this.quizService.getQuiz(this.quizName).subscribe(response =>{
       console.log(response);
@@ -54,9 +65,14 @@ export class QuizComponent implements OnInit {
 
   startQuiz() {
     this.quizService.postResultQuiz(this.quizName);
-
+    
     this.quizStart = !this.quizStart;
     this.quizShow = !this.quizShow;
+  }
+
+  setGuestName() {
+    this.authService.createGuest(this.model.username );
+    console.log(this.model.username);
   }
 
   ans : string;

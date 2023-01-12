@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import {  user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
@@ -49,31 +49,50 @@ export class AuthService {
         return !!(this.cookies.get('username') && this.cookies.get('password'));
       }
 
-    async login(user: userLogin){
-
-        let authString = `${user.username}:${user.password}`
+      // async login(user: userLogin){
+      //   let authString = `${user.username}:${user.password}`
     
-        this.headers.set('Authorization', 'Basic ' + btoa(authString))
-        console.log(authString);
+      //   this.headers.set('Authorization', 'Basic ' + btoa(authString))
+      //   console.log(authString);
         
-        try {
-          const response = await fetch('http://localhost:8080/login', {
-            method: 'GET',
-            headers: this.headers,
-          });
-          const data_1 = await response.json();
-          this.cookies.set('username', user.username);
-          this.cookies.set('password', user.password);
-          console.log(this.cookies.get('username'));
+      //   try {
+      //     const response = await fetch('http://localhost:8080/login', {
+      //       method: 'GET',
+      //       headers: this.headers,
+      //     });
+      //     const data_1 = await response.json();
+      //     this.cookies.set('username', user.username);
+      //     this.cookies.set('password', user.password);
+      //     console.log(this.cookies.get('username'));
+      //     setTimeout(() => {
+      //       this.router.navigate(['/home']);
+      //     },1500);
+          
+      //   }
+      //    catch (error) {
+      //     console.log('Error:', error);
+      //     this.showFailDialog();
+      //   }
+      // }
 
-          //this.router.navigate(['home']);
-          window.location.href="/home" 
-        }
-         catch (error) {
-          console.log('Error:', error);
-          this.showFailDialog();
-        }
-      }
+      login(user: userLogin) {
+        let authString = `${user.username}:${user.password}`;
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', 'Basic ' + btoa(authString));
+        return this.http.get('http://localhost:8080/login', {
+            headers:headers,
+            params: new HttpParams().set('user', JSON.stringify(user))
+        }).subscribe(response => {
+            if (response) {
+                this.cookies.set('username', user.username);
+                this.cookies.set('password', user.password);
+                location.reload()
+            }
+        },
+        (error: HttpErrorResponse) => {
+            console.error('Error: ' + error.message);
+        });
+    }
 
       createUser (user:user) {
         fetch('http://localhost:8080/register', {
@@ -86,7 +105,6 @@ export class AuthService {
        .then(() => {
          console.log('create user Success!');
          this.cookies.deleteAll();
-         //window.location.href="/login" 
          this.showRegisterVerifyialog();
        })
        .catch((error) => {
@@ -95,14 +113,33 @@ export class AuthService {
        });
    
      }
+
+     createGuest(username: string, password = "password") 
+     {
+      fetch('http://localhost:8080/addUsername/' +username, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      })
+      .then(() => {
+          this.cookies.set('username', username);
+          this.cookies.set('password',password);
+          console.log('guest Success!');
+      })
+      .catch((error) => {
+          console.error('Error:' , error);
+      });
+  }
    
      logout() : void { 
-       this.cookies.delete ('username');
-       this.cookies.delete('password');
-       this.cookies.delete('role');
+      //  this.cookies.delete ('username');
+      //  this.cookies.delete('password');
+      //  this.cookies.delete('role');
+      this.cookies.deleteAll();
        //this.cookies.delete('selectedRole');
        this.userSubject.next();
-       location.reload();
+       //location.reload();
      }
 
       changePassword( email:string, password : string){

@@ -1,16 +1,36 @@
 <div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
 
-    <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
-        <h1 class="text-lg text-gray-700"> Welcome in {{quizName}} </h1>
+    <div id="container" class="bg-white text-center rounded-3xl shadow-lg p-10 w-4/6 ">
+        <h1 id="quizName"> Welcome in {{quizName}} </h1>
+        <div id="description" *ngIf="!loggedInUsername">
+
+            <form #guestName="ngForm" (ngSubmit)="setGuestName()" class="form-group">
+
+                <div class="mb-5">
+    
+                    <mat-form-field id="formField" appearance="outline" class="h-7" >
+                        <mat-label>Set guest name</mat-label>
+                        <input matInput required type="text" name="username" [(ngModel)]="model.username">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+
+                    <button id="button" type="submit"
+                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                Set name 
+            </button>
+    
+                </div>
+
+            </form>
+        </div>
+
         <h1 id="description" class="text-gray-700"> {{quiz.description}} </h1>
 
         <h1 id="desc" class="text-gray-700"> If you are ready click start quiz and have fun!</h1>
 
-
         <div id="service-bar" class="relative">
 
-
-            <button id="button" type="button" (click)="startQuiz()"
+            <button id="button" type="submit" (click)="startQuiz()" 
                 class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                 Start quiz
             </button>
@@ -21,6 +41,8 @@
             </button>
 
         </div>
+
+       
 
     </div>
 
@@ -35,12 +57,13 @@
         <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
 
         <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-            <button class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+            <button
+                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
                 (click)="sendAns(ans , ans.correct , quiz.questionList[quizNum].questionContent)">
                 {{ans.content}}
             </button>
             <br>
-        </span> 
+        </span>
 
     </div>
 

@@ -45,6 +45,16 @@ export class allTeacherQuizes {
         description: string,
     ) {  }
 }
+
+export class allUserQuizes {
+    name: string;
+    description: string;
+
+    constructor(
+        name: string,
+        description: string,
+    ) {  }
+}
 export class quizUsers {
     username: string;
 

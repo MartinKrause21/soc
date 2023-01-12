@@ -30,3 +30,32 @@
     color: white;
     background-color: #502ca0;
 }
+
+#button:disabled {
+    background-color: #512ca077;
+    color: rgba(239, 227, 227, 0.796);
+    border-color: #5c78987d;
+    border-width: 0px;
+}
+
+
+#quizName {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+#formField { 
+    width: 320px;
+}
+
+@media screen and (max-width: 630px) {
+    #formField { 
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #formField { 
+        width: 170px;
+    }
+}

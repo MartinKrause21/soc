@@ -24,6 +24,16 @@ export class userLogin {
 
 }
 
+export class guest {
+   username : string;
+   password : string 
+    
+   constructor(
+      username: string,
+      password : string 
+   ) {  }
+}
+
 export class sentMail {
    email: any;
 

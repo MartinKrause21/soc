@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
   }
   
   onSubmit() {
-    this.loginService.login(this.model).then(()=>{
-      //location.reload();
-    });
+    this.loginService.login(this.model);
     console.log(this.model);
   }
 

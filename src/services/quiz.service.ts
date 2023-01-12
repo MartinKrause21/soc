@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz, allTeacherQuizes, quizUsers, resultQuiz } from '../quiz';
+import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -31,7 +31,7 @@ export class QuizService {
   });
 
   getQuiz(quizName: string):Observable <any>  {
-    return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`, { headers: this.headerHttp });
+    return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`);
   }
 
   setScore(score: number, quizName: string): Observable<any> {
@@ -49,6 +49,10 @@ export class QuizService {
 
   getAllTeacherQuizes(): Observable<allTeacherQuizes[]> {
     return this.http.get<allTeacherQuizes[]>(`http://localhost:8080/get/quiz/teacher`,  {headers: this.headerHttp});
+  }
+
+  getAllUserQuizes(): Observable<allUserQuizes[]> {
+    return this.http.get<allUserQuizes[]>(`http://localhost:8080/get/allQuizzes`,  {headers: this.headerHttp});
   }
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {

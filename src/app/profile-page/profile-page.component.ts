@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
-import { allTeacherQuizes, Quiz } from 'src/quiz';
+import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
 import {  sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
@@ -25,16 +25,9 @@ export class ProfilePageComponent implements OnInit {
     private snackBar: MatSnackBar,
     private http : HttpClient
   ) { }
-
-
-  // authString = `${this.cookies.get('username')}:${this.cookies.get('password')}`
-
-  // headerHttp = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   Authorization: 'Basic ' + btoa(this.authString)
-  // });
   
   allTeacherQuizes : allTeacherQuizes[] = [];
+  allUserQuizes : allUserQuizes [] = []; 
   loggedInUsername: string;
 
   email: string = '';
@@ -59,6 +52,11 @@ export class ProfilePageComponent implements OnInit {
     this.quizService.getAllTeacherQuizes().subscribe(allTeacherQuizes => { 
       this.allTeacherQuizes = allTeacherQuizes;
       console.log(allTeacherQuizes);
+    });
+
+    this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
+      this.allUserQuizes = allUserQuizes;
+      console.log(allUserQuizes);
     });
 
     this.role = this.cookies.get('role');
