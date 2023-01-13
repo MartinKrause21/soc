@@ -52,7 +52,7 @@ export class QuizService {
   }
 
   getAllUserQuizes(): Observable<allUserQuizes[]> {
-    return this.http.get<allUserQuizes[]>(`http://localhost:8080/get/allQuizzes`,  {headers: this.headerHttp});
+    return this.http.get<allUserQuizes[]>(`http://localhost:8080/get/allUserQuizzes`,  {headers: this.headerHttp});
   }
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {

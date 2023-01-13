@@ -68,16 +68,25 @@
         
                             <ng-template mat-tab-label>
         
-                                <mat-icon>refresh</mat-icon> User Results
+                                <img src="https://img.icons8.com/ios-glyphs/24/null/repository.png"/>  User Results
         
                             </ng-template>
 
-                            <div *ngIf="allTeacherQuizes.length > 0" > 
+                            <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                                You have already done these quizzes:
+                            </div>
 
-                                <div id="quizCard" *ngFor="let quiz of allTeacherQuizes">
+                            <div *ngIf="allUserQuizes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                                You have not done any quiz yet!
+                            </div>
+
+                            <div *ngIf="allUserQuizes.length > 0" > 
+
+                                <div id="quizCard" *ngFor="let quiz of allUserQuizes">
             
                                     <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
                                     <h2 class="text-center text-gray-400 font-medium"> {{quiz.description}} </h2>
+                                    <h2 class="text-center text-gray-400 font-medium"> {{quiz.creatorName}} </h2>
     
     
                                     <div id="button-holder">
@@ -86,7 +95,6 @@
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         <mat-icon>info</mat-icon>
                                         </button> 
-                
     
                                     </div>
                                  

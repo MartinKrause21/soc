@@ -2,26 +2,28 @@
 
     <div id="container" class="bg-white text-center rounded-3xl shadow-lg p-10 w-4/6 ">
         <h1 id="quizName"> Welcome in {{quizName}} </h1>
+
         <div id="description" *ngIf="!loggedInUsername">
 
             <form #guestName="ngForm" (ngSubmit)="setGuestName()" class="form-group">
 
                 <div class="mb-5">
-    
-                    <mat-form-field id="formField" appearance="outline" class="h-7" >
+
+                    <mat-form-field id="formField" appearance="outline" class="h-7">
                         <mat-label>Set guest name</mat-label>
                         <input matInput required type="text" name="username" [(ngModel)]="model.username">
                         <mat-icon matSuffix>person</mat-icon>
                     </mat-form-field>
 
-                    <button id="button" type="submit"
-                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                Set name 
-            </button>
-    
+                    <button id="button-send" type="submit"
+                        class="px-4 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                        <mat-icon>send</mat-icon>
+                    </button>
+
                 </div>
 
             </form>
+
         </div>
 
         <h1 id="description" class="text-gray-700"> {{quiz.description}} </h1>
@@ -30,7 +32,7 @@
 
         <div id="service-bar" class="relative">
 
-            <button id="button" type="submit" (click)="startQuiz()" 
+            <button id="button" type="button" (click)="startQuiz()" [disabled]="!loggedInUsername"
                 class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                 Start quiz
             </button>
@@ -41,8 +43,6 @@
             </button>
 
         </div>
-
-       
 
     </div>
 

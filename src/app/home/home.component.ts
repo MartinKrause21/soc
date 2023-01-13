@@ -15,14 +15,5 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.getUserRole().subscribe(data => {
-      const role = data.role;
-      // set role to cookies
-      this.cookieService.set('role', role);
-      console.log(role);
-      
-  });
   }
-
-
 }

@@ -49,10 +49,12 @@ export class allTeacherQuizes {
 export class allUserQuizes {
     name: string;
     description: string;
+    creatorName: string;
 
     constructor(
         name: string,
         description: string,
+        creatorName: string,
     ) {  }
 }
 export class quizUsers {

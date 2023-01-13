@@ -3,6 +3,7 @@ import { user, userLogin } from 'src/user';
 import { AuthService } from 'src/services/auth.service';
 import { PasswordChangeDialogComponent } from '../password-change-dialog/password-change-dialog.component';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly loginService: AuthService,
     private dialog : MatDialog, 
+    private cookies : CookieService
   ) { }
 
   ngOnInit(): void {

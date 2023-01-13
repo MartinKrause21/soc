@@ -20,8 +20,17 @@ export class AppComponent {
   loggedInUsername: string;
 
   ngOnInit(): void {
-    console.log(this.cookies.get('username'))
+    //console.log(this.cookies.get('username'))
     this.loggedInUsername = this.cookies.get('username');
+
+    this.loginService.getUserRole().subscribe(data => {
+      const role = data.role;
+      // set role to cookies
+      this.cookies.set('role', role);
+      console.log(role);
+      
+    });
+    
   }
 
   showMenu = false;
@@ -34,7 +43,6 @@ export class AppComponent {
 
   onlogout() { 
     this.loginService.logout();
-    location.reload();
   }
 }
 

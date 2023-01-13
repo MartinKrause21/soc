@@ -45,8 +45,6 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //console.log( window.location.href);
-
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
     this.loggedInUsername = this.cookies.get('username');
@@ -73,6 +71,9 @@ export class QuizComponent implements OnInit {
   setGuestName() {
     this.authService.createGuest(this.model.username );
     console.log(this.model.username);
+    setTimeout(() => {
+      location.reload()
+          },1500);
   }
 
   ans : string;
