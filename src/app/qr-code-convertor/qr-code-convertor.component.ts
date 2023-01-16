@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { allUserQuizes } from 'src/quiz';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-qr-code-convertor',
@@ -7,11 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QrCodeConvertorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private quizService : QuizService,
+  ) { }
+
+  quizzes : allUserQuizes[]
 
   public QRcodeText:string;
 
   ngOnInit(): void {
+    this.quizService.getAllQuizzes().subscribe(quizzes => {
+      this.quizzes = quizzes;
+      console.log(quizzes);
+      
+    });
   }
 
 }

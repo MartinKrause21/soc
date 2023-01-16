@@ -1,5 +1,5 @@
 
-<div id="block" class="flex h-screen sm:mt-200 flex-col items-center justify-center space-y-6 px-4 sm:flex-row sm:space-x-6 sm:space-y-0 m-10">
+<div *ngIf="loggedInUsername" id="block" class="flex h-screen sm:mt-200 flex-col items-center justify-center space-y-6 px-4 sm:flex-row sm:space-x-6 sm:space-y-0 m-10">
     
 
     <div *ngIf="role !== 'USER' " id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10 duration-300 hover:scale-105 hover:shadow-xl">
@@ -8,7 +8,7 @@
 
         <h1 class="mt-2 text-center text-2xl font-bold text-gray-500">Add quiz</h1>
 
-        <p class="my-4 text-center text-sm text-gray-500">Add your own new quiz</p>
+        <p class="my-4 text-center text-sm text-gray-500">Add your own new quiz.</p>
 
         <div class="space-x-4 bg-white-100 py-4 text-center">
             <button id="button" routerLink="/create-quiz"
@@ -19,19 +19,51 @@
 
     <div id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10 duration-300 hover:scale-105 hover:shadow-xl">
         <img class="mx-auto mt-8 h-30 w-30 text-red-500" viewBox="0 0 20 20"
-            src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/90/null/external-qr-code-sales-vitaliy-gorbachev-fill-vitaly-gorbachev.png" />
+        src="https://img.icons8.com/ios-glyphs/90/null/repository.png"/>
 
-        <h1 class="mt-2 text-center text-2xl font-bold text-gray-500">QR code convertor</h1>
+        <h1 class="mt-2 text-center text-2xl font-bold text-gray-500">See all quizzes</h1>
 
-        <p class="my-4 text-center text-sm text-gray-500">Convert your long link to QR code </p>
+        <p class="my-4 text-center text-sm text-gray-500">See all other quizzes by creators. </p>
 
         <div class="space-x-4 bg-white-100 py-4 text-center">
 
-            <button id="button" routerLink="/qr-convertor"
+            <button id="button" routerLink="/all-quizzes"
                 class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
-                Convert</button>
+                Let's see</button>
         </div>
 
     </div>
 
+</div>
+
+<div *ngIf="!loggedInUsername"> 
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+
+        <div class="text-center pb-12">
+    
+            <h2 id="h2" class="text-base font-bold ">
+                These are all quizzes. 
+            </h2>
+    
+            <h1 class="font-bold text-xl font-heading text-gray-900">
+                Check it out and choose one.
+            </h1>
+    
+        </div>
+    
+        <div  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+            <div *ngFor="let quiz of quizzes">
+                <div id="cards" class="w-full rounded-lg p-10 flex flex-col justify-center items-center">
+                    <div class="text-center">
+                        <p class="text-xl text-white font-bold mb-2">{{quiz.name}}</p>
+                        <p class="text-base text-white font-normal">  {{quiz.description}} </p>
+                        <p class="text-base text-white font-normal"> Creator: {{quiz.creatorName}} </p>
+                        <button> play as guest</button>
+                    </div>
+                </div>
+             </div>    
+         
+        </div>
+    </section>
 </div>

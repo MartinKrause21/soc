@@ -63,6 +63,14 @@ export class QuizService {
     return this.http.get<any[]>(`http://localhost:8080/users/${quizName}/${username}`,  {headers: this.headerHttp});
   }
 
+  getQuizResultForUser(quizName:string): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8080/get/resultQuiz/${quizName}}`,  {headers: this.headerHttp});
+  }
+
+  getAllQuizzes(): Observable<allUserQuizes[]> {
+    return this.http.get<allUserQuizes[]>(`http://localhost:8080/all/quizzes`);
+  }
+
   deleteQuiz(quizName: string) {
     return this.http.delete(`http://localhost:8080/delete/quiz/${quizName}`, {headers: this.headerHttp, responseType: 'text' });
   }

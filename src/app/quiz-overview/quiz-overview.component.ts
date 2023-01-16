@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { allUserQuizes } from 'src/quiz';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-quiz-overview',
@@ -9,13 +11,24 @@ import { CookieService } from 'ngx-cookie-service';
 export class QuizOverviewComponent implements OnInit {
 
   constructor(
-    private cookies : CookieService
+    private cookies : CookieService,
+    private quizService: QuizService
   ) { }
 
   role : string
+  loggedInUsername: string;
+
+  quizzes : allUserQuizes[];
 
   ngOnInit(): void {
     this.role = this.cookies.get('role');
+    this.loggedInUsername = this.cookies.get('username');
+
+    this.quizService.getAllQuizzes().subscribe(quizzes => {
+      this.quizzes = quizzes;
+      console.log(quizzes);
+      
+    });
   }
 
 }

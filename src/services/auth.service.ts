@@ -61,12 +61,17 @@ export class AuthService {
             headers: this.headers,
           });
           const data_1 = await response.json();
-          this.cookies.set('username', user.username);
-          this.cookies.set('password', user.password);
+       
           //console.log(this.cookies.get('username'));
           setTimeout(() => {
-            location.reload()
-          },1200);
+            //location.reload()
+            this.router.navigateByUrl("/home").then(() => {
+              location.reload();
+            });
+          },900);
+
+          this.cookies.set('username', user.username);
+          this.cookies.set('password', user.password);
           
         }
          catch (error) {
@@ -139,7 +144,18 @@ export class AuthService {
   }
    
      logout() : void { 
-       this.cookies.deleteAll();
+       //this.cookies.deleteAll('/');
+       //this.cookies.deleteAll('/quiz');
+       //this.cookies.deleteAll('/profile-page');
+       this.cookies.delete('username', '/', 'localhost', false, 'Lax');
+       this.cookies.delete('username', '/quiz', 'localhost', false, 'Lax');
+
+       this.cookies.delete('password', '/', 'localhost', false, 'Lax');
+       this.cookies.delete('password', '/quiz', 'localhost', false, 'Lax');
+
+       this.cookies.delete('role', '/', 'localhost', false, 'Lax');
+       this.cookies.delete('role', '/quiz', 'localhost', false, 'Lax');
+       
        this.userSubject.next();
        location.reload();
      }
