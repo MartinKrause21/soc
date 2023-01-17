@@ -30,7 +30,7 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { VerifyPageComponent } from './verify-page/verify-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
-import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
+import { QrCodeConvertorComponent } from './all-quizzes/qr-code-convertor.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatTabsModule} from '@angular/material/tabs';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';

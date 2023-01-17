@@ -1,0 +1,25 @@
+#cards {
+    background-color: #512ca095;
+}
+
+#h2 {
+    color: #512ca0;
+    font-size: 40px;
+}
+
+section {
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+#button {
+    width: 150px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+}
+
+#button:hover {
+    color: white;
+    background-color: #502ca0;
+}

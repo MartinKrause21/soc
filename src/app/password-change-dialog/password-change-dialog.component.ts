@@ -17,11 +17,15 @@ export class PasswordChangeDialogComponent implements OnInit {
 
   model = new sentMail('');
 
+  send : boolean = false
+
   ngOnInit(): void {}
 
   onSubmit() {
     this.authService.sendPasswordResetEmail(this.model.email);
     console.log(this.model.email);
+    this.send = true;
+    
   }
 
 }

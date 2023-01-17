@@ -29,8 +29,8 @@
 
                         <div id="card" [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}"  *ngFor="let answer of question.answerList" > 
                             
-                            <p id="indicator" *ngIf="answer.correct"><mat-icon>check</mat-icon></p>
-                            <p id="indicator" *ngIf="!answer.correct"><mat-icon>close</mat-icon></p>
+                            <p id="indicator" *ngIf="answer.correct"><mat-icon class="text-green-600">check</mat-icon></p>
+                            <p id="indicator" *ngIf="!answer.correct"><mat-icon class="text-red-500">close</mat-icon></p>
 
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
 

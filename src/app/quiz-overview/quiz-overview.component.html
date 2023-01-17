@@ -12,7 +12,9 @@
 
         <div class="space-x-4 bg-white-100 py-4 text-center">
             <button id="button" routerLink="/create-quiz"
-                class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">Create</button>
+                class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
+                Create
+            </button>
         </div>
 
     </div>
@@ -29,7 +31,9 @@
 
             <button id="button" routerLink="/all-quizzes"
                 class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
-                Let's see</button>
+                Let's see
+            </button>
+
         </div>
 
     </div>
@@ -59,7 +63,12 @@
                         <p class="text-xl text-white font-bold mb-2">{{quiz.name}}</p>
                         <p class="text-base text-white font-normal">  {{quiz.description}} </p>
                         <p class="text-base text-white font-normal"> Creator: {{quiz.creatorName}} </p>
-                        <button> play as guest</button>
+                        
+                    <button id="button" routerLink="/quiz/{{quiz.name}}"
+                        class="inline-block bg-white rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
+                        Play as guest
+                    </button>
+
                     </div>
                 </div>
              </div>    

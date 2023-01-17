@@ -84,9 +84,9 @@
 
                                 <div id="quizCard" *ngFor="let quiz of allUserQuizes">
             
-                                    <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
+                                    <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1> 
                                     <h2 class="text-center text-gray-400 font-medium"> {{quiz.description}} </h2>
-                                    <h2 class="text-center text-gray-400 font-medium"> {{quiz.creatorName}} </h2>
+                                    <h2 class="text-center text-gray-400 font-medium"> {{quiz.creatorName}} </h2>  
     
     
                                     <div id="button-holder">
@@ -128,6 +128,44 @@
                                             pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$">
                                         <mat-icon matSuffix>alternate_email</mat-icon>
                                     </mat-form-field>
+                    
+                                    <div id="resendMail" class="relative">
+                                        <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                                            class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                            Send
+                                        </button>
+                                    </div>
+                    
+                                </div>
+                    
+                            </form>
+
+
+                        </mat-tab>
+
+                        <mat-tab id="changePassw-tab">
+        
+                            <ng-template mat-tab-label>
+        
+                                <mat-icon>help</mat-icon> Support
+        
+                            </ng-template>
+        
+                            <form #resendMail="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+
+                                <div class="text-center text-xl text-gray-900"> 
+                                    Found some issue? Let us know about it, write here your problem. 
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <mat-form-field class="h-10 w-full" appearance="outline">
+                                            <mat-label>Your issue</mat-label>
+                                                <textarea matInput required type="text" name="problem"> </textarea>
+                                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> 
+                                    </mat-form-field>
+                                                  
                     
                                     <div id="resendMail" class="relative">
                                         <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"

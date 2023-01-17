@@ -197,7 +197,6 @@ export class AuthService {
       })
       .then(() => {
         console.log('passw email send Success!');
-        //this.showPasswordDialog();
       })
       .catch((error) => {
         console.error('Error:' , error);

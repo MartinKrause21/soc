@@ -9,7 +9,7 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { VerifyPageComponent } from './verify-page/verify-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
-import { QrCodeConvertorComponent } from './qr-code-convertor/qr-code-convertor.component';
+import { QrCodeConvertorComponent } from './all-quizzes/qr-code-convertor.component';
 import { QrCodeDialogComponent } from './qr-code-dialog/qr-code-dialog.component';
 import { AdminQuizDetailComponent } from './admin-quiz-detail/admin-quiz-detail.component';
 import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detail2.component';
