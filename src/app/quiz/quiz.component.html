@@ -1,6 +1,6 @@
 <div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
 
-    <div id="container" class="bg-white text-center rounded-3xl shadow-lg p-10 w-4/6 ">
+    <div id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
         <h1 id="quizName"> Welcome in {{quizName}} </h1>
 
         <div id="description" *ngIf="!loggedInUsername">
@@ -52,7 +52,7 @@
 
 <div *ngIf="quizShow" class="flex items-center justify-center h-screen ">
 
-    <div id="container" class="bg-white font-semibold text-center rounded-3xl shadow-lg p-10 w-4/6 ">
+    <div *ngIf="!result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
 
         <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
 
@@ -64,6 +64,13 @@
             </button>
             <br>
         </span>
+
+    </div>
+
+    <div *ngIf="result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
+
+        <h1 class="text-lg text-gray-700">This is your quiz result.</h1>
+
 
     </div>
 

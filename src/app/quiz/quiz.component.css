@@ -3,6 +3,12 @@
     border-color: #502ca0;
 }
 
+@media screen and (max-width: 1152px) {
+    #container { 
+        border-radius: 0px;
+    }
+}
+
 #description {
     font-size: medium;
 }

@@ -78,6 +78,7 @@ export class QuizComponent implements OnInit {
 
   ans : string;
   question : string;
+  result : boolean = false;
 
   sendAns(ans: any, correct: boolean , question : string){
     this.quizNum = this.quizNum + 1;
@@ -96,6 +97,7 @@ export class QuizComponent implements OnInit {
     }
     else {
       this.quizService.setScore(this.score, this.quizName);
+      this.result = true;
     }
   }
 }
