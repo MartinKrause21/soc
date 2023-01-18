@@ -42,7 +42,7 @@ export class AuthService {
       }
 
       getUserRole() {
-        return this.http.get<{role: string}>('http://localhost:8080/role',{ headers: this.headerHttp });
+        return this.http.get<{role: string}>('https://teach-quiz.herokuapp.com/role',{ headers: this.headerHttp });
       }
 
       isLoggedIn(): boolean {
@@ -56,7 +56,7 @@ export class AuthService {
         console.log(authString);
         
         try {
-          const response = await fetch('http://localhost:8080/login', {
+          const response = await fetch('https://teach-quiz.herokuapp.com/login', {
             method: 'GET',
             headers: this.headers,
           });
@@ -87,7 +87,7 @@ export class AuthService {
     //       this.headers.set('Authorization', 'Basic ' + btoa(authString))
     //       console.log(authString);
 
-    //     return this.http.get('http://localhost:8080/login', {
+    //     return this.http.get('https://teach-quiz.herokuapp.com/login', {
     //         params: new HttpParams().set('user', JSON.stringify(user)), 
     //     }).subscribe(response => {
     //         if (response) {
@@ -106,7 +106,7 @@ export class AuthService {
     // }
 
       createUser (user:user) {
-        fetch('http://localhost:8080/register', {
+        fetch('https://teach-quiz.herokuapp.com/register', {
          method: 'POST',
          headers: {
            'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export class AuthService {
 
      createGuest(username: string, password = "password") 
      {
-      fetch('http://localhost:8080/addUsername/' +username, {
+      fetch('https://teach-quiz.herokuapp.com/addUsername/' +username, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -144,9 +144,6 @@ export class AuthService {
   }
    
      logout() : void { 
-       //this.cookies.deleteAll('/');
-       //this.cookies.deleteAll('/quiz');
-       //this.cookies.deleteAll('/profile-page');
        this.cookies.delete('username', '/', 'localhost', false, 'Lax');
        this.cookies.delete('username', '/quiz', 'localhost', false, 'Lax');
 
@@ -162,7 +159,7 @@ export class AuthService {
 
       changePassword( email:string, password : string){
 
-        fetch('http://localhost:8080/changePassword/'+ email + "/" + password, {
+        fetch('https://teach-quiz.herokuapp.com/changePassword/'+ email + "/" + password, {
           method: 'PUT',
           headers: new Headers({
             'Content-Type': "application/json; charset=utf8",
@@ -189,7 +186,7 @@ export class AuthService {
 
     sendPasswordResetEmail(email: string) {
 
-        fetch('http://localhost:8080/changePasswordEmail/' + email, {
+        fetch('https://teach-quiz.herokuapp.com/changePasswordEmail/' + email, {
           method: 'GET',
           headers: new Headers({
             'Content-Type': "application/json; charset=utf8",
@@ -208,7 +205,7 @@ export class AuthService {
 
     verifyUser(code: string) {
 
-      fetch('http://localhost:8080/verify/' + code , {
+      fetch('https://teach-quiz.herokuapp.com/verify/' + code , {
         method: 'GET',
         headers: new Headers({
           'Content-Type': "application/json; charset=utf8",

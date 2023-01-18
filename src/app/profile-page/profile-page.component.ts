@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,7 +25,8 @@ export class ProfilePageComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private http : HttpClient
+    private http : HttpClient, 
+    private dialog : MatDialog
   ) { }
   
   allTeacherQuizes : allTeacherQuizes[] = [];
@@ -67,14 +70,14 @@ export class ProfilePageComponent implements OnInit {
     console.log(this.model.email);
   }
 
-  delete(quizName: string) {
-    this.quizService.deleteQuiz(quizName).subscribe(() => {
-      console.log('Success!');
-      location.reload()
-    }, error => {
-      console.error('Error:' , error);
-    });
-  }
+  // delete(quizName: string) {
+  //   this.quizService.deleteQuiz(quizName).subscribe(() => {
+  //     console.log('Success!');
+  //     location.reload()
+  //   }, error => {
+  //     console.error('Error:' , error);
+  //   });
+  // }
 
   durationInSeconds = 2;
 
@@ -87,5 +90,23 @@ export class ProfilePageComponent implements OnInit {
     }, (error: any) => {
       console.error('Error:' , error);
     });
+  }
+
+  // openDialog(quizName: string): void {
+    
+  //   const dialogRef = this.dialog.open(DeleteQuizDialogComponent, {
+  //       width: '250px',
+  //       data: { quizName }
+  //   });
+  // }
+  
+  openDialog(quizName: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      quizName: quizName
+    };
+
+    this.dialog.open(DeleteQuizDialogComponent, dialogConfig);
   }
 }

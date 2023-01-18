@@ -46,6 +46,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detail2.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
+import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dialog.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.com
     AdminUserDetail2Component,
     UnauthorizedComponent,
     UserQuizDetailComponent,
+    DeleteQuizDialogComponent,
   ],
   imports: [
     BrowserModule,

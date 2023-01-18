@@ -31,16 +31,16 @@ export class QuizService {
   });
 
   getQuiz(quizName: string):Observable <any>  {
-    return this.http.get<any>( `http://localhost:8080/get/quiz/${quizName}`);
+    return this.http.get<any>( `https://teach-quiz.herokuapp.com/get/quiz/${quizName}`);
   }
 
   setScore(score: number, quizName: string): Observable<any> {
     console.log(score);
-    return this.http.post(`http://localhost:8080/save/score/${quizName}/${score}`,  {headers: this.headerHttp});
+    return this.http.post(`https://teach-quiz.herokuapp.com/save/score/${quizName}/${score}`,  {headers: this.headerHttp});
   }
 
   getScore(): Observable<any>{
-    return this.http.get(`http://localhost:8080/score/{quizId}`, {headers: this.headerHttp})
+    return this.http.get(`https://teach-quiz.herokuapp.com/score/{quizId}`, {headers: this.headerHttp})
   }
 
   createQuizDialog(): void {
@@ -48,38 +48,38 @@ export class QuizService {
   }
 
   getAllTeacherQuizes(): Observable<allTeacherQuizes[]> {
-    return this.http.get<allTeacherQuizes[]>(`http://localhost:8080/get/quiz/teacher`,  {headers: this.headerHttp});
+    return this.http.get<allTeacherQuizes[]>(`https://teach-quiz.herokuapp.com/get/quiz/teacher`,  {headers: this.headerHttp});
   }
 
   getAllUserQuizes(): Observable<allUserQuizes[]> {
-    return this.http.get<allUserQuizes[]>(`http://localhost:8080/get/allUserQuizzes`,  {headers: this.headerHttp});
+    return this.http.get<allUserQuizes[]>(`https://teach-quiz.herokuapp.com/get/allUserQuizzes`,  {headers: this.headerHttp});
   }
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {
-    return this.http.get<quizUsers[]>(`http://localhost:8080/users/${quizName}`,  {headers: this.headerHttp});
+    return this.http.get<quizUsers[]>(`https://teach-quiz.herokuapp.com/users/${quizName}`,  {headers: this.headerHttp});
   }
 
   getUserDetailsForQuiz(quizName:string , username: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8080/users/${quizName}/${username}`,  {headers: this.headerHttp});
+    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/users/${quizName}/${username}`,  {headers: this.headerHttp});
   }
 
   getQuizResultForUser(quizName:string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8080/get/resultQuiz/${quizName}}`,  {headers: this.headerHttp});
+    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/get/resultQuiz/${quizName}}`,  {headers: this.headerHttp});
   }
 
   getAllQuizzes(): Observable<allUserQuizes[]> {
-    return this.http.get<allUserQuizes[]>(`http://localhost:8080/all/quizzes`);
+    return this.http.get<allUserQuizes[]>(`https://teach-quiz.herokuapp.com/all/quizzes`);
   }
 
   deleteQuiz(quizName: string) {
-    return this.http.delete(`http://localhost:8080/delete/quiz/${quizName}`, {headers: this.headerHttp, responseType: 'text' });
+    return this.http.delete(`https://teach-quiz.herokuapp.com/delete/quiz/${quizName}`, {headers: this.headerHttp, responseType: 'text' });
   }
 
   addQuiz(quiz: Quiz) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
-    fetch('http://localhost:8080/add/quiz', {  
+    fetch('https://teach-quiz.herokuapp.com/add/quiz', {  
       method: 'POST',
       headers: new Headers({
       'Authorization': 'Basic '+btoa(authString), 
@@ -99,14 +99,14 @@ export class QuizService {
 
   postResultQuiz(quizName: string) {
     const body = { quizName };
-    this.http.post('http://localhost:8080/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
+    this.http.post('https://teach-quiz.herokuapp.com/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
   }
 
   updateResultQuiz(quizName: string, ans: any, question : string) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
-    fetch(`http://localhost:8080/update/resultQuiz/${quizName}`, {  
+    fetch(`https://teach-quiz.herokuapp.com/update/resultQuiz/${quizName}`, {  
       method: 'PUT',
       headers: new Headers({
       'Authorization': 'Basic '+btoa(authString), 

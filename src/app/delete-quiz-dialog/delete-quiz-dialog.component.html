@@ -1,0 +1,16 @@
+<div id="container">
+    <div id="dialog-container"> </div>
+
+    <h1 mat-dialog-title>Confirm</h1>
+
+    <div mat-dialog-content>
+        Are you sure you want to delete this {{quizName}}?
+    </div>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="delete(quizName)">Yes</button>
+        <button mat-button [mat-dialog-close]="false">No</button>
+    </div>
+
+</div>
+
