@@ -57,8 +57,7 @@
         <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
 
         <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-            <button
-                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+            <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
                 (click)="sendAns(ans , ans.correct , quiz.questionList[quizNum].questionContent)">
                 {{ans.content}}
             </button>
@@ -69,9 +68,9 @@
 
     <div *ngIf="result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
 
-        <h1 class="text-lg text-gray-700">This is your quiz result.</h1>
-
-
+        <h1 class="text-lg text-gray-700">Congratulations you earned: </h1>
+        <h1 id="score" class="text-lg text-white"> 60 points</h1>
+        
     </div>
 
 </div>

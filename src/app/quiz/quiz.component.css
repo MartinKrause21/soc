@@ -85,3 +85,11 @@
         margin-bottom: 40px;
     }
 }
+
+#score{
+    background-color: #502ca0 ;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 8px;
+    padding: 10px;
+}

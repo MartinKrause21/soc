@@ -21,8 +21,32 @@ li {
     text-decoration: none;
 }
 
-#logo {
+#text-velky {
+    display: flex;
+    height: auto;
+    max-height: 60px;
+}
+  
+#text-maly {
+    display: none;
     height: auto;
     max-height: 60px;
 }
 
+@media (max-width: 800px) {
+    #text-velky {
+      display: none ;
+    }
+    #text-maly {
+      display: flex;
+    }
+}
+
+@media (max-width: 1023px) {
+    #text-velky {
+        margin-top: 9px;
+    }
+    #text-maly {
+        margin-top: 9px;
+    }
+}

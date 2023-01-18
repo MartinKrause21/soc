@@ -88,7 +88,7 @@ export class QuizComponent implements OnInit {
 
     if(this.quizNum < this. questionList.length ){
       if(correct == true){
-        this.score = this.score +10;
+        this.score = this.score + 10;
         console.log("dobra odpoved " + this.score);
       }
       else if (correct == false) { 

@@ -39,10 +39,7 @@ export class AdminUserDetail2Component implements OnInit {
       this.score = result[0].score;
     });
 
-    }
-
-    
-
+  }
 
 }
 
