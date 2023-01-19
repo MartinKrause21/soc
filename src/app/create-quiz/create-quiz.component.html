@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="divide-y divide-gray-200">
-                    <form id="container" [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
+                    <form #quizzForm="ngForm" id="container" [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
 
                         <div id="quiz-info">
 
@@ -127,7 +127,8 @@
                         <div id="create" class="relative mt-4">
 
                             <button id="button" type="submit"
-                                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                [disabled]="!quizzForm.form.valid">
                                 Create quiz
                             </button>
 

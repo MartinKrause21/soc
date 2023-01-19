@@ -73,8 +73,15 @@ export class CreateQuizComponent  {
   }  
      
   onSubmit() {  
+    //display error if this.quizForm.questionList is empty
+    if (this.quizForm.value.questionList.length == 0) {
+      alert("Please add at least one question");
+      return;
+    }
+    else {
     this.quizService.addQuiz(this.quizForm.value);
     console.log(this.quizForm.value);  
+    }
     //console.log(this.questionList);
   }  
 
