@@ -23,6 +23,7 @@
 
 #cards {
     background-color: #512ca095;
+    min-height: 222px;
 }
 
 #h2 {

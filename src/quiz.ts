@@ -48,11 +48,13 @@ export class allTeacherQuizes {
 
 export class allUserQuizes {
     name: string;
+    id: number;
     description: string;
     creatorName: string;
 
     constructor(
         name: string,
+        id : number,
         description: string,
         creatorName: string,
     ) {  }
