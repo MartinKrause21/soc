@@ -26,6 +26,7 @@ export class QuizComponent implements OnInit {
   selectedQuestion: Question;
 
   quizName: string
+  quizId: number;
 
   quiz : Quiz;
   questionList: Question[];
@@ -46,6 +47,10 @@ export class QuizComponent implements OnInit {
   ngOnInit(): void {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
+    this.quizId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.quizName , this.quizId);
+    
+
 
     this.loggedInUsername = this.cookies.get('username');
 

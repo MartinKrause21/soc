@@ -13,8 +13,21 @@ export class AdminUserDetail2Component implements OnInit {
 
   username : string
   quizName: string
-
   score: number;
+
+
+  // quizName: string;
+  // userName: string;
+  // id: string;
+
+
+  // constructor(private route: ActivatedRoute) {
+  //   this.route.params.subscribe(params => {
+  //     this.quizName = params.quizName;
+  //     this.userName = params.userName;
+  //     this.id = params.id;
+  //   });
+  // }
 
   public resultQuiz : any [] = [];
   public resultQuestionList : resultQuestion [] = [];

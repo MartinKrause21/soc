@@ -23,12 +23,31 @@ export class AdminQuizDetailComponent implements OnInit {
   ngOnInit(): void {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
+    console.log(this.quizName, 'quizName');
+    
 
     this.quizService.getAllUsersForQuiz(this.quizName).subscribe(quizUsers => { 
         this.quizUsers = quizUsers;
         this.contentLoaded = false;
-        console.log(quizUsers);
       });
     }
 
 }
+
+
+// ngOnInit() {
+//   this.quizService.getAllUsersForQuiz(this.quizName).subscribe(quizUsers => {
+//     this.quizUsers = quizUsers;
+//     this.quizService.getAllUsersIdsForQuiz(this.quizName).subscribe(id => {
+//       this.userIds = id;
+//       this.quizUsers = quizUsers.map(user => {
+//         return {
+//           name: user.username,
+//           id: this.userIds[user.username]
+//         }
+//       });
+//       this.contentLoaded = false;
+//     });
+//   });
+// }
+
