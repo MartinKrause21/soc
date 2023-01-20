@@ -154,14 +154,6 @@ export class AuthService {
 
       this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
       this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-      
-      setTimeout(() => {
-        //location.reload()
-        this.router.navigateByUrl("/home").then(() => {
-         
-          location.reload();
-        });
-      },900);
 
      }
 
