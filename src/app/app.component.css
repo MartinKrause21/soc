@@ -50,3 +50,16 @@ li {
         margin-top: 9px;
     }
 }
+
+#logo-short {
+    width: 32px;
+    height: 30px;
+    margin-top: -6px; 
+}
+
+#logo-long {
+    width: 81px;
+    height: 35px;
+    margin-top: -6px; 
+}
+
