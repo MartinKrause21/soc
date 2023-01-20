@@ -144,24 +144,25 @@ export class AuthService {
   }
    
      logout() : void { 
+
+      this.userSubject.next();
+      this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
+      this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
+
+      this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
+      this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
+
+      this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
+      this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
       
       setTimeout(() => {
         //location.reload()
         this.router.navigateByUrl("/home").then(() => {
-          this.userSubject.next();
+         
           location.reload();
         });
       },900);
 
-
-       this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
-       this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-       this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
-       this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-       this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
-       this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
      }
 
       changePassword( email:string, password : string){
