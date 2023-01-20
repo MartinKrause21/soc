@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
@@ -10,6 +10,7 @@ import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.comp
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -18,6 +19,7 @@ import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dia
 })
 export class ProfilePageComponent implements OnInit {
 
+  @Output() resultQuizIdsChange = new EventEmitter<any[]>();
 
   constructor(
     private cookies: CookieService,
@@ -26,12 +28,14 @@ export class ProfilePageComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private http : HttpClient, 
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private dataService: DataService,
   ) { }
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   allUserQuizes : allUserQuizes [] = []; 
   loggedInUsername: string;
+  resultQuizIds: any[];
 
   email: string = '';
 
@@ -52,14 +56,12 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getAllTeacherQuizes().subscribe(allTeacherQuizes => { 
-      this.allTeacherQuizes = allTeacherQuizes;
-      console.log(allTeacherQuizes, 'allTeacherQuizes');
+    this.quizService.getAllTeacherQuizes().subscribe(response => { 
+      this.allTeacherQuizes = response;
     });
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;
-      console.log(allUserQuizes);
     });
 
     this.role = this.cookies.get('role');
@@ -68,6 +70,15 @@ export class ProfilePageComponent implements OnInit {
   onSubmit() {
     this.authService.sendPasswordResetEmail(this.model.email);
     console.log(this.model.email);
+  }
+
+  sendId(quiz: any) {
+    //check if ids belong to the same quiz
+    this.dataService.updateResultQuizIds(quiz.resultQuizIds, quiz.name);
+    console.log(quiz.quizId);
+    
+    this.dataService.getResultQuizIds();
+    
   }
 
   // delete(quizName: string) {

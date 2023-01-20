@@ -39,10 +39,12 @@ export interface resultAnswer {
 export class allTeacherQuizes {
     name: string;
     description: string;
+    resultQuizIds: any[];
 
     constructor(
         name: string,
         description: string,
+        resultQuizIds: any[]
     ) {  }
 }
 
@@ -61,6 +63,7 @@ export class allUserQuizes {
 }
 export class quizUsers {
     username: string;
+    id: number;
 
     constructor(
         username: string,

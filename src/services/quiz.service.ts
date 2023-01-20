@@ -56,6 +56,7 @@ export class QuizService {
   }
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {
+
     return this.http.get<quizUsers[]>(`https://teach-quiz.herokuapp.com/users/${quizName}`,  {headers: this.headerHttp});
   }
 
