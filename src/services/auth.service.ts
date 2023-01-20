@@ -69,12 +69,8 @@ export class AuthService {
         });
       }, 900);
 
-      
-
-      const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() + 30); // expires in 30 days
-      this.cookies.set('password', user.password, undefined, 'soc-eight.vercel.app', undefined, false, 'Lax');
-      this.cookies.set('username', user.username, undefined, 'soc-eight.vercel.app', undefined, false, 'Lax');
+      this.cookies.set('password', user.password);
+      this.cookies.set('username', user.username );
 
     }
     catch (error) {
@@ -148,22 +144,7 @@ export class AuthService {
   }
 
   logout() {
-    try {
-
-      this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-      this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-      this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-      this.userSubject.next();
-      location.reload();
-    } catch (error) {
-      console.error('An error occurred while logging out: ', error);
-    }
+    this.cookies.deleteAll('/', '/quiz');
   }
 
   changePassword(email: string, password: string) {
