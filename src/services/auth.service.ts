@@ -153,14 +153,15 @@ export class AuthService {
         });
       },900);
 
-       this.cookies.delete('username', '/', 'localhost', false, 'Lax');
-       this.cookies.delete('username', '/quiz', 'localhost', false, 'Lax');
 
-       this.cookies.delete('password', '/', 'localhost', false, 'Lax');
-       this.cookies.delete('password', '/quiz', 'localhost', false, 'Lax');
+       this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
+       this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
 
-       this.cookies.delete('role', '/', 'localhost', false, 'Lax');
-       this.cookies.delete('role', '/quiz', 'localhost', false, 'Lax');
+       this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
+       this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
+
+       this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
+       this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
      }
 
       changePassword( email:string, password : string){
