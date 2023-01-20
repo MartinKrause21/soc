@@ -33,7 +33,7 @@ li {
     max-height: 60px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 639px) {
     #text-velky {
       display: none ;
     }
@@ -44,7 +44,7 @@ li {
 
 @media (max-width: 1023px) {
     #text-velky {
-        margin-top: 9px;
+        margin-top: 6px;
     }
     #text-maly {
         margin-top: 9px;

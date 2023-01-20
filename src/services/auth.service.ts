@@ -144,6 +144,15 @@ export class AuthService {
   }
    
      logout() : void { 
+      
+      setTimeout(() => {
+        //location.reload()
+        this.router.navigateByUrl("/home").then(() => {
+          this.userSubject.next();
+          location.reload();
+        });
+      },900);
+
        this.cookies.delete('username', '/', 'localhost', false, 'Lax');
        this.cookies.delete('username', '/quiz', 'localhost', false, 'Lax');
 
@@ -152,9 +161,6 @@ export class AuthService {
 
        this.cookies.delete('role', '/', 'localhost', false, 'Lax');
        this.cookies.delete('role', '/quiz', 'localhost', false, 'Lax');
-       
-       this.userSubject.next();
-       location.reload();
      }
 
       changePassword( email:string, password : string){
