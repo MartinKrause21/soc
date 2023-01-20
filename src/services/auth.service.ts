@@ -143,19 +143,23 @@ export class AuthService {
       });
   }
    
-     logout() : void { 
+  logout() {
+    try {
+       
+        this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
+        this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
 
-      this.userSubject.next();
-      this.cookies.delete('username', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('username', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
+        this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
+        this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
 
-      this.cookies.delete('password', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('password', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-      this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
-      this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
-
-     }
+        this.cookies.delete('role', '/', 'soc-eight.vercel.app', false, 'Lax');
+        this.cookies.delete('role', '/quiz', 'soc-eight.vercel.app', false, 'Lax');
+        
+        this.userSubject.next();
+    } catch (error) {
+        console.error('An error occurred while logging out: ', error);
+    }
+}
 
       changePassword( email:string, password : string){
 
