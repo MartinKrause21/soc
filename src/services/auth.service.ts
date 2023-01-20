@@ -143,8 +143,11 @@ export class AuthService {
       });
   }
 
-  logout() {
-    this.cookies.deleteAll('/', '/quiz');
+  logout(): void {
+    this.cookies.delete('username' );
+    this.cookies.delete('password' );
+    this.cookies.delete('role' );
+    location.reload()
   }
 
   changePassword(email: string, password: string) {
