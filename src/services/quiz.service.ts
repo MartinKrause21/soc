@@ -6,6 +6,7 @@ import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataService } from 'src/app/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class QuizService {
     private http: HttpClient,
     private cookies: CookieService,
     private dialog : MatDialog, 
+    private dataServise: DataService,
   ) { }
 
   quizes : Quiz[];
@@ -100,14 +102,16 @@ export class QuizService {
 
   postResultQuiz(quizName: string) {
     const body = { quizName };
-    this.http.post('https://teach-quiz.herokuapp.com/add/resultQuiz', body, { headers: this.headerHttp }).subscribe();
+    this.http.post('https://teach-quiz.herokuapp.com/add/resultQuiz', body, { headers: this.headerHttp }).subscribe((response: any) => {
+      this.dataServise.updateResultQuizId(response.id);
+    })
   }
 
   updateResultQuiz(quizName: string, ans: any, question : string) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
-    fetch(`https://teach-quiz.herokuapp.com/update/resultQuiz/${quizName}`, {  
+    fetch(`https://teach-quiz.herokuapp.com/update/resultQuiz/${this.dataServise.getResultQuizId()}`, {  
       method: 'PUT',
       headers: new Headers({
       'Authorization': 'Basic '+btoa(authString), 

@@ -9,6 +9,7 @@ export class DataService {
 
   resultQuizIds: any[] = [];
   quizName: string = '';
+  resultQuizId: number;
 
   updateResultQuizIds(resultQuizIds: any[], quizName: string) {
     this.resultQuizIds = resultQuizIds;
@@ -21,5 +22,13 @@ export class DataService {
     console.log(this.quizName);
     
     return this.resultQuizIds;
+  }
+
+  updateResultQuizId(resultQuizId: number) {
+    this.resultQuizId = resultQuizId;
+  }
+
+  getResultQuizId() {
+    return this.resultQuizId;
   }
 }

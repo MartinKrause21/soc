@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { guest } from 'src/user';
 import { AuthService } from 'src/services/auth.service';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -20,6 +21,7 @@ export class QuizComponent implements OnInit {
     private dialog : MatDialog,
     private route: ActivatedRoute,
     private cookies : CookieService,
+    private dataServise : DataService,
   ) { }
 
   answersQuestions: Question[] =[];
