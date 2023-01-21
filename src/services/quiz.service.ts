@@ -67,7 +67,7 @@ export class QuizService {
   }
 
   getQuizResultForUser(quizName:string): Observable<any[]> {
-    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/get/resultQuiz/${quizName}}`,  {headers: this.headerHttp});
+    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/resultQuiz/${quizName}}`,  {headers: this.headerHttp});
   }
 
   getAllQuizzes(): Observable<allUserQuizes[]> {

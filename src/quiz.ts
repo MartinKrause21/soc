@@ -53,7 +53,7 @@ export class allUserQuizes {
     id: number;
     description: string;
     creatorName: string;
-
+    resultQuizIds: any[];
     constructor(
         name: string,
         id : number,

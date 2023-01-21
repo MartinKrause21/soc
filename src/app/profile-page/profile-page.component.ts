@@ -49,7 +49,7 @@ export class ProfilePageComponent implements OnInit {
 
   role : string;
 
-
+   idS: any = [];
   ngOnInit(): void {
 
     this.loggedInUsername = this.cookies.get('username');
@@ -62,6 +62,14 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;
+      
+
+        this.idS = allUserQuizes[0].resultQuizIds;
+      
+      this.dataService.updateResultQuizIds(this.idS);
+      this.idS = this.dataService.getResultQuizIds();
+      
+     
     });
 
     this.role = this.cookies.get('role');
@@ -74,7 +82,7 @@ export class ProfilePageComponent implements OnInit {
 
   sendId(quiz: any) {
     //check if ids belong to the same quiz
-    this.dataService.updateResultQuizIds(quiz.resultQuizIds, quiz.name);
+    this.dataService.updateResultQuizIds(quiz.resultQuizIds);
     console.log(quiz.quizId);
     
     this.dataService.getResultQuizIds();
