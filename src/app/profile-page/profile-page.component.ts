@@ -75,6 +75,12 @@ export class ProfilePageComponent implements OnInit {
     this.role = this.cookies.get('role');
   }
   
+
+  sendUserQuizId(id: number) {
+
+    this.dataService.updateResultQuizId(id);
+  }
+
   onSubmit() {
     this.authService.sendPasswordResetEmail(this.model.email);
     console.log(this.model.email);

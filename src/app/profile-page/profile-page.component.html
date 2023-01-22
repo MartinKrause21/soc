@@ -91,7 +91,7 @@
     
                                     <div id="button-holder">
                                         
-                                        <button id="button" type="button" routerLink="/user-quiz-detail/{{quiz.name}}/{{idS[allUserQuizes.indexOf(quiz)]}}" 
+                                        <button id="button" type="button" routerLink="/user-quiz-detail/{{idS[allUserQuizes.indexOf(quiz)]}}" (click)="sendUserQuizId(idS[allUserQuizes.indexOf(quiz)])"
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0" (click)="sendId(quiz)">
                                         Your results
                                         </button> 

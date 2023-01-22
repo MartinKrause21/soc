@@ -11,6 +11,8 @@ export class DataService {
   quizName: string = '';
   resultQuizId: number;
 
+ 
+
   updateResultQuizIds(resultQuizIds: any[]) {
     this.resultQuizIds = resultQuizIds;
     console.log(this.resultQuizIds);

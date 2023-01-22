@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { resultQuestion, resultQuiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -22,20 +23,31 @@ export class UserQuizDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private quizService : QuizService,
+    private dataService : DataService,
   ) { }
 
   panelOpenState = false;
 
+  id: number;
   ngOnInit(): void {
 
-    this.quizName =String(this.route.snapshot.paramMap.get('name'));
     this.username =String(this.route.snapshot.paramMap.get('username'));
 
-    this.quizService.getQuizResultForUser(this.quizName).subscribe(result => {
-      this.resultQuiz[0] = result [0].resultQuiz.questionList;
-      console.log(this.resultQuiz[0]);
+    this.id = this.dataService.getResultQuizId();
+    console.log(this.id, "id");
+
+
+    this.quizService.getQuizResultForUser(this.id).subscribe((result: any) => {
+      this.resultQuiz[0] = result.resultQuiz.questionList;
+      this.quizName = result.resultQuiz.quizName;
+      this.score = result.score;
+      console.log(this.resultQuiz, "resultQuiz");
       console.log(result);
-      this.score = result[0].score;
+      console.log(this.score, "score");
+      
+      
+      
+    
     });
 
   }
