@@ -127,7 +127,7 @@ export class AuthService {
   }
 
   createAdmin(user: user) {
-    fetch('https://teach-quiz.herokuapp.com/register', {
+    fetch('https://teach-quiz.herokuapp.com/register/admin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -48,6 +48,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
 import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { FaqComponent } from './faq/faq.component';
+
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     UnauthorizedComponent,
     UserQuizDetailComponent,
     DeleteQuizDialogComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ import { AuthGuard } from 'src/services/auth.guard';
 import { AdminGuard } from 'src/services/admin.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'user-quiz-detail/:id', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
   { path: 'admin-user-detail/:name/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: 'faq', component: FaqComponent },
 
 ];
 
