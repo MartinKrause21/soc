@@ -33,6 +33,8 @@
                         <div #loadedContent id="quizCard" *ngFor="let user of quizUsers " > 
     
                             <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} </h1> 
+                            <h1 class="font-bold text-center text-3xl text-gray-900"> {{ user.date }}</h1> 
+
 
                             <div id="button-holder">
                                     
@@ -40,9 +42,6 @@
                                 class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                     Results
                                 </button> 
-
-
-
 
                             </div>
 

@@ -6,6 +6,7 @@ export interface Quiz {
 }
 
 export interface Question {
+    answered: unknown;
     questionContent: string;
     answerList: Answer[];
 }
@@ -64,9 +65,11 @@ export class allUserQuizes {
 export class quizUsers {
     username: string;
     id: number;
+    date: string;
 
     constructor(
         username: string,
+        date : string
     ) {  }
 }
 

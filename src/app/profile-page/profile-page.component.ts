@@ -75,9 +75,7 @@ export class ProfilePageComponent implements OnInit {
     this.role = this.cookies.get('role');
   }
   
-
   sendUserQuizId(id: number) {
-
     this.dataService.updateResultQuizId(id);
   }
 
@@ -89,20 +87,13 @@ export class ProfilePageComponent implements OnInit {
   sendId(quiz: any) {
     //check if ids belong to the same quiz
     this.dataService.updateResultQuizIds(quiz.resultQuizIds);
+    console.log(quiz.resultQuizIds, 'robo');
+    
     console.log(quiz.quizId);
     
     this.dataService.getResultQuizIds();
     
   }
-
-  // delete(quizName: string) {
-  //   this.quizService.deleteQuiz(quizName).subscribe(() => {
-  //     console.log('Success!');
-  //     location.reload()
-  //   }, error => {
-  //     console.error('Error:' , error);
-  //   });
-  // }
 
   durationInSeconds = 2;
 
@@ -116,14 +107,6 @@ export class ProfilePageComponent implements OnInit {
       console.error('Error:' , error);
     });
   }
-
-  // openDialog(quizName: string): void {
-    
-  //   const dialogRef = this.dialog.open(DeleteQuizDialogComponent, {
-  //       width: '250px',
-  //       data: { quizName }
-  //   });
-  // }
   
   openDialog(quizName: string) {
     const dialogConfig = new MatDialogConfig();

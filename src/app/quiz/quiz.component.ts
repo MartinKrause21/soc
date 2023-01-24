@@ -51,7 +51,6 @@ export class QuizComponent implements OnInit {
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
     this.quizId = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.quizName , this.quizId);
-    
 
 
     this.loggedInUsername = this.cookies.get('username');
@@ -88,23 +87,25 @@ export class QuizComponent implements OnInit {
   result : boolean = false;
 
   sendAns(ans: any, correct: boolean , question : string){
+
     this.quizNum = this.quizNum + 1;
 
-    this.quizService.updateResultQuiz( this.quizName, ans, question)
-    console.log(ans , question , this.quizName);
+    this.quizService.updateResultQuiz(ans, question);
+    console.log(ans, question, this.quizName);
 
-    if(this.quizNum < this. questionList.length ){
-      if(correct == true){
-        this.score = this.score + 10;
-        console.log("dobra odpoved " + this.score);
-      }
-      else if (correct == false) { 
-        console.log("zla odpoved" + this.score);
-      }
-    }
+    if (correct) {
+      this.score = this.score + 10;
+      console.log("Correct answer, Score: " + this.score);
+    } 
     else {
-      this.quizService.setScore(this.score, this.quizName);
+      console.log("Incorrect answer, score 0");
+    }
+
+    if (this.quizNum === this.questionList.length) {
+      this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
       this.result = true;
+      console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
     }
   }
+
 }

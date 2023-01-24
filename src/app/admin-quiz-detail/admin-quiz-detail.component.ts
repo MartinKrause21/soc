@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { quizUsers } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { DataService } from '../data.service';
+import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-quiz-detail',
@@ -20,6 +22,8 @@ export class AdminQuizDetailComponent implements OnInit {
   quizName: string;
   userIds: number[];
 
+  users$: Observable<quizUsers[]>;
+
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute,
@@ -30,8 +34,10 @@ export class AdminQuizDetailComponent implements OnInit {
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
 
-    this.quizService.getAllUsersForQuiz(this.quizName).subscribe(quizUsers => {
-      this.quizUsers = quizUsers;
+    this.quizService.getAllUsersForQuiz(this.quizName).subscribe(response => {
+      this.quizUsers = response;
+      console.log(response);
+      
       this.resultQuizIds = this.dataService.getResultQuizIds();
       this.quizUsers = this.quizUsers.map(user => {
         return {
@@ -40,6 +46,8 @@ export class AdminQuizDetailComponent implements OnInit {
         }
       });
     });
+
+  
   }
 }
 

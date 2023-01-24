@@ -36,9 +36,26 @@ export class QuizService {
     return this.http.get<any>( `https://teach-quiz.herokuapp.com/get/quiz/${quizName}`);
   }
 
-  setScore(score: number, quizName: string): Observable<any> {
-    console.log(score);
-    return this.http.post(`https://teach-quiz.herokuapp.com/save/score/${quizName}/${score}`,  {headers: this.headerHttp});
+  id: number = this.dataServise.getResultQuizId();
+
+  setScore(id: number, score: number) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch(`https://teach-quiz.herokuapp.com/save/score/${id}/${score}`, {  
+      method: 'POST',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
+    })
+    .then(() => {
+      console.log('Success!');
+      console.log(this.dataServise.getResultQuizId() + score);
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
   }
 
   getScore(): Observable<any>{
@@ -58,7 +75,6 @@ export class QuizService {
   }
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {
-
     return this.http.get<quizUsers[]>(`https://teach-quiz.herokuapp.com/users/${quizName}`,  {headers: this.headerHttp});
   }
 
@@ -109,7 +125,7 @@ export class QuizService {
     })
   }
 
-  updateResultQuiz(quizName: string, ans: any, question : string) {
+  updateResultQuiz( ans: any, question : string) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
