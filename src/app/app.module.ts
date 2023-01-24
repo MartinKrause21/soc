@@ -47,7 +47,7 @@ import { AdminUserDetail2Component } from './admin-user-detail2/admin-user-detai
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
 import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dialog.component';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -99,7 +99,8 @@ import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dial
     MatStepperModule,
     ClipboardModule, 
     MatSnackBarModule,
-    MatExpansionModule,    
+    MatExpansionModule, 
+    MatSlideToggleModule,   
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

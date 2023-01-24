@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   email: any = '';
   confirmPassword: any ;
 
+  isAdmin = false;
+
   users: user[] = [];
 
   model = new user( '', '','' );
@@ -29,8 +31,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.registerService.createUser(this.model)
-    console.log(this.model);
+    if (this.isAdmin == false) {
+      this.registerService.createUser(this.model)
+      console.log( "user created" + this.model);
+    }
+    else if(this.isAdmin == true) {
+      this.registerService.createAdmin(this.model)
+      console.log("admin created" + this.model);
+    }
   }
 
   get isPasswordEqual() {

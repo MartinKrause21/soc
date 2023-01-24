@@ -126,6 +126,26 @@ export class AuthService {
 
   }
 
+  createAdmin(user: user) {
+    fetch('https://teach-quiz.herokuapp.com/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then(() => {
+        console.log('create user Success!');
+        this.cookies.deleteAll();
+        this.showRegisterVerifyialog();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
+  }
+
   createGuest(username: string, password = "password") {
     fetch('https://teach-quiz.herokuapp.com/addUsername/' + username, {
       method: 'POST',
