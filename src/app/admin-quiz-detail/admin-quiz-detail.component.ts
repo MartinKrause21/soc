@@ -36,7 +36,9 @@ export class AdminQuizDetailComponent implements OnInit {
 
     this.quizService.getAllUsersForQuiz(this.quizName).subscribe(response => {
       this.quizUsers = response;
+      this.contentLoaded =false
       console.log(response);
+      
       
       this.resultQuizIds = this.dataService.getResultQuizIds();
       this.quizUsers = this.quizUsers.map(user => {
@@ -45,6 +47,7 @@ export class AdminQuizDetailComponent implements OnInit {
           id: this.resultQuizIds[this.quizUsers.indexOf(user)]
         }
       });
+      
     });
 
   

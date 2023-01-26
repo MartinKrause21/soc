@@ -59,6 +59,11 @@ h2 {
  font-size: medium;
 }
 
+h1 {
+    font-weight: bold;
+    color: #502ca0;
+}
+
 #button-holder{
     display: flex;
     justify-content: center;
@@ -110,4 +115,17 @@ h2 {
     margin-top: 50px;
 }
 
+#spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
 
+#service-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#date{
+    margin-left: 5px;
+}

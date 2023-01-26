@@ -49,7 +49,7 @@ import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.com
 import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dialog.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FaqComponent } from './faq/faq.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -104,6 +104,7 @@ import { FaqComponent } from './faq/faq.component';
     MatSnackBarModule,
     MatExpansionModule, 
     MatSlideToggleModule,   
+    MatProgressSpinnerModule, 
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

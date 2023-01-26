@@ -46,6 +46,7 @@ export class ProfilePageComponent implements OnInit {
   resultID : number;
 
   quizName: string;
+  contentLoaded : boolean = true
 
   isCopied = false;
 
@@ -60,11 +61,13 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizService.getAllTeacherQuizes().subscribe(response => { 
       this.allTeacherQuizes = response;
+      this.contentLoaded =false
     });
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;
       console.log(allUserQuizes);
+      this.contentLoaded =false
       
         this.idS = allUserQuizes[0].resultQuizIds;
       
@@ -98,7 +101,7 @@ export class ProfilePageComponent implements OnInit {
   durationInSeconds = 2;
 
   copyText(quizName : string): void {
-    navigator.clipboard.writeText(`http://localhost:4200/quiz/`+quizName).then(() => {
+    navigator.clipboard.writeText(`https://soc-eight.vercel.app/quiz/`+quizName).then(() => {
         this.snackBar.openFromComponent(CopiedSnackbarComponent, {
           duration: this.durationInSeconds * 1000,
           panelClass: ['snackbar']

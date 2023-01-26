@@ -27,6 +27,7 @@ export class UserQuizDetailComponent implements OnInit {
   ) { }
 
   panelOpenState = false;
+  contentLoaded: boolean = true;
 
   id: number;
   ngOnInit(): void {
@@ -46,6 +47,7 @@ export class UserQuizDetailComponent implements OnInit {
       console.log(this.resultQuiz, "resultQuiz");
       console.log(result);
       console.log(this.score, "score");
+      this.contentLoaded = false;
       
     });
 

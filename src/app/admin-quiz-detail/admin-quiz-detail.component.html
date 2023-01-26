@@ -28,6 +28,10 @@
                             No users have taken this quiz yet!
                         </div>
 
+                        <div  class="justify-center mx-auto ">
+                            <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
+                        </div>
+
                     <div *ngIf="quizUsers.length > 0"> 
     
                         <div #loadedContent id="quizCard" *ngFor="let user of quizUsers " > 

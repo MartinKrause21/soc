@@ -3,7 +3,7 @@
 
         <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 mx-auto">
             <div class="flex justify-center">
-                <img src="../assets/images/0icon3.svg" alt=""
+                <img src="../assets/images/0book.svg" alt=""
                     class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-xl border-4 border-white transition duration-200 transform hover:scale-110">
             </div>
 
@@ -16,7 +16,7 @@
                 </ng-template>
 
                 <h1 class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                     results for quiz: {{quizName}}
+                     Results for quiz: {{quizName}}
                 </h1>
 
 
@@ -24,12 +24,17 @@
 
                     <h3 id="score" class="text-center text-white"> Score: {{ score }}</h3>
 
+                    <div  class="justify-center mx-auto ">
+                        <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
+                    </div>
+
+
                     <div *ngFor="let question of resultQuiz[0]" >
 
                         <div id="card" [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}"  *ngFor="let answer of question.answerList" > 
                             
-                            <p id="indicator" *ngIf="answer.correct"><mat-icon>check</mat-icon></p>
-                            <p id="indicator" *ngIf="!answer.correct"><mat-icon>close</mat-icon></p>
+                            <p id="indicator" *ngIf="answer.correct"><mat-icon class="text-green-600">check</mat-icon></p>
+                            <p id="indicator" *ngIf="!answer.correct"><mat-icon class="text-red-500">close</mat-icon></p>
 
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
 

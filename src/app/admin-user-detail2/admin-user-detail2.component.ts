@@ -39,6 +39,7 @@ export class AdminUserDetail2Component implements OnInit {
 
   panelOpenState = false;
   borderColor:string = 'none';
+  contentLoaded: boolean = true;
 
   ngOnInit(): void {
 
@@ -50,6 +51,7 @@ export class AdminUserDetail2Component implements OnInit {
       console.log(this.resultQuiz[0]);
       console.log(result);
       this.score = result[0].score;
+      this.contentLoaded = false
     });
 
   }

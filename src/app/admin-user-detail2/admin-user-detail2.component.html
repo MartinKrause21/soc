@@ -19,11 +19,14 @@
                     {{username}} results for quiz: {{quizName}}
                 </h1>
 
-
                 <!-- [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}" -->
                 <div id="result-holder">
 
                     <h3 id="score" class="text-center text-white"> Score: {{ score }}</h3>
+
+                    <div  class="justify-center mx-auto ">
+                        <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
+                    </div>
 
                     <div *ngFor="let question of resultQuiz[0]" >
 
