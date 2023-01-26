@@ -33,8 +33,10 @@ export class UserQuizDetailComponent implements OnInit {
 
     this.username =String(this.route.snapshot.paramMap.get('username'));
 
-    this.id = this.dataService.getResultQuizId();
-    console.log(this.id, "id");
+    this.id =Number(this.route.snapshot.paramMap.get('resultQuizIds'));
+
+    // this.id = this.dataService.getResultQuizId();
+    // console.log(this.id, "id");
 
 
     this.quizService.getQuizResultForUser(this.id).subscribe((result: any) => {
@@ -45,9 +47,6 @@ export class UserQuizDetailComponent implements OnInit {
       console.log(result);
       console.log(this.score, "score");
       
-      
-      
-    
     });
 
   }

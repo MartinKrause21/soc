@@ -9,6 +9,8 @@ export class FaqComponent implements OnInit {
 
   constructor() { }
 
+  panelOpenState = false;
+
   ngOnInit(): void {
   }
 

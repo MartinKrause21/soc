@@ -43,6 +43,8 @@ export class ProfilePageComponent implements OnInit {
 
   id : string
 
+  resultID : number;
+
   quizName: string;
 
   isCopied = false;
@@ -54,7 +56,7 @@ export class ProfilePageComponent implements OnInit {
 
     this.loggedInUsername = this.cookies.get('username');
 
-    this.quizName =String(this.route.snapshot.paramMap.get('name'));
+    this.resultID = Number(this.route.snapshot.paramMap.get('resultQuizIds'));
 
     this.quizService.getAllTeacherQuizes().subscribe(response => { 
       this.allTeacherQuizes = response;
@@ -62,13 +64,12 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;
+      console.log(allUserQuizes);
       
-
         this.idS = allUserQuizes[0].resultQuizIds;
       
       this.dataService.updateResultQuizIds(this.idS);
       this.idS = this.dataService.getResultQuizIds();
-      
      
     });
 
@@ -92,7 +93,6 @@ export class ProfilePageComponent implements OnInit {
     console.log(quiz.quizId);
     
     this.dataService.getResultQuizIds();
-    
   }
 
   durationInSeconds = 2;

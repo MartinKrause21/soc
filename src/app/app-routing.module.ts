@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'all-quizzes', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
   { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
-  { path: 'user-quiz-detail/:id', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
+  { path: 'user-quiz-detail/:resultQuizIds', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
   { path: 'admin-user-detail/:name/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'faq', component: FaqComponent },

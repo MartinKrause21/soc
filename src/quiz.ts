@@ -54,11 +54,13 @@ export class allUserQuizes {
     id: number;
     description: string;
     creatorName: string;
+    date : Date;
     resultQuizIds: any[];
     constructor(
         name: string,
         id : number,
         description: string,
+        date: Date,
         creatorName: string,
     ) {  }
 }
