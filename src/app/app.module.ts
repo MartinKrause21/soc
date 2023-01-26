@@ -50,6 +50,7 @@ import { DeleteQuizDialogComponent } from './delete-quiz-dialog/delete-quiz-dial
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FaqComponent } from './faq/faq.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatExpansionModule, 
     MatSlideToggleModule,   
     MatProgressSpinnerModule, 
+    MatButtonToggleModule,
+    
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

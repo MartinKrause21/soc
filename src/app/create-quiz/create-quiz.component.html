@@ -12,7 +12,8 @@
                 </div>
 
                 <div class="divide-y divide-gray-200">
-                    <form #quizzForm="ngForm" id="container" [formGroup]="quizForm | asFormGroup" (ngSubmit)="onSubmit()">
+                    <form #quizzForm="ngForm" id="container" [formGroup]="quizForm | asFormGroup"
+                        (ngSubmit)="onSubmit()">
 
                         <div id="quiz-info">
 
@@ -32,7 +33,7 @@
 
                         </div>
 
-                        <div class="flex flex-col items-center justify-center ">
+                        <div id="question-adder" class="flex flex-col items-center justify-center">
 
                             <tr>
 
@@ -57,10 +58,10 @@
 
                                                 <div style="margin-top: 15px;" id="questionForm" class="relative">
 
-                                                    <mat-form-field  id="form-field-info" appearance="outline"
+                                                    <mat-form-field id="form-field-info" appearance="outline"
                                                         class="h-10 w-full mb-4">
                                                         <mat-label> Question </mat-label>
-                                                        <input  matInput required type="text" name="description"
+                                                        <input matInput required type="text" name="description"
                                                             formControlName="questionContent" class="form-control">
                                                         <mat-icon matSuffix> text_fields</mat-icon>
                                                     </mat-form-field>
@@ -68,16 +69,16 @@
 
                                                     <td>
                                                         <button id="button-del" (click)="removeQuestion(questionIndex)"
-                                                            class="btn btn-danger" >
+                                                            class="btn btn-danger">
                                                             <mat-icon id="icon-btn">delete</mat-icon>
                                                         </button>
                                                     </td>
 
                                                     <td>
                                                         <button id="button-del" type="button"
-                                                            (click)="addAnswer(questionIndex)" class="btn btn-primary" >
+                                                            (click)="addAnswer(questionIndex)" class="btn btn-primary">
                                                             <mat-icon id="icon-btn">add_box</mat-icon>
-                                                        </button> 
+                                                        </button>
                                                     </td>
 
 
@@ -92,7 +93,7 @@
                                                             [formGroup]="answer | asFormGroup">
 
                                                             <mat-form-field id="form-field-info" appearance="outline"
-                                                                class="h-10 w-full mb-4">
+                                                                class="h-10 w-full mb-4 mr-1">
                                                                 <mat-label> Answer </mat-label>
                                                                 <input matInput required type="text" name="description"
                                                                     formControlName="answerContent"
@@ -102,10 +103,28 @@
 
                                                             <td>
                                                                 <button id="button-del"
-                                                                    (click)="removeAnswer(answerIndex, questionIndex)" class="btn btn-danger"> 
+                                                                    (click)="removeAnswer(answerIndex, questionIndex)"
+                                                                    class="btn btn-danger">
                                                                     <mat-icon id="icon-btn">delete</mat-icon>
                                                                 </button>
                                                             </td>
+
+                                                            <td>
+                                                                <mat-button-toggle id="button-del"
+                                                                   
+                                                                    class="btn btn-danger">
+                                                                    <mat-icon id="icon-btn2">check</mat-icon>
+                                                                </mat-button-toggle>
+                                                            </td>
+
+                                                            <td>
+                                                                <mat-button-toggle id="button-del"
+
+                                                                    class="btn btn-danger">
+                                                                    <mat-icon id="icon-btn2">close</mat-icon>
+                                                                </mat-button-toggle>
+                                                            </td>
+
 
                                                         </div>
 
@@ -122,11 +141,17 @@
 
                         </div>
 
+                        <div class="text-center mb-3"
+                            *ngIf="!quizzForm.valid || quizForm.value.questionList.length < 1">
+                            Quiz must have at least one question.
+                        </div>
+
                         <mat-divider> </mat-divider>
 
                         <div id="create" class="relative mt-4">
 
                             <button id="button" type="submit"
+                                [disabled]="quizzForm.valid && quizForm.value.questionList.length < 0"
                                 class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
                                 [disabled]="!quizzForm.form.valid">
                                 Create quiz

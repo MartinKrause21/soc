@@ -86,6 +86,13 @@
     }
 }
 
+@media screen and (max-width: 362px) {
+    #button { 
+        min-height: 58px;
+    }
+}
+
+
 #score{
     background-color: #502ca0 ;
     margin-left: 40%;

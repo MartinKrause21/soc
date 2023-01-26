@@ -67,11 +67,11 @@ export class allUserQuizes {
 export class quizUsers {
     username: string;
     id: number;
-    date: string;
+    date: Date;
 
     constructor(
         username: string,
-        date : string
+        date : Date,
     ) {  }
 }
 
