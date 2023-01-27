@@ -15,12 +15,15 @@ export class QrCodeConvertorComponent implements OnInit {
 
   quizzes : allUserQuizes[]
 
+  contentLoaded = true;
+
   public QRcodeText:string;
 
   ngOnInit(): void {
     this.quizService.getAllQuizzes().subscribe(quizzes => {
       this.quizzes = quizzes;
       console.log(quizzes);
+      this.contentLoaded = false;
       
     });
   }

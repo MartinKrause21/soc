@@ -19,7 +19,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 export class CreateQuizComponent  {   
     
   quizForm: FormGroup;  
-       
+
   constructor(
     private formBuilder:FormBuilder,
     private quizService: QuizService,
@@ -51,8 +51,12 @@ export class CreateQuizComponent  {
   newAnswer(): FormGroup { 
     return this.formBuilder.group({  
       answerContent: '', 
+      correct: this.correctAnswer,
     })  
   }  
+  
+  correctAnswer = new FormControl('');
+  
      
   addQuestion() {  
     this.questionList.push(this.newQuestion());  

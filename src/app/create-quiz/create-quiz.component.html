@@ -1,4 +1,4 @@
-<div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
+<div id="container-f" class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
 
         <div id="back" class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -92,14 +92,17 @@
                                                         <div class="relative" id="questionForm"
                                                             [formGroup]="answer | asFormGroup">
 
-                                                            <mat-form-field id="form-field-info" appearance="outline"
-                                                                class="h-10 w-full mb-4 mr-1">
+                                                            <div id="form-field-answer"> 
+                                                                <mat-form-field appearance="outline"
+                                                                class="h-10 w-full mb-4">
                                                                 <mat-label> Answer </mat-label>
                                                                 <input matInput required type="text" name="description"
                                                                     formControlName="answerContent"
                                                                     class="form-control">
                                                                 <mat-icon matSuffix> text_fields</mat-icon>
-                                                            </mat-form-field>
+                                                                </mat-form-field>
+                                                            </div>
+                                                           
 
                                                             <td>
                                                                 <button id="button-del"
@@ -109,22 +112,19 @@
                                                                 </button>
                                                             </td>
 
-                                                            <td>
-                                                                <mat-button-toggle id="button-del"
-                                                                   
-                                                                    class="btn btn-danger">
-                                                                    <mat-icon id="icon-btn2">check</mat-icon>
+                                                            <mat-button-toggle-group [formControl]="correctAnswer">
+
+                                                                <mat-button-toggle value="true" aria-label="Text align left">
+                                                                  <mat-icon>check</mat-icon>
                                                                 </mat-button-toggle>
-                                                            </td>
 
-                                                            <td>
-                                                                <mat-button-toggle id="button-del"
-
-                                                                    class="btn btn-danger">
-                                                                    <mat-icon id="icon-btn2">close</mat-icon>
+                                                                <mat-button-toggle value="false" aria-label="Text align center">
+                                                                  <mat-icon>close</mat-icon>
                                                                 </mat-button-toggle>
-                                                            </td>
 
+                                                            </mat-button-toggle-group>
+
+                                                            <!-- <div> answer is: {{correctAnswer.value}}</div> -->
 
                                                         </div>
 

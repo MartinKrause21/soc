@@ -51,6 +51,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FaqComponent } from './faq/faq.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSlideToggleModule,   
     MatProgressSpinnerModule, 
     MatButtonToggleModule,
-    
+    MatRadioModule, 
+
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

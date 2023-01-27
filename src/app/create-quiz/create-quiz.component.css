@@ -1,4 +1,7 @@
 
+#container-f {
+    margin-top: 40px
+}
 
 button{
     border: 1px solid black;
@@ -82,7 +85,6 @@ button{
     margin-bottom: 2px;
 }
 
-
 mat-button-toggle-checked {
     background-color: mat-color(blue);
     color: mat-color(blue, default-contrast);
@@ -91,3 +93,35 @@ mat-button-toggle-checked {
 #span{  
     vertical-align: middle;
 }
+
+mat-button-toggle-group {
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#button-toggle{
+    width: 50px;
+    height: 50px ;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+#button-toggle:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#form-field-answer {
+    margin-right: 3px;
+} 
+
+

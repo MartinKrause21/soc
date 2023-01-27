@@ -24,3 +24,8 @@ section {
     color: white;
     background-color: #502ca0;
 }
+
+#spinner {
+    margin-left: auto;
+    margin-right: auto;
+}
