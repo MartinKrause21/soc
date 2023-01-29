@@ -57,4 +57,10 @@ export class changePassword {
        password: string
    ) {  }
 }
+export class sendSupport {
+   problem: string;
 
+   constructor(
+       problem: string
+   ) {  }
+}

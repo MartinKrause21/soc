@@ -1,9 +1,24 @@
-#accordation { 
-    margin-top: 200px;
-}
+
 
 #h2 {
     color: #512ca0;
     font-size: 40px;
 }
 
+#picture{
+    background-color: #512ca0 ;
+}
+
+#img {
+    margin-top: 70%;
+    margin-left: 25%;
+    margin-right: 35%;
+}
+
+@media screen and (max-width: 639px) {
+    #accordation {
+      margin-bottom: 30px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+}

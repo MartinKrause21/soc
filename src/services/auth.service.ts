@@ -215,7 +215,6 @@ export class AuthService {
 
   }
 
-
   verifyUser(code: string) {
 
     fetch('https://teach-quiz.herokuapp.com/verify/' + code, {
@@ -234,5 +233,29 @@ export class AuthService {
       });
 
   }
+
+  // sendSupport(problem: string) {
+  //   fetch('https://teach-quiz.herokuapp.com/support', {
+  //     method: 'GET',
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json',
+  //     }),
+  //     body: JSON.stringify(problem),
+  //   })
+  //     .then(() => {
+  //       console.log('create user Success!');
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     });
+
+  // }
+
+  sendSupport(problem: string) {
+    return this.http.get('https://teach-quiz.herokuapp.com/support', {
+        params: { problem: problem },
+    });
+}
+
 
 }

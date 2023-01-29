@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import {  sentMail } from 'src/user';
+import {  sendSupport, sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
@@ -40,6 +40,8 @@ export class ProfilePageComponent implements OnInit {
   email: string = '';
 
   model = new sentMail('');
+
+  modelSendSupport = new sendSupport('')
 
   id : string
 
@@ -120,4 +122,10 @@ export class ProfilePageComponent implements OnInit {
 
     this.dialog.open(DeleteQuizDialogComponent, dialogConfig);
   }
+
+  sendSupport(){
+    this.authService.sendSupport(this.modelSendSupport.problem);
+    console.log(this.modelSendSupport.problem);
+  }
+
 }

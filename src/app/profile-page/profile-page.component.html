@@ -164,7 +164,7 @@
         
                             </ng-template>
         
-                            <form #resendMail="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+                            <form #resendMail="ngForm" (ngSubmit)="sendSupport()" class="form-group">
 
                                 <div class="text-center text-xl text-gray-900"> 
                                     Found some issue? Let us know about it, write here your problem. 
@@ -175,13 +175,13 @@
 
                                     <mat-form-field class="h-10 w-full" appearance="outline">
                                             <mat-label>Your issue</mat-label>
-                                                <textarea matInput required type="text" name="problem"> </textarea>
+                                                <textarea matInput required type="text" name="problem" [(ngModel)]="modelSendSupport.problem">  </textarea>
                                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> 
                                     </mat-form-field>
                                                   
                     
                                     <div id="resendMail" class="relative">
-                                        <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                                        <button id="resendMail-button" type="submit" [disabled]="resendMail.valid"
                                             class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                             Send
                                         </button>
