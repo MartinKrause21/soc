@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
@@ -234,28 +234,21 @@ export class AuthService {
 
   }
 
-  // sendSupport(problem: string) {
-  //   fetch('https://teach-quiz.herokuapp.com/support', {
-  //     method: 'GET',
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json',
-  //     }),
-  //     body: JSON.stringify(problem),
-  //   })
-  //     .then(() => {
-  //       console.log('create user Success!');
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error:', error);
-  //     });
-
-  // }
-
   sendSupport(problem: string) {
-    return this.http.get('https://teach-quiz.herokuapp.com/support', {
-        params: { problem: problem },
-    });
-}
+    fetch('https://teach-quiz.herokuapp.com/support', {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(problem),
+    })
+      .then(() => {
+        console.log('create user Success!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
+  }
 
 }

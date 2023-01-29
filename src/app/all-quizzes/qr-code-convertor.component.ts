@@ -9,11 +9,13 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class QrCodeConvertorComponent implements OnInit {
 
+  quizzes : allUserQuizes[]
+  originalQuizzes: allUserQuizes[];
+
   constructor(
     private quizService : QuizService,
-  ) { }
+  ) {    this.originalQuizzes = this.quizzes;}
 
-  quizzes : allUserQuizes[]
 
   contentLoaded = true;
 
@@ -22,10 +24,22 @@ export class QrCodeConvertorComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.getAllQuizzes().subscribe(quizzes => {
       this.quizzes = quizzes;
+      this.originalQuizzes = quizzes;
       console.log(quizzes);
       this.contentLoaded = false;
       
     });
   }
+
+  searchTerm: string;
+
+  searchQuizzes() {
+    if (!this.searchTerm) {
+        this.quizzes = this.originalQuizzes;
+    } else {
+        this.quizzes = this.quizzes.filter(quiz => quiz.name.includes(this.searchTerm));
+    }
+}
+
 
 }

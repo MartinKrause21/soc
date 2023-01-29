@@ -21,11 +21,85 @@ section {
 }
 
 #button:hover {
-    color: white;
+    color: #512ca0;
     background-color: #502ca0;
 }
 
 #spinner {
     margin-left: auto;
     margin-right: auto;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.flexbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  margin: 5px;
+}
+
+.search > h3 {
+  font-weight: normal;
+}
+
+.search > h1,
+.search > h3 {
+  color: #512ca0;
+  margin-bottom: 15px;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+}
+
+.search > div:after {
+  content: "";
+  background: #512ca0;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 27px;
+  right: -4px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  color: #512ca0;
+  font-size: 16px;
+  background: transparent;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  border: solid 3px #512ca0;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: #512ca0;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 250px;
 }

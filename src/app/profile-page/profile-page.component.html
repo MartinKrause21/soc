@@ -164,7 +164,7 @@
         
                             </ng-template>
         
-                            <form #resendMail="ngForm" (ngSubmit)="sendSupport()" class="form-group">
+                            <form #supportForm="ngForm" (ngSubmit)="sendSupport()" class="form-group">
 
                                 <div class="text-center text-xl text-gray-900"> 
                                     Found some issue? Let us know about it, write here your problem. 
@@ -181,7 +181,7 @@
                                                   
                     
                                     <div id="resendMail" class="relative">
-                                        <button id="resendMail-button" type="submit" [disabled]="resendMail.valid"
+                                        <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid"
                                             class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                             Send
                                         </button>

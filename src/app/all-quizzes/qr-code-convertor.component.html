@@ -10,18 +10,30 @@
             Check it out and choose one.
         </h1>
 
+        <!-- <div class="mb-4">
+            <label for="search-input" class="sr-only"></label>
+            <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchQuizzes()" placeholder="Search Quizzes">
+        </div> -->
+
+        <div class="flexbox">
+            <div class="search">
+              <div>
+                <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchQuizzes()" placeholder="Search Quizzes">
+              </div>
+            </div>
+        </div>
+
     </div>
     
+
     <div  class="justify-center mx-auto ">
         <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      
-
-        <div *ngIf="quizzes.length == 0 "> 
-            zaidn nejsuu uasd 
+        <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-xl text-gray-400 mt-7 mb-7"> 
+            No quizzes here, create some.
         </div>
 
         <div *ngFor="let quiz of quizzes">
