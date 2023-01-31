@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question, Quiz, resultQuiz } from 'src/quiz';
+import { Answer, inputAnswer, Question, Quiz, resultQuiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { MatDialog } from '@angular/material/dialog';
 import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
@@ -43,6 +43,7 @@ export class QuizComponent implements OnInit {
   loggedInUsername : string; 
 
   model = new guest ( '' , '')
+  answerModel = new inputAnswer ('')
 
   location = window.location.href;
 
@@ -86,19 +87,29 @@ export class QuizComponent implements OnInit {
   question : string;
   result : boolean = false;
 
-  sendAns(ans: any, correct: boolean , question : string){
+  sendAns(ans: any, correct: boolean , question : string, content: any){
 
     this.quizNum = this.quizNum + 1;
-
+    
+  
     this.quizService.updateResultQuiz(ans, question);
     console.log(ans, question, this.quizName);
 
-    if (correct) {
+    if (correct && this.answerModel.content == '') {
       this.score = this.score + 10;
       console.log("Correct answer, Score: " + this.score);
+      console.log(correct, 'hej');
+      
     } 
+    else if ( this.answerModel.content == content ) {
+      this.score = this.score + 10;
+      console.log("Correct answer, Score: " + this.score);
+      this.answerModel.content = '';
+    }
+
     else {
       console.log("Incorrect answer, score 0");
+      this.answerModel.content = '';
     }
 
     if (this.quizNum === this.questionList.length) {

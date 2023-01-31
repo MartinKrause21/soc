@@ -10,11 +10,6 @@
             Check it out and choose one.
         </h1>
 
-        <!-- <div class="mb-4">
-            <label for="search-input" class="sr-only"></label>
-            <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchQuizzes()" placeholder="Search Quizzes">
-        </div> -->
-
         <div class="flexbox">
             <div class="search">
               <div>
@@ -35,7 +30,7 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
+
         <div *ngFor="let quiz of quizzes">
             <div id="cards" class="w-full rounded-lg p-6 flex flex-col justify-center items-center">
                 <div class="text-center">

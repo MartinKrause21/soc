@@ -56,13 +56,36 @@
 
         <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
 
-        <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-            <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
-                (click)="sendAns(ans , ans.correct , quiz.questionList[quizNum].questionContent)">
+        <div *ngIf="quiz.questionList[quizNum].answerList.length > 1">
+            <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
+              <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+                (click)="sendAns(ans , ans.correct , quiz.questionList[quizNum].questionContent, quiz.questionList[quizNum].answerList[quizNum].content)">
                 {{ans.content}}
-            </button>
-            <br>
-        </span>
+              </button>
+              <br>
+            </span>
+        </div>
+          
+        <div *ngIf="quiz.questionList[quizNum].answerList.length === 1">
+            <div id="input" *ngFor="let ans of quiz.questionList[quizNum].answerList">
+
+                <mat-form-field id="formField" appearance="outline" class="h-7">
+                    <mat-label>Write here your answer</mat-label>
+                    <input matInput required type="text" name="answer" [(ngModel)]="answerModel.content">
+                </mat-form-field>
+
+                <button id="button-send2" type="submit"
+                        class="px-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                        (click)="sendAns(ans , ans.correct , quiz.questionList[quizNum].questionContent, quiz.questionList[quizNum].answerList[quizNum].content)">
+                        <mat-icon>send</mat-icon>
+                </button>
+
+                <div class="text-center italic text-sm text-gray-400 mt-7">
+                    If you are sure of your answer, press the send button
+                </div>
+
+            </div>
+        </div>
 
     </div>
 

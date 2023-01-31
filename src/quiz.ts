@@ -74,6 +74,14 @@ export class quizUsers {
         date : Date,
     ) {  }
 }
+export class inputAnswer {
+    content: string;
+
+    constructor(
+        content: string,
+    ) {  }
+}
+
 
 
 
