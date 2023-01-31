@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes } from '../quiz';
+import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -136,6 +136,27 @@ export class QuizService {
       'Content-Type': "application/json; charset=utf8",
     }),
       body: JSON.stringify({ "questionContent": question , "answerList": [ { "answerContent": ans.content, "correct": ans.correct} ]} ),
+    })
+    .then(() => {
+      console.log('Success!');
+
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
+  }
+
+  updateResultQuizInput( content: string, question : string) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch(`https://teach-quiz.herokuapp.com/update/resultQuiz/${this.dataServise.getResultQuizId()}`, {  
+      method: 'PUT',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
+      body: JSON.stringify({ "questionContent": question , "answerList": [ { "answerContent": content} ]} ),
     })
     .then(() => {
       console.log('Success!');

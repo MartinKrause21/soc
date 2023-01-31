@@ -141,9 +141,13 @@
 
                         </div>
 
-                        <div class="text-center mb-3"
+                        <div class="text-center mb-3 "
                             *ngIf="quizForm.value.questionList.length < 1">
                             Quiz must have at least one question.
+                        </div>
+
+                        <div  class="text-center mb-3 text-gray-400" *ngIf="quizForm.value.questionList.length > 0">
+                            if you want to have answer as input, add only one answer and type into it correct answer
                         </div>
 
                         <mat-divider> </mat-divider>

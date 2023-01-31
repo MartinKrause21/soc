@@ -88,20 +88,25 @@ export class QuizComponent implements OnInit {
   result : boolean = false;
 
   sendAns(ans: any, correct: boolean , question : string, content: any){
+      //this.quizService.updateResultQuiz(ans, question);
 
-    this.quizNum = this.quizNum + 1;
-    
-  
-    this.quizService.updateResultQuiz(ans, question);
-    console.log(ans, question, this.quizName);
+      if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
+        this.quizService.updateResultQuiz(ans, question);
+        console.log(ans, question, this.quizName);
+        this.quizNum = this.quizNum + 1;
+
+      } else {
+        this.quizService.updateResultQuizInput(this.answerModel.content, question);
+        console.log(this.answerModel.content, question, this.quizName);
+        this.quizNum = this.quizNum + 1;
+      }
 
     if (correct && this.answerModel.content == '') {
       this.score = this.score + 10;
       console.log("Correct answer, Score: " + this.score);
-      console.log(correct, 'hej');
-      
+      //console.log(correct, 'hej');
     } 
-    else if ( this.answerModel.content == content ) {
+    if ( this.answerModel.content == content ) {
       this.score = this.score + 10;
       console.log("Correct answer, Score: " + this.score);
       this.answerModel.content = '';
