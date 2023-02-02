@@ -235,19 +235,22 @@ export class AuthService {
   }
 
   sendSupport(problem: string) {
-    fetch('https://teach-quiz.herokuapp.com/support/' + problem, {
-      method: 'GET',
-      headers: new Headers({
-        'Content-Type': "application/json; charset=utf8",
-      }),
+    fetch('https://teach-quiz.herokuapp.com/support', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(problem),
     })
       .then(() => {
-        console.log('create user Success!');
+        console.log('support send Success!');
       })
       .catch((error) => {
         console.error('Error:', error);
+        alert("faileeedddd")
       });
 
   }
+
 
 }
