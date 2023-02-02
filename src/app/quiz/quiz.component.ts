@@ -96,7 +96,7 @@ export class QuizComponent implements OnInit {
         this.quizNum = this.quizNum + 1;
 
       } else {
-        this.quizService.updateResultQuizInput(this.answerModel.content, question);
+        this.quizService.updateResultQuizInput(this.answerModel.content, question, this.answerModel.content == content);
         console.log(this.answerModel.content, question, this.quizName);
         this.quizNum = this.quizNum + 1;
       }
