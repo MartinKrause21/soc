@@ -87,12 +87,13 @@ export class ProfilePageComponent implements OnInit {
     this.dataService.updateResultQuizId(id);
   }
 
- onSubmit() {
+ sendPasswEmailChange() {
     this.authService.sendPasswordResetEmail(this.model.email);
     setTimeout(() => {
       this.model.email = '';
       this.snackBar.openFromComponent(PasswordChangeEmailSnackbarComponent, {
         duration: 4000,
+        panelClass: ['snackbar']
       });
     }, 1000);
   }
@@ -138,6 +139,7 @@ export class ProfilePageComponent implements OnInit {
       this.modelSendSupport.problem = '';
       this.snackBar.openFromComponent(SendedSupportSnackbarComponent, {
         duration: 4000,
+        panelClass: ['snackbar']
       });
     }, 1000);
   }
