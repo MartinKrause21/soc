@@ -197,7 +197,7 @@ export class AuthService {
     this.dialog.open(RegisterVerifyDialogComponent);
   }
 
-  sendPasswordResetEmail(email: string) {
+  sendPasswordResetEmail(email: string):void {
 
     fetch('https://teach-quiz.herokuapp.com/changePasswordEmail/' + email, {
       method: 'GET',

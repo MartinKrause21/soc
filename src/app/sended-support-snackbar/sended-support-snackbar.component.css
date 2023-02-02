@@ -1,0 +1,9 @@
+#span{
+    text-align: center;
+    color: white;
+    margin-left: 40%;
+}
+
+:host {
+    display: flex;
+}

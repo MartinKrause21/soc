@@ -7,6 +7,8 @@ import {  sendSupport, sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
+import { PasswordChangeEmailSnackbarComponent } from '../password-change-email-snackbar/password-change-email-snackbar.component';
+import { SendedSupportSnackbarComponent } from '../sended-support-snackbar/sended-support-snackbar.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
@@ -85,10 +87,16 @@ export class ProfilePageComponent implements OnInit {
     this.dataService.updateResultQuizId(id);
   }
 
-  onSubmit() {
+ onSubmit() {
     this.authService.sendPasswordResetEmail(this.model.email);
-    console.log(this.model.email);
+    setTimeout(() => {
+      this.model.email = '';
+      this.snackBar.openFromComponent(PasswordChangeEmailSnackbarComponent, {
+        duration: 4000,
+      });
+    }, 1000);
   }
+
 
   sendId(quiz: any) {
     //check if ids belong to the same quiz
@@ -126,6 +134,12 @@ export class ProfilePageComponent implements OnInit {
   sendSupport(){
     this.authService.sendSupport(this.modelSendSupport.problem);
     console.log(this.modelSendSupport.problem);
+    setTimeout(() => {
+      this.modelSendSupport.problem = '';
+      this.snackBar.openFromComponent(SendedSupportSnackbarComponent, {
+        duration: 4000,
+      });
+    }, 1000);
   }
 
 }

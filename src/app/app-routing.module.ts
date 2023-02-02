@@ -18,6 +18,7 @@ import { AdminGuard } from 'src/services/admin.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
 import { FaqComponent } from './faq/faq.component';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'verify/:code', component: VerifyPageComponent },
   { path: 'profile-page', component: ProfilePageComponent , canActivate: [AuthGuard]  },
   { path: 'create-quiz', component: CreateQuizComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'edit-quiz', component: EditQuizComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'all-quizzes', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
   { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent, canActivate: [AuthGuard, AdminGuard]  },

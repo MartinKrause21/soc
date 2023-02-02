@@ -52,6 +52,9 @@ import { FaqComponent } from './faq/faq.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatRadioModule} from '@angular/material/radio';
+import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
+import { PasswordChangeEmailSnackbarComponent } from './password-change-email-snackbar/password-change-email-snackbar.component';
+import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended-support-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,9 @@ import {MatRadioModule} from '@angular/material/radio';
     UserQuizDetailComponent,
     DeleteQuizDialogComponent,
     FaqComponent,
+    EditQuizComponent,
+    PasswordChangeEmailSnackbarComponent,
+    SendedSupportSnackbarComponent,
   ],
   imports: [
     BrowserModule,
