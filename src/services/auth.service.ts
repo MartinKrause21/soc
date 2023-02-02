@@ -235,12 +235,11 @@ export class AuthService {
   }
 
   sendSupport(problem: string) {
-    fetch('https://teach-quiz.herokuapp.com/support', {
+    fetch('https://teach-quiz.herokuapp.com/support/' + problem, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
-      body: JSON.stringify(problem),
     })
       .then(() => {
         console.log('create user Success!');
