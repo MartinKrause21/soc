@@ -238,7 +238,8 @@ export class AuthService {
     fetch('https://teach-quiz.herokuapp.com/support', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
       },
       body: JSON.stringify(problem),
     })
