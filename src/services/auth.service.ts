@@ -238,7 +238,7 @@ export class AuthService {
     fetch('https://teach-quiz.herokuapp.com/support/' + problem, {
       method: 'GET',
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': "application/json; charset=utf8",
       }),
     })
       .then(() => {
