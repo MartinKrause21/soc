@@ -40,3 +40,21 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#alert-icon{
+    margin-left: 46%;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+@media screen and (max-width: 600px) {
+    #alert-icon {
+        margin-left: 45%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #alert-icon {
+        margin-left: 41%;
+    }
+}

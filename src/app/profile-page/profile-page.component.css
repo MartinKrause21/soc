@@ -32,6 +32,25 @@
     width: 50px;
 }
 
+#alert-icon{
+    margin-left: 46%;
+    margin-bottom: 5px;
+    color: gray;
+}
+
+@media screen and (max-width: 600px) {
+    #alert-icon {
+        margin-left: 45%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #alert-icon {
+        margin-left: 41%;
+    }
+}
+
+
 #button {
     width: 110px;
     border-radius: 4px;

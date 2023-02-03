@@ -63,3 +63,14 @@ li {
     margin-top: -6px; 
 }
 
+#container{ 
+    background-color: white;
+    border-top: 20px solid;
+    border-color: #502ca0;
+    box-shadow: 0 8px 15px 1px black;
+}
+
+span {
+    cursor: pointer;
+}
+

@@ -9,10 +9,7 @@
             <div class="mt-16">
                 <h1 class="font-bold text-center text-3xl text-gray-900"> These are results for: {{quizName}}</h1>
 
-                <mat-tab-group mat-align-tabs="center">
-
-
-                    <mat-tab id="quiz-tab">
+                <mat-divider> </mat-divider>
     
                         <ng-template mat-tab-label>
     
@@ -25,6 +22,7 @@
                         </div>
 
                         <div *ngIf="quizUsers.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
                             No users have taken this quiz yet!
                         </div>
 
@@ -67,11 +65,6 @@
                     <div *ngIf="quizUsers.length === 0">
                       <p>No users found.</p>
                     </div> -->
-                    
-                    </mat-tab>
-
-    
-                </mat-tab-group>
               
               
             </div>
