@@ -146,7 +146,7 @@ export class AuthService {
 
   }
 
-  createGuest(username: string, password = "password") {
+  createGuest(username: string, password = ' ') {
     fetch('https://teach-quiz.herokuapp.com/addUsername/' + username, {
       method: 'POST',
       headers: {
