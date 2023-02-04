@@ -17,7 +17,7 @@
                 <mat-tab-group mat-align-tabs="center">
 
 
-                    <mat-tab *ngIf="role !== 'USER' " id="admin-panel">
+                    <mat-tab *ngIf="role == 'ADMIN' " id="admin-panel">
 
                         <ng-template mat-tab-label>
 
@@ -82,7 +82,7 @@
                     </mat-tab>
 
 
-                    <mat-tab *ngIf="role !== 'ADMIN' " id="userResults-tab">
+                    <mat-tab *ngIf="role == 'USER' " id="userResults-tab">
 
                         <ng-template mat-tab-label>
 
@@ -136,6 +136,59 @@
 
                     </mat-tab>
 
+                    <mat-tab *ngIf="role == 'GUEST' " id="guest-tab">
+
+                        <ng-template mat-tab-label>
+
+                            <img src="https://img.icons8.com/ios-glyphs/24/null/repository.png" /> Your Results
+
+                        </ng-template>
+
+                        <div *ngIf="allUserQuizes.length > 0">
+
+                            <div id="quizCard-blurred" *ngFor="let quiz of allUserQuizes">
+
+                                <h1 class=" text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
+                                <h2 class="text-center text-gray-700 font-medium"> {{quiz.description}} </h2>
+                                <div id="service-bar">
+                                    <h3 class="text-center text-gray-400 font-medium"> Creator: {{quiz.creatorName}} |
+                                    </h3>
+                                    <h3 id="date" class="text-center text-gray-400 font-medium"> {{quiz.date | date:
+                                        "medium"}} </h3>
+                                </div>
+
+
+
+                                <div id="button-holder">
+
+                                    <button id="button" type="button"
+                                        routerLink="/user-quiz-detail/{{quiz.resultQuizIds}}"
+                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                        (click)="sendId(quiz)">
+                                        Your results
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                            <h1 class="text-center text-3xl text-gray-900">
+                                <mat-icon>lock</mat-icon> <br>
+                                If you want to see your results, you have to add email and password.
+
+                                <button id="button" type="button" routerLink="/guest-form"
+                                    class="py-[3.5px] px-2 mt-5 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    Here
+                                </button>
+
+                            </h1>
+                        </div>
+
+
+                    </mat-tab>
 
                     <mat-tab id="changePassw-tab">
 
@@ -211,60 +264,6 @@
                             </div>
 
                         </form>
-
-
-                    </mat-tab>
-
-                    <mat-tab>
-
-                        <ng-template mat-tab-label>
-
-                            <img src="https://img.icons8.com/ios-glyphs/24/null/repository.png" /> Your Results
-
-                        </ng-template>
-
-                        <div *ngIf="allUserQuizes.length > 0">
-
-                            <div id="quizCard-blurred" *ngFor="let quiz of allUserQuizes">
-
-                                <h1 class=" text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
-                                <h2 class="text-center text-gray-700 font-medium"> {{quiz.description}} </h2>
-                                <div id="service-bar">
-                                    <h3 class="text-center text-gray-400 font-medium"> Creator: {{quiz.creatorName}} |
-                                    </h3>
-                                    <h3 id="date" class="text-center text-gray-400 font-medium"> {{quiz.date | date:
-                                        "medium"}} </h3>
-                                </div>
-
-
-
-                                <div id="button-holder">
-
-                                    <button id="button" type="button"
-                                        routerLink="/user-quiz-detail/{{quiz.resultQuizIds}}"
-                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                                        (click)="sendId(quiz)">
-                                        Your results
-                                    </button>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                            <h1 class="text-center text-3xl text-gray-900">
-                                <mat-icon>lock</mat-icon> <br>
-                                If you want to see your results, you have to add email and password.
-
-                                <button id="button" type="button" routerLink="/guest-form"
-                                    class="py-[3.5px] px-2 mt-5 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    Here
-                                </button>
-
-                            </h1>
-                        </div>
 
 
                     </mat-tab>

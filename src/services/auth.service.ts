@@ -146,7 +146,7 @@ export class AuthService {
 
   }
 
-  createGuest(username: string, password = ' ') {
+  createGuest(username: string, password = "password") {
     fetch('https://teach-quiz.herokuapp.com/addUsername/' + username, {
       method: 'POST',
       headers: {
@@ -196,6 +196,7 @@ export class AuthService {
   showRegisterVerifyialog(): void {
     this.dialog.open(RegisterVerifyDialogComponent);
   }
+
 
   sendPasswordResetEmail(email: string):void {
 
