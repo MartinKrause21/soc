@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';  
+import { Component, ElementRef, HostListener } from '@angular/core';  
 import { FormGroup, FormControl, FormArray, FormBuilder, Form } from '@angular/forms'  
 import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material/tooltip';
 import { QuizService } from 'src/services/quiz.service';
@@ -17,12 +17,31 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   providers: [{provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}],
 })  
 export class CreateQuizComponent  {   
+
+  isSticky = false;
+  originalTop: number;
+
+  ngAfterViewInit() {
+    this.originalTop = this.el.nativeElement.offsetTop;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const offset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    
+    if (offset > 290) {
+      this.isSticky = true;
+    } else {
+      this.isSticky = false;
+    }
+  }
     
   quizForm: FormGroup;  
 
   constructor(
     private formBuilder:FormBuilder,
     private quizService: QuizService,
+    private el: ElementRef
     ) {  
      
     this.quizForm = this.formBuilder.group({  

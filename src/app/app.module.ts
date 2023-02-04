@@ -55,6 +55,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { PasswordChangeEmailSnackbarComponent } from './password-change-email-snackbar/password-change-email-snackbar.component';
 import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended-support-snackbar.component';
+import { GuestFormComponent } from './guest-form/guest-form.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended
     EditQuizComponent,
     PasswordChangeEmailSnackbarComponent,
     SendedSupportSnackbarComponent,
+    GuestFormComponent,
   ],
   imports: [
     BrowserModule,

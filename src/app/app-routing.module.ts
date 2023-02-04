@@ -19,6 +19,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.component';
 import { FaqComponent } from './faq/faq.component';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
+import { GuestFormComponent } from './guest-form/guest-form.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'admin-user-detail/:name/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'guest-form', component: GuestFormComponent },
 
 ];
 

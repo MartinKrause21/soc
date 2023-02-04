@@ -5,7 +5,7 @@ footer {
 }
 
 #navbar{
-    background-color: #502ca0;
+    background-color: #512ca0;
     position: -webkit-sticky;
     position: fixed;
     width: 100%;
@@ -63,12 +63,24 @@ li {
     margin-top: -6px; 
 }
 
-#container{ 
-    background-color: white;
-    border-top: 20px solid;
-    border-color: #502ca0;
-    box-shadow: 0 8px 15px 1px black;
+footer{ 
+    margin-left: 40px;
+    margin-right: 40px;
 }
+
+.main-content {
+    min-height: calc(100vh - 110px);
+  }
+  
+  .fixed {
+    left: 0;
+    right: 0;
+  }
+  
+  .bottom-0 {
+    bottom: 0;
+  }
+  
 
 span {
     cursor: pointer;

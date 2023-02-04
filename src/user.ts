@@ -57,6 +57,17 @@ export class changePassword {
        password: string
    ) {  }
 }
+
+export class EmailPasswordForGuest {
+   email: string;
+   password: string;
+
+   constructor(
+       password: string,
+       email: string
+   ) {  }
+}
+
 export class sendSupport {
    problem: string;
 

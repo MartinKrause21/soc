@@ -27,6 +27,15 @@
     padding: 20px;
 }
 
+#quizCard-blurred{
+    border: 1px solid rgba(112, 103, 103, 0.285);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 20px;
+    filter: blur(6px);
+    margin-top: 10px;
+}
+
 #icon{
     height: 50px;
     width: 50px;

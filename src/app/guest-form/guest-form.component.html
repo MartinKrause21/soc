@@ -1,0 +1,58 @@
+<div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div id="login-back"
+            class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="max-w-md mx-auto">
+                <div>
+                    <h1 class="text-2xl font-semibold">Add your email and password here.</h1>
+                </div>
+
+                <div class="divide-y divide-gray-200">
+                    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+
+                        <mat-form-field appearance="outline" class="h-10 w-full" >
+                            <mat-label>Email</mat-label>
+                            <input matInput  required type="email" name="email" [(ngModel)]="model.email" #email="ngModel" pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"> 
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="h-10 w-full">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" required name="password" >
+                            <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="h-10 w-full">
+                            <mat-label>Confirm password</mat-label>
+                            <input matInput [type]="hide2 ? 'password' : 'text'" required name="confirmPassword">
+                            <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <!-- <div class="alert" *ngIf = "comfPassword.touched && confirmPassword != model.password" > Password doesn´t match </div> <br> -->
+
+                        <div id="login" class="relative">
+
+                            <button id="login-button" type="submit" [disabled]="!loginForm.form.valid"
+                                class="py-2 px-8 mt-7 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                Send 
+                            </button> 
+
+                        </div>
+
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   

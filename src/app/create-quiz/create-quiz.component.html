@@ -35,14 +35,15 @@
 
                         <div id="question-adder" class="flex flex-col items-center justify-center">
 
-                            <tr>
+                            <tr id="question-add-holder" [ngClass]="{'sticky': isSticky}">
 
-                                <button
-                                    class="transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                                    (click)="addQuestion()" id="button" type="button">
-                                    <span id="span" class="ml-2"> Add question </span>
-                                    <mat-icon id="icon">add_box</mat-icon>
-                                </button>
+                                <button 
+                                class="transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                (click)="addQuestion()" id="button-question" type="button"
+                                >
+                                <span id="span" class="ml-2"> Add question </span>
+                                <mat-icon id="icon">add_box</mat-icon>
+                              </button>
 
                             </tr>
 
@@ -147,7 +148,7 @@
                         </div>
 
                         <div  class="text-center mb-3 text-gray-400" *ngIf="quizForm.value.questionList.length > 0">
-                            if you want to have answer as input, add only one answer and type into it correct answer
+                            If you want to have answer as input, add only one answer and type into it correct answer
                         </div>
 
                         <mat-divider> </mat-divider>
