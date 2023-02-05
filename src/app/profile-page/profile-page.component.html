@@ -332,13 +332,24 @@
 
                         </ng-template>
 
+                        <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                            This is the list of all admins:
+                        </div>
+
+                        <div *ngIf="allUserQuizes.length == 0"
+                            class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
+                            Any admin has been registered yet.
+                        </div>
+
+
                         <div *ngIf="allAdmins.length > 0"> 
     
                             <div #loadedContent id="quizCard" *ngFor="let user of allAdmins " > 
         
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} </h1> 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{ user.email }}</h1> 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{ user.enabled }}</h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> Username: {{user.username}} </h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> Email: {{ user.email }}</h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> Verified: {{ user.enabled }}</h1> 
     
                                 <div id="button-holder">
                                         
