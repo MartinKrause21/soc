@@ -324,7 +324,7 @@
 
                     <!-- SUPERVISOR SECTION -->
 
-                    <mat-tab id="support" >
+                    <mat-tab id="all-admins" *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
@@ -370,7 +370,7 @@
 
                     </mat-tab>
 
-                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+                    <mat-tab id="all-users"  *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
@@ -412,7 +412,7 @@
 
                     </mat-tab>
 
-                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+                    <mat-tab id="all-quizzes"  *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
