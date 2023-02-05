@@ -267,7 +267,7 @@ export class AuthService {
 
   updateGuest(username: string, password: string, email: string) {
     fetch(`https://teach-quiz.herokuapp.com/update/guest/${username}/${password}/${email}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Authorization': 'Basic '+btoa(this.authString), 
         'Content-Type': "application/json; charset=utf8",
