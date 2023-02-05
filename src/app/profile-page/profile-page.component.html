@@ -190,7 +190,7 @@
 
                     </mat-tab>
 
-                    <mat-tab id="changePassw-tab">
+                    <mat-tab *ngIf="role !== 'GUEST' " id="changePassw-tab">
 
                         <ng-template mat-tab-label>
 
@@ -225,6 +225,59 @@
                             </div>
 
                         </form>
+
+
+                    </mat-tab>
+
+                    <mat-tab *ngIf="role == 'GUEST' " id="changePassw-tab">
+
+                        <ng-template mat-tab-label>
+
+                            <mat-icon>refresh</mat-icon> Change password
+
+                        </ng-template>
+
+                        <form #resendMail="ngForm" (ngSubmit)="sendPasswEmailChange()" class="form-group" id="changePasswForm-blurred">
+
+                            <div class="text-center text-xl text-gray-900">
+                                If you want to change your password write here your email.
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <mat-form-field id="input" class="h-10 w-full" appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput required type="email" name="email" [(ngModel)]="model.email"
+                                        #email="ngModel"
+                                        pattern="^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$">
+                                    <mat-icon matSuffix>alternate_email</mat-icon>
+                                </mat-form-field>
+
+                                <div id="resendMail" class="relative">
+                                    <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Send
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                        <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <h1 class="text-center text-3xl text-gray-900">
+                            <mat-icon>lock</mat-icon> <br>
+                            If you want to change your password, you have to add email.
+
+                            <button id="button" type="button" routerLink="/guest-form"
+                                class="py-[3.5px] px-2 mt-5 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                Here
+                            </button>
+
+                        </h1>
+                    </div>
 
 
                     </mat-tab>

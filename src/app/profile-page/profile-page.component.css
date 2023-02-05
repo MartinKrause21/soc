@@ -36,6 +36,11 @@
     margin-top: 10px;
 }
 
+#changePasswForm-blurred {
+    filter: blur(6px);
+    margin-top: 10px;
+}
+
 #icon{
     height: 50px;
     width: 50px;

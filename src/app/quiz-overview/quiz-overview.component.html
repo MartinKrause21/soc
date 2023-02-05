@@ -2,7 +2,7 @@
 <div *ngIf="loggedInUsername" id="block" class="flex h-screen sm:mt-200 flex-col items-center justify-center space-y-6 px-4 sm:flex-row sm:space-x-6 sm:space-y-0 m-10">
     
 
-    <div *ngIf="role !== 'USER' " id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10 duration-300 hover:scale-105 hover:shadow-xl">
+    <div *ngIf="role == 'ADMIN' " id="container" class="w-full bg-white font-semibold text-center rounded-3xl shadow-lg p-10 duration-300 hover:scale-105 hover:shadow-xl">
         <img class="mx-auto mt-8 h-50 w-50 text-red-500" viewBox="0 0 20 20"
             src="https://img.icons8.com/ios-glyphs/90/null/plus-2-math.png" />
 
