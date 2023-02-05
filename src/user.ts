@@ -90,3 +90,18 @@ export class allAdmins {
        date : Date,
    ) {  }
 }
+
+export class allUsers {
+   username: string;
+   email: string;
+   enabled: boolean;
+   id: number;
+   date: Date;
+
+   constructor(
+       username: string,
+       email: string,
+       enabled: boolean,
+       date : Date,
+   ) {  }
+}

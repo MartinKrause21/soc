@@ -324,7 +324,7 @@
 
                     <!-- SUPERVISOR SECTION -->
 
-                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+                    <mat-tab id="support" >
 
                         <ng-template mat-tab-label>
 
@@ -336,7 +336,7 @@
                             This is the list of all admins:
                         </div>
 
-                        <div *ngIf="allUserQuizes.length == 0"
+                        <div *ngIf="allAdmins.length == 0"
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
                             Any admin has been registered yet.
@@ -345,24 +345,28 @@
 
                         <div *ngIf="allAdmins.length > 0"> 
     
-                            <div #loadedContent id="quizCard" *ngFor="let user of allAdmins " > 
+                            <div #loadedContent id="quizCard" *ngFor="let admin of allAdmins " > 
         
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> Username: {{user.username}} </h1> 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> Email: {{ user.email }}</h1> 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> Verified: {{ user.enabled }}</h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{admin.username}} | {{admin.id}} </h1> 
+                                <h3 class="text-center text-gray-500 font-bold"> {{admin.email}} </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{admin.enabled}}</h3> 
     
                                 <div id="button-holder">
                                         
-                                    <button id="button" type="button" routerLink="/admin-user-detail/{{quizName}}/{{user.username}}/{{user.id}}"
-                                    class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Results
-                                    </button> 
+                                    <button id="button" type="button"
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>info</mat-icon>
+                                </button>
+
+                                <button id="button" type="button" 
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
     
                                 </div>
     
                             </div>
-                        </div>
-
+                        </div> 
 
                     </mat-tab>
 
@@ -374,33 +378,78 @@
 
                         </ng-template>
 
-                        <form #supportForm="ngForm" (ngSubmit)="sendSupport()" class="form-group">
-
-                            <div class="text-center text-xl text-gray-900">
-                                Found some issue? Let us know about it, write here your problem.
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <mat-form-field class="h-10 w-full" appearance="outline">
-                                    <mat-label>Your issue</mat-label>
-                                    <textarea matInput required type="text" name="problem"
-                                        [(ngModel)]="modelSendSupport.problem">  </textarea>
-                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                                </mat-form-field>
+                        <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                            This is the list of all users:
+                        </div>
+                     
+                        <div *ngIf="allUsers.length == 0"
+                            class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
+                            Any user has been registered yet.
+                        </div>
 
 
-                                <div id="resendMail" class="relative">
-                                    <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid"
-                                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Send
-                                    </button>
+                        <div > 
+    
+                            <div #loadedContent id="quizCard" *ngFor="let user of allUsers " > 
+        
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} | {{user.id}} </h1> 
+                                <h3 class="text-center text-gray-500 font-bold"> {{user.email}} </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{user.enabled}}</h3> 
+    
+                                <div id="button-holder">
+
+                                <button id="button" type="button" 
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+    
                                 </div>
-
+    
                             </div>
+                        </div> 
 
-                        </form>
+
+                    </mat-tab>
+
+                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+
+                        <ng-template mat-tab-label>
+
+                            <img src="https://img.icons8.com/ios-filled/23/null/repository.png" />  All quizzes
+
+                        </ng-template>
+
+                        <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                            This is the list of all quizzes:
+                        </div>
+                     
+                        <div *ngIf="quizzes.length == 0"
+                            class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                            Any quiz has been created yet.
+                        </div>
+
+
+                        <div > 
+    
+                            <div #loadedContent id="quizCard" *ngFor="let quiz of quizzes " > 
+        
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} | {{quiz.id}} </h1> 
+                                <h3 class="text-center text-gray-500 font-bold"> {{quiz.description}} </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Creator: {{quiz.creatorName}} </h3>
+    
+                                <div id="button-holder">
+
+                                <button id="button" type="button" 
+                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+    
+                                </div>
+    
+                            </div>
+                        </div> 
 
 
                     </mat-tab>
