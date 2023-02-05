@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms'; 
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/services/auth.service';
 import { EmailPasswordForGuest } from 'src/user';
 
 
@@ -10,20 +12,31 @@ import { EmailPasswordForGuest } from 'src/user';
 })
 export class GuestFormComponent implements OnInit {
 
-  model = new EmailPasswordForGuest( '', '');
+  updateGuestModel = new EmailPasswordForGuest( '', '');
 
   hide = true;
   hide2 = true;
+  username: string;
+  confirmPassword: any ;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private cookies: CookieService,
+  ) { }
 
   ngOnInit(): void {
+    this.username = this.cookies.get('username');  
+    console.log(this.username);
+    
   }
-
     
   onSubmit() {
-    //this.loginService.login(this.model);
-    console.log(this.model);
+    this.authService.updateGuest( this.username, this.updateGuestModel.password, this.updateGuestModel.email,);
+    console.log(this.username, this.updateGuestModel);
+  }
+
+  get isPasswordEqual() {
+    return this.updateGuestModel.password === this.confirmPassword;
   }
 
 }
