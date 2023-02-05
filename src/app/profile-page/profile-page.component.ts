@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import {  sendSupport, sentMail } from 'src/user';
+import {  allAdmins, sendSupport, sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
@@ -38,6 +38,7 @@ export class ProfilePageComponent implements OnInit {
   allUserQuizes : allUserQuizes [] = []; 
   loggedInUsername: string;
   resultQuizIds: any[];
+  allAdmins: allAdmins[];
 
   email: string = '';
 
@@ -80,6 +81,9 @@ export class ProfilePageComponent implements OnInit {
      
     });
 
+    this.authService.getAllAdminsForSupervisor().subscribe(allAdmins => this.allAdmins = allAdmins);
+    console.log(this.allAdmins);
+    
     this.role = this.cookies.get('role');
   }
   

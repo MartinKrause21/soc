@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { user, userLogin } from 'src/user';
+import { allAdmins, user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -254,17 +254,6 @@ export class AuthService {
 
   }
 
-  // updateGuest(username: string, password: string, email: string) {
-  //   return this.http.put(`https://teach-quiz.herokuapp.com/update/guest/${username}/${password}/${email}`, { headers: this.headers })
-  //     .pipe(
-  //       catchError(error => {
-  //         console.error('An error occurred:', error);
-  //         return throwError(error);
-  //       }),
-  //       tap(data => console.log('Updated successfully:', data))
-  //     );
-  // }
-
   updateGuest(username: string, password: string, email: string) {
     fetch(`https://teach-quiz.herokuapp.com/update/guest/${username}/${password}/${email}`, {
       method: 'PUT',
@@ -275,12 +264,17 @@ export class AuthService {
     })
       .then(() => {
         console.log('update guest send Success!');
+        this.showRegisterVerifyialog();
       })
       .catch((error) => {
         console.error('Error:', error);
         alert("faileeedddd")
       });
 
+  }
+
+  getAllAdminsForSupervisor(): Observable<allAdmins[]> {
+    return this.http.get<allAdmins[]>(`https://teach-quiz.herokuapp.com/all/admins`,  {headers: this.headerHttp});
   }
   
 }

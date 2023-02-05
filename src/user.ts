@@ -75,3 +75,18 @@ export class sendSupport {
        problem: string
    ) {  }
 }
+
+export class allAdmins {
+   username: string;
+   email: string;
+   enabled: boolean;
+   id: number;
+   date: Date;
+
+   constructor(
+       username: string,
+       email: string,
+       enabled: boolean,
+       date : Date,
+   ) {  }
+}

@@ -190,7 +190,7 @@
 
                     </mat-tab>
 
-                    <mat-tab *ngIf="role !== 'GUEST' " id="changePassw-tab">
+                    <mat-tab *ngIf="role !== 'GUEST' && role !== 'SUPERVISOR'" id="changePassw-tab">
 
                         <ng-template mat-tab-label>
 
@@ -229,7 +229,7 @@
 
                     </mat-tab>
 
-                    <mat-tab *ngIf="role == 'GUEST' " id="changePassw-tab">
+                    <mat-tab *ngIf="role == 'GUEST' " id="changePassw-tab-blurred">
 
                         <ng-template mat-tab-label>
 
@@ -282,11 +282,84 @@
 
                     </mat-tab>
 
-                    <mat-tab id="changePassw-tab">
+                    <mat-tab id="support"  *ngIf="role !== 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
                             <mat-icon>help</mat-icon> Support
+
+                        </ng-template>
+
+                        <form #supportForm="ngForm" (ngSubmit)="sendSupport()" class="form-group">
+
+                            <div class="text-center text-xl text-gray-900">
+                                Found some issue? Let us know about it, write here your problem.
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <mat-form-field class="h-10 w-full" appearance="outline">
+                                    <mat-label>Your issue</mat-label>
+                                    <textarea matInput required type="text" name="problem"
+                                        [(ngModel)]="modelSendSupport.problem">  </textarea>
+                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                </mat-form-field>
+
+
+                                <div id="resendMail" class="relative">
+                                    <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid"
+                                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Send
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </form>
+
+
+                    </mat-tab>
+
+
+                    <!-- SUPERVISOR SECTION -->
+
+                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+
+                        <ng-template mat-tab-label>
+
+                            <mat-icon class="mr-2">people</mat-icon> Admin manager
+
+                        </ng-template>
+
+                        <div *ngIf="allAdmins.length > 0"> 
+    
+                            <div #loadedContent id="quizCard" *ngFor="let user of allAdmins " > 
+        
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} </h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{ user.email }}</h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{ user.enabled }}</h1> 
+    
+                                <div id="button-holder">
+                                        
+                                    <button id="button" type="button" routerLink="/admin-user-detail/{{quizName}}/{{user.username}}/{{user.id}}"
+                                    class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Results
+                                    </button> 
+    
+                                </div>
+    
+                            </div>
+                        </div>
+
+
+                    </mat-tab>
+
+                    <mat-tab id="support"  *ngIf="role == 'SUPERVISOR' ">
+
+                        <ng-template mat-tab-label>
+
+                            <mat-icon class="mr-2">people</mat-icon> User manager
 
                         </ng-template>
 
