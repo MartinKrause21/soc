@@ -44,9 +44,11 @@ export class ProfilePageComponent implements OnInit {
 
   email: string = '';
 
+  selected: string;
+
   model = new sentMail('');
 
-  modelSendSupport = new sendSupport('')
+  modelSendSupport = new sendSupport('', '')
 
   id : string
 
@@ -154,15 +156,16 @@ export class ProfilePageComponent implements OnInit {
   }
 
   sendSupport(){
-    this.authService.sendSupport(this.modelSendSupport.problem);
-    console.log(this.modelSendSupport.problem);
+    this.authService.sendSupport(this.modelSendSupport.problem , this.selected);
+    console.log( this.modelSendSupport.problem , this.selected );
     setTimeout(() => {
       this.modelSendSupport.problem = '';
+      this.selected = '';
       this.snackBar.openFromComponent(SendedSupportSnackbarComponent, {
         duration: 4000,
         panelClass: ['snackbar']
       });
     }, 1000);
   }
-
+  
 }

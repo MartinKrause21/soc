@@ -56,6 +56,7 @@ import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { PasswordChangeEmailSnackbarComponent } from './password-change-email-snackbar/password-change-email-snackbar.component';
 import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended-support-snackbar.component';
 import { GuestFormComponent } from './guest-form/guest-form.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,7 @@ import { GuestFormComponent } from './guest-form/guest-form.component';
     MatProgressSpinnerModule, 
     MatButtonToggleModule,
     MatRadioModule, 
-
+    MatSelectModule, 
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

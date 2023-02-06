@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { allAdmins, allUsers, user, userLogin } from 'src/user';
+import { allAdmins, allUsers, sendSupport, user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -235,14 +235,14 @@ export class AuthService {
 
   }
 
-  sendSupport(problem: string) {
+  sendSupport(selected: string, report: string) {
     fetch('https://teach-quiz.herokuapp.com/support', {
       method: 'POST',
       headers: {
         'Authorization': 'Basic '+btoa(this.authString), 
         'Content-Type': "application/json; charset=utf8",
       },
-      body: JSON.stringify(problem),
+      body: JSON.stringify( {reportType: selected, report: report} ),
     })
       .then(() => {
         console.log('support send Success!');

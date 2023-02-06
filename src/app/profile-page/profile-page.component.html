@@ -296,19 +296,34 @@
                                 Found some issue? Let us know about it, write here your problem.
                             </div>
 
+                            <div id="select">
+                            
+                                <mat-form-field  appearance="outline" class="w-3/6">
+                                    <mat-label>Select an report type</mat-label>
+                                    <mat-select [(value)]="selected" required>
+                                      <mat-option value="">Please select an option</mat-option>
+                                      <mat-option value="Bug">Bug</mat-option>
+                                      <mat-option value="Help">Help</mat-option>
+                                      <mat-option value="Question">Question</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="selected == ''">Report type is required</mat-error>
+                                </mat-form-field>
+
+                            </div>
+                            
 
                             <div class="form-group">
 
                                 <mat-form-field class="h-10 w-full" appearance="outline">
                                     <mat-label>Your issue</mat-label>
                                     <textarea matInput required type="text" name="problem"
-                                        [(ngModel)]="modelSendSupport.problem">  </textarea>
+                                        [(ngModel)]="modelSendSupport.problem" #problemInput="ngModel">  </textarea>
                                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                                 </mat-form-field>
 
 
                                 <div id="resendMail" class="relative">
-                                    <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid"
+                                    <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid || selected == '' "
                                         class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         Send
                                     </button>
@@ -317,6 +332,7 @@
                             </div>
 
                         </form>
+
 
 
                     </mat-tab>
@@ -435,7 +451,7 @@
     
                             <div #loadedContent id="quizCard" *ngFor="let quiz of quizzes " > 
         
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} | {{quiz.id}} </h1> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1> 
                                 <h3 class="text-center text-gray-500 font-bold"> {{quiz.description}} </h3>
                                 <h3 class="text-center text-gray-500 font-bold"> Creator: {{quiz.creatorName}} </h3>
     

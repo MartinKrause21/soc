@@ -70,9 +70,11 @@ export class EmailPasswordForGuest {
 
 export class sendSupport {
    problem: string;
+   selected: string;
 
    constructor(
-       problem: string
+       problem: string,
+       selected: string
    ) {  }
 }
 

@@ -31,6 +31,21 @@
     color: white;
   }
 
+  #text-velky {
+    display: flex;
+    height: 80px;
+    width: 200px;
+  }
+
+  #cards {
+    background-color: #512ca095;
+    min-height: 222px;
+  }
+
+  
+
+
+
 
   
 

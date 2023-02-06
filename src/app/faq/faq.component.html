@@ -1,4 +1,4 @@
-<div class="min-w-screen min-h-screen bg-white-900 flex items-center justify-center px-5 py-5">
+<div id="container" class="min-w-screen min-h-screen bg-white-900 flex items-center justify-center px-5 py-5">
     <div id="scpart" class=" text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
         <div class="md:flex w-full">
             <div id="picture" class="hidden md:block w-1/2  py-10 px-10">
@@ -14,7 +14,7 @@
                         Frequently asked questions.
                     </h2>
             
-                    <h1 class="font-bold text-base font-heading text-white">
+                    <h1 class="font-bold text-base font-heading text-black">
                         Here you can read frequently asked questions, if you haven't found an answer to something, write to us at support
                     </h1>
             
@@ -33,7 +33,7 @@
                 
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <p>I'm visible because I am open</p>
+                            <p>Admin can create quizzes, share it, manage it.</p>
                         </mat-expansion-panel>
                     
                         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -45,31 +45,43 @@
                 
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <p>I'm visible because I am open</p>
+                            <p> User can take quizzes and view their results. </p>
                         </mat-expansion-panel>
                     
                         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Advantage of being user
+                                    Why guest? 
                                 </mat-panel-title>
                                 <mat-panel-description>
                 
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <p>I'm visible because I am open</p>
+                            <p>As guest you can take quizzes, but you can't see your results, you need to add email in your profile.</p>
                         </mat-expansion-panel>
     
                         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Advantage of being user
+                                    How to create quiz?
                                 </mat-panel-title>
                                 <mat-panel-description>
                 
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            <p>I'm visible because I am open</p>
+                            <p> You can create quiz only when you register as admin. </p>
+                        </mat-expansion-panel>
+
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    How quiz works?
+                                </mat-panel-title>
+                                <mat-panel-description>
+                
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <p> Every good answer gives you 10 points, wrong 0 points, either you choose from the answer you have to choose from or you write the answer in to the answer field. </p>
                         </mat-expansion-panel>
                 
                     </mat-accordion>

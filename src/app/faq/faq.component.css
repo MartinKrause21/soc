@@ -23,6 +23,13 @@
     }
 }
 
+@media screen and (max-width: 550px) {
+    #container {
+      margin-top: 40px;
+    }
+}
+
 #scpart {
-    background-color: #512ca068;
+    background-color: white;
+    border: 2px solid #512ca0;
 }
