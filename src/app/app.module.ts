@@ -119,6 +119,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonToggleModule,
     MatRadioModule, 
     MatSelectModule, 
+
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

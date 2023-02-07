@@ -42,6 +42,32 @@
     min-height: 222px;
   }
 
+  .animationLeft {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+
+  .animationRight {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 1s;
+  }
+
+  @media screen and (max-width: 1029px) {
+    .animationRight {
+      margin-top: 20px;
+    }
+}
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+  
   
 
 
