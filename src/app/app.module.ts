@@ -57,7 +57,7 @@ import { PasswordChangeEmailSnackbarComponent } from './password-change-email-sn
 import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended-support-snackbar.component';
 import { GuestFormComponent } from './guest-form/guest-form.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +87,7 @@ import {MatSelectModule} from '@angular/material/select';
     PasswordChangeEmailSnackbarComponent,
     SendedSupportSnackbarComponent,
     GuestFormComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

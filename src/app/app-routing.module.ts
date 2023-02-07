@@ -20,6 +20,7 @@ import { UserQuizDetailComponent } from './user-quiz-detail/user-quiz-detail.com
 import { FaqComponent } from './faq/faq.component';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { GuestFormComponent } from './guest-form/guest-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,7 @@ const routes: Routes = [
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'guest-form', component: GuestFormComponent },
-
+  { path: '**', pathMatch: 'full',  component: PageNotFoundComponent },
 ];
 
 @NgModule({

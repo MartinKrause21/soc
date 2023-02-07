@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
         });
       });
 
-      const hiddenElements = document.querySelectorAll('.animationLeft, .animationRight');
+      const hiddenElements = document.querySelectorAll('.animationLeft, .animationRight, .animationBottom');
       hiddenElements.forEach((element) => {
         observer.observe(element);
       });

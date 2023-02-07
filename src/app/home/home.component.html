@@ -18,7 +18,7 @@
     <section class="flex flex-col w-full h-[870px] bg-cover bg-fixed bg-center flex justify-center items-center" style="
          background-image: url(https://images.unsplash.com/photo-1613327986042-63d4425a1a5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
         ">
-        <h1 class="text-white text-[40px] font-bold mt-20 mb-50">
+        <h1 class="text-white text-[40px] font-bold mt-20 mb-50 animationBottom">
             <div id="text-velky" class="text-white"> <img id="logo-long" src="assets/images/queasy-logo2.png"> </div>
         </h1>
 
@@ -70,22 +70,22 @@
 
             <div class="text-center lg:text-left">
 
-                <button id="special2" routerLink="/quiz-overview"
-                    class="block visible py-4 px-8 mb-4 text-xs font-semibold tracking-wide leading-none text-white rounded cursor-pointer sm:mr-3 sm:mb-0 sm:inline-block">
-                    Let's test!
-                </button>
+                <button id="button-revert" routerLink="/all-quizzes"
+                class="py-3 px-8 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                Let's see!
+                </button> 
 
-                <button routerLink="/login"
-                    class="block visible py-4 px-8 text-xs font-semibold leading-none bg-white rounded border border-solid cursor-pointer sm:inline-block border-slate-200 text-slate-500">
-                    Join us!
-                </button>
+                <button id="button" routerLink="/login"
+                class="py-3 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                Join us!
+                </button> 
 
             </div>
 
         </div>
 
         <!-- Column-2 -->
-        <div class="animationRight px-3 mb-12 w-full lg:mb-0 lg:w-3/5">
+        <div id="svg" class="animationLeft px-3 mb-12 w-full lg:mb-0 lg:w-3/5">
             <!-- Illustrations Container -->
             <div class="flex justify-center items-center">
                 <svg class="block max-w-full h-auto align-middle lg:max-w-lg" xmlns="http://www.w3.org/2000/svg"
@@ -204,6 +204,7 @@
 
     <section class="mb-6">
 
+       <div class="animationBottom"> 
         <h2 class="mb-4 text-3xl font-bold text-center lg:text-5xl">
 
             <span id="special" class="text-5xl leading-relaxeds mb-6"> Contact </span>
@@ -211,7 +212,7 @@
         </h2>
 
         <!-- component -->
-        <div id="contact" class="animationLeft flex items-center justify-center">
+        <div id="contact" class=" flex items-center justify-center">
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                 <!-- 1 card -->
                 <div class="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl duration-300 hover:scale-105 ">
@@ -268,6 +269,7 @@
 
             </div>
         </div>
+       </div>
 
     </section>
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { user } from 'src/user';
 import { AuthService } from 'src/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
 
   constructor(
     private readonly loginService: AuthService,
-    private cookies: CookieService,
+    private cookies: CookieService, 
+    private router: Router,
   ){}
 
   users: user[] = [];
@@ -28,9 +30,8 @@ export class AppComponent {
       // set role to cookies
       this.cookies.set('role', role);
       console.log(role);
-      
     });
-    
+
   }
 
   showMenu = false;

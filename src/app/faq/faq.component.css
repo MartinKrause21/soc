@@ -6,13 +6,13 @@
 }
 
 #picture{
-    background-color: #512ca0 ;
+  justify-content: center; align-items: center;
 }
 
 #img {
-    margin-top: 70%;
-    margin-left: 25%;
     margin-right: 35%;
+    height: 432px;
+    width: 337px;
 }
 
 @media screen and (max-width: 639px) {
@@ -31,5 +31,7 @@
 
 #scpart {
     background-color: white;
-    border: 2px solid #512ca0;
+    border-top: #512ca0 solid 20px;
+    padding: 20px;
 }
+

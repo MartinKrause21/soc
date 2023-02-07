@@ -1,20 +1,20 @@
-  #main{
+  #main {
     margin-top: -15px;
   }
-  
-  #text{
+
+  #text {
     margin-top: 30px;
   }
-  
+
   #special {
     color: #502ca0;
   }
-  
+
   #special2 {
     background-color: #502ca0;
   }
 
-  #pointer{
+  #pointer {
     background-color: #502ca0;
     width: 50px;
     height: 50px;
@@ -25,7 +25,7 @@
     z-index: 5;
   }
 
-  #arrow-icon{
+  #arrow-icon {
     margin-left: 13px;
     margin-top: 15px;
     color: white;
@@ -46,7 +46,7 @@
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
-    transition:  1s;
+    transition: 1s;
   }
 
   .animationRight {
@@ -56,8 +56,15 @@
     transition: 1s;
   }
 
+  .animationBottom {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(70%);
+    transition: 1s;
+  }
+
   @media screen and (max-width: 1029px) {
-    .animationRight {
+    #svg {
       margin-top: 20px;
     }
   }
@@ -66,9 +73,13 @@
     .animationLeft {
       transform: translateX(0%);
     }
-  
+
     .animationRight {
       transform: translateX(0%);
+    }
+
+    .animationBottom {
+      transform: translateY(0%);
     }
   }
 
@@ -77,11 +88,28 @@
     filter: blur(0);
     transform: translateX(0);
   }
-  
-  
+
+  #button {
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+  }
+
+  #button:hover {
+    color: white;
+    background-color: #502ca0;
+  }
 
 
+  #button-revert {
+    border-radius: 4px;
+    background-color: #502ca0;
+    color: white;
+  }
 
-
-  
+  #button-revert:hover {
+    background-color: white;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+  }
 
