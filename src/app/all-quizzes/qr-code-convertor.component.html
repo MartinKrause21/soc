@@ -25,11 +25,12 @@
         <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
     </div>
 
-    <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-xl text-gray-400 mt-7 mb-7"> 
+    <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-2xl text-gray-400 mt-20 mb-7"> 
+        <img id="alert-icon" src="https://img.icons8.com/wired/80/808080/repository.png" />
         No quizzes here, create some.
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div [@animateBottom]="visibility" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <div *ngFor="let quiz of quizzes">
             <div id="cards" class="w-full rounded-lg p-6 flex flex-col justify-center items-center">

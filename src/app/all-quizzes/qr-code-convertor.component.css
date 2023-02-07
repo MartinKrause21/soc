@@ -103,3 +103,14 @@ html, body {
 .search > div > input:not(:placeholder-shown) {
   width: 250px;
 }
+
+#alert-icon {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+
