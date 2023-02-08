@@ -492,11 +492,24 @@
 
                         <div>
 
-                            <div #loadedContent id="reportCard" class="shadow-lg">
+                            <div #loadedContent id="reportCard" *ngFor="let report of allReports " class="shadow-lg">
 
                                 <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-red-600">
+                                    <mat-icon>bug_report</mat-icon>
+                                </div>
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> User: {{report.user.username}} </h1>
+                                <h3 class="text-center text-gray-500 font-bold"> {{report.reason}} </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> {{report.message}} </h3>
+
+                            </div>
+
+                            <div #loadedContent id="reportCard" class="shadow-xl">
+
+                                <div id="report-icon"
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-blue-500">
+                                    <mat-icon> help</mat-icon>
                                 </div>
 
                                 <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
@@ -508,30 +521,13 @@
                             <div #loadedContent id="reportCard" class="shadow-xl">
 
                                 <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-green-500">
+                                    <mat-icon> question_answer</mat-icon>
                                 </div>
 
                                 <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
                                 <h3 class="text-center text-gray-500 font-bold"> k </h3>
                                 <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
-
-                            
-
-                            </div>
-
-                            <div #loadedContent id="reportCard" class="shadow-xl">
-
-                                <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
-                                </div>
-
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
-                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
-
-                            
 
                             </div>
 

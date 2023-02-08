@@ -107,3 +107,17 @@ export class allUsers {
        date : Date,
    ) {  }
 }
+
+export class allReports {
+   id: number;
+   message: string;
+   reason: string;
+   user: user;
+   constructor(
+         id: number,
+         message: string,
+         reason: string,
+         user: user,
+      ) {  }
+}
+
