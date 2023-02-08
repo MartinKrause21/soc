@@ -498,11 +498,7 @@
                                   'bg-yellow-600': report.reason === 'HELP',
                                   'bg-green-600': report.reason === 'QUESTION'
                                 }">
-                                  <mat-icon [ngClass]="{
-                                    'bug_report': report.reason === 'BUG',
-                                    'help': report.reason === 'HELP',
-                                    'question_answer': report.reason === 'QUESTION'
-                                  }"></mat-icon>
+                                <mat-icon [innerHTML]="report.reason === 'error' ? 'error' : (report.reason === 'warning' ? 'warning' : 'check_circle')"></mat-icon>
                                 </div>
                               
                                 <h1 class="font-bold text-center text-3xl text-gray-900"> User: {{report.user.username}} </h1>
