@@ -185,3 +185,18 @@ h1 {
     margin-left: 33%;
     margin-bottom: -15px;
 }
+
+#report-icon{
+    margin-top: -50px;
+    width: 56px;
+    height: 56px;
+}
+
+#reportCard{
+    border-top: 10px solid #502ca0;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

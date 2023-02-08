@@ -4,7 +4,7 @@
 <div id="container" class="container mx-auto my-60 rounded-3xl shadow-lg sm:max-w-6xl sm:mx-auto">
     <div>
 
-        <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 mx-auto">
+        <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-4/6 mx-auto">
             <div class="flex justify-center">
                 <img src="../assets/images/0icon3.svg"
                     class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-xl border-4 border-white transition duration-200 transform hover:scale-110">
@@ -237,7 +237,8 @@
 
                         </ng-template>
 
-                        <form #resendMail="ngForm" (ngSubmit)="sendPasswEmailChange()" class="form-group" id="changePasswForm-blurred">
+                        <form #resendMail="ngForm" (ngSubmit)="sendPasswEmailChange()" class="form-group"
+                            id="changePasswForm-blurred">
 
                             <div class="text-center text-xl text-gray-900">
                                 If you want to change your password write here your email.
@@ -266,23 +267,23 @@
                         </form>
 
                         <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-                        <h1 class="text-center text-3xl text-gray-900">
-                            <mat-icon>lock</mat-icon> <br>
-                            If you want to change your password, you have to add email.
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                            <h1 class="text-center text-3xl text-gray-900">
+                                <mat-icon>lock</mat-icon> <br>
+                                If you want to change your password, you have to add email.
 
-                            <button id="button" type="button" routerLink="/guest-form"
-                                class="py-[3.5px] px-2 mt-5 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                Here
-                            </button>
+                                <button id="button" type="button" routerLink="/guest-form"
+                                    class="py-[3.5px] px-2 mt-5 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    Here
+                                </button>
 
-                        </h1>
-                    </div>
+                            </h1>
+                        </div>
 
 
                     </mat-tab>
 
-                    <mat-tab id="support"  *ngIf="role !== 'SUPERVISOR' ">
+                    <mat-tab id="support" *ngIf="role !== 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
@@ -297,20 +298,20 @@
                             </div>
 
                             <div id="select">
-                            
-                                <mat-form-field  appearance="outline" class="w-3/6">
+
+                                <mat-form-field appearance="outline" class="w-3/6">
                                     <mat-label>Select an report type</mat-label>
                                     <mat-select [(value)]="selected" required>
-                                      <mat-option value="">Please select an option</mat-option>
-                                      <mat-option value="Bug">Bug</mat-option>
-                                      <mat-option value="Help">Help</mat-option>
-                                      <mat-option value="Question">Question</mat-option>
+                                        <mat-option value="">Please select an option</mat-option>
+                                        <mat-option value="Bug">Bug</mat-option>
+                                        <mat-option value="Help">Help</mat-option>
+                                        <mat-option value="Question">Question</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="selected == ''">Report type is required</mat-error>
                                 </mat-form-field>
 
                             </div>
-                            
+
 
                             <div class="form-group">
 
@@ -323,7 +324,8 @@
 
 
                                 <div id="resendMail" class="relative">
-                                    <button id="resendMail-button" type="submit" [disabled]="!supportForm.valid || selected == '' "
+                                    <button id="resendMail-button" type="submit"
+                                        [disabled]="!supportForm.valid || selected == '' "
                                         class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         Send
                                     </button>
@@ -354,39 +356,40 @@
 
                         <div *ngIf="allAdmins.length == 0"
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
-                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
+                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
                             Any admin has been registered yet.
                         </div>
 
 
-                        <div *ngIf="allAdmins.length > 0"> 
-    
-                            <div #loadedContent id="quizCard" *ngFor="let admin of allAdmins " > 
-        
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{admin.username}} | {{admin.id}} </h1> 
-                                <h3 class="text-center text-gray-500 font-bold"> {{admin.email}} </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{admin.enabled}}</h3> 
-    
-                                <div id="button-holder">
-                                        
-                                    <button id="button" type="button"
-                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    <mat-icon>info</mat-icon>
-                                </button>
+                        <div *ngIf="allAdmins.length > 0">
 
-                                <button id="button" type="button" 
-                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-    
+                            <div #loadedContent id="quizCard" *ngFor="let admin of allAdmins ">
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{admin.username}} |
+                                    {{admin.id}} </h1>
+                                <h3 class="text-center text-gray-500 font-bold"> {{admin.email}} </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{admin.enabled}}</h3>
+
+                                <div id="button-holder">
+
+                                    <button id="button" type="button"
+                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+
+                                    <button id="button" type="button"
+                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
                                 </div>
-    
+
                             </div>
-                        </div> 
+                        </div>
 
                     </mat-tab>
 
-                    <mat-tab id="all-users"  *ngIf="role == 'SUPERVISOR' ">
+                    <mat-tab id="all-users" *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
@@ -397,78 +400,146 @@
                         <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
                             This is the list of all users:
                         </div>
-                     
-                        <div *ngIf="allUsers.length == 0"
-                            class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
-                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
+
+                        <div *ngIf="allUsers.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
                             Any user has been registered yet.
                         </div>
 
 
-                        <div > 
-    
-                            <div #loadedContent id="quizCard" *ngFor="let user of allUsers " > 
-        
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} | {{user.id}} </h1> 
+                        <div>
+
+                            <div #loadedContent id="quizCard" *ngFor="let user of allUsers ">
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} |
+                                    {{user.id}} </h1>
                                 <h3 class="text-center text-gray-500 font-bold"> {{user.email}} </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{user.enabled}}</h3> 
-    
+                                <h3 class="text-center text-gray-500 font-bold"> Verified: {{user.enabled}}</h3>
+
                                 <div id="button-holder">
 
-                                <button id="button" type="button" 
-                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-    
+                                    <button id="button" type="button"
+                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
                                 </div>
-    
+
                             </div>
-                        </div> 
+                        </div>
 
 
                     </mat-tab>
 
-                    <mat-tab id="all-quizzes"  *ngIf="role == 'SUPERVISOR' ">
+                    <mat-tab id="all-quizzes" *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
-                            <img src="https://img.icons8.com/ios-filled/23/null/repository.png" />  All quizzes
+                            <img src="https://img.icons8.com/ios-filled/23/null/repository.png" /> All quizzes
 
                         </ng-template>
 
                         <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
                             This is the list of all quizzes:
                         </div>
-                     
-                        <div *ngIf="quizzes.length == 0"
-                            class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+
+                        <div *ngIf="quizzes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             Any quiz has been created yet.
                         </div>
 
 
-                        <div > 
-    
-                            <div #loadedContent id="quizCard" *ngFor="let quiz of quizzes " > 
-        
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1> 
+                        <div>
+
+                            <div #loadedContent id="quizCard" *ngFor="let quiz of quizzes ">
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
                                 <h3 class="text-center text-gray-500 font-bold"> {{quiz.description}} </h3>
                                 <h3 class="text-center text-gray-500 font-bold"> Creator: {{quiz.creatorName}} </h3>
-    
+
                                 <div id="button-holder">
 
-                                <button id="button" type="button" 
-                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-    
+                                    <button id="button" type="button"
+                                        class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
                                 </div>
-    
+
                             </div>
-                        </div> 
+                        </div>
 
 
                     </mat-tab>
+
+                    <mat-tab id="all-quizzes">
+
+                        <ng-template mat-tab-label>
+
+                            <mat-icon>notifications</mat-icon> Report notifications
+
+                        </ng-template>
+
+                        <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                            This is the list of all reports:
+                        </div>
+
+                        <div *ngIf="quizzes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                            <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                            Any report has been submitted yet.
+                        </div>
+
+
+                        <div>
+
+                            <div #loadedContent id="reportCard" class="shadow-lg">
+
+                                <div id="report-icon"
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
+                                    <mat-icon> phone</mat-icon>
+                                </div>
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
+                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
+
+                            </div>
+
+                            <div #loadedContent id="reportCard" class="shadow-xl">
+
+                                <div id="report-icon"
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
+                                    <mat-icon> phone</mat-icon>
+                                </div>
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
+                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
+
+                            
+
+                            </div>
+
+                            <div #loadedContent id="reportCard" class="shadow-xl">
+
+                                <div id="report-icon"
+                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
+                                    <mat-icon> phone</mat-icon>
+                                </div>
+
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
+                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
+                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
+
+                            
+
+                            </div>
+
+                        </div>
+
+
+                    </mat-tab>
+
 
                 </mat-tab-group>
 
