@@ -68,49 +68,43 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
 
     this.loggedInUsername = this.cookies.get('username');
-    this.role = this.cookies.get('role');
 
     this.resultID = Number(this.route.snapshot.paramMap.get('resultQuizIds'));
 
-    if (this.role === 'ADMIN') {
-      this.quizService.getAllTeacherQuizes().subscribe(response => { 
-        this.allTeacherQuizes = response;
-        this.contentLoaded =false
-      });
-    }
+    this.quizService.getAllTeacherQuizes().subscribe(response => { 
+      this.allTeacherQuizes = response;
+      this.contentLoaded =false
+    });
 
-    if (this.role === 'USER') {
-      this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
-        this.allUserQuizes = allUserQuizes;
-        console.log(allUserQuizes);
-        this.contentLoaded =false
-        
-          this.idS = allUserQuizes[0].resultQuizIds;
-        
-        this.dataService.updateResultQuizIds(this.idS);
-        this.idS = this.dataService.getResultQuizIds();
+    this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
+      this.allUserQuizes = allUserQuizes;
+      console.log(allUserQuizes);
+      this.contentLoaded =false
       
-      });
-    }
+        this.idS = allUserQuizes[0].resultQuizIds;
+      
+      this.dataService.updateResultQuizIds(this.idS);
+      this.idS = this.dataService.getResultQuizIds();
+     
+    });
 
-    if (this.role === 'SUPERVISOR') {
-      this.authService.getAllAdminsForSupervisor().subscribe(allAdmins => this.allAdmins = allAdmins);
-      console.log(this.allAdmins);
+    this.authService.getAllAdminsForSupervisor().subscribe(allAdmins => this.allAdmins = allAdmins);
+    console.log(this.allAdmins);
+
+    this.authService.getAllUsersForSupervisor().subscribe(allUsers => this.allUsers = allUsers);
+    console.log(this.allUsers);
+
+    this.authService.getAllReports().subscribe(allReports => this.allReports = allReports);
+    console.log(this.allReports);
+
+    this.quizService.getAllQuizzes().subscribe(quizzes => {
+      this.quizzes = quizzes;
+      console.log(quizzes);
+      this.contentLoaded = false;
+      
+    });
     
-      this.authService.getAllUsersForSupervisor().subscribe(allUsers => this.allUsers = allUsers);
-      console.log(this.allUsers);
-    
-      this.authService.getAllReports().subscribe(allReports => this.allReports = allReports);
-      console.log(this.allReports);
-
-      this.quizService.getAllQuizzes().subscribe(quizzes => {
-        this.quizzes = quizzes;
-        console.log(quizzes);
-        this.contentLoaded = false;
-        
-      });
-    }
-
+    this.role = this.cookies.get('role');
   }
   
   sendUserQuizId(id: number) {
