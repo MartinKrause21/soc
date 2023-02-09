@@ -14,6 +14,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
 import { DataService } from '../data.service';
 import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-dialog.component';
+import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -169,6 +170,17 @@ export class ProfilePageComponent implements OnInit {
 
     this.dialog.open(DeleteAdminDialogComponent, dialogConfig);
   }
+
+  openDeleteStudentDialog(userName: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      userName: userName
+    };
+
+    this.dialog.open(DeleteUserDialogComponent, dialogConfig);
+  }
+
 
   sendSupport(){
     this.authService.sendSupport(this.modelSendSupport.problem , this.selected);
