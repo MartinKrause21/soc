@@ -494,11 +494,12 @@
 
                             <div #loadedContent id="reportCard" *ngFor="let report of allReports " class="shadow-lg">
                                 <div id="report-icon" class="text-white flex items-center rounded-full py-4 px-4 shadow-xl" [ngClass]="{
-                                  'bg-red-600': report.reason === 'BUG',
+                                  'bg-blue-600': report.reason === 'BUG',
                                   'bg-yellow-600': report.reason === 'HELP',
                                   'bg-green-600': report.reason === 'QUESTION'
                                 }">
-                                <mat-icon [innerHTML]="report.reason === 'error' ? 'error' : (report.reason === 'warning' ? 'warning' : 'check_circle')"></mat-icon>
+                                <mat-icon [innerHTML]="getReasonIcon(report.reason)"></mat-icon>
+
                                 </div>
                               
                                 <h1 class="font-bold text-center text-3xl text-gray-900"> User: {{report.user.username}} </h1>

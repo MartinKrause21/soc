@@ -171,5 +171,16 @@ export class ProfilePageComponent implements OnInit {
       });
     }, 1000);
   }
+
+  getReasonIcon(reason: string) {
+    switch (reason) {
+      case 'HELP':
+        return 'help';
+      case 'warning':
+        return 'warning';
+      default:
+        return 'check_circle';
+    }
+  }
   
 }
