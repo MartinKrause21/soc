@@ -18,7 +18,7 @@ export class DeleteUserDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  userName: string = this.data.adminName;
+  userName: string = this.data.userName;
 
   delete(userName : string) {
     this.quizService.deleteStudent(userName).subscribe(() => {
