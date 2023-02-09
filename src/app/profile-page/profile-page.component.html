@@ -29,7 +29,7 @@
                             Your quizes:
                         </div>
 
-                        <div *ngIf="allTeacherQuizes.length == 0"
+                        <div *ngIf="allTeacherQuizes.length == 0 || undefined"
                             class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             You have not created any quiz yet!
@@ -94,7 +94,7 @@
                             You have already done these quizzes:
                         </div>
 
-                        <div *ngIf="allUserQuizes.length == 0"
+                        <div *ngIf="allUserQuizes.length == 0 || undefined"
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             You have not done any quiz yet!
@@ -354,7 +354,7 @@
                             This is the list of all admins:
                         </div>
 
-                        <div *ngIf="allAdmins.length == 0"
+                        <div *ngIf="allAdmins.length == 0 || undefined"
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
                             Any admin has been registered yet.
@@ -401,7 +401,7 @@
                             This is the list of all users:
                         </div>
 
-                        <div *ngIf="allUsers.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                        <div *ngIf="allUsers.length == 0 || undefined" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
                             Any user has been registered yet.
                         </div>
@@ -443,7 +443,7 @@
                             This is the list of all quizzes:
                         </div>
 
-                        <div *ngIf="quizzes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                        <div *ngIf="quizzes.length == 0 || undefined" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             Any quiz has been created yet.
                         </div>
@@ -484,7 +484,7 @@
                             This is the list of all reports:
                         </div>
 
-                        <div *ngIf="allReports.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                        <div *ngIf="allReports.length == 0 || undefined" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             Any report has been submitted yet.
                         </div>
@@ -514,7 +514,7 @@
                             </div>
                               
 
-                            <div #loadedContent id="reportCard" class="shadow-xl">
+                            <!-- <div #loadedContent id="reportCard" class="shadow-xl">
 
                                 <div id="report-icon"
                                     class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-blue-500">
@@ -552,7 +552,7 @@
                                 </div>
                                 
 
-                            </div>
+                            </div> -->
                         </div>
 
 
