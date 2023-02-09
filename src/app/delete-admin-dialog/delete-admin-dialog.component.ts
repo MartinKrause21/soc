@@ -21,7 +21,7 @@ export class DeleteAdminDialogComponent implements OnInit {
   adminName: string = this.data.adminName;
 
   delete(adminName : string) {
-    this.quizService.deleteQuiz(adminName).subscribe(() => {
+    this.quizService.deleteAdmin(adminName).subscribe(() => {
       console.log('Success!');
       location.reload()
     }, error => {
