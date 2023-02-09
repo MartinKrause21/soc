@@ -160,11 +160,11 @@ export class ProfilePageComponent implements OnInit {
     this.dialog.open(DeleteQuizDialogComponent, dialogConfig);
   }
 
-  openDeleteAdminDialog(quizName: string) {
+  openDeleteAdminDialog(adminName: string) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
-      adminName: quizName
+      adminName: adminName
     };
 
     this.dialog.open(DeleteAdminDialogComponent, dialogConfig);
