@@ -213,3 +213,9 @@ h1 {
 #report-content-holder {
     margin-top: 9px;
 }
+
+@media screen and (max-width: 458px) {
+    #divider {
+        opacity: 0;
+    }
+}

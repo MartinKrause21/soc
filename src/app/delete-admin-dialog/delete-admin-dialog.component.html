@@ -1,0 +1,16 @@
+<div id="container">
+    <div id="dialog-container"> </div>
+
+    <h1 id="title" mat-dialog-title>Confirm deleting admin.</h1>
+
+    <div mat-dialog-content>
+        Are you sure you want to delete this admin: {{adminName}}?
+    </div>
+
+    <div mat-dialog-actions>
+        <button id="yes-button" mat-button (click)="delete(adminName)">Yes</button>
+        <button id="no-button" mat-button [mat-dialog-close]="false">No</button>
+    </div>
+
+</div> 
+

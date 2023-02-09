@@ -13,6 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
 import { DataService } from '../data.service';
+import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -149,7 +150,7 @@ export class ProfilePageComponent implements OnInit {
     });
   }
   
-  openDialog(quizName: string) {
+  openDeleteQuizDialog(quizName: string) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
@@ -157,6 +158,16 @@ export class ProfilePageComponent implements OnInit {
     };
 
     this.dialog.open(DeleteQuizDialogComponent, dialogConfig);
+  }
+
+  openDeleteAdminDialog(quizName: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      adminName: quizName
+    };
+
+    this.dialog.open(DeleteAdminDialogComponent, dialogConfig);
   }
 
   sendSupport(){
