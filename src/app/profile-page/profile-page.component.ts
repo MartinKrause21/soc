@@ -176,10 +176,10 @@ export class ProfilePageComponent implements OnInit {
     switch (reason) {
       case 'HELP':
         return 'help';
-      case 'warning':
-        return 'warning';
+      case 'BUG':
+        return 'bug_report';
       default:
-        return 'check_circle';
+        return 'question_answer';
     }
   }
   
