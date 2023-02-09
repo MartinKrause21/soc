@@ -1,6 +1,5 @@
 
 export class user {
-  
     username: string;
     password: string;
     email: string;
@@ -9,6 +8,20 @@ export class user {
       username: string,
       password: string,
       email: string,
+   ) {  }
+} 
+
+export class reportUser {
+    id: number;
+    username: string;
+    password: string;
+    email: string;
+
+   constructor(
+      username: string,
+      password: string,
+      email: string,
+      id: number
    ) {  }
 } 
 
@@ -112,7 +125,7 @@ export class allReports {
    id: number;
    message: string;
    reason: string;
-   user: user;
+   user: reportUser;
    constructor(
          id: number,
          message: string,

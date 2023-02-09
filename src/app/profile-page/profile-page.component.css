@@ -192,6 +192,14 @@ h1 {
     height: 56px;
 }
 
+#report-id{
+    margin-top: -29px;
+    margin-left: 631px;
+    width: 52px;
+    background-color: #502ca0;
+    border-bottom-left-radius: 10px;
+}
+
 #reportCard{
     border-top: 10px solid #502ca0;
     border-radius: 8px;
@@ -199,4 +207,8 @@ h1 {
     padding: 20px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#report-content-holder {
+    margin-top: -21px;
 }
