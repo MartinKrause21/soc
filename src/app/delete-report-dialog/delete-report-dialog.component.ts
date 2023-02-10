@@ -18,7 +18,7 @@ export class DeleteReportDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  reportId: number = this.data.userName;
+  reportId: number = this.data.reportId;
 
   delete(reportId : number) {
     this.quizService.deleteReport(reportId).subscribe(() => {

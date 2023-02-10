@@ -495,7 +495,7 @@
                             <div #loadedContent id="reportCard" *ngFor="let report of allReports " class="shadow-lg">
                                 <div id="report-icon" class="text-white flex items-center rounded-full py-4 px-4 shadow-xl" [ngClass]="{
                                   'bg-red-600': report.reason === 'BUG',
-                                  'bg-yellow-600': report.reason === 'HELP',
+                                  'bg-orange-400': report.reason === 'HELP',
                                   'bg-green-600': report.reason === 'QUESTION'
                                 }">
                                 <mat-icon [innerHTML]="getReasonIcon(report.reason)"></mat-icon>
@@ -549,7 +549,8 @@
                                     <h3 class="text-center text-gray-500 font-bold"> asd </h3>
                                 </div>
 
-                               <div id="percentil-holder"> <a id="percentil"> 100% </a></div>  <mat-progress-bar id="progress-bar" mode="determinate" value="70"></mat-progress-bar>
+                               <div id="percentil-holder"> <a id="percentil"> 100% </a></div> 
+                                <mat-progress-bar id="progress-bar" mode="determinate" value="70"></mat-progress-bar>
                                
                             </div>
 
