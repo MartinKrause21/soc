@@ -15,6 +15,7 @@ import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dia
 import { DataService } from '../data.service';
 import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
+import { DeleteReportDialogComponent } from '../delete-report-dialog/delete-report-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -181,6 +182,15 @@ export class ProfilePageComponent implements OnInit {
     this.dialog.open(DeleteUserDialogComponent, dialogConfig);
   }
 
+  openDeleteReportDialog(reportId: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      reportId: reportId
+    };
+
+    this.dialog.open(DeleteReportDialogComponent, dialogConfig);
+  }
 
   sendSupport(){
     this.authService.sendSupport(this.modelSendSupport.problem , this.selected);
@@ -198,12 +208,14 @@ export class ProfilePageComponent implements OnInit {
   getReasonIcon(reason: string) {
     switch (reason) {
       case 'HELP':
-        return 'help';
+        return 'question_answer';
       case 'BUG':
         return 'bug_report';
       default:
-        return 'question_answer';
+        return 'help';
     }
   }
+
+  progressValue = 70;
   
 }

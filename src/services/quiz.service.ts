@@ -104,6 +104,10 @@ export class QuizService {
     return this.http.delete(`https://teach-quiz.herokuapp.com/delete/student/${userName}`, {headers: this.headerHttp, responseType: 'text' });
   }
 
+  deleteReport(reportId: number) {
+    return this.http.delete(`https://teach-quiz.herokuapp.com/delete/support/${reportId}`, {headers: this.headerHttp, responseType: 'text' });
+  }
+
   addQuiz(quiz: Quiz) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
