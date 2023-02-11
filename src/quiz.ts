@@ -12,7 +12,8 @@ export interface Question {
 }
 
 export interface Answer {
-    content: string; 
+    answerContent: string; 
+    content: string;
     correct: boolean;
 }
 
@@ -32,7 +33,8 @@ export interface resultQuestion {
 }
 
 export interface resultAnswer {
-    content: string; 
+    answerContent: string; 
+    
     correct: boolean;
 }
 
@@ -75,10 +77,10 @@ export class quizUsers {
     ) {  }
 }
 export class inputAnswer {
-    content: string;
+    answerContent: string;
 
     constructor(
-        content: string,
+        answerContent: string,
     ) {  }
 }
 
