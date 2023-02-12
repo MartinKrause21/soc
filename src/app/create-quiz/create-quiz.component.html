@@ -86,6 +86,7 @@
                                                 </div>
 
 
+
                                                 <ng-container formArrayName="answerList">
                                                     <ng-container
                                                         *ngFor="let answer of answerList(questionIndex).controls; let answerIndex=index">
@@ -125,11 +126,13 @@
 
                                                             </mat-button-toggle-group>
 
-                                                            <!-- <div> answer is: {{correctAnswer.value}}</div> -->
-
                                                         </div>
 
+
                                                     </ng-container>
+                                                    <div  class="text-center mt-4" id="input-alert" *ngIf="answerList(questionIndex).controls.length == 1">
+                                                        Now you have answer as input, just write into correct answer.
+                                                    </div>
                                                 </ng-container>
 
                                             </div>
@@ -147,9 +150,6 @@
                             Quiz must have at least one question.
                         </div>
 
-                        <div  class="text-center mb-3 text-gray-400" *ngIf="quizForm.value.questionList.length > 0">
-                            If you want to have answer as input, add only one answer and type into it correct answer
-                        </div>
 
                         <mat-divider> </mat-divider>
 

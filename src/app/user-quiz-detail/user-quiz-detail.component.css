@@ -70,6 +70,12 @@
     float: right;
 }
 
+#indicator-touch {
+    color: gray;
+    margin-left: 2px;
+}
+
+
 @media screen and (max-width: 640px) {
     #indicator {
         margin-left: 10px;
@@ -95,6 +101,15 @@
     margin-right: auto;
 }
 
+#resultCard {
+    border: 2px solid rgba(112, 103, 103, 0.285);
+    padding: 21px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
 
+p{
+    margin-bottom: 0px;
+}
 
 
