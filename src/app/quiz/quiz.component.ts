@@ -97,6 +97,7 @@ export class QuizComponent implements OnInit {
       }
       
       ans.chosen = chosen;
+      ans.correct = correct;
 
       if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
         this.quizService.updateResultQuiz(ansList, question);
@@ -109,17 +110,16 @@ export class QuizComponent implements OnInit {
         this.quizNum = this.quizNum + 1;
       }
 
-    if (correct && this.answerModel.answerContent == '') {
+    if (ans.correct && ansList.length > 1) {
       this.score = this.score + 10;
       console.log("Correct answer, Score: " + this.score);
       //console.log(correct, 'hej');
     } 
-    if ( this.answerModel.answerContent == answerContent ) {
+    else if ( this.answerModel.answerContent == answerContent ) {
       this.score = this.score + 10;
       console.log("Correct answer, Score: " + this.score);
       this.answerModel.answerContent = '';
     }
-
     else {
       console.log("Incorrect answer, score 0");
       this.answerModel.answerContent = '';
