@@ -192,6 +192,15 @@ h1 {
     height: 56px;
 }
 
+#report-id{
+    margin-top: -29px;
+    width: 52px;
+    background-color: #502ca0;
+    border-bottom-left-radius: 10px;
+    float: right;
+    margin-right: -20px;
+}
+
 #reportCard{
     border-top: 10px solid #502ca0;
     border-radius: 8px;
@@ -199,4 +208,49 @@ h1 {
     padding: 20px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#report-content-holder {
+    margin-top: 9px;
+}
+
+@media screen and (max-width: 458px) {
+    #divider {
+        opacity: 0;
+    }
+}
+
+#progress-bar{
+    height: 10px;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #502ca0;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background: #aca0c6;
+}
+
+::ng-deep .mat-progress-bar {
+    border-radius: 10px;
+}
+
+#percentil-holder{
+    background-color: #502ca0;
+    width: 50px;
+    padding-bottom: 15px;
+    color: white;
+    margin-bottom: -9px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    padding-bottom: 10px;
+}
+
+#percentil{
+    margin: auto
+
 }

@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import {  allAdmins, allUsers, sendSupport, sentMail } from 'src/user';
+import {  allAdmins, allReports, allUsers, sendSupport, sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
@@ -13,6 +13,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeleteQuizDialogComponent } from '../delete-quiz-dialog/delete-quiz-dialog.component';
 import { DataService } from '../data.service';
+import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-dialog.component';
+import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
+import { DeleteReportDialogComponent } from '../delete-report-dialog/delete-report-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -41,6 +44,7 @@ export class ProfilePageComponent implements OnInit {
   allAdmins: allAdmins[];
   allUsers: allUsers[];
   quizzes : allUserQuizes[]
+  allReports: allReports[];
 
   email: string = '';
 
@@ -90,6 +94,9 @@ export class ProfilePageComponent implements OnInit {
 
     this.authService.getAllUsersForSupervisor().subscribe(allUsers => this.allUsers = allUsers);
     console.log(this.allUsers);
+
+    this.authService.getAllReports().subscribe(allReports => this.allReports = allReports);
+    console.log(this.allReports);
 
     this.quizService.getAllQuizzes().subscribe(quizzes => {
       this.quizzes = quizzes;
@@ -145,7 +152,7 @@ export class ProfilePageComponent implements OnInit {
     });
   }
   
-  openDialog(quizName: string) {
+  openDeleteQuizDialog(quizName: string) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
@@ -153,6 +160,36 @@ export class ProfilePageComponent implements OnInit {
     };
 
     this.dialog.open(DeleteQuizDialogComponent, dialogConfig);
+  }
+
+  openDeleteAdminDialog(adminName: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      adminName: adminName
+    };
+
+    this.dialog.open(DeleteAdminDialogComponent, dialogConfig);
+  }
+
+  openDeleteStudentDialog(userName: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      userName: userName
+    };
+
+    this.dialog.open(DeleteUserDialogComponent, dialogConfig);
+  }
+
+  openDeleteReportDialog(reportId: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      reportId: reportId
+    };
+
+    this.dialog.open(DeleteReportDialogComponent, dialogConfig);
   }
 
   sendSupport(){
@@ -167,5 +204,18 @@ export class ProfilePageComponent implements OnInit {
       });
     }, 1000);
   }
+
+  getReasonIcon(reason: string) {
+    switch (reason) {
+      case 'HELP':
+        return 'question_answer';
+      case 'BUG':
+        return 'bug_report';
+      default:
+        return 'help';
+    }
+  }
+
+  progressValue = 70;
   
 }

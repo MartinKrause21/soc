@@ -58,6 +58,11 @@ import { SendedSupportSnackbarComponent } from './sended-support-snackbar/sended
 import { GuestFormComponent } from './guest-form/guest-form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dialog.component';
+import { DeleteAdminDialogComponent } from './delete-admin-dialog/delete-admin-dialog.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DeleteReportDialogComponent } from './delete-report-dialog/delete-report-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +93,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SendedSupportSnackbarComponent,
     GuestFormComponent,
     PageNotFoundComponent,
+    DeleteUserDialogComponent,
+    DeleteAdminDialogComponent,
+    DeleteReportDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +128,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatButtonToggleModule,
     MatRadioModule, 
     MatSelectModule, 
+    MatProgressBarModule,
 
   ],
   providers: [CookieService],

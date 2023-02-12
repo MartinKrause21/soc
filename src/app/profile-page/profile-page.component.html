@@ -29,7 +29,7 @@
                             Your quizes:
                         </div>
 
-                        <div *ngIf="allTeacherQuizes.length == 0"
+                        <div *ngIf="allTeacherQuizes.length == 0 "
                             class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             You have not created any quiz yet!
@@ -64,7 +64,7 @@
                                     </button>
 
 
-                                    <button id="button" type="button" (click)="openDialog(quiz.name)"
+                                    <button id="button" type="button" (click)="openDeleteQuizDialog(quiz.name)"
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         <mat-icon>delete</mat-icon>
                                     </button>
@@ -94,7 +94,7 @@
                             You have already done these quizzes:
                         </div>
 
-                        <div *ngIf="allUserQuizes.length == 0"
+                        <div *ngIf="allUserQuizes.length == 0 "
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             You have not done any quiz yet!
@@ -111,7 +111,7 @@
                                 <h1 class=" text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
                                 <h2 class="text-center text-gray-700 font-medium"> {{quiz.description}} </h2>
                                 <div id="service-bar">
-                                    <h3 class="text-center text-gray-400 font-medium"> Creator: {{quiz.creatorName}} |
+                                    <h3 class="text-center text-gray-400 font-medium"> Creator: {{quiz.creatorName}} <a id="divider"> | </a>
                                     </h3>
                                     <h3 id="date" class="text-center text-gray-400 font-medium"> {{quiz.date | date:
                                         "medium"}} </h3>
@@ -303,9 +303,9 @@
                                     <mat-label>Select an report type</mat-label>
                                     <mat-select [(value)]="selected" required>
                                         <mat-option value="">Please select an option</mat-option>
-                                        <mat-option value="Bug">Bug</mat-option>
-                                        <mat-option value="Help">Help</mat-option>
-                                        <mat-option value="Question">Question</mat-option>
+                                        <mat-option value="BUG">Bug</mat-option>
+                                        <mat-option value="HELP">Help</mat-option>
+                                        <mat-option value="QUESTION">Question</mat-option>
                                     </mat-select>
                                     <mat-error *ngIf="selected == ''">Report type is required</mat-error>
                                 </mat-form-field>
@@ -354,7 +354,7 @@
                             This is the list of all admins:
                         </div>
 
-                        <div *ngIf="allAdmins.length == 0"
+                        <div *ngIf="allAdmins.length == 0 "
                             class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
                             Any admin has been registered yet.
@@ -377,7 +377,7 @@
                                         <mat-icon>info</mat-icon>
                                     </button>
 
-                                    <button id="button" type="button"
+                                    <button id="button" type="button" (click)="openDeleteAdminDialog(admin.username)"
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         <mat-icon>delete</mat-icon>
                                     </button>
@@ -418,7 +418,7 @@
 
                                 <div id="button-holder">
 
-                                    <button id="button" type="button"
+                                    <button id="button" type="button" (click)="openDeleteStudentDialog(user.username)"
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         <mat-icon>delete</mat-icon>
                                     </button>
@@ -443,7 +443,7 @@
                             This is the list of all quizzes:
                         </div>
 
-                        <div *ngIf="quizzes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                        <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             Any quiz has been created yet.
                         </div>
@@ -459,7 +459,7 @@
 
                                 <div id="button-holder">
 
-                                    <button id="button" type="button"
+                                    <button id="button" type="button" (click)="openDeleteQuizDialog(quiz.name)"
                                         class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                         <mat-icon>delete</mat-icon>
                                     </button>
@@ -472,7 +472,7 @@
 
                     </mat-tab>
 
-                    <mat-tab id="all-quizzes">
+                    <mat-tab id="report-notifications"  *ngIf="role == 'SUPERVISOR' ">
 
                         <ng-template mat-tab-label>
 
@@ -484,7 +484,7 @@
                             This is the list of all reports:
                         </div>
 
-                        <div *ngIf="quizzes.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                        <div *ngIf="allReports.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
                             <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
                             Any report has been submitted yet.
                         </div>
@@ -492,51 +492,86 @@
 
                         <div>
 
-                            <div #loadedContent id="reportCard" class="shadow-lg">
-
-                                <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
+                            <div #loadedContent id="reportCard" *ngFor="let report of allReports " class="shadow-lg">
+                                <div id="report-icon" class="text-white flex items-center rounded-full py-4 px-4 shadow-xl" [ngClass]="{
+                                  'bg-red-600': report.reason === 'BUG',
+                                  'bg-orange-400': report.reason === 'HELP',
+                                  'bg-green-600': report.reason === 'QUESTION'
+                                }">
+                                <mat-icon [innerHTML]="getReasonIcon(report.reason)"></mat-icon>
                                 </div>
 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
-                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
-
-                            </div>
-
-                            <div #loadedContent id="reportCard" class="shadow-xl">
-
-                                <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
+                                <div id="report-id" class="text-white flex items-center py-2 px-4 ">
+                                    <div class="font-bold ml-2"> {{report.id}}</div>
+                                </div>
+                              
+                                <div id="report-content-holder"> 
+                                    <h1 class="font-bold text-center text-3xl text-gray-900"> {{report.user.username}} | {{report.user.id}} </h1>
+                                    <h3 class="text-center text-gray-500 font-bold"> {{report.reason}} </h3>
+                                    <h3 class="text-center text-gray-500 font-bold"> {{report.message}} </h3>
                                 </div>
 
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
-                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
+                                <div id="button-holder">
 
-                            
+                                    <button id="button" type="button" matTooltip="Mark as done" (click)="openDeleteReportDialog(report.id)"
+                                        class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <mat-icon>check_circle</mat-icon>
+                                    </button>
 
-                            </div>
-
-                            <div #loadedContent id="reportCard" class="shadow-xl">
-
-                                <div id="report-icon"
-                                    class=" text-white flex items-center  rounded-full py-4 px-4 shadow-xl bg-pink-500">
-                                    <mat-icon> phone</mat-icon>
                                 </div>
-
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> kkk</h1>
-                                <h3 class="text-center text-gray-500 font-bold"> k </h3>
-                                <h3 class="text-center text-gray-500 font-bold"> Creator: </h3>
-
-                            
-
+                               
                             </div>
 
                         </div>
 
+
+                    </mat-tab>
+
+                    <mat-tab id="quiz-stats" *ngIf="role == 'ADMIN' ">
+
+                        <ng-template mat-tab-label>
+
+                            <img src="https://img.icons8.com/ios-filled/23/null/gold-medal.png"/> Quiz stats
+
+                        </ng-template>
+
+                        <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                            This is stats of all quizzes:
+                        </div>
+
+                        <div>
+                              
+                          <div #loadedContent id="reportCard" class="shadow-lg">
+                              
+                                <div id="report-content-holder"> 
+                                    <h1 class="font-bold text-center text-3xl text-gray-900"> KKK </h1>
+                                    <h3 class="text-center text-gray-500 font-bold"> lla </h3>
+                                    <h3 class="text-center text-gray-500 font-bold"> asd </h3>
+                                </div>
+
+                               <div id="percentil-holder"> <a id="percentil"> 100% </a></div> 
+                                <mat-progress-bar id="progress-bar" mode="determinate" value="70"></mat-progress-bar>
+                               
+                            </div>
+
+                        </div>
+
+                        <div #loadedContent id="reportCard" class="shadow-lg">
+                            
+
+                            <div id="report-id" class="text-white flex items-center py-2 px-4 ">
+                                <div class="font-bold ml-2"> m</div>
+                            </div>
+                          
+                            <div id="report-content-holder"> 
+                                <h1 class="font-bold text-center text-3xl text-gray-900"> asdasd </h1>
+                                <h3 class="text-center text-gray-500 font-bold"> asd</h3>
+                                <h3 class="text-center text-gray-500 font-bold"> asd </h3>
+
+
+                            </div>
+                           
+                        </div>
 
                     </mat-tab>
 

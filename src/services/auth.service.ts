@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { allAdmins, allUsers, sendSupport, user, userLogin } from 'src/user';
+import { allAdmins, allReports, allUsers, sendSupport, user, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -279,6 +279,10 @@ export class AuthService {
   
   getAllUsersForSupervisor(): Observable<allUsers[]> {
     return this.http.get<allUsers[]>(`https://teach-quiz.herokuapp.com/all/students`,  {headers: this.headerHttp});
+  }
+
+  getAllReports(): Observable<allReports[]> {
+    return this.http.get<allReports[]>(`https://teach-quiz.herokuapp.com/get/support`,  {headers: this.headerHttp});
   }
 
 }

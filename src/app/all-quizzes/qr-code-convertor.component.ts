@@ -20,17 +20,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class QrCodeConvertorComponent implements OnInit {
 
-  quizzes : allUserQuizes[]
+  quizzes: allUserQuizes[]
   originalQuizzes: allUserQuizes[];
 
   constructor(
-    private quizService : QuizService,
-  ) { this.originalQuizzes = this.quizzes;}
+    private quizService: QuizService,
+  ) { this.originalQuizzes = this.quizzes; }
 
   visibility = 'hidden';
   contentLoaded = true;
 
-  public QRcodeText:string;
+  public QRcodeText: string;
 
   ngOnInit(): void {
     this.quizService.getAllQuizzes().subscribe(quizzes => {
@@ -38,7 +38,7 @@ export class QrCodeConvertorComponent implements OnInit {
       this.originalQuizzes = quizzes;
       console.log(quizzes);
       this.contentLoaded = false;
-      
+
     });
 
     setTimeout(() => {
@@ -50,11 +50,11 @@ export class QrCodeConvertorComponent implements OnInit {
 
   searchQuizzes() {
     if (!this.searchTerm) {
-        this.quizzes = this.originalQuizzes;
+      this.quizzes = this.originalQuizzes;
     } else {
-        this.quizzes = this.quizzes.filter(quiz => quiz.name.includes(this.searchTerm));
+      this.quizzes = this.quizzes.filter(quiz => quiz.name.includes(this.searchTerm));
     }
-}
+  }
 
 
 }
