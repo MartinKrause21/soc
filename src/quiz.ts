@@ -78,9 +78,12 @@ export class quizUsers {
 }
 export class inputAnswer {
     answerContent: string;
-
+    correct: boolean;
+    chosen: boolean;
     constructor(
         answerContent: string,
+        correct: boolean,
+        chosen: boolean,
     ) {  }
 }
 

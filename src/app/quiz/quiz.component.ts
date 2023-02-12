@@ -43,7 +43,7 @@ export class QuizComponent implements OnInit {
   loggedInUsername : string; 
 
   model = new guest ( '' , '')
-  answerModel = new inputAnswer ('')
+  answerModel = new inputAnswer ('', false, false)
 
   location = window.location.href;
 
@@ -88,8 +88,9 @@ export class QuizComponent implements OnInit {
   result : boolean = false;
   chosen: boolean = false;
   resultAns: resultAnswer;
+  rightAns: any;
 
-  sendAns(ans: any, correct: boolean , question : string, answerContent: any, chosen: boolean, ansList: any){
+  sendAns(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
       //this.quizService.updateResultQuiz(ans, question);
       for (var i = 0; i < ansList.length; i++) {      
         ansList[i].chosen = false;
@@ -104,10 +105,6 @@ export class QuizComponent implements OnInit {
         console.log(ansList, question, this.quizName, chosen, ans.answerContent);
         this.quizNum = this.quizNum + 1;
 
-      } else {
-        this.quizService.updateResultQuizInput(this.answerModel.answerContent, question, this.answerModel.answerContent == answerContent);
-        console.log(this.answerModel.answerContent, question, this.quizName, chosen);
-        this.quizNum = this.quizNum + 1;
       }
 
     if (ans.correct && ansList.length > 1) {
@@ -115,15 +112,6 @@ export class QuizComponent implements OnInit {
       console.log("Correct answer, Score: " + this.score);
       //console.log(correct, 'hej');
     } 
-    else if ( this.answerModel.answerContent == answerContent ) {
-      this.score = this.score + 10;
-      console.log("Correct answer, Score: " + this.score);
-      this.answerModel.answerContent = '';
-    }
-    else {
-      console.log("Incorrect answer, score 0");
-      this.answerModel.answerContent = '';
-    }
 
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
@@ -132,21 +120,45 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  sendIncAns(ansList: any, ans: any, question: string){
-
-    for(const item of ansList){
-      if(item == ans){
-        ansList.delete(item);
+  sendAnsInput(correctAns: any, answerModelContent: any, question : string){
+    //this.quizService.updateResultQuiz(ans, question);
+    correctAns.answerContent = correctAns.content;
+    this.answerModel.answerContent = answerModelContent;
+    
+    if(answerModelContent != correctAns.content){
+        this.answerModel.correct = false;
+        this.answerModel.chosen = true;
+        let answerArr = [];
+        answerArr.push(this.answerModel);
+        answerArr.push(correctAns);
+        this.quizService.updateResultQuizInput(question, answerArr);
+      }else{
+        let answerArr = [];
+        this.answerModel.correct = true;
+        this.answerModel.chosen = true;
+        answerArr.push(this.answerModel)
+        this.quizService.updateResultQuizInput(question, answerArr);
       }
-    }
-    if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
-      this.quizService.updateResultQuiz(ansList, question);
-      console.log(ansList, this.quizName);
-      this.quizNum = this.quizNum + 1;
 
-    } else{
-      console.log("No list of ans in input")
-    }
+      console.log(question, this.quizName, correctAns, "tentooooooo", this.answerModel);
+      this.quizNum = this.quizNum + 1;
+    
+
+  if ( this.answerModel.answerContent == correctAns.answerContent ||  this.answerModel.answerContent == correctAns.content) {
+    this.score = this.score + 10;
+    console.log("Correct answer, Score: " + this.score);
+    this.answerModel.answerContent = '';
   }
+  else {
+    console.log("Incorrect answer, score 0");
+    this.answerModel.answerContent = '';
+  }
+
+  if (this.quizNum === this.questionList.length) {
+    this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
+    this.result = true;
+    console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
+  }
+}
 
 }

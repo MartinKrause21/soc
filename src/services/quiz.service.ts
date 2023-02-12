@@ -158,7 +158,7 @@ export class QuizService {
     });
   }
 
-  updateResultQuizInput( answerContent: string, question : string, correct : boolean)  {
+  updateResultQuizInput( question : string, answer: any){
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
@@ -168,7 +168,7 @@ export class QuizService {
       'Authorization': 'Basic '+btoa(authString), 
       'Content-Type': "application/json; charset=utf8",
     }),
-      body: JSON.stringify({ "questionContent": question , "answerList": [ { "answerContent": answerContent,  "correct": correct} ]} ),
+      body: JSON.stringify({ "questionContent": question , "answerList": answer} ),
     })
     .then(() => {
       console.log('Success!');
