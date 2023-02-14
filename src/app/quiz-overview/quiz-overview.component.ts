@@ -40,10 +40,10 @@ export class QuizOverviewComponent implements OnInit {
       this.quizzes = quizzes;
       console.log(quizzes);
     });
-    
+
     setTimeout(() => {
       this.visibility = 'visible';
-    }, 300);
+    }, 200);
   }
 
 }

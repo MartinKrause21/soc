@@ -1,73 +1,77 @@
-<div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
-    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div id="login-back"
-            class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-        </div>
-        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-            <div class="max-w-md mx-auto">
-                <div>
-                    <h1 class="text-2xl font-semibold">Welcome back, Login to your account</h1>
-                </div>
+<div id="background">
 
-                <div class="divide-y divide-gray-200">
-                    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-
-                    <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-
-
-                        <mat-form-field appearance="outline" class="h-10 w-full" >
-                            <mat-label>Username</mat-label>
-                            <input matInput required type="text" name="username" [(ngModel)]="model.username">
-                            <mat-icon matSuffix>person</mat-icon>
-                        </mat-form-field>
-
-
-                        <mat-form-field appearance="outline" class="h-10 w-full">
-                            <mat-label>Password</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" required name="password" [(ngModel)]="model.password">
-                            <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                        </mat-form-field>
-
-
-                        <div id="service-bar" class="relative">
-
-                        <button id="register-button"
-                                routerLink="/register" 
-                                type="button"
-                                target="_blank"
-                                class="text-black/40 hover:text-purple-900">
-                                Register here
-                        </button>
-    
-                            |   <!-- divider -->
-    
-                        <a id="forgot-pass-button"
-                                (click)="passwordChangeDialog()"
-                                target="_blank"
-                                class="text-black/40 hover:text-purple-900">
-                                Forgot password?
-                        </a>
-                            
-                        </div>
-
-                      
-                        <div id="login" class="relative">
-
-                            <button id="login-button" type="submit" [disabled]="!loginForm.form.valid"
-                                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                Login 
-                            </button> 
-
-                        </div>
-
+    <div class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div id="login-back"
+                class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+            </div>
+            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                <div class="max-w-md mx-auto">
+                    <div>
+                        <h1 class="text-2xl font-semibold">Welcome back, Login to your account</h1>
                     </div>
-                    </form>
+    
+                    <div class="divide-y divide-gray-200">
+                        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+    
+    
+                            <mat-form-field appearance="outline" class="h-10 w-full" >
+                                <mat-label>Username</mat-label>
+                                <input matInput required type="text" name="username" [(ngModel)]="model.username">
+                                <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field>
+    
+    
+                            <mat-form-field appearance="outline" class="h-10 w-full">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" required name="password" [(ngModel)]="model.password">
+                                <button id="eye" mat-icon-button matSuffix type="button"  (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+    
+    
+                            <div id="service-bar" class="relative">
+    
+                            <button id="register-button"
+                                    routerLink="/register" 
+                                    type="button"
+                                    target="_blank"
+                                    class="text-black/40 hover:text-purple-900">
+                                    Register here
+                            </button>
+        
+                                |   <!-- divider -->
+        
+                            <a id="forgot-pass-button"
+                                    (click)="passwordChangeDialog()"
+                                    target="_blank"
+                                    class="text-black/40 hover:text-purple-900">
+                                    Forgot password?
+                            </a>
+                                
+                            </div>
+    
+                          
+                            <div id="login" class="relative">
+    
+                                <button id="login-button" type="submit" [disabled]="!loginForm.form.valid"
+                                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                    Login 
+                                </button> 
+    
+                            </div>
+    
+                        </div>
+                        </form>
+                    </div>
+    
                 </div>
-
             </div>
         </div>
-    </div>
+</div>
+
 
    
