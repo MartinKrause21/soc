@@ -1,99 +1,112 @@
-<div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
+<div id="background">
 
-    <div id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
-        <h1 id="quizName"> Welcome in {{quizName}} </h1>
+    <div *ngIf="quizStart" class="flex items-center justify-center h-screen ">
 
-        <div id="description" *ngIf="!loggedInUsername">
-
-            <form #guestName="ngForm" (ngSubmit)="setGuestName()" class="form-group">
-
-                <div class="mb-5">
-
-                    <mat-form-field id="formField" appearance="outline" class="h-7">
-                        <mat-label>Set guest name</mat-label>
-                        <input matInput required type="text" name="username" [(ngModel)]="model.username">
-                        <mat-icon matSuffix>person</mat-icon>
-                    </mat-form-field>
-
-                    <button id="button-send" type="submit"
-                        class="px-4 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                        <mat-icon>send</mat-icon>
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-        <h1 id="description" class="text-gray-700"> {{quiz.description}} </h1>
-
-        <h1 id="desc" class="text-gray-700"> If you are ready click start quiz and have fun!</h1>
-
-        <div id="service-bar" class="relative">
-
-            <button id="button" type="button" (click)="startQuiz()" [disabled]="!loggedInUsername"
-                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                Start quiz
-            </button>
-
-            <button id="button" type="button" (click)="qrCodeDialog()"
-                class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                QR code
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<div *ngIf="quizShow" class="flex items-center justify-center h-screen ">
-
-    <div *ngIf="!result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
-
-        <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
-
-        <div *ngIf="quiz.questionList[quizNum].answerList.length > 1">
-            <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-              <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
-                (click)="sendAns(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true, quiz.questionList[quizNum].answerList)">
-                {{ans.content}}
-              </button>
-              <br>
-            </span>
-        </div>
-          
-        <div *ngIf="quiz.questionList[quizNum].answerList.length === 1">
-            <div id="input" *ngFor="let correctAns of quiz.questionList[quizNum].answerList">
-
-                <mat-form-field id="formField" appearance="outline" class="h-7">
-                    <mat-label>Write here your answer</mat-label>
-                    <input matInput required type="text" name="answer" [(ngModel)]="answerModel.answerContent" >
-                </mat-form-field>
-
-                <button id="button-send2" type="submit"
-                        class="px-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                        (click)="sendAnsInput(correctAns, answerModel.answerContent, quiz.questionList[quizNum].questionContent)">
-                        <mat-icon>send</mat-icon>
+        <div id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
+            <h1 id="quizName"> Welcome in {{quizName}} </h1>
+    
+            <div id="description" *ngIf="!loggedInUsername">
+    
+                <form #guestName="ngForm" (ngSubmit)="setGuestName()" class="form-group">
+    
+                    <div class="mb-5">
+    
+                        <mat-form-field id="formField" appearance="outline" class="h-7">
+                            <mat-label>Set guest name</mat-label>
+                            <input matInput required type="text" name="username" [(ngModel)]="model.username">
+                            <mat-icon matSuffix>person</mat-icon>
+                        </mat-form-field>
+    
+                        <button id="button-send" type="submit"
+                            class="px-4 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                            <mat-icon>send</mat-icon>
+                        </button>
+    
+                    </div>
+    
+                </form>
+    
+            </div>
+    
+            <h1 id="description" class="text-gray-700"> {{quiz.description}} </h1>
+    
+            <h1 id="desc" class="text-gray-700"> If you are ready click start quiz and have fun!</h1>
+    
+            <div id="service-bar" class="relative">
+    
+                <button id="button" type="button" (click)="startQuiz()" [disabled]="!loggedInUsername"
+                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                    Start quiz
                 </button>
-
-                <div class="text-center italic text-sm text-gray-400 mt-7">
-                    If you are sure of your answer, press the send button
+    
+                <button id="button" type="button" (click)="qrCodeDialog()"
+                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                    QR code
+                </button>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    
+    
+    <div *ngIf="quizShow" class="flex items-center justify-center h-screen ">
+    
+        <div *ngIf="!result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
+    
+            <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}</h1>
+    
+            <div *ngIf="quiz.questionList[quizNum].answerList.length > 1">
+                <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
+                  <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+                    (click)="sendAns(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true, quiz.questionList[quizNum].answerList)">
+                    {{ans.content}}
+                  </button>
+                  <br>
+                </span>
+            </div>
+              
+            <div *ngIf="quiz.questionList[quizNum].answerList.length === 1">
+                <div id="input" *ngFor="let correctAns of quiz.questionList[quizNum].answerList">
+    
+                    <mat-form-field id="formField" appearance="outline" class="h-7">
+                        <mat-label>Write here your answer</mat-label>
+                        <input matInput required type="text" name="answer" [(ngModel)]="answerModel.answerContent" >
+                    </mat-form-field>
+    
+                    <button id="button-send2" type="submit"
+                            class="px-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                            (click)="sendAnsInput(correctAns, answerModel.answerContent, quiz.questionList[quizNum].questionContent)">
+                            <mat-icon>send</mat-icon>
+                    </button>
+    
+                    <div class="text-center italic text-sm text-gray-400 mt-7">
+                        If you are sure of your answer, press the send button
+                    </div>
+    
                 </div>
+            </div>
+    
+        </div>
+    
+        <div *ngIf="result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
+    
+            <img id="gif" src="/assets/images/confety.gif" />
+            <h1 class="text-lg text-gray-700">  Congratulations you earned: </h1>
+            <h1 id="score" class="text-lg text-white"> {{score}} points</h1>
+
+            <div id="login" class="relative">
+    
+                <button id="button-results" type="button" routerLink="/profile-page"
+                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                    See your results
+                </button> 
 
             </div>
+            
         </div>
-
+    
     </div>
-
-    <div *ngIf="result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
-
-        <h1 class="text-lg text-gray-700">Congratulations you earned: </h1>
-        <h1 id="score" class="text-lg text-white"> {{score}} points</h1>
-        
-    </div>
-
 </div>

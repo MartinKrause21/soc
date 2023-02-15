@@ -35,3 +35,8 @@ section {
     margin-top: 80px;
     margin-bottom: 70px;
 }
+
+#background{
+    background-image: url("src/assets/images/create-quiz-back.svg");
+    background-size: cover;
+}
