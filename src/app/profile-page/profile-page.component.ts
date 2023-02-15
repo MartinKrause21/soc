@@ -136,19 +136,18 @@ export class ProfilePageComponent implements OnInit {
 
   durationInSeconds = 2;
 
-  copyText(quizName : string): void {
-    this.isCopied = true;
-    navigator.clipboard.writeText(`https://soc-eight.vercel.app/quiz/`+quizName).then(() => {
-        this.snackBar.openFromComponent(CopiedSnackbarComponent, {
-          duration: this.durationInSeconds * 1000,
-          panelClass: ['snackbar']
-        });
-        setTimeout(() => {
-          this.isCopied = false;
-        }, this.durationInSeconds * 1000);
-
+  copyText(quiz: any): void {
+    quiz.isCopied = true;
+    navigator.clipboard.writeText(`https://soc-eight.vercel.app/quiz/` + quiz.name).then(() => {
+      this.snackBar.openFromComponent(CopiedSnackbarComponent, {
+        duration: this.durationInSeconds * 1000,
+        panelClass: ['snackbar']
+      });
+      setTimeout(() => {
+        quiz.isCopied = false;
+      }, this.durationInSeconds * 1000);
     }, (error: any) => {
-      console.error('Error:' , error);
+      console.error('Error:', error);
     });
   }
   

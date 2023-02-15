@@ -43,6 +43,7 @@ export class allTeacherQuizes {
     name: string;
     description: string;
     resultQuizIds: any[];
+    isCopied: boolean;
 
     constructor(
         name: string,
