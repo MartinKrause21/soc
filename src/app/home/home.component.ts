@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
         observer.observe(element);
       });
     }, this.timer);
+    
   }
 
 }
