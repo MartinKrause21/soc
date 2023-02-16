@@ -235,14 +235,14 @@ export class AuthService {
 
   }
 
-  sendSupport(selected: string, report: string) {
+  sendSupport(reason: string, report: string) {
     fetch('https://teach-quiz.herokuapp.com/support', {
       method: 'POST',
       headers: {
         'Authorization': 'Basic '+btoa(this.authString), 
         'Content-Type': "application/json; charset=utf8",
       },
-      body: JSON.stringify( {reason: selected, message: report} ),
+      body: JSON.stringify( {reason: reason, message: report} ),
     })
       .then(() => {
         console.log('support send Success!');

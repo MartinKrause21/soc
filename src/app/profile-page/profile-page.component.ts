@@ -48,7 +48,7 @@ export class ProfilePageComponent implements OnInit {
 
   email: string = '';
 
-  selected: string;
+  reason: string;
 
   model = new sentMail('');
 
@@ -192,11 +192,11 @@ export class ProfilePageComponent implements OnInit {
   }
 
   sendSupport(){
-    this.authService.sendSupport(this.modelSendSupport.problem , this.selected);
-    console.log( this.modelSendSupport.problem , this.selected );
+    this.authService.sendSupport(this.reason, this.modelSendSupport.problem );
+    console.log(this.reason, this.modelSendSupport.problem );
     setTimeout(() => {
       this.modelSendSupport.problem = '';
-      this.selected = '';
+      this.reason = '';
       this.snackBar.openFromComponent(SendedSupportSnackbarComponent, {
         duration: 4000,
         panelClass: ['snackbar']

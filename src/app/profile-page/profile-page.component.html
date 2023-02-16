@@ -300,13 +300,13 @@
     
                                     <mat-form-field appearance="outline" class="w-3/6">
                                         <mat-label>Select an report type</mat-label>
-                                        <mat-select [(value)]="selected" required>
+                                        <mat-select [(value)]="reason" required>
                                             <mat-option value="">Please select an option</mat-option>
                                             <mat-option value="BUG">Bug</mat-option>
                                             <mat-option value="HELP">Help</mat-option>
                                             <mat-option value="QUESTION">Question</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="selected == ''">Report type is required</mat-error>
+                                        <mat-error *ngIf="reason == ''">Report type is required</mat-error>
                                     </mat-form-field>
     
                                 </div>
@@ -324,7 +324,7 @@
     
                                     <div id="resendMail" class="relative">
                                         <button id="resendMail-button" type="submit"
-                                            [disabled]="!supportForm.valid || selected == '' "
+                                            [disabled]="!supportForm.valid || reason == '' "
                                             class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                             Send
                                         </button>
