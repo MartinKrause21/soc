@@ -242,7 +242,7 @@ export class AuthService {
         'Authorization': 'Basic '+btoa(this.authString), 
         'Content-Type': "application/json; charset=utf8",
       },
-      body: JSON.stringify( {reportType: selected, report: report} ),
+      body: JSON.stringify( {reason: selected, message: report} ),
     })
       .then(() => {
         console.log('support send Success!');

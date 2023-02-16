@@ -108,7 +108,7 @@ export class QuizComponent implements OnInit {
       }
 
     if (ans.correct && ansList.length > 1) {
-      this.score = this.score + 10;
+      this.score = this.score + 1;
       console.log("Correct answer, Score: " + this.score);
       //console.log(correct, 'hej');
     } 
@@ -145,7 +145,7 @@ export class QuizComponent implements OnInit {
     
 
   if ( this.answerModel.answerContent == correctAns.answerContent ||  this.answerModel.answerContent == correctAns.content) {
-    this.score = this.score + 10;
+    this.score = this.score + 1;
     console.log("Correct answer, Score: " + this.score);
     this.answerModel.answerContent = '';
   }
