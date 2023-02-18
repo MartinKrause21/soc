@@ -24,13 +24,13 @@
                     <!-- [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}" -->
                     <div id="result-holder">
     
-                        <h3 id="score" class="text-center text-white"> Score: {{ score }}</h3>
+                        <h3 id="score" class="text-center text-white"> Score: {{ score }} <a id="divider"> | </a> Percentage: {{percentage}}%</h3>
     
                         <div  class="justify-center mx-auto ">
                             <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                         </div>
     
-                        <div *ngFor="let question of resultQuiz[0]">
+                        <div *ngFor="let question of resultQuiz[0]" id="resultCard">
     
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
                             <div id="card" [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}"  *ngFor="let answer of question.answerList" > 
@@ -38,7 +38,8 @@
                                 <p id="indicator" *ngIf="answer.correct"><mat-icon class="text-green-600">check</mat-icon></p>
                                 <p id="indicator" *ngIf="!answer.correct"><mat-icon class="text-red-500">close</mat-icon></p>
     
-                                <p > <a class="font-bold text-slate-500" > Answer: </a>  {{ answer.answerContent }}</p>
+                                <p > <a class="font-bold text-slate-500" > Answer: </a>  {{ answer.answerContent }}  <a id="indicator-touch" *ngIf="!answer.correct && answer.chosen">|  User answer</a> </p>
+    
     
                             </div>
     

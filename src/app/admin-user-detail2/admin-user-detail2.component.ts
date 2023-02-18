@@ -14,21 +14,7 @@ export class AdminUserDetail2Component implements OnInit {
   username : string
   score: number;
   quizName: string
-
-
-
-  // quizName: string;
-  // userName: string;
-  // id: string;
-
-
-  // constructor(private route: ActivatedRoute) {
-  //   this.route.params.subscribe(params => {
-  //     this.quizName = params.quizName;
-  //     this.userName = params.userName;
-  //     this.id = params.id;
-  //   });
-  // }
+  percentage: number;
 
   public resultQuiz : any [] = [];
   public resultQuestionList : resultQuestion [] = [];
@@ -58,6 +44,7 @@ export class AdminUserDetail2Component implements OnInit {
       console.log(this.resultQuiz[0]);
       console.log(resultt);
       this.score = resultt.score;
+      this.percentage = resultt.percentage;
       this.contentLoaded = false
     });
 

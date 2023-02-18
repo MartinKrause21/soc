@@ -85,8 +85,8 @@
 
 #score{
     background-color: #502ca0 ;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
     border-radius: 8px;
 }
 
@@ -94,6 +94,10 @@
     #score {
         margin-left: 30%;
         margin-right: 30%;
+    }
+
+    #divider{
+        opacity: 0;
     }
 }
 

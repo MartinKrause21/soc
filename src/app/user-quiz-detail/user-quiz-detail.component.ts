@@ -16,6 +16,7 @@ export class UserQuizDetailComponent implements OnInit {
   quizName: string
 
   score: number;
+  percentage: number;
 
   public resultQuiz : any [] = [];
   public resultQuestionList : resultQuestion [] = [];
@@ -48,6 +49,7 @@ export class UserQuizDetailComponent implements OnInit {
       this.resultQuiz[0] = result.resultQuiz.questionList;
       this.quizName = result.resultQuiz.quizName;
       this.score = result.score;
+      this.percentage = result.percentage;
       console.log(this.resultQuiz, "resultQuiz");
       console.log(result);
       console.log(this.score, "score");
