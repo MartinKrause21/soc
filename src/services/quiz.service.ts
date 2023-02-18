@@ -78,8 +78,8 @@ export class QuizService {
     return this.http.get<quizUsers[]>(`https://teach-quiz.herokuapp.com/users/${quizName}`,  {headers: this.headerHttp});
   }
 
-  getUserDetailsForQuiz(quizName:string , username: string): Observable<any[]> {
-    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/users/${quizName}/${username}`,  {headers: this.headerHttp});
+  getUserDetailsForQuiz(resultQuizId:number , username: string): Observable<any> {
+    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/users/${resultQuizId}/${username}`,  {headers: this.headerHttp});
   }
 
   getQuizResultForUser(id:number): Observable<any[]> {

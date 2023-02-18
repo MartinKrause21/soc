@@ -12,8 +12,9 @@ import { QuizService } from 'src/services/quiz.service';
 export class AdminUserDetail2Component implements OnInit {
 
   username : string
-  quizName: string
   score: number;
+  quizName: string
+
 
 
   // quizName: string;
@@ -37,20 +38,26 @@ export class AdminUserDetail2Component implements OnInit {
     private quizService : QuizService,
   ) { }
 
+  resultQuizId: number;
   panelOpenState = false;
   borderColor:string = 'none';
   contentLoaded: boolean = true;
 
   ngOnInit(): void {
 
-    this.quizName =String(this.route.snapshot.paramMap.get('name'));
+    this.resultQuizId =Number(this.route.snapshot.paramMap.get('id'));
+    //this.quizName =String(this.route.snapshot.paramMap.get('id'));
     this.username =String(this.route.snapshot.paramMap.get('username'));
+    //this.quizName = this.resultQuiz[0].resultAnswer;
 
-    this.quizService.getUserDetailsForQuiz(this.quizName, this.username).subscribe(result => {
-      this.resultQuiz[0] = result [0].resultQuiz.questionList;
+
+    this.quizService.getUserDetailsForQuiz(this.resultQuizId, this.username).subscribe(resultt => {
+
+      this.quizName = resultt.resultQuiz.quizName;
+      this.resultQuiz[0] = resultt.resultQuiz.questionList;
       console.log(this.resultQuiz[0]);
-      console.log(result);
-      this.score = result[0].score;
+      console.log(resultt);
+      this.score = resultt.score;
       this.contentLoaded = false
     });
 
