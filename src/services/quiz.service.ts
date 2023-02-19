@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer, allFavouriteQuizzes } from '../quiz';
+import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer, allFavouriteQuizzes, favouriteQuiz } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -183,6 +183,10 @@ export class QuizService {
     });
   }
 
+  getFavouriteQuizzes(): Observable<favouriteQuiz[]>{
+    return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/get/favourite`,  {headers: this.headerHttp});
+  }
+
   setQuizFavourite(quizName:string) {
 
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
@@ -200,6 +204,10 @@ export class QuizService {
     .catch((error) => {
       console.error('Error:' , error);
     });
+  }
+
+  unsetFavourite(quizName: string){
+    return this.http.put(`https://teach-quiz.herokuapp.com/unset/favourite/${quizName}`,  {headers: this.headerHttp});
   }
 
 }

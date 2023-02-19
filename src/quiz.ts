@@ -25,6 +25,7 @@ export interface resultQuiz {
     name: string; 
     description: string; 
     questionList : resultQuestion[];
+    isFavourite: boolean;
 }
 
 export interface resultQuestion {
@@ -38,6 +39,10 @@ export interface resultAnswer {
     correct: boolean;
 }
 
+export interface favouriteQuiz{
+    quizName: String;
+    favourite: boolean;
+}
 
 export class allTeacherQuizes {
     name: string;
@@ -59,6 +64,7 @@ export class allUserQuizes {
     creatorName: string;
     date : Date;
     resultQuizIds: any[];
+    isFavourite: boolean;
     constructor(
         name: string,
         id : number,

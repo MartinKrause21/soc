@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { allFavouriteQuizzes, allUserQuizes, Quiz } from 'src/quiz';
+import { allFavouriteQuizzes, allUserQuizes, favouriteQuiz, Quiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -20,8 +20,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class QrCodeConvertorComponent implements OnInit {
 
-  quizzes: allUserQuizes[]
+  quizzes: allUserQuizes[];
   originalQuizzes: allUserQuizes[];
+  favouriteQuizzes: favouriteQuiz[];
 
   constructor(
     private quizService: QuizService,
@@ -36,10 +37,18 @@ export class QrCodeConvertorComponent implements OnInit {
     this.quizService.getAllQuizzes().subscribe(quizzes => {
       this.quizzes = quizzes;
       this.originalQuizzes = quizzes;
-      console.log(quizzes);
+      console.log(quizzes, "hahhahahhahaaha");
       this.contentLoaded = false;
-
     });
+
+    
+      this.quizService.getFavouriteQuizzes().subscribe( result => {
+        this.favouriteQuizzes = result;
+
+        console.log(result);
+      });
+    
+
 
     setTimeout(() => {
       this.visibility = 'visible';
@@ -56,11 +65,22 @@ export class QrCodeConvertorComponent implements OnInit {
     }
   }
 
-  isFavourite = false;
 
-  setFavourite(quizName: string) {
-      this.isFavourite = !this.isFavourite;
-      this.quizService.setQuizFavourite(quizName)
+
+  setFavourite(quiz: any) {
+
+      //this.isFavourite = !this.isFavourite;
+      const favouriteIndex = this.favouriteQuizzes.findIndex(f => f.quizName === quiz.name);
+      if (favouriteIndex >= 0) {
+        this.favouriteQuizzes[favouriteIndex].favourite = !this.favouriteQuizzes[favouriteIndex].favourite;
+      }
+      quiz.isFavourite = !quiz.isFavourite;
+      this.quizService.setQuizFavourite(quiz.name);
+  }
+
+  unsetFavourite(quiz: any){
+    quiz.isFavourite = !quiz.isFavourite;
+    this.quizService.unsetFavourite(quiz.name);
   }
 
 }
