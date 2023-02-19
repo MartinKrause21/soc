@@ -184,8 +184,7 @@ export class QuizService {
   }
 
   setQuizFavourite(quizName: string) {
-    const body = { quizName };
-    this.http.put('https://teach-quiz.herokuapp.com/set/favourite', body, { headers: this.headerHttp }).subscribe((response: any) => {
+    this.http.put(`https://teach-quiz.herokuapp.com/set/favourite/${quizName}`, { headers: this.headerHttp }).subscribe((response: any) => {
       console.log(response);
     })
   }
