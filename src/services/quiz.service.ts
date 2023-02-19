@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer } from '../quiz';
+import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer, allFavouriteQuizzes } from '../quiz';
 import { user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
@@ -80,6 +80,10 @@ export class QuizService {
 
   getUserDetailsForQuiz(resultQuizId:number , username: string): Observable<any> {
     return this.http.get<any[]>(`https://teach-quiz.herokuapp.com/users/${resultQuizId}/${username}`,  {headers: this.headerHttp});
+  }
+
+  getAllFavouriteQuizzes(): Observable<allFavouriteQuizzes[]> {
+    return this.http.get<allFavouriteQuizzes[]>(`https://teach-quiz.herokuapp.com/get/favourite`,  {headers: this.headerHttp});
   }
 
   getQuizResultForUser(id:number): Observable<any[]> {
@@ -177,6 +181,13 @@ export class QuizService {
     .catch((error) => {
       console.error('Error:' , error);
     });
+  }
+
+  setQuizFavourite(quizName: string) {
+    const body = { quizName };
+    this.http.put('https://teach-quiz.herokuapp.com/set/favourite', body, { headers: this.headerHttp }).subscribe((response: any) => {
+      console.log(response);
+    })
   }
 
 }

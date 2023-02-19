@@ -3,47 +3,57 @@
     <div class="text-center pb-12">
 
         <h2 id="h2" class="text-base font-bold ">
-            These are all quizzes.
+            These are all quizzes:
         </h2>
 
         <h1 class="font-bold text-xl font-heading text-gray-900">
-            Check it out and choose one.
+            Check it out and choose one
         </h1>
 
         <div class="flexbox">
             <div class="search">
-              <div>
-                <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchQuizzes()" placeholder="Search Quizzes">
-              </div>
+                <div>
+                    <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchQuizzes()"
+                        placeholder="Search quizzes">
+                </div>
             </div>
         </div>
 
     </div>
-    
 
-    <div  class="justify-center mx-auto ">
+
+    <div class="justify-center mx-auto ">
         <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
     </div>
 
-    <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-2xl text-gray-400 mt-20 mb-7"> 
+    <div *ngIf="quizzes.length == 0 " class="font-bold text-center text-2xl text-gray-400 mt-20 mb-7">
         <img id="alert-icon" src="https://img.icons8.com/wired/80/808080/repository.png" />
         No quizzes here, create some.
     </div>
 
-    <div [@animateBottom]="visibility" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div [@animateBottom]="visibility" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
 
         <div *ngFor="let quiz of quizzes">
-            <div id="cards" class="w-full rounded-lg p-6 flex flex-col justify-center items-center">
+            <div id="cards" class="w-full rounded-lg p-6 shadow-lg flex flex-col justify-center items-center">
                 <div class="text-center">
 
-                    <p class="text-xl text-white font-bold mb-2">{{quiz.name}}</p>
-                    <p class="text-base text-white font-normal"> {{quiz.description}} </p>
-                    <p class="text-base text-white font-normal"> Creator: {{quiz.creatorName}} </p>
+                    <p class="text-xl text-black font-bold mb-2">{{quiz.name}}</p>
+                    <p class="text-base text-black font-normal"> {{quiz.description}} </p>
+                    <p class="text-base text-black font-normal"> Creator: {{quiz.creatorName}} </p>
 
-                    <button id="button" routerLink="/quiz/{{quiz.name}}"
-                        class="inline-block bg-white rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
-                        Play
-                    </button>
+                    <div id="service-bar">
+
+                        <button id="button" routerLink="/quiz/{{quiz.name}}" 
+                            class="inline-block rounded-md px-6 py-2 mr-1 font-semibold shadow-md duration-200 hover:bg-green-400 transform hover:-translate-y-1 active:translate-y-0">
+                            Play
+                        </button>
+
+                        <button id="button" (click)="setFavourite(quiz.name)"
+                            class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-200 hover:bg-green-400 transform hover:-translate-y-1 active:translate-y-0">
+                            <mat-icon>bookmark_border</mat-icon>
+                        </button>
+
+                    </div>
 
                 </div>
             </div>

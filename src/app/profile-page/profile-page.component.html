@@ -133,6 +133,42 @@
                             </div>
     
     
+                        </mat-tab >
+
+                    
+
+                        <mat-tab *ngIf="role == 'USER' " id="bookmarksUser-tab"> 
+                            <ng-template mat-tab-label>
+    
+                                <mat-icon>collections_bookmark</mat-icon> Bookmarks
+    
+                            </ng-template>
+
+                            <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                                Your bookmarked quizes:
+                            </div>
+    
+                            <div *ngIf="allFavouriteQuizzes.length == 0 "
+                                class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
+                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                                You have not bookmarked any quiz yet!
+                            </div>
+    
+                            <div class="justify-center mx-auto ">
+                                <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
+                            </div>
+
+                            <div *ngIf="allFavouriteQuizzes.length > 0">
+    
+                                <div id="quizCard" *ngFor="let quiz of allFavouriteQuizzes">
+    
+                                    <h1 class=" text-center text-3xl text-gray-900"> {{quiz.quizName}} </h1>
+                                    <h2 class="text-center text-gray-700 font-medium"> {{quiz.favourite}} </h2>
+    
+                                </div>
+                            </div>
+
+
                         </mat-tab>
     
                         <mat-tab *ngIf="role == 'GUEST' " id="guest-tab">

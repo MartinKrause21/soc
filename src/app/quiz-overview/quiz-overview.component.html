@@ -63,14 +63,14 @@
             <div [@animateBottom]="visibility" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
                 <div  *ngFor="let quiz of quizzes">
-                    <div id="cards" class="w-full rounded-lg p-6 flex flex-col justify-center items-center">
+                    <div id="cards" class="w-full rounded-lg p-6 flex shadow-lg flex-col justify-center items-center">
                         <div class="text-center">
-                            <p class="text-xl text-white font-bold mb-2">{{quiz.name}}</p>
-                            <p class="text-base text-white font-normal">  {{quiz.description}} </p>
-                            <p class="text-base text-white font-normal"> Creator: {{quiz.creatorName}} </p>
+                            <p class="text-xl text-black font-bold mb-2">{{quiz.name}}</p>
+                            <p class="text-base text-black font-normal">  {{quiz.description}} </p>
+                            <p class="text-base text-black font-normal"> Creator: {{quiz.creatorName}} </p>
                             
                         <button id="button" routerLink="/quiz/{{quiz.name}}"
-                            class="inline-block bg-white rounded-md px-6 py-2 font-semibold shadow-md duration-75 hover:bg-green-400">
+                            class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-200 hover:bg-green-400 transform hover:-translate-y-1 active:translate-y-0">
                             Play as guest
                         </button>
     

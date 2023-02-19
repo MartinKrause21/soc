@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { allUserQuizes } from 'src/quiz';
+import { allFavouriteQuizzes, allUserQuizes, Quiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -56,5 +56,10 @@ export class QrCodeConvertorComponent implements OnInit {
     }
   }
 
+  favourite: boolean = false;
+
+  setFavourite(quizName: string) {
+      this.quizService.setQuizFavourite(quizName)
+  }
 
 }

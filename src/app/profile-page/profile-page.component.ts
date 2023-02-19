@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
-import { allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
+import { allFavouriteQuizzes, allTeacherQuizes, allUserQuizes, Quiz } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
 import {  allAdmins, allReports, allUsers, sendSupport, sentMail } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
@@ -39,6 +39,7 @@ export class ProfilePageComponent implements OnInit {
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   allUserQuizes : allUserQuizes [] = []; 
+  allFavouriteQuizzes : allFavouriteQuizzes [] = [];
   loggedInUsername: string;
   resultQuizIds: any[];
   allAdmins: allAdmins[];
@@ -71,6 +72,12 @@ export class ProfilePageComponent implements OnInit {
     this.loggedInUsername = this.cookies.get('username');
 
     this.resultID = Number(this.route.snapshot.paramMap.get('resultQuizIds'));
+
+    this.quizService.getAllFavouriteQuizzes().subscribe(response => { 
+      this.allFavouriteQuizzes = response;
+      this.contentLoaded =false
+      console.log("favourite:"+response);
+    });
 
     this.quizService.getAllTeacherQuizes().subscribe(response => { 
       this.allTeacherQuizes = response;

@@ -88,6 +88,19 @@ export class inputAnswer {
     ) {  }
 }
 
+export class allFavouriteQuizzes {
+    quizName: string;
+    id : number;
+    favourite: boolean;
+    
+    constructor(
+        quizName: string,
+        id: number,
+        favourite: boolean,
+    ) {  }
+}
+
+
 
 
 

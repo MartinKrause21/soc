@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'changePassword/:email', component: PasswordResetFormComponent },
+  { path: 'changePasswordEmail/:email', component: PasswordResetFormComponent },
   { path: 'quiz-overview', component: QuizOverviewComponent },
   { path: 'quiz/:name', component: QuizComponent },
   { path: 'verify/:code', component: VerifyPageComponent },

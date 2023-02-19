@@ -22,7 +22,7 @@
 }
 
 #cards {
-    background-color: #512ca095;
+    border-top: #502ca0 10px solid;
     min-height: 222px;
 }
 
