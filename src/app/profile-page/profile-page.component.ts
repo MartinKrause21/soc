@@ -65,6 +65,7 @@ export class ProfilePageComponent implements OnInit {
   isCopied = false;
 
   role : string;
+  userPercentage: number | null = null;
 
    idS: any = [];
   ngOnInit(): void {
@@ -94,6 +95,10 @@ export class ProfilePageComponent implements OnInit {
       this.dataService.updateResultQuizIds(this.idS);
       this.idS = this.dataService.getResultQuizIds();
      
+    });
+
+    this.authService.getUserPercentage().subscribe(percentage => {
+      this.userPercentage = parseFloat(percentage.toFixed(2));
     });
 
     this.authService.getAllAdminsForSupervisor().subscribe(allAdmins => this.allAdmins = allAdmins);

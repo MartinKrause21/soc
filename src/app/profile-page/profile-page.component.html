@@ -12,6 +12,12 @@
                 <div class="mt-16">
                     <h1 class="font-bold text-center text-3xl text-gray-900"> {{loggedInUsername}} </h1>
                     <p class="text-center text-sm text-gray-400 font-medium"> Role: {{role}}</p>
+
+                    <div class="mb-5" *ngIf="role == 'USER' " >
+                        <div id="percentil-holder-user"> <a id="percentil"> Overall percentile:  {{userPercentage}}% </a></div> 
+                        <mat-progress-bar id="progress-bar-user" mode="determinate" value="{{userPercentage}}"></mat-progress-bar>
+
+                    </div>
     
                     <mat-tab-group mat-align-tabs="center">
     

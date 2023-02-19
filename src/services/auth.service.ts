@@ -45,6 +45,10 @@ export class AuthService {
     return this.http.get<{ role: string }>('https://teach-quiz.herokuapp.com/role', { headers: this.headerHttp });
   }
 
+  getUserPercentage():Observable <number>  {
+    return this.http.get<number>('https://teach-quiz.herokuapp.com/currentUser/percentage', { headers: this.headerHttp })  
+  } 
+
   isLoggedIn(): boolean {
     return !!(this.cookies.get('username') && this.cookies.get('password'));
   }

@@ -225,6 +225,11 @@ h1 {
     height: 10px;
 }
 
+#progress-bar-user{
+    height: 10px;
+    border: 1px solid white;
+}
+
 ::ng-deep .mat-progress-bar-fill::after {
     background-color: #502ca0;
 }
@@ -240,6 +245,20 @@ h1 {
 #percentil-holder{
     background-color: #502ca0;
     width: 50px;
+    padding-bottom: 15px;
+    color: white;
+    margin-bottom: -9px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    padding-bottom: 10px;
+}
+
+#percentil-holder-user{
+    background-color: #502ca0;
+    width: 200px;
     padding-bottom: 15px;
     color: white;
     margin-bottom: -9px;
