@@ -183,10 +183,23 @@ export class QuizService {
     });
   }
 
-  setQuizFavourite(quizName: string) {
-    this.http.put(`https://teach-quiz.herokuapp.com/set/favourite/${quizName}`, { headers: this.headerHttp }).subscribe((response: any) => {
-      console.log(response);
+  setQuizFavourite(quizName:string) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch(`https://teach-quiz.herokuapp.com/save/score/${quizName}`, {  
+      method: 'PUT',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
     })
+    .then(() => {
+      console.log('Success!');
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
   }
 
 }
