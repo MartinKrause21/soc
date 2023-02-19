@@ -56,9 +56,10 @@ export class QrCodeConvertorComponent implements OnInit {
     }
   }
 
-  favourite: boolean = false;
+  isFavourite = false;
 
   setFavourite(quizName: string) {
+      this.isFavourite = !this.isFavourite;
       this.quizService.setQuizFavourite(quizName)
   }
 

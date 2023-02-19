@@ -50,7 +50,8 @@
 
                         <button id="button" (click)="setFavourite(quiz.name)"
                             class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-200 hover:bg-green-400 transform hover:-translate-y-1 active:translate-y-0">
-                            <mat-icon>bookmark_border</mat-icon>
+                            <mat-icon *ngIf="isFavourite">bookmark</mat-icon>
+                            <mat-icon *ngIf="!isFavourite">bookmark_border</mat-icon>
                         </button>
 
                     </div>
