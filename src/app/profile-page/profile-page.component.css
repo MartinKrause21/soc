@@ -274,3 +274,13 @@ h1 {
     margin: auto
 
 }
+
+.hidden {
+    display: none;
+}
+
+#bookmark{
+    float: left;
+    display: block;
+    margin-top: -25px;
+}

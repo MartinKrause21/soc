@@ -40,16 +40,12 @@ export class QrCodeConvertorComponent implements OnInit {
       console.log(quizzes, "hahhahahhahaaha");
       this.contentLoaded = false;
     });
-
-    
       this.quizService.getFavouriteQuizzes().subscribe( result => {
         this.favouriteQuizzes = result;
 
         console.log(result);
       });
     
-
-
     setTimeout(() => {
       this.visibility = 'visible';
     }, 300);
@@ -64,8 +60,6 @@ export class QrCodeConvertorComponent implements OnInit {
       this.quizzes = this.quizzes.filter(quiz => quiz.name.includes(this.searchTerm));
     }
   }
-
-
 
   setFavourite(quiz: any) {
 

@@ -122,8 +122,6 @@
                                             "medium"}} </h3>
                                     </div>
     
-    
-    
                                     <div id="button-holder">
     
                                         <button id="button" type="button"
@@ -165,15 +163,28 @@
                             </div>
 
                             <div *ngIf="allFavouriteQuizzes.length > 0">
-    
-                                <div id="quizCard" *ngFor="let quiz of allFavouriteQuizzes">
-    
-                                    <h1 class=" text-center text-3xl text-gray-900"> {{quiz.quizName}} </h1>
-                                    <h2 class="text-center text-gray-700 font-medium"> {{quiz.favourite}} </h2>
-    
-                                </div>
-                            </div>
 
+                              
+                                 
+                                <div id="quizCard" *ngFor="let quiz of allFavouriteQuizzes" [ngClass]="{'hidden': !quiz.favourite}">
+                                    <mat-icon id="bookmark"> bookmark </mat-icon>
+                                    <h1 class="text-center text-3xl text-gray-900">{{quiz.quizName}}</h1>
+
+                                    <div id="button-holder">
+
+                                        <button id="button" type="button"
+                                            routerLink="/quiz/{{quiz.quizName}}"
+                                            class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                            (click)="sendId(quiz)">
+                                            Play again
+                                        </button>
+    
+                                    </div>
+
+                                </div>
+                                      
+                            </div>
+                              
 
                         </mat-tab>
     
@@ -581,28 +592,16 @@
                             </div>
     
                             <div>
-                                  
-                              <div #loadedContent id="quizCard">
-                                  
-                                    <div id="report-content-holder"> 
-                                        <h1 class="font-bold text-center text-3xl text-gray-900"> quiz name </h1>
-                                        <h3 class="text-center text-gray-500 font-bold"> dsc </h3>
-                                    </div>
-    
-                                   <div id="percentil-holder"> <a id="percentil"> 70% </a></div> 
-                                    <mat-progress-bar id="progress-bar" mode="determinate" value="70"></mat-progress-bar>
-                                   
-                                </div>
 
-                                <div #loadedContent id="quizCard" >
+                                <div #loadedContent id="quizCard" *ngFor="let quiz of allTeacherQuizesPercentage" >
                                   
                                     <div id="report-content-holder"> 
-                                        <h1 class="font-bold text-center text-3xl text-gray-900"> quiz name </h1>
-                                        <h3 class="text-center text-gray-500 font-bold"> dsc </h3>
+                                        <h1 class="font-bold text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
+                                        <h3 class="text-center text-gray-500 font-bold"> {{quiz.description}} </h3>
                                     </div>
     
-                                   <div id="percentil-holder"> <a id="percentil"> 70% </a></div> 
-                                    <mat-progress-bar id="progress-bar" mode="determinate" value="70"></mat-progress-bar>
+                                   <div id="percentil-holder"> <a id="percentil"> {{quiz.percentage}}% </a></div> 
+                                    <mat-progress-bar id="progress-bar" mode="determinate" value="{{quiz.percentage}}"></mat-progress-bar>
                                    
                                 </div>
     

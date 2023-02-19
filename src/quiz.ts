@@ -57,6 +57,18 @@ export class allTeacherQuizes {
     ) {  }
 }
 
+export class TeacherQuizzesPercentage {
+    name: string;
+    description: string;
+    percentage : number;
+
+    constructor(
+        name: string,
+        description: string,
+        percentage: number,
+    ) {  }
+}
+
 export class allUserQuizes {
     name: string;
     id: number;
