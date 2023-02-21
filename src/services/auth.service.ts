@@ -323,7 +323,7 @@ export class AuthService {
   }
 
   deleteClass(className: string) {
-    return this.http.put(`https://teach-quiz.herokuapp.com/delete/table/${className}`, {headers: this.headerHttp, responseType: 'text' });
+    return this.http.put(`https://teach-quiz.herokuapp.com/delete/table/${className}`, {headers: this.headerHttp });
   }
 
 }
