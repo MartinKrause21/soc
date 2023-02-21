@@ -24,6 +24,14 @@
     background-color: #502ca0;
 }
 
+
+#button:disabled {
+    background-color: #512ca077;
+    color: rgba(239, 227, 227, 0.796);
+    border-color: #5c78987d;
+    border-width: 0px;
+}
+
 #button-holder{
     display: flex;
     justify-content: center;

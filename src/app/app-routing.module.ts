@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'qr-dialog', component: QrCodeDialogComponent },
   { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'create-class', component: CreateClassComponent, canActivate: [AuthGuard, AdminGuard]  },
-  { path: 'class-detail/:className', component: ClassDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
+  { path: 'class-detail/:className/:quizName', component: ClassDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'user-quiz-detail/:resultQuizIds', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
   { path: 'admin-user-detail/:resultQuizId/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },

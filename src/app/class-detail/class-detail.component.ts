@@ -16,11 +16,13 @@ export class ClassDetailComponent implements OnInit {
   ) { }
 
   className:string
+  quizName:string
   classUsers: classUsers[];
 
   ngOnInit(): void {
 
     this.className =String(this.route.snapshot.paramMap.get('className'));
+    this.quizName =String(this.route.snapshot.paramMap.get('quizName'));
 
     this.authService.getAllClassUsers(this.className).subscribe(response => {
       this.classUsers = response;
