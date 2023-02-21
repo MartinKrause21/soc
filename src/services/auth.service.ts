@@ -322,4 +322,8 @@ export class AuthService {
     return this.http.get<classUsers[]>(`https://teach-quiz.herokuapp.com/get/users/table/${className}`,  {headers: this.headerHttp});
   }
 
+  deleteClass(className: string) {
+    return this.http.put(`https://teach-quiz.herokuapp.com/delete/table/${className}`, {headers: this.headerHttp, responseType: 'text' });
+  }
+
 }

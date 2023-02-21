@@ -65,6 +65,7 @@ import { DeleteReportDialogComponent } from './delete-report-dialog/delete-repor
 import { CreateClassComponent } from './create-class/create-class.component';
 import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/sucess-create-class-dialog.component';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
+import { DeleteClassDialogComponent } from './delete-class-dialog/delete-class-dialog.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { ClassDetailComponent } from './class-detail/class-detail.component';
     CreateClassComponent,
     SucessCreateClassDialogComponent,
     ClassDetailComponent,
+    DeleteClassDialogComponent,
   ],
   imports: [
     BrowserModule,
