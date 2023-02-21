@@ -20,13 +20,16 @@ export class DeleteClassDialogComponent implements OnInit {
 
   className: string = this.data.className;
 
-  delete(className : string) {
-    this.authService.deleteClass(className).subscribe(() => {
-      console.log('Success!');
-      location.reload()
-    }, error => {
-      console.error('Error:' , error);
-    });
+  delete(className: string) {
+    this.authService.deleteClass(className).subscribe(
+      () => {
+        console.log('Success!');
+        location.reload();
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 }
