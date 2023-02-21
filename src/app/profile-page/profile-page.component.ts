@@ -16,6 +16,7 @@ import { DataService } from '../data.service';
 import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-dialog.component';
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { DeleteReportDialogComponent } from '../delete-report-dialog/delete-report-dialog.component';
+import { DeleteClassDialogComponent } from '../delete-class-dialog/delete-class-dialog.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -215,6 +216,16 @@ export class ProfilePageComponent implements OnInit {
     };
 
     this.dialog.open(DeleteReportDialogComponent, dialogConfig);
+  }
+
+  openDeleteClassDialog(className: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      className: className
+    };
+
+    this.dialog.open(DeleteClassDialogComponent, dialogConfig);
   }
 
   sendSupport(){
