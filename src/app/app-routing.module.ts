@@ -21,6 +21,7 @@ import { FaqComponent } from './faq/faq.component';
 import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
 import { GuestFormComponent } from './guest-form/guest-form.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreateClassComponent } from './create-class/create-class.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'all-quizzes', component: QrCodeConvertorComponent },
   { path: 'qr-dialog', component: QrCodeDialogComponent },
   { path: 'admin-quiz-detail/:name', component: AdminQuizDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
+  { path: 'create-class', component: CreateClassComponent, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'user-quiz-detail/:resultQuizIds', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
   { path: 'admin-user-detail/:resultQuizId/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },

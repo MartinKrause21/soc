@@ -284,3 +284,15 @@ h1 {
     display: block;
     margin-top: -25px;
 }
+
+#button-create-class {
+    width: 180px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+}
+
+#button-create-class:hover {
+    color: white;
+    background-color: #502ca0;
+}

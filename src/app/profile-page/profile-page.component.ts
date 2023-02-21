@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allFavouriteQuizzes, allTeacherQuizes, allUserQuizes, Quiz, TeacherQuizzesPercentage } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import {  allAdmins, allReports, allUsers, sendSupport, sentMail } from 'src/user';
+import {  allAdmins, allReports, allUsers, sendSupport, sentMail, userClass } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
@@ -47,6 +47,7 @@ export class ProfilePageComponent implements OnInit {
   allUsers: allUsers[];
   quizzes : allUserQuizes[]
   allReports: allReports[];
+  userClass: userClass[];
 
   email: string = '';
 
@@ -93,6 +94,10 @@ export class ProfilePageComponent implements OnInit {
       this.contentLoaded =false
     });
 
+    this.authService.getAllTeacherClasses().subscribe(response => { 
+      this.userClass = response;
+      this.contentLoaded = false
+    });
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;

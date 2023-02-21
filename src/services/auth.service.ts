@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { allAdmins, allReports, allUsers, sendSupport, user, userLogin } from 'src/user';
+import { allAdmins, allReports, allUsers, sendSupport, user, userClass, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterVerifyDialogComponent } from 'src/app/register-verify-dialog/register-verify-dialog.component';
 import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-login-dialog.component';
 import { Router } from '@angular/router';
+import { SucessCreateClassDialogComponent } from 'src/app/sucess-create-class-dialog/sucess-create-class-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -287,6 +288,34 @@ export class AuthService {
 
   getAllReports(): Observable<allReports[]> {
     return this.http.get<allReports[]>(`https://teach-quiz.herokuapp.com/get/support`,  {headers: this.headerHttp});
+  }
+
+  createClass(quizName: string, className: string, usernames: string[]) {
+    fetch('https://teach-quiz.herokuapp.com/save/userTable', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
+      },
+      body: JSON.stringify( {quizName: quizName, className: className, usernames: usernames} ),
+    })
+      .then(() => {
+        console.log('sucess create class!');
+        this.createClassDialog();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
+  }
+
+  createClassDialog(): void {
+    this.dialog.open(SucessCreateClassDialogComponent);
+  }
+
+  getAllTeacherClasses(): Observable<userClass[]> {
+    return this.http.get<userClass[]>(`https://teach-quiz.herokuapp.com/get/classes`,  {headers: this.headerHttp});
   }
 
 }

@@ -134,3 +134,14 @@ export class allReports {
       ) {  }
 }
 
+export class userClass {
+   quizName: string;
+   className: string;
+   usernames: any[];
+   constructor(
+      quizName: string,
+      className: string,
+      usernames: any[],
+      ) {  }
+}
+

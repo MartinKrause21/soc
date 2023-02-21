@@ -13,6 +13,18 @@
                     <h1 class="font-bold text-center text-3xl text-gray-900"> {{loggedInUsername}} </h1>
                     <p class="text-center text-sm text-gray-400 font-medium"> Role: {{role}}</p>
 
+                    <div id="button-holder" *ngIf="role == 'ADMIN' " class="relative">
+
+                        <button id="button-create-class" type="button" routerLink="/create-class"
+                            class="py-2 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                            style="display: flex; justify-content: center; align-items: center;">
+                            Create class <mat-icon style="margin-left: 5px; margin-bottom: 1px;">add_box</mat-icon>
+                        </button>
+
+
+                    </div>
+
+
                     <div class="mb-5" *ngIf="role == 'USER' " >
                         <div id="percentil-holder-user"> <a id="percentil"> Overall percentile:  {{userPercentage}}% </a></div> 
                         <mat-progress-bar id="progress-bar-user" mode="determinate" value="{{userPercentage}}"></mat-progress-bar>
@@ -26,12 +38,12 @@
     
                             <ng-template mat-tab-label>
     
-                                <img src="https://img.icons8.com/ios-filled/26/null/repository.png" /> Created quizes
+                                <img src="https://img.icons8.com/ios-filled/26/null/repository.png" /> Created quizzes
     
                             </ng-template>
     
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                                Your quizes:
+                                Your quizzes:
                             </div>
     
                             <div *ngIf="allTeacherQuizes.length == 0 "
@@ -138,8 +150,48 @@
     
     
                         </mat-tab >
+                        
+                        <mat-tab *ngIf="role == 'ADMIN' " id="createdClasses-tab">
+                            <ng-template mat-tab-label>
 
-                    
+                                <mat-icon>class</mat-icon> Created classes
+
+                            </ng-template>
+
+                            <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
+                                Your created classes:
+                            </div>
+
+                            <div *ngIf="userClass.length == 0 "
+                                class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
+                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                                You have not created any class yet.
+                            </div>
+
+                            <div class="justify-center mx-auto ">
+                                <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
+                            </div>
+
+                            <div *ngIf="userClass.length > 0">
+
+                                <div id="quizCard" *ngFor="let class of userClass">
+                                    <h1 class="text-center text-3xl text-gray-900">{{class.className}}</h1>
+                                    <h2 class="text-center text-gray-400 font-medium">Quiz name: {{class.quizName}} </h2>
+
+                                    <div id="button-holder">
+
+                                        <button id="button" type="button"
+                                            class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                            See details
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
 
                         <mat-tab *ngIf="role == 'USER' " id="bookmarksUser-tab"> 
                             <ng-template mat-tab-label>
@@ -149,7 +201,7 @@
                             </ng-template>
 
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                                Your bookmarked quizes:
+                                Your bookmarked quizzes:
                             </div>
     
                             <div *ngIf="allFavouriteQuizzes.length == 0 "

@@ -62,6 +62,8 @@ import { DeleteUserDialogComponent } from './delete-user-dialog/delete-user-dial
 import { DeleteAdminDialogComponent } from './delete-admin-dialog/delete-admin-dialog.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DeleteReportDialogComponent } from './delete-report-dialog/delete-report-dialog.component';
+import { CreateClassComponent } from './create-class/create-class.component';
+import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/sucess-create-class-dialog.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,8 @@ import { DeleteReportDialogComponent } from './delete-report-dialog/delete-repor
     DeleteUserDialogComponent,
     DeleteAdminDialogComponent,
     DeleteReportDialogComponent,
+    CreateClassComponent,
+    SucessCreateClassDialogComponent,
   ],
   imports: [
     BrowserModule,
