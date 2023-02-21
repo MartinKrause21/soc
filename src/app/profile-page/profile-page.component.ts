@@ -93,7 +93,6 @@ export class ProfilePageComponent implements OnInit {
       this.contentLoaded =false
     });
 
-    
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;

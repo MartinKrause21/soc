@@ -58,13 +58,11 @@ export class allTeacherQuizes {
 }
 
 export class TeacherQuizzesPercentage {
-    name: string;
-    description: string;
+    quizName: string;
     percentage : number;
 
     constructor(
-        name: string,
-        description: string,
+        quizName: string,
         percentage: number,
     ) {  }
 }

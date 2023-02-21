@@ -70,11 +70,9 @@ export class CreateQuizComponent  {
   newAnswer(): FormGroup { 
     return this.formBuilder.group({  
       answerContent: '', 
-      correct: this.correctAnswer,
+      correct: new FormControl(''),
     })  
   }  
-  
-  correctAnswer = new FormControl('');
   
      
   addQuestion() {  
