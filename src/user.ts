@@ -145,3 +145,14 @@ export class userClass {
       ) {  }
 }
 
+export class classUsers {
+   resultQuizId: number;
+   username: string;
+   date: Date;
+   constructor(
+      resultQuizId: number,
+      username: string,
+      date: Date,
+      ) {  }
+}
+

@@ -296,3 +296,16 @@ h1 {
     color: white;
     background-color: #502ca0;
 }
+
+#button-class-dtl {
+    width: 140px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+    min-height: 38.5px;
+}
+
+#button-class-dtl:hover {
+    color: white;
+    background-color: #502ca0;
+}

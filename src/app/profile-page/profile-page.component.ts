@@ -164,7 +164,7 @@ export class ProfilePageComponent implements OnInit {
 
   copyText(quiz: any): void {
     quiz.isCopied = true;
-    navigator.clipboard.writeText(`https://soc-eight.vercel.app/quiz/` + quiz.name).then(() => {
+    navigator.clipboard.writeText(`https://queasy.vercel.app/quiz/` + quiz.name).then(() => {
       this.snackBar.openFromComponent(CopiedSnackbarComponent, {
         duration: this.durationInSeconds * 1000,
         panelClass: ['snackbar']

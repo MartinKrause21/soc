@@ -64,6 +64,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DeleteReportDialogComponent } from './delete-report-dialog/delete-report-dialog.component';
 import { CreateClassComponent } from './create-class/create-class.component';
 import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/sucess-create-class-dialog.component';
+import { ClassDetailComponent } from './class-detail/class-detail.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/s
     DeleteReportDialogComponent,
     CreateClassComponent,
     SucessCreateClassDialogComponent,
+    ClassDetailComponent,
   ],
   imports: [
     BrowserModule,

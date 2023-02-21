@@ -86,10 +86,10 @@
                                             <mat-icon>delete</mat-icon>
                                         </button>
     
-                                        <button id="button" type="button" routerLink="/edit-quiz"
+                                        <!-- <button id="button" type="button" routerLink="/edit-quiz"
                                             class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                             <mat-icon>edit</mat-icon>
-                                        </button>
+                                        </button> -->
     
                                     </div>
     
@@ -176,13 +176,18 @@
 
                                 <div id="quizCard" *ngFor="let class of userClass">
                                     <h1 class="text-center text-3xl text-gray-900">{{class.className}}</h1>
-                                    <h2 class="text-center text-gray-400 font-medium">Quiz name: {{class.quizName}} </h2>
+                                    <h2 class="text-center text-gray-400 font-medium">Quiz: {{class.quizName}} </h2>
 
                                     <div id="button-holder">
 
-                                        <button id="button" type="button"
+                                        <button id="button-class-dtl" type="button" routerLink="/class-detail/{{class.className}}"
                                             class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                             See details
+                                        </button>
+
+                                        <button id="button" type="button" 
+                                            class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                            <mat-icon>delete</mat-icon>
                                         </button>
 
                                     </div>
@@ -641,6 +646,11 @@
     
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
                                 This is stats for your quizzes:
+                            </div>
+
+                            <div *ngIf="allTeacherQuizesPercentage.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                                Any quiz has been done yet.
                             </div>
     
                             <div>
