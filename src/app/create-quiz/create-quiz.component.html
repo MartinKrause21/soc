@@ -1,66 +1,65 @@
-
-<div id="background"> 
+<div id="background">
     <div id="container-f" class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-    
-            <div id="back" class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+
+            <div id="back"
+                class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
             </div>
-    
+
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
-    
+
                     <div>
                         <h1 class="text-2xl font-semibold"> Create your own quiz </h1>
                     </div>
-    
+
                     <div class="divide-y divide-gray-200">
                         <form #quizzForm="ngForm" id="container" [formGroup]="quizForm | asFormGroup"
                             (ngSubmit)="onSubmit()">
-    
+
                             <div id="quiz-info">
-    
+
                                 <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
                                     <mat-label> Quiz name </mat-label>
                                     <input matInput required type="text" name="username" formControlName="name"
                                         class="form-control">
                                     <mat-icon matSuffix>description</mat-icon>
                                 </mat-form-field>
-    
+
                                 <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
                                     <mat-label> Description </mat-label>
-                                    <input matInput required type="text" name="description" formControlName="description"
-                                        class="form-control">
+                                    <input matInput required type="text" name="description"
+                                        formControlName="description" class="form-control">
                                     <mat-icon matSuffix>info</mat-icon>
                                 </mat-form-field>
-    
+
                             </div>
-    
+
                             <div id="question-adder" class="flex flex-col items-center justify-center">
-    
+
                                 <tr id="question-add-holder" [ngClass]="{'sticky': isSticky}">
-    
-                                    <button 
-                                    class="transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                                    (click)="addQuestion()" id="button-question" type="button"
-                                    >
-                                    <span id="span" class="ml-2"> Add question </span>
-                                    <mat-icon id="icon">add_box</mat-icon>
-                                  </button>
-    
+
+                                    <button
+                                        class="transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                        (click)="addQuestion()" id="button-question" type="button">
+                                        <span id="span" class="ml-2"> Add question </span>
+                                        <mat-icon id="icon">add_box</mat-icon>
+                                    </button>
+
                                 </tr>
-    
-    
+
+
                                 <div id="question">
                                     <ng-container formArrayName="questionList">
                                         <ng-container
                                             *ngFor="let question of questionList.controls; let questionIndex=index">
-    
+
                                             <tr id="tr" class="justify-center" [formGroup]="question | asFormGroup">
-    
+
                                                 <div>
-    
+
                                                     <div style="margin-top: 15px;" id="questionForm" class="relative">
-    
+
                                                         <mat-form-field id="form-field-info" appearance="outline"
                                                             class="h-10 w-full mb-4">
                                                             <mat-label> Question </mat-label>
@@ -68,46 +67,49 @@
                                                                 formControlName="questionContent" class="form-control">
                                                             <mat-icon matSuffix> text_fields</mat-icon>
                                                         </mat-form-field>
-    
-    
+
+
                                                         <td>
-                                                            <button id="button-del" (click)="removeQuestion(questionIndex)"
+                                                            <button id="button-del"
+                                                                (click)="removeQuestion(questionIndex)"
                                                                 class="btn btn-danger">
                                                                 <mat-icon id="icon-btn">delete</mat-icon>
                                                             </button>
                                                         </td>
-    
+
                                                         <td>
                                                             <button id="button-del" type="button"
-                                                                (click)="addAnswer(questionIndex)" class="btn btn-primary">
+                                                                (click)="addAnswer(questionIndex)"
+                                                                class="btn btn-primary">
                                                                 <mat-icon id="icon-btn">add_box</mat-icon>
                                                             </button>
                                                         </td>
-    
-    
+
+
                                                     </div>
-    
-    
-    
+
+
+
                                                     <ng-container formArrayName="answerList">
                                                         <ng-container
                                                             *ngFor="let answer of answerList(questionIndex).controls; let answerIndex=index">
-    
+
                                                             <div class="relative" id="questionForm"
                                                                 [formGroup]="answer | asFormGroup">
-    
-                                                                <div id="form-field-answer"> 
+
+                                                                <div id="form-field-answer">
                                                                     <mat-form-field appearance="outline"
-                                                                    class="h-10 w-full mb-4">
-                                                                    <mat-label> Answer </mat-label>
-                                                                    <input matInput required type="text" name="description"
-                                                                        formControlName="answerContent"
-                                                                        class="form-control">
-                                                                    <mat-icon matSuffix> text_fields</mat-icon>
+                                                                        class="h-10 w-full mb-4">
+                                                                        <mat-label> Answer </mat-label>
+                                                                        <input matInput required type="text"
+                                                                            name="description"
+                                                                            formControlName="answerContent"
+                                                                            class="form-control">
+                                                                        <mat-icon matSuffix> text_fields</mat-icon>
                                                                     </mat-form-field>
                                                                 </div>
-                                                               
-    
+
+
                                                                 <td>
                                                                     <button id="button-del"
                                                                         (click)="removeAnswer(answerIndex, questionIndex)"
@@ -115,65 +117,67 @@
                                                                         <mat-icon id="icon-btn">delete</mat-icon>
                                                                     </button>
                                                                 </td>
-    
-                                                                <mat-button-toggle-group  formControlName="correct">
-    
-                                                                    <mat-button-toggle value="true" aria-label="Text align left">
-                                                                      <mat-icon>check</mat-icon>
+
+                                                                <mat-button-toggle-group formControlName="correct">
+
+                                                                    <mat-button-toggle value="true"
+                                                                        aria-label="Text align left">
+                                                                        <mat-icon>check</mat-icon>
                                                                     </mat-button-toggle>
-    
-                                                                    <mat-button-toggle value="false" aria-label="Text align center">
-                                                                      <mat-icon>close</mat-icon>
+
+                                                                    <mat-button-toggle value="false"
+                                                                        aria-label="Text align center">
+                                                                        <mat-icon>close</mat-icon>
                                                                     </mat-button-toggle>
-    
+
                                                                 </mat-button-toggle-group>
-    
+
                                                             </div>
-    
-    
+
+
                                                         </ng-container>
-                                                        <div  class="text-center mt-4" id="input-alert" *ngIf="answerList(questionIndex).controls.length == 1">
-                                                            Now you have answer as input, just write into correct answer.
+                                                        <div class="text-center mt-4" id="input-alert"
+                                                            *ngIf="answerList(questionIndex).controls.length == 1">
+                                                            Now you have answer as input, just write into correct
+                                                            answer.
                                                         </div>
                                                     </ng-container>
-    
+
                                                 </div>
-    
+
                                             </tr>
                                         </ng-container>
                                     </ng-container>
-    
+
                                 </div>
-    
+
                             </div>
-    
-                            <div class="text-center mb-3 "
-                                *ngIf="quizForm.value.questionList.length < 1">
+
+                            <div class="text-center mb-3 " *ngIf="quizForm.value.questionList.length < 1">
                                 Quiz must have at least one question.
                             </div>
-    
-    
+
+
                             <mat-divider> </mat-divider>
-    
+
                             <div id="create" class="relative mt-4">
-    
+
                                 <button id="button" type="submit"
-                                    [disabled]="quizzForm.valid && quizForm.value.questionList.length < 0"
-                                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                                    [disabled]="!quizzForm.form.valid">
+                                    [disabled]="!quizForm.valid || quizForm.value.questionList.length === 0 || quizForm.value.questionList[0].answerList.length === 0"
+                                    class="py-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                     Create quiz
                                 </button>
-    
+
                             </div>
-    
+
                         </form>
                     </div>
-    
+
                 </div>
             </div>
-    
+
             <!-- <br />
         {{this.quizForm.value | json}} -->
         </div>
 
-</div>
+    </div>

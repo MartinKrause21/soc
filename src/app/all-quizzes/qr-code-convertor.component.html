@@ -51,8 +51,8 @@
                         <div *ngFor="let favouriteQuiz of favouriteQuizzes">
                         <button *ngIf="favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name || !favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name"id="button" (click)="setFavourite(quiz)"
                             class="inline-block rounded-md px-6 py-2 font-semibold shadow-md duration-200 hover:bg-green-400 transform hover:-translate-y-1 active:translate-y-0">
-                                <mat-icon *ngIf="favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name">bookmark</mat-icon>
-                                <mat-icon *ngIf="!favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name">bookmark_border</mat-icon>
+                                <mat-icon *ngIf="favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name">favorite</mat-icon>
+                                <mat-icon *ngIf="!favouriteQuiz.favourite && favouriteQuiz.quizName === quiz.name">favorite_border</mat-icon>
                         </button>
                     </div>
                     </div>

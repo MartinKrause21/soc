@@ -74,7 +74,6 @@ export class CreateQuizComponent  {
     })  
   }  
   
-     
   addQuestion() {  
     this.questionList.push(this.newQuestion());  
   } 
@@ -99,6 +98,11 @@ export class CreateQuizComponent  {
       alert("Please add at least one question");
       return;
     }
+    if (this.quizForm.value.questionList[0].answerList.length == 0) {
+      alert("Please add at least one answer for question ");
+      return;
+    }
+
     else {
     this.quizService.addQuiz(this.quizForm.value);
     console.log(this.quizForm.value);  
