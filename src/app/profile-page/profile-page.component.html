@@ -230,16 +230,14 @@
                             <div *ngIf="allFavouriteQuizzes.length == 0 "
                                 class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
                                 <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
-                                You have not bookmarked any quiz yet!
+                                You have not any favourite quizzes yet!
                             </div>
 
                             <div class="justify-center mx-auto ">
                                 <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                             </div>
 
-                            <div *ngIf="allFavouriteQuizzes.length > 0">
-
-
+                            <div >
 
                                 <div id="quizCard" *ngFor="let quiz of allFavouriteQuizzes"
                                     [ngClass]="{'hidden': !quiz.favourite}">
