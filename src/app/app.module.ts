@@ -66,6 +66,7 @@ import { CreateClassComponent } from './create-class/create-class.component';
 import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/sucess-create-class-dialog.component';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { DeleteClassDialogComponent } from './delete-class-dialog/delete-class-dialog.component';
+import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizzes-s.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { DeleteClassDialogComponent } from './delete-class-dialog/delete-class-d
     SucessCreateClassDialogComponent,
     ClassDetailComponent,
     DeleteClassDialogComponent,
+    AllAdminQuizzesSComponent,
   ],
   imports: [
     BrowserModule,

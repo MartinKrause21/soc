@@ -9,6 +9,7 @@ import { RegisterVerifyDialogComponent } from 'src/app/register-verify-dialog/re
 import { FailedLoginDialogComponent } from 'src/app/failed-login-dialog/failed-login-dialog.component';
 import { Router } from '@angular/router';
 import { SucessCreateClassDialogComponent } from 'src/app/sucess-create-class-dialog/sucess-create-class-dialog.component';
+import { allTeacherQuizes } from 'src/quiz';
 
 @Injectable({
   providedIn: 'root'
@@ -333,6 +334,9 @@ export class AuthService {
     });
     return this.http.put(`https://teach-quiz.herokuapp.com/delete/table/${className}`, {}, { headers });
   }
-  
+
+  getAllAdminQuizzesSupervisor(teacherName: string): Observable<allTeacherQuizes[]> {
+    return this.http.get<allTeacherQuizes[]>(`https://teach-quiz.herokuapp.com/get/quiz/teacher/${teacherName}`,  {headers: this.headerHttp});
+  }
 
 }
