@@ -19,6 +19,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 export class CreateQuizComponent  {   
 
   isSticky = false;
+  capitalSensitive = false;
   originalTop: number;
 
   ngAfterViewInit() {

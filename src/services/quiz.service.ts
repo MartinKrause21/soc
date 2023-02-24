@@ -138,6 +138,28 @@ export class QuizService {
     });
   }
 
+  editQuiz(quizName:string, quiz: Quiz) {
+
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
+
+    fetch(`https://teach-quiz.herokuapp.com/update/quiz/${quizName}`, {  
+      method: 'POST',
+      headers: new Headers({
+      'Authorization': 'Basic '+btoa(authString), 
+      'Content-Type': "application/json; charset=utf8",
+    }),
+      body: JSON.stringify(quiz),
+    })
+    .then(() => {
+      console.log('Success!');
+      this.createQuizDialog();
+
+    })
+    .catch((error) => {
+      console.error('Error:' , error);
+    });
+  }
+
   postResultQuiz(quizName: string) {
     const body = { quizName };
     this.http.post('https://teach-quiz.herokuapp.com/add/resultQuiz', body, { headers: this.headerHttp }).subscribe((response: any) => {

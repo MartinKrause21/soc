@@ -62,7 +62,7 @@
                 <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
                   <button id="button" class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
                     (click)="sendAns(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true, quiz.questionList[quizNum].answerList)">
-                    {{ans.content}}
+                    {{ans.answerContent}}
                   </button>
                   <br>
                 </span>

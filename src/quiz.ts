@@ -35,7 +35,7 @@ export interface resultQuestion {
 
 export interface resultAnswer {
     answerContent: string; 
-    
+    content: string;
     correct: boolean;
 }
 
@@ -95,6 +95,7 @@ export class quizUsers {
 }
 export class inputAnswer {
     answerContent: string;
+    content: string; 
     correct: boolean;
     chosen: boolean;
     constructor(

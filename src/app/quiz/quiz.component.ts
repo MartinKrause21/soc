@@ -94,7 +94,7 @@ export class QuizComponent implements OnInit {
       //this.quizService.updateResultQuiz(ans, question);
       for (var i = 0; i < ansList.length; i++) {      
         ansList[i].chosen = false;
-        ansList[i].answerContent = ansList[i].content
+        ansList[i].content = ansList[i].answerContent;
       }
       
       ans.chosen = chosen;
@@ -122,10 +122,10 @@ export class QuizComponent implements OnInit {
 
   sendAnsInput(correctAns: any, answerModelContent: any, question : string){
     //this.quizService.updateResultQuiz(ans, question);
-    correctAns.answerContent = correctAns.content;
-    this.answerModel.answerContent = answerModelContent;
+    correctAns.content = correctAns.answerContent;
+    this.answerModel.content = answerModelContent;
     
-    if(answerModelContent != correctAns.content){
+    if(answerModelContent != correctAns.answerContent){
         this.answerModel.correct = false;
         this.answerModel.chosen = true;
         let answerArr = [];
