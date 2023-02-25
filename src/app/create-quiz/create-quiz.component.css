@@ -152,6 +152,24 @@ mat-button-toggle-group {
     margin-right: 3px;
 } 
 
+@media screen and (max-width: 400px) {
+    #form-field-answer {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    #form-field-answer {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #form-field-answer {
+        width: 170px;
+    }
+}
+
 #input-alert {
     color: #502ca0;
 }

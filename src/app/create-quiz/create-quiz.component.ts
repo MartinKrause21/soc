@@ -19,7 +19,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 export class CreateQuizComponent  {   
 
   isSticky = false;
-  capitalSensitive = false;
+  isCapitalSensitive:boolean = false;
   originalTop: number;
 
   ngAfterViewInit() {
@@ -72,6 +72,7 @@ export class CreateQuizComponent  {
     return this.formBuilder.group({  
       answerContent: '', 
       correct: new FormControl(''),
+      isCapitalSensitive: this.isCapitalSensitive,
     })  
   }  
   
