@@ -143,7 +143,7 @@ export class QuizService {
     let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`
 
     fetch(`https://teach-quiz.herokuapp.com/update/quiz/${quizName}`, {  
-      method: 'POST',
+      method: 'PUT',
       headers: new Headers({
       'Authorization': 'Basic '+btoa(authString), 
       'Content-Type': "application/json; charset=utf8",
