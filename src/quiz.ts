@@ -1,6 +1,7 @@
 
 export interface Quiz {
     name: string; 
+    ignoredCase:boolean;
     description: string; 
     questionList : Question[];
 }

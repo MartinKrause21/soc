@@ -10,7 +10,8 @@
                 <div class="max-w-md mx-auto">
 
                     <div>
-                        <h1 class="text-2xl font-semibold"> Create your own quiz </h1>
+                        <h1 class="text-2xl font-semibold"> Create your own quiz  </h1>
+                        <mat-slide-toggle class="mb-3" (change)="onToggleChange($event.checked)">Capital sensitive: {{ ignoredCase ? 'OFF' : 'ON' }}</mat-slide-toggle>
                     </div>
 
                     <div class="divide-y divide-gray-200">
@@ -109,7 +110,6 @@
                                                                     </mat-form-field>
                                                                 </div>
 
-
                                                                 <td>
                                                                     <button id="button-del"
                                                                         (click)="removeAnswer(answerIndex, questionIndex)"
@@ -117,6 +117,7 @@
                                                                         <mat-icon id="icon-btn">delete</mat-icon>
                                                                     </button>
                                                                 </td>
+                                                                
 
                                                                 <mat-button-toggle-group formControlName="correct">
 
@@ -132,8 +133,7 @@
 
                                                                 </mat-button-toggle-group> 
                                                                 
-                                                                <mat-slide-toggle *ngIf="answerList(questionIndex).controls.length == 1" formControlName="isCapitalSensitive"> </mat-slide-toggle>
-
+                                                               
                                                             </div>
 
                                                         

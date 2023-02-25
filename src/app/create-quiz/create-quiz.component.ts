@@ -19,7 +19,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
 export class CreateQuizComponent  {   
 
   isSticky = false;
-  isCapitalSensitive:boolean = false;
+  ignoredCase:boolean = false;
   originalTop: number;
 
   ngAfterViewInit() {
@@ -48,6 +48,7 @@ export class CreateQuizComponent  {
     this.quizForm = this.formBuilder.group({  
       name: '',  
       description: '',
+      ignoredCase: this.ignoredCase,
       questionList: this.formBuilder.array([]) , 
     });
   }  
@@ -72,7 +73,6 @@ export class CreateQuizComponent  {
     return this.formBuilder.group({  
       answerContent: '', 
       correct: new FormControl(''),
-      isCapitalSensitive: this.isCapitalSensitive,
     })  
   }  
   
@@ -110,5 +110,12 @@ export class CreateQuizComponent  {
     console.log(this.quizForm.value);  
     }
   }  
+
+  onToggleChange(checked: boolean) {
+    this.ignoredCase = checked;
+    this.quizForm.patchValue({
+      ignoredCase: checked,
+    });
+  }
 
 }

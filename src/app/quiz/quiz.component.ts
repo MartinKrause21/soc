@@ -144,11 +144,16 @@ export class QuizComponent implements OnInit {
       this.quizNum = this.quizNum + 1;
     
 
-  if ( this.answerModel.answerContent == correctAns.answerContent ||  this.answerModel.answerContent == correctAns.content) {
+  if ( this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.answerContent.toLocaleLowerCase ||  this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.content.toLocaleLowerCase ) {
+    this.score = this.score + 1;
+    console.log("Correct answer, Score: " + this.score);
+    this.answerModel.answerContent = '';
+  } else if (this.answerModel.answerContent == correctAns.answerContent || this.answerModel.answerContent == correctAns.content) {
     this.score = this.score + 1;
     console.log("Correct answer, Score: " + this.score);
     this.answerModel.answerContent = '';
   }
+  
   else {
     console.log("Incorrect answer, score 0");
     this.answerModel.answerContent = '';
