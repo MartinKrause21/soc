@@ -75,7 +75,7 @@ export class allUserQuizes {
     description: string;
     creatorName: string;
     date : Date;
-    resultQuizIds: any[];
+    resultQuizId: any[];
     isFavourite: boolean;
     constructor(
         name: string,

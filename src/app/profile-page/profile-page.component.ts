@@ -105,7 +105,7 @@ export class ProfilePageComponent implements OnInit {
       console.log(allUserQuizes);
       this.contentLoaded =false
       
-        this.idS = allUserQuizes[0].resultQuizIds;
+        this.idS = allUserQuizes[0].resultQuizId;
       
       this.dataService.updateResultQuizIds(this.idS);
       this.idS = this.dataService.getResultQuizIds();
