@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
   answersQuestions: Question[] =[];
   selectedQuestion: Question;
 
-
+  multipleAnswers : any[] = [];
 
   quizName: string
   quizId: number;
@@ -94,28 +94,74 @@ export class QuizComponent implements OnInit {
   resultAns: resultAnswer;
   rightAns: any;
 
-  sendAns(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
+    sendAns(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
+        //this.quizService.updateResultQuiz(ans, question);
+        for (var i = 0; i < ansList.length; i++) {      
+          ansList[i].chosen = false;
+          ansList[i].content = ansList[i].answerContent;
+        }
+        
+        ans.chosen = chosen;
+        ans.correct = correct;
+
+        if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
+          this.quizService.updateResultQuiz(ansList, question);
+          console.log(ansList, question, this.quizName, chosen, ans.answerContent);
+          this.quizNum = this.quizNum + 1;
+
+        }
+
+      if (ans.correct && ansList.length > 1) {
+        this.score = this.score + 1;
+        console.log("Correct answer, Score: " + this.score);
+        //console.log(correct, 'hej');
+      } 
+
+      if (this.quizNum === this.questionList.length) {
+        this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
+        this.result = true;
+        console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
+      }
+    }
+
+    sendAnsInput(correctAns: any, answerModelContent: any, question : string){
       //this.quizService.updateResultQuiz(ans, question);
-      for (var i = 0; i < ansList.length; i++) {      
-        ansList[i].chosen = false;
-        ansList[i].content = ansList[i].answerContent;
-      }
+      correctAns.content = correctAns.answerContent;
+      this.answerModel.content = answerModelContent;
       
-      ans.chosen = chosen;
-      ans.correct = correct;
+      if(answerModelContent != correctAns.answerContent){
+          this.answerModel.correct = false;
+          this.answerModel.chosen = true;
+          let answerArr = [];
+          answerArr.push(this.answerModel);
+          answerArr.push(correctAns);
+          this.quizService.updateResultQuizInput(question, answerArr);
+        }else{
+          let answerArr = [];
+          this.answerModel.correct = true;
+          this.answerModel.chosen = true;
+          answerArr.push(this.answerModel)
+          this.quizService.updateResultQuizInput(question, answerArr);
+        }
 
-      if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
-        this.quizService.updateResultQuiz(ansList, question);
-        console.log(ansList, question, this.quizName, chosen, ans.answerContent);
+        console.log(question, this.quizName, correctAns, "tentooooooo", this.answerModel);
         this.quizNum = this.quizNum + 1;
+      
 
-      }
-
-    if (ans.correct && ansList.length > 1) {
+    if ( this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.answerContent.toLocaleLowerCase ||  this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.content.toLocaleLowerCase ) {
       this.score = this.score + 1;
       console.log("Correct answer, Score: " + this.score);
-      //console.log(correct, 'hej');
-    } 
+      this.answerModel.answerContent = '';
+    } else if (this.answerModel.answerContent == correctAns.answerContent || this.answerModel.answerContent == correctAns.content) {
+      this.score = this.score + 1;
+      console.log("Correct answer, Score: " + this.score);
+      this.answerModel.answerContent = '';
+    }
+    
+    else {
+      console.log("Incorrect answer, score 0");
+      this.answerModel.answerContent = '';
+    }
 
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
@@ -124,52 +170,38 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  sendAnsInput(correctAns: any, answerModelContent: any, question : string){
-    //this.quizService.updateResultQuiz(ans, question);
-    correctAns.content = correctAns.answerContent;
-    this.answerModel.content = answerModelContent;
+
+  multipleAnswersAdd(ans: any, correct: boolean , question : string, chosen: boolean){
+    console.log("toto nam treba teraZ" + ans, ans.answerContent, correct, question, chosen);
     
-    if(answerModelContent != correctAns.answerContent){
-        this.answerModel.correct = false;
-        this.answerModel.chosen = true;
-        let answerArr = [];
-        answerArr.push(this.answerModel);
-        answerArr.push(correctAns);
-        this.quizService.updateResultQuizInput(question, answerArr);
-      }else{
-        let answerArr = [];
-        this.answerModel.correct = true;
-        this.answerModel.chosen = true;
-        answerArr.push(this.answerModel)
-        this.quizService.updateResultQuizInput(question, answerArr);
-      }
+    ans.chosen = chosen;
+    ans.correct = correct;
+    this.question = question;
 
-      console.log(question, this.quizName, correctAns, "tentooooooo", this.answerModel);
-      this.quizNum = this.quizNum + 1;
-    
+    if(this.multipleAnswers.includes(ans)) {
+      this.multipleAnswers.splice(this.multipleAnswers.indexOf(ans), 1);
+      console.log(this.multipleAnswers);
 
-  if ( this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.answerContent.toLocaleLowerCase ||  this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.content.toLocaleLowerCase ) {
-    this.score = this.score + 1;
-    console.log("Correct answer, Score: " + this.score);
-    this.answerModel.answerContent = '';
-  } else if (this.answerModel.answerContent == correctAns.answerContent || this.answerModel.answerContent == correctAns.content) {
-    this.score = this.score + 1;
-    console.log("Correct answer, Score: " + this.score);
-    this.answerModel.answerContent = '';
-  }
-  
-  else {
-    console.log("Incorrect answer, score 0");
-    this.answerModel.answerContent = '';
+    } else{
+      this.multipleAnswers.push(ans);
+      console.log(this.multipleAnswers);
+    }
+
   }
 
-  if (this.quizNum === this.questionList.length) {
-    this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
-    this.result = true;
-    console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
+  sendMultipleAnswers(){
+    this.quizNum = this.quizNum + 1;
+    console.log(this.multipleAnswers, this.question, this.quizName);
+    this.quizService.updateResultQuiz(this.multipleAnswers, this.question);
+    setTimeout(() => {
+      this.multipleAnswers.length = 0;
+    }, 900);
+
+    if (this.quizNum === this.questionList.length) {
+      this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
+      this.result = true;
+      console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
+    }
   }
-}
-
-
 
 }

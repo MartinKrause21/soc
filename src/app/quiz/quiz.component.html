@@ -63,7 +63,8 @@
 
                 <mat-button-toggle-group id="toggle-group" multiple> 
                   <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
-                    <mat-button-toggle id="button-toggle" class=" px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0">
+                    <mat-button-toggle id="button-toggle" class=" px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+                    (change)="multipleAnswersAdd(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true)" >
                       {{ans.answerContent}}
                     </mat-button-toggle> <br>
                   </span>
@@ -71,7 +72,8 @@
                 
                 <mat-divider></mat-divider>
 
-                <button id="button" class="py-2 px-8 mt-2 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0">
+                <button id="button" class="py-2 px-8 mt-2 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
+                (click)="sendMultipleAnswers()">
                 Submit
               </button>
 
