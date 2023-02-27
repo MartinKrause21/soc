@@ -123,6 +123,7 @@
     
                         <div>
                             <h1 class="text-2xl font-semibold"> You are editing this quiz: {{quizName}}  </h1>
+                            <mat-slide-toggle class="mb-3" (change)="onToggleChange($event.checked)">Capital sensitive: {{ ignoredCase ? 'OFF' : 'ON' }}</mat-slide-toggle>
                         </div>
     
                         <div class="divide-y divide-gray-200">

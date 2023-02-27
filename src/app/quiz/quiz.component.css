@@ -154,3 +154,42 @@
         height: 51px;
     }
 }
+
+#sensitive-alert{
+    color: #502ca0;
+}
+
+#toggle-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+}
+
+.mat-button-toggle-checked {
+    background-color: #512ca07f;
+    color: white;
+}
+
+.mat-button-toggle {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#button-toggle {
+    width: 150px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    margin: 7px;
+}
+
+#button-toggle:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
+#multiple-choices-info{
+    font-size: small;
+    font-style: italic;
+}

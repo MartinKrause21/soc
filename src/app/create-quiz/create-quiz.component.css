@@ -179,3 +179,7 @@ mat-button-toggle-group {
     background-size: cover;
 }
 
+.mat-button-toggle-checked {
+    background-color: #512ca07f;
+    color: white;
+}

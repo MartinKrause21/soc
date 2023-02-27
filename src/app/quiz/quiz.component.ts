@@ -27,8 +27,12 @@ export class QuizComponent implements OnInit {
   answersQuestions: Question[] =[];
   selectedQuestion: Question;
 
+
+
   quizName: string
   quizId: number;
+
+  multipleChoice: boolean;
 
   quiz : Quiz;
   questionList: Question[];
@@ -165,5 +169,7 @@ export class QuizComponent implements OnInit {
     console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
   }
 }
+
+
 
 }

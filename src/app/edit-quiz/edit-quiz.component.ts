@@ -104,6 +104,7 @@ export class EditQuizComponent implements OnInit  {
   isSticky = false;
   originalTop: number;
   quizName : string;
+  ignoredCase : boolean = false;
 
   quiz: Quiz
   questionListt: Question[];
@@ -160,7 +161,9 @@ export class EditQuizComponent implements OnInit  {
     this.quizForm = this.formBuilder.group({  
       name: '',  
       description: '',
+      ignoredCase: this.ignoredCase,
       questionList: this.formBuilder.array([]) , 
+
     });
   }  
     
@@ -220,6 +223,13 @@ export class EditQuizComponent implements OnInit  {
     this.quizService.editQuiz(this.quizName, this.quizForm.value);
     console.log(this.quizForm.value);  
     }
+  }
+
+  onToggleChange(checked: boolean) {
+    this.ignoredCase = checked;
+    this.quizForm.patchValue({
+      ignoredCase: checked,
+    });
   }
 
 }

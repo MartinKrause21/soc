@@ -8,6 +8,7 @@ export interface Quiz {
 
 export interface Question {
     answered: unknown;
+    multipleChoice: boolean;
     questionContent: string;
     answerList: Answer[];
 }
