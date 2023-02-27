@@ -171,7 +171,7 @@ export class QuizComponent implements OnInit {
   }
 
 
-  multipleAnswersAdd(ans: any, correct: boolean , question : string, chosen: boolean){
+  multipleAnswersAdd(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
     console.log("toto nam treba teraZ" + ans, ans.answerContent, correct, question, chosen);
     
     ans.chosen = chosen;
@@ -196,6 +196,23 @@ export class QuizComponent implements OnInit {
     setTimeout(() => {
       this.multipleAnswers.length = 0;
     }, 900);
+
+    // add score only if array multipleAnswers contains only correct answers
+
+    var allAnswersCorrect = true;
+    for (var i = 0; i < this.multipleAnswers.length; i++) {
+      if (this.multipleAnswers[i].correct !== true) {
+        allAnswersCorrect = false;
+        break;
+      }
+    }
+    if (allAnswersCorrect && this.multipleAnswers.length > 1) {
+      this.score = this.score + 1;
+      console.log("Correct answer, Score: " + this.score); 
+    } else {
+      console.log("Incorrect answer, score 0");
+    }
+    
 
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);

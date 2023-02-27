@@ -64,7 +64,7 @@
                 <mat-button-toggle-group id="toggle-group" multiple> 
                   <span *ngFor="let ans of quiz.questionList[quizNum].answerList">
                     <mat-button-toggle id="button-toggle" class=" px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 tracking-wide active:translate-y-0"
-                    (change)="multipleAnswersAdd(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true)" >
+                    (change)="multipleAnswersAdd(ans, ans.correct , quiz.questionList[quizNum].questionContent, chosen = true, quiz.questionList[quizNum].answerList)" >
                       {{ans.answerContent}}
                     </mat-button-toggle> <br>
                   </span>
