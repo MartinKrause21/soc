@@ -18,7 +18,8 @@ export class AdminQuizDetailComponent implements OnInit {
   contentLoaded: boolean = true;
   username: string;
 
-  public quizUsers :  any[];
+  public quizzUsers :  any[];
+  public quizUsers :  quizUsers[];
   quizName: string;
   userIds: number[];
 
@@ -36,15 +37,16 @@ export class AdminQuizDetailComponent implements OnInit {
 
     this.quizService.getAllUsersForQuiz(this.quizName).subscribe(response => {
       this.quizUsers = response;
+      this.quizzUsers = response;
       this.contentLoaded =false
       console.log(response);
       
       
       this.resultQuizIds = this.dataService.getResultQuizIds();
-      this.quizUsers = this.quizUsers.map(user => {
+      this.quizzUsers = this.quizzUsers.map(user => {
         return {
           username: user.username,
-          id: this.resultQuizIds[this.quizUsers.indexOf(user)]
+          id: this.resultQuizIds[this.quizzUsers.indexOf(user)]
         }
       });
       

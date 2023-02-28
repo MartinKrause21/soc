@@ -50,7 +50,7 @@ export class CreateQuizComponent  {
       description: '',
       ignoredCase: this.ignoredCase,
       questionList: this.formBuilder.array([]) , 
-    });
+    }, {validators: [this.quizFormValidator]});
   }  
     
   get questionList() : FormArray {  
@@ -116,6 +116,20 @@ export class CreateQuizComponent  {
     this.quizForm.patchValue({
       ignoredCase: checked,
     });
+  }
+
+  quizFormValidator(form: FormGroup) {
+    const questionList = form.controls['questionList'] as FormArray;
+    if (questionList.length < 2) {
+      return { 'atLeastTwoQuestions': true };
+    }
+    for (let i = 0; i < questionList.length; i++) {
+      const answerList = questionList.controls[i].get('answerList') as FormArray;
+      if (answerList.length === 0) {
+        return { 'atLeastOneAnswer': true };
+      }
+    }
+    return null;
   }
 
 }

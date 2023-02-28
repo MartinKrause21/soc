@@ -40,7 +40,7 @@
                                 <p id="indicator" *ngIf="answer.correct"><mat-icon class="text-green-600">check</mat-icon></p>
                                 <p id="indicator" *ngIf="!answer.correct"><mat-icon class="text-red-500">close</mat-icon></p>
     
-                                <p > <a class="font-bold text-slate-500" > Answer: </a>  {{ answer.answerContent }}  <a id="indicator-touch" *ngIf="!answer.correct && answer.chosen">|  Your answer</a> </p>
+                                <p > <a class="font-bold text-slate-500" > Answer: </a>  {{ answer.answerContent }}  <a id="indicator-touch" *ngIf=" answer.chosen">|  Your answer</a> </p>
     
                             </div>
     

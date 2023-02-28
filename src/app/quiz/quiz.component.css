@@ -72,6 +72,19 @@
     background-color: #502ca0;
 }
 
+#button-submit {
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #502ca0;
+    color: #502ca0;
+    margin: 7px;
+}
+
+#button-submit:hover {
+    color: white;
+    background-color: #502ca0;
+}
+
 #quizName {
     font-size: xx-large;
     font-weight: bold;
@@ -192,4 +205,12 @@
 #multiple-choices-info{
     font-size: small;
     font-style: italic;
+}
+
+.mat-button-toggle {
+    padding: 0;
+    margin: 0;
+    width: 170%;
+    cursor: pointer;
+    margin-left: -30px;
 }
