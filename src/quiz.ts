@@ -74,14 +74,14 @@ export class allUserQuizes {
     id: number;
     description: string;
     creatorName: string;
-    date : Date;
+    date : string;
     resultQuizId: any[];
     isFavourite: boolean;
     constructor(
         name: string,
         id : number,
         description: string,
-        date: Date,
+        date: string,
         creatorName: string,
     ) {  }
 }

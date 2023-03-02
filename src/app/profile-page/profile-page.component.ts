@@ -17,6 +17,7 @@ import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { DeleteReportDialogComponent } from '../delete-report-dialog/delete-report-dialog.component';
 import { DeleteClassDialogComponent } from '../delete-class-dialog/delete-class-dialog.component';
+import {Sort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-profile-page',
@@ -36,10 +37,11 @@ export class ProfilePageComponent implements OnInit {
     private http : HttpClient, 
     private dialog : MatDialog,
     private dataService: DataService,
-  ) { }
+  ) { this.originalUserQuizzes = this.allUserQuizes;}
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   allUserQuizes : allUserQuizes [] = []; 
+  originalUserQuizzes : allUserQuizes [] = [];
   allFavouriteQuizzes : allFavouriteQuizzes [] = [];
   allTeacherQuizesPercentage: TeacherQuizzesPercentage [] = [];
   loggedInUsername: string;
@@ -102,6 +104,7 @@ export class ProfilePageComponent implements OnInit {
 
     this.quizService.getAllUserQuizes().subscribe(allUserQuizes => { 
       this.allUserQuizes = allUserQuizes;
+      this.originalUserQuizzes = allUserQuizes;
       console.log(allUserQuizes);
       this.contentLoaded =false
       
@@ -253,5 +256,43 @@ export class ProfilePageComponent implements OnInit {
   }
 
   progressValue = 70;
-  
+
+  sortData(sort: Sort) {
+    const data = this.allUserQuizes.slice();
+    if (!sort.active || sort.direction === '') {
+      this.allUserQuizes = data;
+      return;
+    }
+
+    this.allUserQuizes = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name':
+          return compare(a.name, b.name, isAsc);
+        case 'adminName':
+          return compare(a.creatorName, b.creatorName, isAsc);
+        case 'date':
+          return compare(a.date, b.date, isAsc);
+
+        default:
+          return 0;
+      }
+    });
+  }
+
+  searchTerm: string;
+
+  searchQuizzes() {
+    if (!this.searchTerm) {
+      this.allUserQuizes = this.originalUserQuizzes;
+    } else {
+      this.allUserQuizes = this.allUserQuizes.filter(quiz => quiz.name.includes(this.searchTerm));
+    }
+  }
+
 }
+
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
