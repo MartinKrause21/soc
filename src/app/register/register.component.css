@@ -41,3 +41,12 @@
     background-size: cover;
 }
 
+#check-box{
+    float: right;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #502ca0 !important;
+  }
+
+

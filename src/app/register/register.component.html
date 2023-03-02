@@ -7,11 +7,15 @@
             </div>
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
-                    <div>
-                        <h1 class="text-2xl font-semibold">Register now, to create your account. </h1>
+                    <div class="mb-8">
+                        <h1 class="text-2xl font-semibold text-center ">Register now, to create your account. </h1>
                     </div>
     
                     <mat-slide-toggle id="slider" [(ngModel)]="isAdmin">Register as: {{isAdmin? 'ADMIN' : 'USER' }} </mat-slide-toggle>
+                    <div *ngIf="isAdmin == false" id="check-box" >
+                        <mat-checkbox  class="example-margin ml-4" [(ngModel)]="checked">Are you student?</mat-checkbox>
+                    </div>
+
     
                     <div class="divide-y divide-gray-200">
                         <form (ngSubmit)="onSubmit()" #registerForm="ngForm"> 
@@ -21,6 +25,18 @@
                                 <mat-label>Username</mat-label>
                                 <input matInput required type="text" name="username" [(ngModel)]="model.username">
                                 <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="isAdmin == false && checked == true" appearance="outline" class="h-10 w-full" >
+                                <mat-label>School name</mat-label>
+                                <input matInput  type="text" name="studentClass" [(ngModel)]="model.schoolName">
+                                <mat-icon matSuffix>school</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field *ngIf="isAdmin == false && checked == true" appearance="outline" class="h-10 w-full" >
+                                <mat-label>Class</mat-label>
+                                <input matInput  type="text" name="studentClass" [(ngModel)]="model.className">
+                                <mat-icon matSuffix>class</mat-icon>
                             </mat-form-field>
     
                             <mat-form-field appearance="outline" class="h-10 w-full" >
@@ -50,7 +66,7 @@
     
                             <div id="register" class="relative">
     
-                                <button id="register-button" type="submit" [disabled]="!registerForm.form.valid || !isPasswordEqual"
+                                <button id="register-button" type="submit" [disabled]="!registerForm.form.valid  || !isPasswordEqual && (isAdmin === false && !model.className && !model.schoolName) "
                                 class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                  Create 
                                 </button>

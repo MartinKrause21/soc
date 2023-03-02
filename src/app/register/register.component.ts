@@ -15,10 +15,11 @@ export class RegisterComponent implements OnInit {
   confirmPassword: any ;
 
   isAdmin = false;
+  checked = false;
 
   users: user[] = [];
 
-  model = new user( '', '','' );
+  model = new user( '', '','', '', '' );
 
   hide = true;
   hide2= true;
@@ -44,4 +45,5 @@ export class RegisterComponent implements OnInit {
   get isPasswordEqual() {
     return this.model.password === this.confirmPassword;
   }
+
 }

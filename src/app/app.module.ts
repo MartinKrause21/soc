@@ -67,6 +67,7 @@ import { SucessCreateClassDialogComponent } from './sucess-create-class-dialog/s
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { DeleteClassDialogComponent } from './delete-class-dialog/delete-class-dialog.component';
 import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizzes-s.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -139,6 +140,7 @@ import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizz
     MatRadioModule, 
     MatSelectModule, 
     MatProgressBarModule,
+    MatCheckboxModule,
 
   ],
   providers: [CookieService],
