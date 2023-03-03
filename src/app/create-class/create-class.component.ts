@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 import { allTeacherQuizes, allUserQuizes } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
 import { QuizService } from 'src/services/quiz.service';
-import { allUsers, userClass } from 'src/user';
+import { allSchoolNames, allUsers, userClass } from 'src/user';
 
 @Component({
   selector: 'app-create-class',
@@ -19,6 +20,14 @@ export class CreateClassComponent implements OnInit {
 
    allUsers: allUsers[];
    allTeacherQuizes : allTeacherQuizes[]
+   allSchoolNames: allSchoolNames[] = [] ;
+
+   myControl = new FormControl('');
+    options: any[] = [];
+    classOption: any;
+    filteredOptions: Observable<string[]>;
+    classes: any = [];
+
 
    quizName:string
    usernames:string[] = []
@@ -26,7 +35,7 @@ export class CreateClassComponent implements OnInit {
    filteredUsers: any[] = [];
 
    classNumber: string = '';
-   schoolName: string = '';
+   schoolName: string;
 
    classNameTouched = false;
    checked = false;
@@ -36,6 +45,11 @@ export class CreateClassComponent implements OnInit {
    createClassModel = new userClass( '', '', []);
 
     ngOnInit(): void {
+
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
 
       this.authService.getAllUsersForSupervisor().subscribe(allUsers => {
         this.allUsers = allUsers;
@@ -47,15 +61,60 @@ export class CreateClassComponent implements OnInit {
         this.allTeacherQuizes = response;
         console.log(response);
       });
+
+      this.authService.getAllSchoolNames().subscribe((response: allSchoolNames[]) => {
+        this.allSchoolNames = response;
+        console.log(this.allSchoolNames);
+        
+        this.options = this.allSchoolNames;
+        console.log(this.options);
+        
+      });
+      
+    }
+
+    private _filter(value: string): string[] {
+      const filterValue = value.toLowerCase();
+  
+      return this.options.filter(option => option.toLowerCase().includes(filterValue));
     }
 
     filterUsers() {
       if (!this.schoolName && !this.classNumber) {
         this.filteredUsers = this.allUsers;
-      } else {
+      }  
+       else{
         this.filteredUsers = this.allUsers.filter(user => {
+          console.log("jedan");
           return user.schoolName === this.schoolName && user.classNumber === this.classNumber;
         });
+      }
+    }
+
+    areFiltredUsers: Boolean;
+
+  filterUsersBySchool() {
+     console.log("jjj");
+      this.areFiltredUsers = false;
+      this.classes = [];
+      
+      if (!this.schoolName && !this.classNumber) {
+        this.filteredUsers = this.allUsers;
+      }  
+       else{
+        this.filteredUsers = this.allUsers.filter(user => {
+          console.log("fvaan");
+          this.areFiltredUsers = true;
+          return user.schoolName === this.schoolName;
+        });
+      }
+      for (let i = 0; i < this.filteredUsers.length; i++) {
+        const classNumber = this.filteredUsers[i].classNumber;
+        
+        if (!this.classes.includes(classNumber) && this.areFiltredUsers == true ) {
+          this.classes.push(classNumber);
+          console.log("sven" + this.classes);
+        }
       }
     }
 

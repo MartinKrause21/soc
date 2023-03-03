@@ -69,6 +69,7 @@ import { DeleteClassDialogComponent } from './delete-class-dialog/delete-class-d
 import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizzes-s.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSortModule} from '@angular/material/sort';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatProgressBarModule,
     MatCheckboxModule,
     MatSortModule,
+    MatAutocompleteModule,
 
   ],
   providers: [CookieService],

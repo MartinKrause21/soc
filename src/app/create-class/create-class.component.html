@@ -11,69 +11,116 @@
                         <h1 class="text-2xl font-semibold">Here you can create your own group.</h1>
                     </div>
 
-                    <div id="check-box" >
-                        <mat-checkbox  class="example-margin ml-4" [(ngModel)]="checked">Sort student by school</mat-checkbox>
+                    <div id="check-box">
+                        <mat-checkbox class="example-margin ml-4" [(ngModel)]="checked">Sort student by
+                            school</mat-checkbox>
                     </div>
-    
+
                     <div class="divide-y divide-gray-200">
                         <form (ngSubmit)="createClass()" #createClassForm="ngForm">
-    
-                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-    
-                       
-                            <mat-form-field appearance="outline" class="h-10 w-full" >
-                                <mat-label>Group name</mat-label>
-                                <input matInput required type="text" name="className" [(ngModel)]="createClassModel.className" (ngModelChange)="classNameTouched = true">
-                                <mat-icon matSuffix>peoples</mat-icon>
-                            </mat-form-field>
-                            
-                            <mat-form-field appearance="outline" class="h-10 w-full">
-                                <mat-label>Select quiz</mat-label>
-                                <mat-select required [(value)]="quizName" (blur)="quizNameTouched = true" (ngModelChange)="quizNameTouched = true">
-                                    <mat-option *ngFor="let quiz of allTeacherQuizes" [value]="quiz.name">{{quiz.name}}</mat-option>
-                                </mat-select>
-                                <mat-icon matSuffix>library_books</mat-icon>
-                            </mat-form-field>
 
-                            <div id="sort" *ngIf="checked == true" > 
-                                <h1 class="font-bold text-center text-xl ">Sort users by:</h1>
+                            <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+
+
+                                <mat-form-field appearance="outline" class="h-10 w-full">
+                                    <mat-label>Group name</mat-label>
+                                    <input matInput required type="text" name="className"
+                                        [(ngModel)]="createClassModel.className"
+                                        (ngModelChange)="classNameTouched = true">
+                                    <mat-icon matSuffix>peoples</mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="h-10 w-full">
+                                    <mat-label>Select quiz</mat-label>
+                                    <mat-select required [(value)]="quizName" (blur)="quizNameTouched = true"
+                                        (ngModelChange)="quizNameTouched = true">
+                                        <mat-option *ngFor="let quiz of allTeacherQuizes"
+                                            [value]="quiz.name">{{quiz.name}}</mat-option>
+                                    </mat-select>
+                                    <mat-icon matSuffix>library_books</mat-icon>
+                                </mat-form-field>
+
+                                <div id="sort" *ngIf="checked == true">
+                                    <h1 class="font-bold text-center text-xl ">Sort users by:</h1>
+                                </div>
+
+                                <!-- <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full">
+                                    <mat-label>School name</mat-label>
+                                    <input matInput required type="text" name="schoolName" [(ngModel)]="schoolName"
+                                        (input)="onInputChanged()">
+                                    <mat-icon matSuffix>school</mat-icon>
+                                </mat-form-field> -->
+
+
+                                <mat-form-field *ngIf="checked == true" class="example-full-width" class="h-10 w-full" appearance="outline">
+                                    <mat-label>School name</mat-label>
+                                    <input type="text"
+                                           placeholder="Pick one"
+                                           aria-label="Number"
+                                           matInput
+                                           [formControl]="myControl"
+                                           [matAutocomplete]="auto"
+                                           [(ngModel)]="schoolName"
+                                           (ngModelChange)="filterUsersBySchool()">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option}}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-icon matSuffix>school</mat-icon>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full">
+                                    <mat-label>Class name</mat-label>
+                                    <input matInput required type="text" name="classNumber" [(ngModel)]="classNumber"
+                                        (input)="onInputChanged()">
+                                    <mat-icon matSuffix>class</mat-icon>
+                                </mat-form-field> -->
+
+                                <mat-form-field *ngIf="checked == true" class="example-full-width" class="h-10 w-full" appearance="outline">
+                                    <mat-label> Class name</mat-label>
+                                    <input type="text"
+                                           placeholder="Pick one"
+                                           aria-label="Number"
+                                           matInput
+                                           [formControl]="myControl"
+                                           [matAutocomplete]="auto"
+                                           [(ngModel)]="classNumber"
+                                           (ngModelChange)="onInputChanged()">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option *ngFor="let classOption of classes " [value]="classOption">
+                                        {{classOption}}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                    <mat-icon matSuffix>class</mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="h-10 w-full">
+                                    <mat-label>Select users</mat-label>
+                                    <mat-select required [(value)]="usernames" [multiple]="true"
+                                        (blur)="usernamesTouched = true" (ngModelChange)="usernamesTouched = true">
+                                        <mat-option *ngFor="let user of filteredUsers"
+                                            [value]="user.username">{{user.username}}</mat-option>
+                                    </mat-select>
+                                    <mat-icon matSuffix>person</mat-icon>
+                                </mat-form-field>
+
+
+                                <div id="login" class="relative">
+
+                                    <button id="login-button" type="submit"
+                                        [disabled]=" !classNameTouched || !quizNameTouched || !usernamesTouched "
+                                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        Create
+                                    </button>
+
+                                </div>
+
                             </div>
-
-                            <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full" >
-                                <mat-label>School name</mat-label>
-                                <input matInput required type="text" name="schoolName" [(ngModel)]="schoolName" (input)="onInputChanged()">
-                                <mat-icon matSuffix>school</mat-icon>
-                            </mat-form-field>
-
-                            <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full" >
-                                <mat-label>Class name</mat-label>
-                                <input matInput required type="text" name="classNumber" [(ngModel)]="classNumber" (input)="onInputChanged()">
-                                <mat-icon matSuffix>class</mat-icon>
-                            </mat-form-field>
-
-                            <mat-form-field appearance="outline" class="h-10 w-full">
-                                <mat-label>Select users</mat-label>
-                                <mat-select required [(value)]="usernames" [multiple]="true" (blur)="usernamesTouched = true" (ngModelChange)="usernamesTouched = true">
-                                    <mat-option *ngFor="let user of filteredUsers" [value]="user.username">{{user.username}}</mat-option>
-                                </mat-select>
-                                <mat-icon matSuffix>person</mat-icon>
-                            </mat-form-field>
-                         
-    
-                            <div id="login" class="relative">
-    
-                                <button id="login-button" type="submit" [disabled]=" !classNameTouched || !quizNameTouched || !usernamesTouched "
-                                    class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                    Create 
-                                </button> 
-    
-                            </div>
-    
-                        </div>
                         </form>
                     </div>
-    
+
                 </div>
             </div>
         </div>
-</div>
+    </div>

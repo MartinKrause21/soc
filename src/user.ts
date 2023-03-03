@@ -127,6 +127,13 @@ export class allUsers {
    ) {  }
 }
 
+export class allSchoolNames {
+   toLowerCase() {
+     throw new Error('Method not implemented.');
+   }
+   name: string;
+}
+
 export class allReports {
    id: number;
    message: string;
