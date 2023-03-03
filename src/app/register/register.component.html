@@ -35,7 +35,7 @@
 
                             <mat-form-field *ngIf="isAdmin == false && checked == true" appearance="outline" class="h-10 w-full" >
                                 <mat-label>Class</mat-label>
-                                <input matInput  type="text" name="studentClass" [(ngModel)]="model.className">
+                                <input matInput  type="text" name="studentClass" [(ngModel)]="model.classNumber">
                                 <mat-icon matSuffix>class</mat-icon>
                             </mat-form-field>
     
@@ -66,7 +66,7 @@
     
                             <div id="register" class="relative">
     
-                                <button id="register-button" type="submit" [disabled]="!registerForm.form.valid  || !isPasswordEqual && (isAdmin === false && !model.className && !model.schoolName) "
+                                <button id="register-button" type="submit" [disabled]="!registerForm.form.valid  || !isPasswordEqual && (isAdmin === false && !model.classNumber && !model.schoolName) "
                                 class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
                                  Create 
                                 </button>

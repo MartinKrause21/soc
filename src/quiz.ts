@@ -87,7 +87,7 @@ export class allUserQuizes {
 }
 export class quizUsers {
     username: string;
-    id: number;
+    resultQuizID: number;
     date: Date;
 
     constructor(

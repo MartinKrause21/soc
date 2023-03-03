@@ -3,13 +3,13 @@ export class user {
     username: string;
     password: string;
     email: string;
-    className: string;
+    classNumber: string;
     schoolName: string;
 
    constructor(
       username: string,
       password: string,
-      studentClass: string,
+      classNumber: string,
       schoolName: string,
       email: string,
    ) {  }

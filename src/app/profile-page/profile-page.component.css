@@ -322,7 +322,7 @@ h1 {
 }
 
 #sort-table{
-    border-top: 4px solid #502ca0;
+    border-top: 5px solid #502ca0;
     border-left: 1px solid rgba(128, 128, 128, 0.458);
     border-bottom: 1px solid rgba(128, 128, 128, 0.458);
     border-right: 1px solid rgba(128, 128, 128, 0.458);
@@ -430,4 +430,9 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#sort{
+    color: #502ca0;
+    font-size: medium;
 }
