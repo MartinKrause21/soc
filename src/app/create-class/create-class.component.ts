@@ -36,7 +36,22 @@ export class CreateClassComponent implements OnInit {
 
     ngOnInit(): void {
 
-   
+      this.authService.getAllUsersForSupervisor().subscribe(allUsers => {
+        // Filter the list of users based on the input values
+        let filteredUsers = allUsers.filter(user => {
+          return user.schoolName.toLowerCase().includes(this.schoolName.toLowerCase()) &&
+                 user.classNumber.toLowerCase().includes(this.classNumber.toLowerCase());
+        });
+        // Store the filtered users in a component property
+        this.filteredUsers = filteredUsers;
+        console.log(this.filteredUsers); 
+      });
+      
+
+      this.quizService.getAllTeacherQuizes().subscribe(response => {
+        this.allTeacherQuizes = response;
+        console.log(response);
+      });
     }
 
   createClass() {
