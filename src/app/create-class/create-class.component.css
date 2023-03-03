@@ -52,3 +52,17 @@
     background-image: url("src/assets/images/create-quiz-back.svg");
     background-size: cover;
 }
+
+#check-box{
+    float: left;
+    margin-left: -15px;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #502ca0 !important;
+  }
+
+#sort{
+    margin-top: 25px;
+    margin-bottom: -20px;
+}

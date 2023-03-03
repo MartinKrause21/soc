@@ -114,6 +114,8 @@ export class allUsers {
    username: string;
    email: string;
    enabled: boolean;
+   classNumber: string;
+   schoolName: string;
    id: number;
    date: Date;
 

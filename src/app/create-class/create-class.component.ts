@@ -22,8 +22,13 @@ export class CreateClassComponent implements OnInit {
 
    quizName:string
    usernames:string[] = []
+   filteredUsers: any[] = [];
+
+   classNumber: string = '';
+   schoolName: string = '';
 
    classNameTouched = false;
+   checked = false;
    quizNameTouched = false;
    usernamesTouched = false;
 
@@ -32,9 +37,16 @@ export class CreateClassComponent implements OnInit {
     ngOnInit(): void {
 
       this.authService.getAllUsersForSupervisor().subscribe(allUsers => {
-        this.allUsers = allUsers;
-        console.log(this.allUsers); 
+        // Filter the list of users based on the input values
+        let filteredUsers = allUsers.filter(user => {
+          return user.schoolName.toLowerCase().includes(this.schoolName.toLowerCase()) &&
+                 user.classNumber.toLowerCase().includes(this.classNumber.toLowerCase());
+        });
+        // Store the filtered users in a component property
+        this.filteredUsers = filteredUsers;
+        console.log(this.filteredUsers); 
       });
+      
 
       this.quizService.getAllTeacherQuizes().subscribe(response => {
         this.allTeacherQuizes = response;
