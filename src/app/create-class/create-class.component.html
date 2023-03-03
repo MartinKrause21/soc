@@ -36,25 +36,25 @@
                             </mat-form-field>
 
                             <div id="sort" *ngIf="checked == true" > 
-                                <h1 class="font-bold text-center text-xl text-gray-400 ">Sort users by</h1>
+                                <h1 class="font-bold text-center text-xl ">Sort users by:</h1>
                             </div>
 
                             <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full" >
                                 <mat-label>School name</mat-label>
-                                <input matInput required type="text" name="schoolName" [(ngModel)]="schoolName">
+                                <input matInput required type="text" name="schoolName" [(ngModel)]="schoolName" (input)="onInputChanged()">
                                 <mat-icon matSuffix>school</mat-icon>
                             </mat-form-field>
 
                             <mat-form-field *ngIf="checked == true" appearance="outline" class="h-10 w-full" >
                                 <mat-label>Class name</mat-label>
-                                <input matInput required type="text" name="classNumber" [(ngModel)]="classNumber">
+                                <input matInput required type="text" name="classNumber" [(ngModel)]="classNumber" (input)="onInputChanged()">
                                 <mat-icon matSuffix>class</mat-icon>
                             </mat-form-field>
 
                             <mat-form-field appearance="outline" class="h-10 w-full">
                                 <mat-label>Select users</mat-label>
                                 <mat-select required [(value)]="usernames" [multiple]="true" (blur)="usernamesTouched = true" (ngModelChange)="usernamesTouched = true">
-                                    <mat-option *ngFor="let user of allUsers" [value]="user.username">{{user.username}}</mat-option>
+                                    <mat-option *ngFor="let user of filteredUsers" [value]="user.username">{{user.username}}</mat-option>
                                 </mat-select>
                                 <mat-icon matSuffix>person</mat-icon>
                             </mat-form-field>
