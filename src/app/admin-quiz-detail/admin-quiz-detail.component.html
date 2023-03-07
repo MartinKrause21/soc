@@ -32,6 +32,35 @@
                             <div  class="justify-center mx-auto ">
                                 <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                             </div>
+
+                            <div matSort (matSortChange)="sortData($event)">
+
+                                <div class="font-bold text-center text-sm mb-3" id="sort-table">
+
+                                    <div class="mt-4"
+                                        style="display: flex; justify-content: center; align-items: center;">
+
+                                        <div>
+                                            <div>
+                                                <div id="sort-buttons">
+                                                    <a mat-sort-header="name"><img id="icons"
+                                                            src="https://img.icons8.com/material/24/00000/bookmark.png" />Name
+                                                    </a>
+                                                    <a mat-sort-header="date"><mat-icon
+                                                            id="icons">date_range</mat-icon> Date</a>
+                                                        
+                                                </div>
+                                            </div>
+                                            <mat-form-field id="input" class="h-7 w-full" appearance="outline">
+                                                <mat-label>Search users</mat-label>
+                                                <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchUsers()">
+                                                <mat-icon matSuffix>search</mat-icon>
+                                            </mat-form-field>
+                                          
+                                        </div>
+                                        
+                                    </div>
+                                </div>
     
                         <div *ngIf="quizUsers.length > 0"> 
         
@@ -51,24 +80,7 @@
     
                             </div>
                         </div>
-                        <!-- <div *ngIf="quizUsers.length > 0">
-                            <div #loadedContent id="quizCard" *ngFor="let user of quizUsers">
-                                <h1 class="font-bold text-center text-3xl text-gray-900">{{user.name}}</h1>
-                                <div id="button-holder">
-                                    <button id="button"
-                                        type="button"
-                                        [routerLink]="['/admin-user-detail', quizName, user.name, user.id]"
-                                        class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Results
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="quizUsers.length === 0">
-                          <p>No users found.</p>
-                        </div> -->
-                  
-                  
+                    </div>
                 </div>
             </div>
     

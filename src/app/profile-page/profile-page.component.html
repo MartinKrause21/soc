@@ -162,10 +162,7 @@
                             <div *ngIf="allUserQuizes.length > 0">
                                 <div matSort (matSortChange)="sortData($event)">
 
-                                    <div class="font-bold text-center text-sm mb-3" id="sort-table">
-                                        <h1 id="sort" class=" font-bold"> Sort quizzes by</h1>
-
-                                        <div class="mt-4"
+                                        <!-- <div class="mt-4"
                                             style="display: flex; justify-content: center; align-items: center;">
 
                                             <table>
@@ -197,6 +194,36 @@
                                                     </tr>
                                                 </thead>
                                             </table>
+                                        </div> -->
+
+                                        <div class="font-bold text-center text-sm mb-3" id="sort-table">
+
+                                            <div class="mt-4"
+                                                style="display: flex; justify-content: center; align-items: center;">
+
+                                                <div>
+                                                    <div>
+                                                        <div id="sort-buttons">
+                                                            <a mat-sort-header="name"><img id="icons"
+                                                                    src="https://img.icons8.com/material/24/00000/bookmark.png" />Name
+                                                            </a>
+                                                            <a mat-sort-header="date"><mat-icon
+                                                                    id="icons">date_range</mat-icon> Date</a>
+                                                            <a mat-sort-header="adminName"><mat-icon
+                                                                    id="icons">person</mat-icon> Creator</a>
+
+                                                        </div>
+                                                    </div>
+                                                    <mat-form-field id="input" class="h-7 w-full" appearance="outline">
+                                                        <mat-label>Search quiz results</mat-label>
+                                                        <input matInput type="text" [(ngModel)]="searchTerm"
+                                                            (ngModelChange)="searchQuizzes()">
+                                                        <mat-icon matSuffix>search</mat-icon>
+                                                    </mat-form-field>
+
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
 
@@ -229,7 +256,6 @@
                                     </div>
 
                                 </div>
-                            </div>
 
 
                         </mat-tab>
@@ -244,7 +270,6 @@
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
                                 School classes:
                             </div>
-
 
                             <div>
 

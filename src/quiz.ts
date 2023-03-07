@@ -89,7 +89,7 @@ export class quizUsers {
     username: string;
     resultQuizID: number;
     versionOfQuiz: number;
-    date: Date;
+    date: string;
 
     constructor(
         username: string,
