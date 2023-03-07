@@ -392,4 +392,41 @@ export class AuthService {
 
   }
 
+  editClassForUser(schoolName: string, classNumber: string, username: string) {
+    fetch(`https://teach-quiz.herokuapp.com/update/student/${schoolName}/${classNumber}/${username}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
+      },
+    })
+      .then(() => {
+        console.log('update guest send Success!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
+  }
+
+  removeStudentFromClass(username: string) {
+    fetch(`https://teach-quiz.herokuapp.com/delete/school/user/${username}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
+      },
+    })
+      .then(() => {
+        console.log('update guest send Success!');
+        location.reload();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
+  }
+
 }

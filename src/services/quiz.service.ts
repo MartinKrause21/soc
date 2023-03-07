@@ -5,6 +5,7 @@ import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswe
 import { schoolUsers, user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
+import { EditQuizDialogComponent } from 'src/app/edit-quiz-dialog/edit-quiz-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/data.service';
 
@@ -64,6 +65,10 @@ export class QuizService {
 
   createQuizDialog(): void {
     this.dialog.open(CreateQuizDialogComponent);
+  }
+
+  editQuizDialog(): void {
+    this.dialog.open(EditQuizDialogComponent);
   }
 
   getAllTeacherQuizes(): Observable<allTeacherQuizes[]> {
@@ -156,7 +161,7 @@ export class QuizService {
     })
     .then(() => {
       console.log('Success!');
-      this.createQuizDialog();
+      this.editQuizDialog();
 
     })
     .catch((error) => {

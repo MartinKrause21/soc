@@ -1,0 +1,28 @@
+#dialog-container{
+    border-top: rgba(255, 0, 0, 0.831) 15px solid;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-top: -24px;
+}
+
+#title {
+    margin-top: 30px;
+}
+
+#yes-button{
+    border: 1px solid green;
+}
+
+#yes-button:hover{
+    background-color: green;
+    color: white;
+}
+
+#no-button {
+    border: 1px solid red;
+}
+
+#no-button:hover {
+    background-color: red;
+    color: white;
+}

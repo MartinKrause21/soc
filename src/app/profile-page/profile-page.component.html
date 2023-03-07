@@ -13,9 +13,12 @@
                     <h1 class="font-bold text-center text-3xl text-gray-900"> {{loggedInUsername}} </h1>
                     <p class="text-center text-sm text-gray-400 font-medium"> Role: {{role}}</p>
 
-                    <h1 class="text-center" *ngIf="userData.schoolName && userData.classNumber && role == 'USER' || role == 'ADMIN' ">
+                    <h1 class="text-center"
+                        *ngIf="userData.schoolName && userData.classNumber && role == 'USER' || role == 'ADMIN' ">
                         <div class="d-flex justify-content-center align-items-center">
-                            <p *ngIf="userData.schoolName" class="text-sm text-gray-400 font-medium mr-1">School: {{ userData.schoolName }} <a *ngIf="role == 'USER' ">| Class: {{ userData.classNumber }}</a></p>
+                            <p *ngIf="userData.schoolName" class="text-sm text-gray-400 font-medium mr-1">School: {{
+                                userData.schoolName }} <a *ngIf="role == 'USER' ">| Class: {{ userData.classNumber
+                                    }}</a></p>
                         </div>
                     </h1>
 
@@ -24,19 +27,21 @@
                         <button id="button-create-class" type="button" routerLink="/create-class"
                             class="py-2 px-8 mb-3 mr-2 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
                             style="display: flex; justify-content: center; align-items: center;">
-                            Create class <mat-icon style="margin-left: 5px; margin-bottom: 1px;">add_box</mat-icon>
+                            Create group <mat-icon style="margin-left: 5px; margin-bottom: 1px;">add_box</mat-icon>
                         </button>
 
-                        <button *ngIf="!userData.schoolName" id="button-create-class" type="button" (click)="addSchoolDialog()"
+                        <button *ngIf="!userData.schoolName" id="button-create-class" type="button"
+                            (click)="addSchoolDialog()"
                             class="py-2 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
                             style="display: flex; justify-content: center; align-items: center;">
                             Add school <mat-icon style="margin-left: 5px; margin-bottom: 1px;">school</mat-icon>
                         </button>
 
-                        <button *ngIf="userData.schoolName" id="button-create-class" type="button" (click)="addSchoolDialog()"
-                        class="py-2 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                        style="display: flex; justify-content: center; align-items: center;">
-                        Edit school <mat-icon style="margin-left: 5px; margin-bottom: 1px;">edit</mat-icon>
+                        <button *ngIf="userData.schoolName" id="button-create-class" type="button"
+                            (click)="addSchoolDialog()"
+                            class="py-2 px-8 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                            style="display: flex; justify-content: center; align-items: center;">
+                            Edit school <mat-icon style="margin-left: 5px; margin-bottom: 1px;">edit</mat-icon>
                         </button>
 
                     </div>
@@ -230,10 +235,10 @@
                         </mat-tab>
 
                         <mat-tab *ngIf="role == 'ADMIN' ">
-                            <ng-template  mat-tab-label>
+                            <ng-template mat-tab-label>
 
-                                <mat-icon id="icons">school</mat-icon> School
-    
+                                <mat-icon id="icons">school</mat-icon> School classes
+
                             </ng-template>
 
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
@@ -241,23 +246,26 @@
                             </div>
 
 
-
-                            <div >
+                            <div>
 
                                 <div id="quizCard" *ngFor="let className of classNames$ | async">
                                     <h1 class="text-center text-3xl text-gray-900">{{className}}</h1>
 
                                     <div id="button-holder">
 
-                                        <button id="button" type="button" routerLink="/school-class-detail/{{userData.schoolName}}/{{className}}"
-                                            class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <button id="button" type="button"
+                                            routerLink="/school-class-detail/{{userData.schoolName}}/{{className}}"
+                                            class="py-[3.5px] px-2 mb-3 mr-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                            matTooltip="See users in class">
                                             <mat-icon>info</mat-icon>
-                                        </button> 
+                                        </button>
 
-                                        <button id="button" type="button" (click)="openEditClassNameDialog(userData.schoolName, className)"
-                                            class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                        <button id="button" type="button"
+                                            (click)="openEditClassNameDialog(userData.schoolName, className)"
+                                            class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                            matTooltip="Edit Class Name">
                                             <mat-icon>edit</mat-icon>
-                                        </button> 
+                                        </button>
 
                                     </div>
 
@@ -271,18 +279,19 @@
                         <mat-tab *ngIf="role == 'ADMIN' " id="createdClasses-tab">
                             <ng-template mat-tab-label>
 
-                                <mat-icon>class</mat-icon> Created classes
+                                <mat-icon>class</mat-icon> Created groups
 
                             </ng-template>
 
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                                Your created classes:
+                                Your created groups:
                             </div>
 
                             <div *ngIf="userClass.length == 0 "
                                 class="font-bold text-center items-center text-xl text-gray-400 mt-7 mb-7">
-                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
-                                You have not created any class yet.
+                                <img id="alert-icon"
+                                    src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png" />
+                                You have not created any group yet.
                             </div>
 
                             <div class="justify-center mx-auto ">

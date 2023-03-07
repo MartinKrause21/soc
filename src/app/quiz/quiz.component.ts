@@ -53,6 +53,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
     this.quizId = Number(this.route.snapshot.paramMap.get('id'));
     console.log(this.quizName , this.quizId);
@@ -66,6 +67,8 @@ export class QuizComponent implements OnInit {
       this.quiz = response;
       this.questionList = response.questionList;
     })
+
+
   }
 
   qrCodeDialog() {
@@ -190,15 +193,16 @@ export class QuizComponent implements OnInit {
   }
 
   sendMultipleAnswers(){
-    this.quizNum = this.quizNum + 1;
+   
     console.log(this.multipleAnswers, this.question, this.quizName);
     this.quizService.updateResultQuiz(this.multipleAnswers, this.question);
     setTimeout(() => {
       this.multipleAnswers.length = 0;
     }, 900);
 
-    // add score only if array multipleAnswers contains only correct answers
-
+    const checkCorrectAnswrs = this.quiz.questionList[this.quizNum].answerList;
+    console.log("asdsad" + checkCorrectAnswrs.length);
+    
     var allAnswersCorrect = true;
     for (var i = 0; i < this.multipleAnswers.length; i++) {
       if (this.multipleAnswers[i].correct !== true) {
@@ -206,14 +210,27 @@ export class QuizComponent implements OnInit {
         break;
       }
     }
-    if (allAnswersCorrect && this.multipleAnswers.length > 1) {
-      this.score = this.score + 1;
+
+    let numberOfClickedAnswers = 0;
+
+    if (allAnswersCorrect ) {
+      for (var i = 0; i < checkCorrectAnswrs.length; i++) {
+        if (checkCorrectAnswrs[i].correct == true) {
+          numberOfClickedAnswers++;
+        } 
+      }
+      console.log("adasasdasd"+checkCorrectAnswrs.length);
+      
+      if(numberOfClickedAnswers == this.multipleAnswers.length){
+        this.score = this.score + 1;
+      }
+
       console.log("Correct answer, Score: " + this.score); 
     } else {
       console.log("Incorrect answer, score 0");
     }
     
-
+    this.quizNum = this.quizNum + 1;
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
       this.result = true;

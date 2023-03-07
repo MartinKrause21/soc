@@ -42,14 +42,16 @@
 
                                 <div id="button-holder">
                                         
-                                    <button id="button" type="button" 
-                                    class="py-2 mb-2 mr-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Edit school
+                                    <button id="button" type="button" (click)="openEditUser(user.username, user.schoolName, user.classNumber)"
+                                    class="py-2 mb-2 mr-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                    matTooltip="Edit user class">
+                                        <mat-icon>edit</mat-icon>
                                     </button> 
 
-                                    <button id="button" type="button" 
-                                    class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Edit class
+                                    <button id="button" type="button" (click)="removeUserFromClass(user.username)"
+                                    class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                                    matTooltip="Remove user from class">
+                                    <mat-icon>remove_circle</mat-icon>
                                     </button> 
     
                                 </div>

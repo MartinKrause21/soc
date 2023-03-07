@@ -75,6 +75,13 @@ export class addClassName {
    ) {  }
 }
 
+export class editClassName {
+   classNumber: string;
+
+   constructor(
+      classNumber: string,
+   ) {  }
+}
 
 export class resendMail {
    email: string;

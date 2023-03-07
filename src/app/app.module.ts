@@ -73,6 +73,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AddSchoolDialogComponent } from './add-school-dialog/add-school-dialog.component';
 import { SchoolClassDetailComponent } from './school-class-detail/school-class-detail.component';
 import { ChangeSchoolClassDialogComponent } from './change-school-class-dialog/change-school-class-dialog.component';
+import { EditUserSchoolClassDialogComponent } from './edit-user-school-class-dialog/edit-user-school-class-dialog.component';
+import { EditQuizDialogComponent } from './edit-quiz-dialog/edit-quiz-dialog.component';
+import { RemoveUserDialogComponent } from './remove-user-dialog/remove-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +118,9 @@ import { ChangeSchoolClassDialogComponent } from './change-school-class-dialog/c
     AddSchoolDialogComponent,
     SchoolClassDetailComponent,
     ChangeSchoolClassDialogComponent,
+    EditUserSchoolClassDialogComponent,
+    EditQuizDialogComponent,
+    RemoveUserDialogComponent,
   ],
   imports: [
     BrowserModule,
