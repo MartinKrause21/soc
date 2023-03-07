@@ -59,6 +59,23 @@ export class sentMail {
    ) {  }
 }
 
+export class addSchoolName {
+   schoolName: string;
+
+   constructor(
+      schoolName: string,
+   ) {  }
+}
+
+export class addClassName {
+   newClassNumber: string;
+
+   constructor(
+      newClassNumber: string,
+   ) {  }
+}
+
+
 export class resendMail {
    email: string;
 
@@ -155,6 +172,32 @@ export class userClass {
       quizName: string,
       className: string,
       usernames: any[],
+      ) {  }
+}
+
+export class userData {
+   username: string;
+   email: string;
+   schoolName: string;
+   classNumber: string;
+   constructor(
+      username: string,
+      email: string,
+      schoolName: string,
+      classNumber: string
+      ) {  }
+}
+
+export class schoolUsers{
+   username: string;
+   email: string;
+   schoolName: string;
+   classNumber: string;
+   constructor(
+      username: string,
+      email: string,
+      schoolName: string,
+      classNumber: string
       ) {  }
 }
 

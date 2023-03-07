@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer, allFavouriteQuizzes, favouriteQuiz, TeacherQuizzesPercentage } from '../quiz';
-import { user } from '../user';
+import { schoolUsers, user } from '../user';
 import { CookieService } from 'ngx-cookie-service';
 import { CreateQuizDialogComponent } from 'src/app/create-quiz-dialog/create-quiz-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -80,6 +80,10 @@ export class QuizService {
 
   getAllUsersForQuiz(quizName:string): Observable<quizUsers[]> {
     return this.http.get<quizUsers[]>(`https://teach-quiz.herokuapp.com/users/${quizName}`,  {headers: this.headerHttp});
+  }
+
+  getAllUsersForSchool(schoolName:string, classNumber: string): Observable<schoolUsers[]> {
+    return this.http.get<schoolUsers[]>(`https://teach-quiz.herokuapp.com/school/class/students/${schoolName}/${classNumber}`,  {headers: this.headerHttp});
   }
 
   getUserDetailsForQuiz(resultQuizId:number , username: string): Observable<any> {

@@ -3,7 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
 import { allFavouriteQuizzes, allTeacherQuizes, allUserQuizes, Quiz, TeacherQuizzesPercentage } from 'src/quiz';
 import { AuthService } from 'src/services/auth.service';
-import {  allAdmins, allReports, allUsers, sendSupport, sentMail, userClass } from 'src/user';
+import {  allAdmins, allReports, allUsers, sendSupport, sentMail, userClass, userData } from 'src/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CopiedSnackbarComponent } from '../copied-snackbar/copied-snackbar.component';
@@ -17,7 +17,10 @@ import { DeleteAdminDialogComponent } from '../delete-admin-dialog/delete-admin-
 import { DeleteUserDialogComponent } from '../delete-user-dialog/delete-user-dialog.component';
 import { DeleteReportDialogComponent } from '../delete-report-dialog/delete-report-dialog.component';
 import { DeleteClassDialogComponent } from '../delete-class-dialog/delete-class-dialog.component';
+import { AddSchoolDialogComponent } from '../add-school-dialog/add-school-dialog.component';
+import { ChangeSchoolClassDialogComponent } from '../change-school-class-dialog/change-school-class-dialog.component';
 import {Sort} from '@angular/material/sort';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-page',
@@ -27,6 +30,7 @@ import {Sort} from '@angular/material/sort';
 export class ProfilePageComponent implements OnInit {
 
   @Output() resultQuizIdsChange = new EventEmitter<any[]>();
+  classNames$: Observable<string[]>;
 
   constructor(
     private cookies: CookieService,
@@ -37,7 +41,10 @@ export class ProfilePageComponent implements OnInit {
     private http : HttpClient, 
     private dialog : MatDialog,
     private dataService: DataService,
-  ) { this.originalUserQuizzes = this.allUserQuizes;}
+  ) { 
+    this.originalUserQuizzes = this.allUserQuizes;
+
+  }
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   allUserQuizes : allUserQuizes [] = []; 
@@ -51,6 +58,7 @@ export class ProfilePageComponent implements OnInit {
   quizzes : allUserQuizes[]
   allReports: allReports[];
   userClass: userClass[];
+  userData: { schoolName: string, classNumber: string } = { schoolName: '', classNumber: '' };
 
   email: string = '';
 
@@ -78,6 +86,19 @@ export class ProfilePageComponent implements OnInit {
     this.loggedInUsername = this.cookies.get('username');
 
     this.resultID = Number(this.route.snapshot.paramMap.get('resultQuizIds'));
+   
+
+    this.authService.getUserData().subscribe(
+      ({ schoolName, classNumber }) => {
+        this.userData = { schoolName, classNumber };
+
+        this.classNames$ = this.authService.getAllSchoolClasses(this.userData.schoolName);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  
 
     this.quizService.getAllFavouriteQuizzes().subscribe(response => { 
       this.allFavouriteQuizzes = response;
@@ -180,6 +201,17 @@ export class ProfilePageComponent implements OnInit {
       console.error('Error:', error);
     });
   }
+
+  openEditClassNameDialog(schoolName: string, classNumber: string) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      schoolName: schoolName,
+      classNumber: classNumber
+    };
+
+    this.dialog.open(ChangeSchoolClassDialogComponent, dialogConfig);
+  }
   
   openDeleteQuizDialog(quizName: string) {
     const dialogConfig = new MatDialogConfig();
@@ -230,6 +262,11 @@ export class ProfilePageComponent implements OnInit {
 
     this.dialog.open(DeleteClassDialogComponent, dialogConfig);
   }
+
+  addSchoolDialog() {
+    this.dialog.open(AddSchoolDialogComponent);
+  }
+
 
   sendSupport(){
     this.authService.sendSupport(this.reason, this.modelSendSupport.problem );

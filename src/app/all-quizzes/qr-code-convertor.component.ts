@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { allFavouriteQuizzes, allUserQuizes, favouriteQuiz, Quiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-qr-code-convertor',
@@ -24,8 +25,11 @@ export class QrCodeConvertorComponent implements OnInit {
   originalQuizzes: allUserQuizes[];
   favouriteQuizzes: favouriteQuiz[];
 
+  role : string;
+
   constructor(
     private quizService: QuizService,
+    private cookies: CookieService
   ) { this.originalQuizzes = this.quizzes; }
 
   visibility = 'hidden';
@@ -49,6 +53,8 @@ export class QrCodeConvertorComponent implements OnInit {
     setTimeout(() => {
       this.visibility = 'visible';
     }, 300);
+
+    this.role = this.cookies.get('role');
   }
 
   searchTerm: string;

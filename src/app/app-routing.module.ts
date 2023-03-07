@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CreateClassComponent } from './create-class/create-class.component';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizzes-s.component';
+import { SchoolClassDetailComponent } from './school-class-detail/school-class-detail.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'all-admin-quizzes/:teacherName', component: AllAdminQuizzesSComponent, canActivate: [AuthGuard]  },
   { path: 'user-quiz-detail/:resultQuizIds', component: UserQuizDetailComponent, canActivate: [AuthGuard]  },
   { path: 'admin-user-detail/:resultQuizId/:username/:id', component: AdminUserDetail2Component, canActivate: [AuthGuard, AdminGuard]  },
+  { path: 'school-class-detail/:schoolName/:classNumber', component: SchoolClassDetailComponent, canActivate: [AuthGuard, AdminGuard]  },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'guest-form', component: GuestFormComponent },

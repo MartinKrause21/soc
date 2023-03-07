@@ -70,6 +70,9 @@ import { AllAdminQuizzesSComponent } from './all-admin-quizzes-s/all-admin-quizz
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSortModule} from '@angular/material/sort';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { AddSchoolDialogComponent } from './add-school-dialog/add-school-dialog.component';
+import { SchoolClassDetailComponent } from './school-class-detail/school-class-detail.component';
+import { ChangeSchoolClassDialogComponent } from './change-school-class-dialog/change-school-class-dialog.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +112,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ClassDetailComponent,
     DeleteClassDialogComponent,
     AllAdminQuizzesSComponent,
+    AddSchoolDialogComponent,
+    SchoolClassDetailComponent,
+    ChangeSchoolClassDialogComponent,
   ],
   imports: [
     BrowserModule,

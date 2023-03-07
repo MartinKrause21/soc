@@ -1,0 +1,38 @@
+
+<div id="container"> 
+    <div id="dialog-container"> </div>
+    <h2 mat-dialog-title *ngIf="!send" id="title">Enter here your school name.</h2>
+    <h2 mat-dialog-title *ngIf="send" id="title2">School name added!</h2>
+    
+    <mat-dialog-content class="mat-typography" >
+
+        <form *ngIf="!send" #resendMail="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+
+
+            <div class="form-group">
+
+                <mat-form-field id="input" class="h-10 w-full" appearance="outline">
+                    <mat-label>Schol name</mat-label>
+                    <input matInput required type="email" name="email" [(ngModel)]="model.schoolName" #email="ngModel">
+                    <mat-icon matSuffix>school</mat-icon>
+                </mat-form-field>
+
+                <div id="resendMail" class="relative">
+                    <button id="resendMail-button" type="submit" [disabled]="!resendMail.form.valid"
+                        class="py-2 px-8 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                        Add
+                    </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button (click)="close()" mat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-dialog-actions>
+</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
-import { allAdmins, allReports, allSchoolNames, allUsers, classUsers, sendSupport, user, userClass, userLogin } from 'src/user';
+import { allAdmins, allReports, allSchoolNames, allUsers, classUsers, sendSupport, user, userClass, userData, userLogin } from 'src/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -45,6 +45,10 @@ export class AuthService {
 
   getUserRole() {
     return this.http.get<{ role: string }>('https://teach-quiz.herokuapp.com/role', { headers: this.headerHttp });
+  }
+
+  getUserData()  {
+    return this.http.get<{ schoolName: string, classNumber: string }>('https://teach-quiz.herokuapp.com/data/of/current/user', { headers: this.headerHttp });
   }
 
   getUserPercentage():Observable <number>  {
@@ -327,6 +331,10 @@ export class AuthService {
     return this.http.get<userClass[]>(`https://teach-quiz.herokuapp.com/get/classes`,  {headers: this.headerHttp});
   }
 
+  getAllSchoolClasses(schoolName:string): Observable<string[]> {
+    return this.http.get<string[]>(`https://teach-quiz.herokuapp.com/get/all/classNames/${schoolName}`,  {headers: this.headerHttp});
+  }
+
   getAllClassUsers(className: string): Observable<classUsers[]> {
     return this.http.get<classUsers[]>(`https://teach-quiz.herokuapp.com/get/users/table/${className}`,  {headers: this.headerHttp});
   }
@@ -345,6 +353,43 @@ export class AuthService {
 
   getAllAdminQuizzesSupervisor(teacherName: string): Observable<allTeacherQuizes[]> {
     return this.http.get<allTeacherQuizes[]>(`https://teach-quiz.herokuapp.com/get/quiz/teacher/${teacherName}`,  {headers: this.headerHttp});
+  }
+
+  addSchool(schoolName: string) {
+    fetch(`https://teach-quiz.herokuapp.com/teacher/update/school/${schoolName}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
+      },
+    })
+      .then(() => {
+        console.log('update guest send Success!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
+  }
+
+  ///update/class/{schoolName}/{oldClassName}/{newClassName}
+  editSchoolClass(schoolName: string, classNumber: string, newClassNumber: string) {
+    fetch(`https://teach-quiz.herokuapp.com/update/class/${schoolName}/${classNumber}/${newClassNumber}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Basic '+btoa(this.authString), 
+        'Content-Type': "application/json; charset=utf8",
+      },
+    })
+      .then(() => {
+        console.log('update guest send Success!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert("faileeedddd")
+      });
+
   }
 
 }
