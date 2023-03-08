@@ -295,6 +295,10 @@ export class AuthService {
     return this.http.get<allSchoolNames[]>(`https://teach-quiz.herokuapp.com/get/all/schoolNames`,  {headers: this.headerHttp});
   }
 
+  getAllClassesForScholl(schoolName : string): Observable<allSchoolNames[]> {
+    return this.http.get<allSchoolNames[]>(`https://teach-quiz.herokuapp.com/get/all/classNames/${schoolName}`,  {headers: this.headerHttp});
+  }
+
   getAllFiltredUsers(schoolName: string, classNumber: string): Observable<allUsers[]> {
     return this.http.get<allUsers[]>(`https://teach-quiz.herokuapp.com/school/class/students/${schoolName}/${classNumber}`,  {headers: this.headerHttp});
   }

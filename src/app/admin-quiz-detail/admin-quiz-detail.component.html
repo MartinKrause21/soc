@@ -21,65 +21,143 @@
                             </ng-template>
         
                             <div class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                                Users participating in this quiz:
+                                Users participating in this quiz
                             </div>
     
-                            <div *ngIf="quizUsers.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
-                                <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
-                                No users have taken this quiz yet!
-                            </div>
     
                             <div  class="justify-center mx-auto ">
                                 <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                             </div>
 
-                            <div matSort (matSortChange)="sortData($event)">
+                            <div   matSort (matSortChange)="sortData($event)">
 
-                                <div class="font-bold text-center text-sm mb-3" id="sort-table">
-
+                                <mat-expansion-panel class="font-bold text-sm mb-3" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="text-center">
+                                           Sort users
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                        
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
                                     <div class="mt-4"
-                                        style="display: flex; justify-content: center; align-items: center;">
+                                    style="display: flex; justify-content: center; align-items: center;">
 
+                                    <div>
                                         <div>
-                                            <div>
-                                                <div id="sort-buttons">
-                                                    <a mat-sort-header="name"><img id="icons"
-                                                            src="https://img.icons8.com/material/24/00000/bookmark.png" />Name
-                                                    </a>
-                                                    <a mat-sort-header="date"><mat-icon
-                                                            id="icons">date_range</mat-icon> Date</a>
-                                                        
-                                                </div>
+                                            <div id="sort-buttons">
+                                                <a mat-sort-header="name"><img id="icons"
+                                                        src="https://img.icons8.com/material/24/00000/bookmark.png" />Name
+                                                </a>
+                                                <a mat-sort-header="date"><mat-icon
+                                                        id="icons">date_range</mat-icon> Date</a>
+                                                    
                                             </div>
-                                            <mat-form-field id="input" class="h-7 w-full" appearance="outline">
-                                                <mat-label>Search users</mat-label>
-                                                <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchUsers()">
-                                                <mat-icon matSuffix>search</mat-icon>
-                                            </mat-form-field>
-                                          
                                         </div>
+                                        <mat-form-field id="search-input" class="search-field w-full " appearance="outline">
+                                            <mat-label>Search users</mat-label>
+                                            <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchUsers()">
+                                            <mat-icon matSuffix>search</mat-icon>
+                                          </mat-form-field> 
+
+                                        <!-- <div class="search-and-select-container">
                                         
+                                          
+                                             <mat-form-field id="select-school" appearance="outline" class="select-field mr-2">
+                                              <mat-label>Select school</mat-label>
+                                              <mat-select  [(value)]="schoolName">
+                                                <mat-option >-/-</mat-option>
+                                                <mat-option *ngFor="let schoolName of allSchoolNames" [value]="schoolName">
+                                                    {{schoolName}}
+                                                  </mat-option>
+                                              </mat-select>
+                                              <mat-icon matSuffix>school</mat-icon>
+                                            </mat-form-field>
+
+                                            <mat-form-field appearance="outline" class="select-field">
+                                                <mat-label>Select class</mat-label>
+                                                <mat-select  [(value)]="classOption">
+                                                  <mat-option >-/-</mat-option>
+                                                  <mat-option *ngFor="let classOption of classes " [value]="classOption">
+                                                    {{classOption}}
+                                                  </mat-option>
+                                                </mat-select>
+                                                <mat-icon matSuffix>library_books</mat-icon>
+                                              </mat-form-field>
+
+                                          </div> -->
+
+                                          <div class="search-and-select-container mb-5">  
+                                          
+                                            <mat-form-field id="select-school" class="example-full-width" class="select-field mr-2" appearance="outline">
+                                                <mat-label>School name</mat-label>
+                                                <input type="text"
+                                                       placeholder="Pick one"
+                                                       aria-label="Number"
+                                                       matInput
+                                                       [formControl]="myControl"
+                                                       [matAutocomplete]="auto"
+                                                       [(ngModel)]="schoolName"
+                                                       (ngModelChange)="filterUsersBySchool()">
+                                                <mat-autocomplete #auto="matAutocomplete">
+                                                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                    {{option}}
+                                                  </mat-option>
+                                                </mat-autocomplete>
+                                                <mat-icon matSuffix>school</mat-icon>
+                                            </mat-form-field>
+            
+                                            <mat-form-field  class="example-full-width" class="select-field" appearance="outline">
+                                                <mat-label> Class name</mat-label>
+                                                <input type="text"
+                                                       placeholder="Pick one"
+                                                       aria-label="Number"
+                                                       matInput
+                                                       [formControl]="myControl"
+                                                       [matAutocomplete]="auto"
+                                                       [(ngModel)]="classNumber"
+                                                       (ngModelChange)="onInputChanged()">
+                                                <mat-autocomplete #auto="matAutocomplete">
+                                                  <mat-option *ngFor="let classOption of classes " [value]="classOption">
+                                                    {{classOption}}
+                                                  </mat-option>
+                                                </mat-autocomplete>
+                                                <mat-icon matSuffix>class</mat-icon>
+                                            </mat-form-field>
+        
+                                         </div> 
                                     </div>
+                                    
+                                </div>
+                                </mat-expansion-panel>
+
+                                <div *ngIf="quizUsers.length == 0" class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                                    <img id="alert-icon" src="https://img.icons8.com/pastel-glyph/64/808080/groups--v3.png"/>
+                                    No users have taken this quiz yet!
                                 </div>
     
                         <div *ngIf="quizUsers.length > 0"> 
+
+
+                                <div #loadedContent id="quizCard" *ngFor="let user of filteredUsers" > 
         
-                            <div #loadedContent id="quizCard" *ngFor="let user of quizUsers" > 
+                                    <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} </h1> 
+                                    <h3 class=" text-center text-gray-400 font-medium ">Quiz version: {{user.versionOfQuiz }} | {{user.date | date: "medium" }}</h3> 
         
-                                <h1 class="font-bold text-center text-3xl text-gray-900"> {{user.username}} </h1> 
-                                <h3 class=" text-center text-gray-400 font-medium ">Quiz version: {{user.versionOfQuiz }} | {{user.date | date: "medium" }}</h3> 
-    
-                                <div id="button-holder">
-                                        
-                                    <button id="button" type="button" routerLink="/admin-user-detail/{{quizName}}/{{user.username}}/{{user.resultQuizID}}"
-                                    class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                        Results
-                                    </button> 
-    
+                                    <div id="button-holder">
+                                            
+                                        <button id="button" type="button" routerLink="/admin-user-detail/{{quizName}}/{{user.username}}/{{user.resultQuizID}}"
+                                        class="py-2 mb-2 px-8 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                            Results
+                                        </button> 
+        
+                                    </div>
+        
                                 </div>
-    
-                            </div>
+                           
+
                         </div>
+
                     </div>
                 </div>
             </div>

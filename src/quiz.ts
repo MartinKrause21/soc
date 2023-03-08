@@ -88,6 +88,8 @@ export class allUserQuizes {
 export class quizUsers {
     username: string;
     resultQuizID: number;
+    schoolName: string;
+    classNumber: string;
     versionOfQuiz: number;
     date: string;
 

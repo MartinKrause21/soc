@@ -149,17 +149,11 @@
                                 You have already done these quizzes:
                             </div>
 
-                            <div *ngIf="allUserQuizes.length == 0 "
-                                class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
-                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
-                                You have not done any quiz yet!
-                            </div>
-
                             <div class="justify-center mx-auto ">
                                 <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                             </div>
 
-                            <div *ngIf="allUserQuizes.length > 0">
+                            <div >
                                 <div matSort (matSortChange)="sortData($event)">
 
                                         <!-- <div class="mt-4"
@@ -195,8 +189,15 @@
                                                 </thead>
                                             </table>
                                         </div> -->
-
-                                        <div class="font-bold text-center text-sm mb-3" id="sort-table">
+                                        <mat-expansion-panel class="font-bold text-center text-sm mb-3" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title class="text-center">
+                                                    Sort your quizzes
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
 
                                             <div class="mt-4"
                                                 style="display: flex; justify-content: center; align-items: center;">
@@ -224,36 +225,45 @@
                                                 </div>
 
                                             </div>
+                                        </mat-expansion-panel>
+
+                                        <div *ngIf="allUserQuizes.length == 0 "
+                                class="font-bold text-center text-xl text-gray-400 mt-7 mb-7">
+                                <img id="alert-icon" src="https://img.icons8.com/wired/64/808080/repository.png" />
+                                You have not done any quiz yet!
+                            </div>
+                                    
+
+                                        </div>
+
+                                    <div *ngIf="allUserQuizes.length > 0"  > 
+                                        <div id="quizCard" *ngFor="let quiz of allUserQuizes">
+
+                                            <h1 class=" text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
+                                            <h2 class="text-center text-gray-700 font-medium"> {{quiz.description}} </h2>
+                                            <div id="service-bar">
+                                                <h3 class="text-center text-gray-400 font-medium"> Creator:
+                                                    {{quiz.creatorName}}
+                                                    <a id="divider"> | </a>
+                                                </h3>
+                                                <h3 id="date" class="text-center text-gray-400 font-medium"> {{quiz.date |
+                                                    date:
+                                                    "medium"}} </h3>
+                                            </div>
+    
+                                            <div id="button-holder">
+    
+                                                <button id="button" type="button"
+                                                    routerLink="/user-quiz-detail/{{quiz.resultQuizId}}"
+                                                    class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
+                                                    Your results
+                                                </button>
+    
+                                            </div>
+    
                                         </div>
                                     </div>
-
-
-
-                                    <div id="quizCard" *ngFor="let quiz of allUserQuizes">
-
-                                        <h1 class=" text-center text-3xl text-gray-900"> {{quiz.name}} </h1>
-                                        <h2 class="text-center text-gray-700 font-medium"> {{quiz.description}} </h2>
-                                        <div id="service-bar">
-                                            <h3 class="text-center text-gray-400 font-medium"> Creator:
-                                                {{quiz.creatorName}}
-                                                <a id="divider"> | </a>
-                                            </h3>
-                                            <h3 id="date" class="text-center text-gray-400 font-medium"> {{quiz.date |
-                                                date:
-                                                "medium"}} </h3>
-                                        </div>
-
-                                        <div id="button-holder">
-
-                                            <button id="button" type="button"
-                                                routerLink="/user-quiz-detail/{{quiz.resultQuizId}}"
-                                                class="py-[3.5px] px-2 mb-3 mr-3 font-semibold transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">
-                                                Your results
-                                            </button>
-
-                                        </div>
-
-                                    </div>
+                                   
 
                                 </div>
 
@@ -288,7 +298,7 @@
                                         <button id="button" type="button"
                                             (click)="openEditClassNameDialog(userData.schoolName, className)"
                                             class="py-[3.5px] px-2 mb-3 font-semibold  transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                                            matTooltip="Edit Class Name">
+                                            matTooltip="Edit class name">
                                             <mat-icon>edit</mat-icon>
                                         </button>
 

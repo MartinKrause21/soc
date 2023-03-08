@@ -45,6 +45,7 @@ export class ProfilePageComponent implements OnInit {
     this.originalUserQuizzes = this.allUserQuizes;
 
   }
+  panelOpenState:boolean = false;
   
   allTeacherQuizes : allTeacherQuizes[] = [];
   allUserQuizes : allUserQuizes [] = []; 
