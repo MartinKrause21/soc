@@ -5,8 +5,8 @@
     
             <div class="bg-white relative rounded-lg w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6 mx-auto">
                 <div class="flex justify-center">
-                    <img src="../assets/images/0icon3.svg" alt=""
-                        class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-xl border-4 border-white transition duration-200 transform hover:scale-110">
+                    <img id="profile-img" src="../assets/images/0icon3.svg" alt=""
+                        class="rounded-full mx-auto relative -top-20 w-32 h-32 shadow-xl border-4 border-white transition duration-200 transform hover:scale-110">
                 </div>
     
                 <div class="mt-16">
@@ -18,7 +18,7 @@
                     </ng-template>
     
                     <h1 class="font-bold text-center text-3xl text-gray-900 mt-7 mb-7">
-                        {{username}} results for quiz: {{quizName}}
+                        {{username}}'s results for quiz: {{quizName}}
                     </h1>
     
                     <!-- [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}" -->
