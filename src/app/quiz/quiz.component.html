@@ -56,8 +56,13 @@
     
         <div *ngIf="!result" id="container" class="bg-white text-center rounded-3xl shadow-lg  container p-10  mx-auto my-60  sm:max-w-6xl sm:mx-auto ">
     
-           
-            <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}} </h1>
+            <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}  </h1>
+
+            <div class="quiz-image">
+                <img [src]="retrievedImage" (click)="openFullSize(imageId)">
+            </div>  
+
+            <h1 id="timer" class="text-lg text-white"> 60 s <mat-icon id="timer-icon"> timer</mat-icon></h1>
 
             <mat-divider></mat-divider>
     

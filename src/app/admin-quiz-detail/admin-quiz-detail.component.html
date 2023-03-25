@@ -31,13 +31,14 @@
 
                             <div   matSort (matSortChange)="sortData($event)">
 
-                                <mat-expansion-panel class="font-bold text-sm mb-3" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel class="font-bold text-sm mb-3 example-headers-align" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                     <mat-expansion-panel-header>
                                         <mat-panel-title class="text-center">
                                            Sort users
                                         </mat-panel-title>
                                         <mat-panel-description>
-                        
+                                            <a style="visibility: hidden"> . </a>
+                                            <mat-icon>sort</mat-icon>
                                         </mat-panel-description>
                                     </mat-expansion-panel-header>
                                     <div class="mt-4"
@@ -55,7 +56,7 @@
                                             </div>
                                         </div>
                                         <mat-form-field id="search-input" class="search-field w-full " appearance="outline">
-                                            <mat-label>Search users</mat-label>
+                                            <mat-label>Search users by name</mat-label>
                                             <input matInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="searchUsers()">
                                             <mat-icon matSuffix>search</mat-icon>
                                           </mat-form-field> 

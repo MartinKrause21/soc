@@ -160,3 +160,9 @@
     margin-top: 6px;
     margin-bottom: -119px;
 }
+
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+
+}

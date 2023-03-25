@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Quiz, allTeacherQuizes, quizUsers, resultQuiz, allUserQuizes,inputAnswer, allFavouriteQuizzes, favouriteQuiz, TeacherQuizzesPercentage } from '../quiz';
@@ -248,5 +248,27 @@ export class QuizService {
   unsetFavourite(quizName: string){
     return this.http.put(`https://teach-quiz.herokuapp.com/unset/favourite/${quizName}`,  {headers: this.headerHttp});
   }
+
+  uploadFile(uploadImageData: FormData) {
+    let authString = `${this.cookies.get("username")}:${this.cookies.get("password")}`;
+  
+    return fetch(`https://teach-quiz.herokuapp.com/image/upload`, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': 'Basic '+btoa(authString),
+      }),
+      body: uploadImageData,
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+  
 
 }

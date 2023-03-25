@@ -1,3 +1,4 @@
+import { type } from "os";
 
 export interface Quiz {
     name: string; 
@@ -8,6 +9,7 @@ export interface Quiz {
 
 export interface Question {
     answered: unknown;
+    image: Image;
     multipleChoice: boolean;
     questionContent: string;
     answerList: Answer[];
@@ -17,6 +19,13 @@ export interface Answer {
     answerContent: string; 
     content: string;
     correct: boolean;
+}
+
+export interface Image {
+    id: number;
+    name: string;
+    type: string;
+    imageData: any;
 }
 
 

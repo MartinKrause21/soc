@@ -462,3 +462,8 @@ html, body {
     margin-top: -79px;
     margin-bottom: -53px;
 }
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+
+}

@@ -76,6 +76,7 @@ import { ChangeSchoolClassDialogComponent } from './change-school-class-dialog/c
 import { EditUserSchoolClassDialogComponent } from './edit-user-school-class-dialog/edit-user-school-class-dialog.component';
 import { EditQuizDialogComponent } from './edit-quiz-dialog/edit-quiz-dialog.component';
 import { RemoveUserDialogComponent } from './remove-user-dialog/remove-user-dialog.component';
+import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { RemoveUserDialogComponent } from './remove-user-dialog/remove-user-dial
     EditUserSchoolClassDialogComponent,
     EditQuizDialogComponent,
     RemoveUserDialogComponent,
+    FileUploadDialogComponent,
   ],
   imports: [
     BrowserModule,

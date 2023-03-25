@@ -1,8 +1,13 @@
 
-import { Component, ElementRef, HostListener } from '@angular/core';  
-import { FormGroup, FormControl, FormArray, FormBuilder, Form } from '@angular/forms'  
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';  
+import { FormGroup, FormControl, FormArray, FormBuilder, Form, Validators } from '@angular/forms'  
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material/tooltip';
+import { CookieService } from 'ngx-cookie-service';
 import { QuizService } from 'src/services/quiz.service';
+import { FileUploadDialogComponent } from '../file-upload-dialog/file-upload-dialog.component';
+
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1500,
@@ -22,6 +27,8 @@ export class CreateQuizComponent  {
   ignoredCase:boolean = false;
   originalTop: number;
 
+  imageId: number;
+  
   ngAfterViewInit() {
     this.originalTop = this.el.nativeElement.offsetTop;
   }
@@ -42,7 +49,10 @@ export class CreateQuizComponent  {
   constructor(
     private formBuilder:FormBuilder,
     private quizService: QuizService,
-    private el: ElementRef
+    private el: ElementRef,
+    private http: HttpClient,
+    private cookies: CookieService,
+    private dialog: MatDialog,
     ) {  
      
     this.quizForm = this.formBuilder.group({  
@@ -65,6 +75,8 @@ export class CreateQuizComponent  {
   newQuestion(): FormGroup {  
     return this.formBuilder.group({  
       questionContent: '',   
+      imageId: this.imageId,
+      timer: '',
       answerList: this.formBuilder.array([]) , 
     })  
   } 
@@ -97,11 +109,11 @@ export class CreateQuizComponent  {
      
   onSubmit() {  
     if (this.quizForm.value.questionList.length == 0) {
-      alert("Please add at least one question");
+      //alert("Please add at least one question");
       return;
     }
     if (this.quizForm.value.questionList[0].answerList.length == 0) {
-      alert("Please add at least one answer for question ");
+      //alert("Please add at least one answer for question ");
       return;
     }
 
@@ -130,6 +142,120 @@ export class CreateQuizComponent  {
       }
     }
     return null;
+  }
+
+  //selectedFile: any | null = null;
+  fileData: any;
+  fileSelected: Record<number, boolean> = {};
+
+
+  // onFileSelected(event: any, questionIndex: number) {
+  //   const selectedFile = event.target.files[0];
+  //   console.log(selectedFile);
+  //   this.fileSelected[questionIndex] = true;
+  //   // Do something with the selected file
+  // }
+  fileName:string;
+
+  fileQuizUpload: any | null = null;
+
+  public onFileChange(event: any, questionIndex: number) {
+    const reader = new FileReader();
+ 
+    if (event.target.files && event.target.files.length) {
+      this.fileName = event.target.files[0].name;
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+     
+      reader.onload = () => {
+        this.quizForm.patchValue({
+          file: reader.result
+        });
+
+        this.fileQuizUpload = reader.result;
+        console.log(this.quizForm.value, this.fileQuizUpload);
+        
+      };
+      
+      this.fileSelected[questionIndex] = true;
+    }
+  }
+
+  // fd = new FormData();
+
+  // onFileChange(event: any, questionIndex: number) {
+  //   console.log(event);
+  //   this.selectedFile = <File>event.target.files[0];
+  //   this.fd.append('file', this.selectedFile, this.selectedFile.name);
+  //   this.fileSelected[questionIndex] = true;
+  //   console.log(this.quizForm.value);
+  // }
+ 
+  
+  clearFileInput(questionIndex: number) {
+    this.quizForm.get('questionList')?.get([questionIndex])?.get('file')?.setValue(null);
+    this.fileSelected[questionIndex] = false;
+  }
+
+  extrasOpened: boolean[] = [];
+  
+  toggleExtras(questionIndex: number) {
+    this.extrasOpened[questionIndex] = !this.extrasOpened[questionIndex];
+  }
+
+  // -----------------------------------------------//
+
+
+  selectedFile: File;
+  //fileSelected2 = false;
+  formData = new FormData();
+
+  onFileChange2(event: any, questionIndex:number) {
+    // const file = event.target.files[0];
+    // const formData = new FormData();
+    // formData.append('image', file, file.name);
+    // console.log(formData.get('image')); 
+
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+    this.fileSelected[questionIndex] = true;
+  }
+
+  onUpload(questionIndex: number) {
+    console.log(this.selectedFile, "fileee");
+  
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+  
+    this.http.post<number>('https://teach-quiz.herokuapp.com/image/upload', uploadImageData, { observe: 'response' })
+      .subscribe((response) => {
+        console.log('Response:', response);
+  
+        if (response.body !== null) {
+          const imageId = response.body;
+          // get the existing question form group at the given index
+          const questionFormGroup = (this.quizForm.get('questionList') as FormArray).at(questionIndex) as FormGroup;
+          // update the imageId field
+          questionFormGroup.patchValue({ imageId });
+        }
+  
+        if (response.status === 200) {
+          console.log('Image uploaded successfully');
+        } else {
+          console.log('Image not uploaded');
+        }
+      });
+  }
+  
+  openFileUpdateDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    // dialogConfig.data = {
+    //   schoolName: schoolName,
+    //   classNumber: classNumber
+    // };
+
+    this.dialog.open(FileUploadDialogComponent, dialogConfig);
   }
 
 }

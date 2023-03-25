@@ -189,13 +189,14 @@
                                                 </thead>
                                             </table>
                                         </div> -->
-                                        <mat-expansion-panel class="font-bold text-center text-sm mb-3" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                        <mat-expansion-panel class="font-bold text-center text-sm mb-3 example-headers-align" id="sort-table" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                                             <mat-expansion-panel-header>
                                                 <mat-panel-title class="text-center">
-                                                    Sort your quizzes
+                                                    Sort your results
                                                 </mat-panel-title>
                                                 <mat-panel-description>
-                                
+                                                    <a style="visibility: hidden"> . </a>
+                                                    <mat-icon>sort</mat-icon>
                                                 </mat-panel-description>
                                             </mat-expansion-panel-header>
 
@@ -216,7 +217,7 @@
                                                         </div>
                                                     </div>
                                                     <mat-form-field id="input" class="h-7 w-full" appearance="outline">
-                                                        <mat-label>Search quiz results</mat-label>
+                                                        <mat-label>Search quiz by name</mat-label>
                                                         <input matInput type="text" [(ngModel)]="searchTerm"
                                                             (ngModelChange)="searchQuizzes()">
                                                         <mat-icon matSuffix>search</mat-icon>

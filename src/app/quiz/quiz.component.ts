@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer, inputAnswer, Question, Quiz, resultAnswer, resultQuiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { QrCodeDialogComponent } from '../qr-code-dialog/qr-code-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { guest } from 'src/user';
 import { AuthService } from 'src/services/auth.service';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
+import { FileUploadDialogComponent } from '../file-upload-dialog/file-upload-dialog.component';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -22,7 +24,8 @@ export class QuizComponent implements OnInit {
     private route: ActivatedRoute,
     private cookies : CookieService,
     private dataServise : DataService,
-  ) { }
+    private http: HttpClient
+  ) {  }
 
   answersQuestions: Question[] =[];
   selectedQuestion: Question;
@@ -44,15 +47,24 @@ export class QuizComponent implements OnInit {
   quizStart = true;
   quizShow = false;
 
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  imageId: number;
+  imageName: string;
+
   loggedInUsername : string; 
 
   model = new guest ( '' , '')
   answerModel = new inputAnswer ('', false, false)
 
+  //timerValue: number = 80;
+
   location = window.location.href;
 
   ngOnInit(): void {
 
+    //this.startTimer();
 
     this.quizName =String(this.route.snapshot.paramMap.get('name'));
     this.quizId = Number(this.route.snapshot.paramMap.get('id'));
@@ -66,10 +78,54 @@ export class QuizComponent implements OnInit {
       
       this.quiz = response;
       this.questionList = response.questionList;
-    })
+      
+      if( response.questionList[0].image.id != null){
+        this.imageId = response.questionList[0].image.id;
+        this.getImage(this.imageId);
+      }
 
+    });
 
   }
+
+  openFullSize(imageId : number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      imageId: imageId,
+    };
+
+    this.dialog.open(FileUploadDialogComponent, dialogConfig);
+  }
+
+  getImage(imageId : number) {
+
+  console.log("zavolana get image");
+  
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.http.get('https://teach-quiz.herokuapp.com/image/get/' + imageId)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
+  }
+
+  // startTimer() {
+  //   setInterval(() => {
+  //     if (this.timerValue > 0) {
+  //       this.timerValue--;
+  //     } 
+  //     else {
+  //       //clearInterval();
+  //       this.quizNum++;
+  //       this.timerValue = 5;
+  //     }
+  //   }, 1000);
+  // }
+  
 
   qrCodeDialog() {
     this.dialog.open(QrCodeDialogComponent);
@@ -111,7 +167,12 @@ export class QuizComponent implements OnInit {
           this.quizService.updateResultQuiz(ansList, question);
           console.log(ansList, question, this.quizName, chosen, ans.answerContent);
           this.quizNum = this.quizNum + 1;
-
+          
+          if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+            this.imageId = this.quiz.questionList[this.quizNum].image.id;
+            this.getImage(this.imageId);
+          } 
+    
         }
 
       if (ans.correct && ansList.length > 1) {
@@ -120,11 +181,13 @@ export class QuizComponent implements OnInit {
         //console.log(correct, 'hej');
       } 
 
-      if (this.quizNum === this.questionList.length) {
+      if (this.quizNum === this.questionList.length ) {
         this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
         this.result = true;
         console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
       }
+      
+      //this.startTimer();
     }
 
     sendAnsInput(correctAns: any, answerModelContent: any, question : string){
@@ -149,6 +212,11 @@ export class QuizComponent implements OnInit {
 
         console.log(question, this.quizName, correctAns, "tentooooooo", this.answerModel);
         this.quizNum = this.quizNum + 1;
+
+        if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+          this.imageId = this.quiz.questionList[this.quizNum].image.id;
+          this.getImage(this.imageId);
+        } 
       
 
     if ( this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.answerContent.toLocaleLowerCase ||  this.quiz.ignoredCase && this.answerModel.answerContent.toLocaleLowerCase == correctAns.content.toLocaleLowerCase ) {
@@ -171,6 +239,7 @@ export class QuizComponent implements OnInit {
       this.result = true;
       console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
     }
+    //this.startTimer();
   }
 
 
@@ -231,11 +300,20 @@ export class QuizComponent implements OnInit {
     }
     
     this.quizNum = this.quizNum + 1;
+
+    if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+      this.imageId = this.quiz.questionList[this.quizNum].image.id;
+      this.getImage(this.imageId);
+    } 
+
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
       this.result = true;
       console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
     }
+
+    //this.startTimer();
   }
+
 
 }

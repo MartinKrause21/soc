@@ -48,7 +48,14 @@
                                     </button>
 
                                 </tr>
+<!-- 
+                                <div class="file-input-wrapper w-full">
+                                    <label class="drop-container" [ngClass]="{'no-file-selected': !fileSelected}">
+                                        <input type="file" accept="image/*" (change)="onFileChange2($event)"  [ngClass]="{'no-border-radius': !fileSelected}">
+                                    </label>
+                                    <button id="close-button"  (click)="onUpload()"> OnUpload </button>
 
+                                </div>                                 -->
 
                                 <div id="question">
                                     <ng-container formArrayName="questionList">
@@ -68,7 +75,18 @@
                                                                 formControlName="questionContent" class="form-control">
                                                             <mat-icon matSuffix> text_fields</mat-icon>
                                                         </mat-form-field>
+                                                        <!-- <mat-icon id="arrow" *ngIf="!extrasOpened[questionIndex]" (click)="toggleExtras(questionIndex)" >keyboard_arrow_down</mat-icon>
+                                                        <mat-icon id="arrow" *ngIf="extrasOpened[questionIndex]" (click)="toggleExtras(questionIndex)" >keyboard_arrow_up</mat-icon> -->
 
+                                                        <td matTooltip="Toggle extras" matTooltipPosition="above">
+                                                            <button id="button-del" type="button"
+                                                            (click)="toggleExtras(questionIndex)"
+                                                                class="btn btn-danger">
+                                                                <mat-icon *ngIf="!extrasOpened[questionIndex]" id="icon-btn">keyboard_arrow_down</mat-icon>
+                                                                <mat-icon *ngIf="extrasOpened[questionIndex]" id="icon-btn">keyboard_arrow_up</mat-icon>
+                                                            </button>
+                                                        </td>
+                                                        
 
                                                         <td>
                                                             <button id="button-del"
@@ -77,7 +95,7 @@
                                                                 <mat-icon id="icon-btn">delete</mat-icon>
                                                             </button>
                                                         </td>
-
+                                            
                                                         <td>
                                                             <button id="button-del" type="button"
                                                                 (click)="addAnswer(questionIndex)"
@@ -89,6 +107,24 @@
 
                                                     </div>
 
+                                                    <div id="extras" *ngIf="extrasOpened[questionIndex]" class="mt-2 mb-2"> 
+                        
+                                                        <div class="file-input-wrapper w-full">
+                                                            <label for="images{{questionIndex}}" class="drop-container" [ngClass]="{'no-file-selected': !fileSelected[questionIndex]}">
+                                                                <input type="file"  formControlName="image" id="images{{questionIndex}}" (change)="onFileChange2($event, questionIndex)"  [ngClass]="{'no-border-radius': !fileSelected[questionIndex]}">
+                                                            </label>
+                                                            <button id="close-button" *ngIf="fileSelected[questionIndex]" (click)="onUpload(questionIndex)"> Save </button>
+                                                        </div>  
+                                                                        
+                                                        <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
+                                                            <mat-label> Time for question </mat-label>
+                                                            <input matInput  formControlName="timer" type="number" class="form-control">
+                                                            <mat-icon matSuffix>timer</mat-icon>
+                                                        </mat-form-field>
+                                                                        
+                                                    </div>
+
+                                                    <!-- <button (click)="robko()">test</button>  -->
 
 
                                                     <ng-container formArrayName="answerList">
@@ -109,6 +145,8 @@
                                                                         <mat-icon matSuffix> text_fields</mat-icon>
                                                                     </mat-form-field>
                                                                 </div>
+
+                                                                
 
                                                                 <td>
                                                                     <button id="button-del"
@@ -156,7 +194,7 @@
                             </div>
 
                             <div class="text-center mb-3 " *ngIf="quizForm.value.questionList.length < 1">
-                                Quiz must have at least one question.
+                                Quiz must have at least two questions.
                             </div>
 
 
@@ -178,8 +216,8 @@
                 </div>
             </div>
 
-            <!-- <br />
-        {{this.quizForm.value | json}}  -->
+             <br />
+        {{this.quizForm.value | json}} 
         </div>
 
     </div>
