@@ -30,9 +30,14 @@
                             <mat-spinner *ngIf="contentLoaded" id="spinner"> </mat-spinner>
                         </div>
     
-                        <div *ngFor="let question of resultQuiz[0]" id="resultCard">
+                        <div *ngFor="let question of resultQuiz[0]; let i = index" id="resultCard">
     
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
+
+                            <div class="quiz-image">
+                                <img [src]="imageMap[i]"> <!-- bind the src attribute to the imageMap for the current question index -->
+                              </div> 
+
                             <div id="card" [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}"  *ngFor="let answer of question.answerList" > 
                                 
                                 <p id="indicator" *ngIf="answer.correct"><mat-icon class="text-green-600">check</mat-icon></p>
