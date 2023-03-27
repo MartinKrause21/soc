@@ -165,7 +165,7 @@
                                     <div id="question">
                                         <ng-container formArrayName="questionList">
                                             <ng-container
-                                                *ngFor="let question of questionList.controls; let questionIndex=index">
+                                                *ngFor="let question of questionList.controls; let questionIndex=index; let i = index">
     
                                                 <tr id="tr" class="justify-center" [formGroup]="question | asFormGroup">
     
@@ -181,15 +181,14 @@
                                                                 <mat-icon matSuffix> text_fields</mat-icon>
                                                             </mat-form-field>
 
-                                                            <td *ngIf="imageId">
-                                                                <div id="button-del"
-
+                                                            <td >
+                                                                <input id="button-del"
+                                                                formControlName="nameOfImage"
                                                                     class="btn btn-danger">
-                                                                    <mat-icon id="icon-image" matTooltip="{{imageName}}">image</mat-icon>
-                                                                </div>
+
                                                             </td>
     
-    
+
                                                             <td>
                                                                 <button id="button-del"
                                                                     (click)="removeQuestion(questionIndex)"

@@ -1,6 +1,6 @@
 <div id="background">
     <div id="container-f" class="min-h-screen bg-white-100 py-6 flex flex-col justify-center sm:py-12">
-        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div  class="relative py-3 sm:max-w-xl sm:mx-auto">
 
             <div id="back"
                 class="absolute inset-0  shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
@@ -62,13 +62,15 @@
                                         <ng-container
                                             *ngFor="let question of questionList.controls; let questionIndex=index">
 
-                                            <tr id="tr" class="justify-center" [formGroup]="question | asFormGroup">
+                                            <tr  class="justify-center" [formGroup]="question | asFormGroup">
 
-                                                <div>
+                                                <div id="tr">
 
-                                                    <div style="margin-top: 15px;" id="questionForm" class="relative">
+                                                    <div id="questionNumber-holder">Question nr. {{ question.get('questionNumber')?.value }}</div>
 
-                                                        <mat-form-field id="form-field-info" appearance="outline"
+                                                    <div  id="questionForm" class="relative">
+
+                                                        <mat-form-field id="form-field-question" appearance="outline"
                                                             class="h-10 w-full mb-4">
                                                             <mat-label> Question </mat-label>
                                                             <input matInput required type="text" name="description"
@@ -118,7 +120,7 @@
                                                                         
                                                         <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
                                                             <mat-label> Time for question </mat-label>
-                                                            <input matInput  formControlName="timer" type="number" class="form-control">
+                                                            <input matInput  formControlName="timeLimit" type="number" class="form-control">
                                                             <mat-icon matSuffix>timer</mat-icon>
                                                         </mat-form-field>
                                                                         

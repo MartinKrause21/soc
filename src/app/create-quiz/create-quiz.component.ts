@@ -28,6 +28,7 @@ export class CreateQuizComponent  {
   originalTop: number;
 
   imageId: number;
+  questionNumber: number;
   
   ngAfterViewInit() {
     this.originalTop = this.el.nativeElement.offsetTop;
@@ -72,11 +73,12 @@ export class CreateQuizComponent  {
     return this.questionList.controls [questionIndex].get("answerList") as FormArray
   }
      
-  newQuestion(): FormGroup {  
+  newQuestion(index: number): FormGroup {  
     return this.formBuilder.group({  
-      questionContent: '',   
+      questionContent: '',  
+      questionNumber: index, 
       imageId: this.imageId,
-      timer: '',
+      timeLimit: '',
       answerList: this.formBuilder.array([]) , 
     })  
   } 
@@ -89,8 +91,9 @@ export class CreateQuizComponent  {
   }  
   
   addQuestion() {  
-    this.questionList.push(this.newQuestion());  
-  } 
+    const questionIndex = this.questionList.length + 1;
+    this.questionList.push(this.newQuestion(questionIndex));  
+  }
   removeQuestion(questionIndex:number) {  
     this.questionList.removeAt(questionIndex);  
   }  

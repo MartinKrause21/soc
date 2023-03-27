@@ -35,7 +35,7 @@
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
 
                            
-                            <mat-accordion *ngIf="retrievedImage != null" >
+                            <mat-accordion *ngIf="question.image != null" >
                                 <mat-expansion-panel id="expansion" (opened)="panelOpenState = true"
                                                      (closed)="panelOpenState = false">
                                   <mat-expansion-panel-header>

@@ -126,6 +126,7 @@ export class EditQuizComponent implements OnInit {
 
   imageId: number;
   imageName : string;
+  hadImage: boolean = false;
 
   ngOnInit() {
     this.quizName = String(this.route.snapshot.paramMap.get('name'));
@@ -136,17 +137,26 @@ export class EditQuizComponent implements OnInit {
       this.quizForm.controls['description'].setValue(this.quiz.description);
       console.log(data);
 
-      if (data.questionList[0].image && data.questionList[0].image.id) {
-        this.imageId = data.questionList[0].image.id;
-        this.imageName = data.questionList[0].image.name;
-      }
+        for (let i = 0; i < data.questionList.length; i++) { 
 
+          if(data.questionList[i].image != null){
+            //console.log(data.questionList.controls[1].idOfImage(data.questionList[i].image.id));
+            //const imageId = data.questionList[i].image.id;
+            this.imageId = data.questionList[i].image.id;
+            this.imageName = data.questionList[i].image.name;
+            console.log(this.imageName);
+
+            
+          }
+  
+        }
 
       const questionList = this.quizForm.controls['questionList'] as FormArray;
       this.quiz.questionList.forEach(question => {
         questionList.push(new FormGroup({
           questionContent: new FormControl(question.questionContent),
-          idOfImage: new FormControl(question.image && question.image.id ? question.image.id : null),
+          idOfImage: new FormControl(question.image && question.image.id ? question.image.id : null),   
+          nameOfImage: new FormControl(question.image && question.image.name ? question.image.name : null), 
           answerList: new FormArray([])
         }));
         const answerList = questionList.controls[questionList.length - 1].get('answerList') as FormArray;
@@ -158,7 +168,12 @@ export class EditQuizComponent implements OnInit {
         });
       });
     });
+
+         
   }
+
+  
+  
 
 
   quizForm: FormGroup;

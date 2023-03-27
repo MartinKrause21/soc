@@ -10,6 +10,7 @@ export interface Quiz {
 export interface Question {
     answered: unknown;
     image: Image;
+    timeLimit: number;
     multipleChoice: boolean;
     questionContent: string;
     answerList: Answer[];

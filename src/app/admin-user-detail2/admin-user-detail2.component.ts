@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { resultQuestion, resultQuiz } from 'src/quiz';
 import { QuizService } from 'src/services/quiz.service';
-
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-admin-user-detail2',
@@ -36,6 +36,8 @@ export class AdminUserDetail2Component implements OnInit {
   retrieveResonse: any;
   imageId: number;
 
+  imageData: any;
+
   isImage: any
 
   ngOnInit(): void {
@@ -57,10 +59,15 @@ export class AdminUserDetail2Component implements OnInit {
 
       console.log(resultt);
 
-      for (let i = 0; i < this.resultQuiz[0].length; i++) { // use a for loop to iterate over the resultQuiz array
-        const imageId = this.resultQuiz[0][i].image.id;
-        this.getImage(imageId, i); // pass the current index to the getImage function
+      for (let i = 0; i < this.resultQuiz[0].length; i++) { 
+
+        if(this.resultQuiz[0][i].image != null){
+          const imageId = this.resultQuiz[0][i].image.id;
+          this.getImage(imageId, i);
+        }
+
       }
+
     });
 
   }

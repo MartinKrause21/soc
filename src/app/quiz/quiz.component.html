@@ -62,7 +62,7 @@
                 <img [src]="retrievedImage" >  <!-- (click)="openFullSize(imageId)" -->
             </div>  
 
-            <h1 id="timer" class="text-lg text-white"> 60 s <mat-icon id="timer-icon"> timer</mat-icon></h1>
+            <h1 *ngIf="timeLimit != 0" id="timer" class="text-lg text-white"> {{timeLimit}}  s <mat-icon id="timer-icon"> timer</mat-icon></h1>
 
             <mat-divider></mat-divider>
     
