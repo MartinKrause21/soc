@@ -34,9 +34,22 @@
     
                             <h4>  <a class="font-bold text-slate-500" > Question: </a>  {{ question.questionContent }}</h4>
 
-                            <div class="quiz-image">
-                                <img [src]="imageMap[i]"> <!-- bind the src attribute to the imageMap for the current question index -->
-                              </div> 
+                           
+                            <mat-accordion *ngIf="retrievedImage != null" >
+                                <mat-expansion-panel id="expansion" (opened)="panelOpenState = true"
+                                                     (closed)="panelOpenState = false">
+                                  <mat-expansion-panel-header>
+                                    <mat-panel-title id="title-ex">
+                                     {{panelOpenState ? 'Close image insight' : 'Open image insight'}}
+                                    </mat-panel-title>
+                                  </mat-expansion-panel-header>
+
+                                    <div  class="quiz-image ">
+                                        <img class="shadow-xl" [src]="imageMap[i]"> <!-- bind the src attribute to the imageMap for the current question index -->
+                                    </div> 
+    
+                                </mat-expansion-panel>
+                              </mat-accordion>
 
                             <div id="card" [ngClass]="{'correct-border': answer.correct, 'incorrect-border': !answer.correct}"  *ngFor="let answer of question.answerList" > 
                                 

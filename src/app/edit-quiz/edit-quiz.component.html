@@ -180,6 +180,14 @@
                                                                     formControlName="questionContent" class="form-control">
                                                                 <mat-icon matSuffix> text_fields</mat-icon>
                                                             </mat-form-field>
+
+                                                            <td *ngIf="imageId">
+                                                                <div id="button-del"
+
+                                                                    class="btn btn-danger">
+                                                                    <mat-icon id="icon-image" matTooltip="{{imageName}}">image</mat-icon>
+                                                                </div>
+                                                            </td>
     
     
                                                             <td>
@@ -282,8 +290,8 @@
     
                     </div>
                 </div>
-<!-- <br>
-                {{this.quizForm.value | json}} -->
+<br>
+                {{this.quizForm.value | json}} 
             </div>
     
         </div>

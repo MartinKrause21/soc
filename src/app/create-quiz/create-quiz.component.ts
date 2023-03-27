@@ -247,15 +247,6 @@ export class CreateQuizComponent  {
       });
   }
   
-  openFileUpdateDialog() {
-    const dialogConfig = new MatDialogConfig();
 
-    // dialogConfig.data = {
-    //   schoolName: schoolName,
-    //   classNumber: classNumber
-    // };
-
-    this.dialog.open(FileUploadDialogComponent, dialogConfig);
-  }
 
 }

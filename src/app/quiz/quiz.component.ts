@@ -40,6 +40,7 @@ export class QuizComponent implements OnInit {
   quiz : Quiz;
   questionList: Question[];
   quizNum: number = 0;
+  prevQuizNum: number = 0;
   score: number = 0;
 
   resultQuiz : resultQuiz;
@@ -50,7 +51,7 @@ export class QuizComponent implements OnInit {
   retrievedImage: any;
   base64Data: any;
   retrieveResonse: any;
-  imageId: number;
+  imageId: number ;
   imageName: string;
 
   loggedInUsername : string; 
@@ -79,9 +80,12 @@ export class QuizComponent implements OnInit {
       this.quiz = response;
       this.questionList = response.questionList;
       
-      if( response.questionList[0].image.id != null){
+      if( response.questionList[0].image.id != null ){
         this.imageId = response.questionList[0].image.id;
         this.getImage(this.imageId);
+        this.switch = true;
+      } else {
+        this.switch = false;
       }
 
     });
@@ -98,9 +102,8 @@ export class QuizComponent implements OnInit {
     this.dialog.open(FileUploadDialogComponent, dialogConfig);
   }
 
-  getImage(imageId : number) {
-
-  console.log("zavolana get image");
+  getImage(imageId: number) {
+    console.log("zavolana get image");
   
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.http.get('https://teach-quiz.herokuapp.com/image/get/' + imageId)
@@ -112,7 +115,6 @@ export class QuizComponent implements OnInit {
         }
       );
   }
-
   // startTimer() {
   //   setInterval(() => {
   //     if (this.timerValue > 0) {
@@ -153,7 +155,12 @@ export class QuizComponent implements OnInit {
   resultAns: resultAnswer;
   rightAns: any;
 
+  switch : boolean;
+
     sendAns(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
+
+      this.quizNum = this.prevQuizNum
+
         //this.quizService.updateResultQuiz(ans, question);
         for (var i = 0; i < ansList.length; i++) {      
           ansList[i].chosen = false;
@@ -163,14 +170,40 @@ export class QuizComponent implements OnInit {
         ans.chosen = chosen;
         ans.correct = correct;
 
+        console.log(this.quizNum + "preco to nejde");
+        
         if (this.quiz.questionList[this.quizNum].answerList.length > 1) {
           this.quizService.updateResultQuiz(ansList, question);
           console.log(ansList, question, this.quizName, chosen, ans.answerContent);
-          this.quizNum = this.quizNum + 1;
-          
-          if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+
+          if(this.quiz.questionList.length > this.quizNum ){
+            this.quizNum = this.quizNum + 1;
+            console.log(this.quizNum, this.quiz.questionList.length);
+          }
+
+          if(this.quizNum > this.prevQuizNum && this.quizNum < this.quiz.questionList.length){
+            //this.getImage(this.imageId);
+            if(this.quiz.questionList[this.quizNum ].image == null){
+              this.switch = false;
+              this.getImage(this.imageId +1); 
+            } else if (this.quiz.questionList[this.quizNum ].image != null) {
+              this.switch = true;
+            }
+          } 
+
+          // if(this.quiz.questionList[this.quizNum].image == null){
+          //   this.getImage(this.imageId +1);
+          //   this.switch = false
+          //     // toto my malo ist 
+          // } else if (this.quiz.questionList[this.quizNum].image != null){
+          //   this.switch = true
+          // }
+
+          if( this.quizNum < this.quiz.questionList.length && this.quiz.questionList[this.quizNum].image != null){
+        
             this.imageId = this.quiz.questionList[this.quizNum].image.id;
             this.getImage(this.imageId);
+            console.log(this.quizNum + "tu by to malo uz ist :)" + this.imageId);
           } 
     
         }
@@ -187,10 +220,12 @@ export class QuizComponent implements OnInit {
         console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
       }
       
+      this.prevQuizNum = this.quizNum;
       //this.startTimer();
     }
 
     sendAnsInput(correctAns: any, answerModelContent: any, question : string){
+      this.quizNum = this.prevQuizNum;
       //this.quizService.updateResultQuiz(ans, question);
       correctAns.content = correctAns.answerContent;
       this.answerModel.content = answerModelContent;
@@ -210,12 +245,33 @@ export class QuizComponent implements OnInit {
           this.quizService.updateResultQuizInput(question, answerArr);
         }
 
-        console.log(question, this.quizName, correctAns, "tentooooooo", this.answerModel);
-        this.quizNum = this.quizNum + 1;
+        if(this.quiz.questionList.length > this.quizNum ){
+          this.quizNum = this.quizNum + 1;
+          console.log(this.quizNum, this.quiz.questionList.length);
+        }
 
-        if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+        if(this.quizNum > this.prevQuizNum && this.quizNum < this.quiz.questionList.length){
+          //this.getImage(this.imageId);
+          if(this.quiz.questionList[this.quizNum ].image == null){
+            this.switch = false;
+            this.getImage(this.imageId +1); 
+          } else if (this.quiz.questionList[this.quizNum ].image != null) {
+            this.switch = true;
+          }
+        } 
+
+        // if( this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image == null){
+        //   this.switch = false
+        //   this.getImage(this.imageId +1); 
+        // } else if (this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+        //   this.switch = true
+        // }
+
+        if( this.quizNum < this.quiz.questionList.length && this.quiz.questionList[this.quizNum].image != null){
+        
           this.imageId = this.quiz.questionList[this.quizNum].image.id;
           this.getImage(this.imageId);
+          console.log(this.quizNum + "tu by to malo uz ist :)" + this.imageId);
         } 
       
 
@@ -239,11 +295,14 @@ export class QuizComponent implements OnInit {
       this.result = true;
       console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
     }
+
+    this.prevQuizNum = this.quizNum;
     //this.startTimer();
   }
 
 
   multipleAnswersAdd(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
+    this.quizNum = this.prevQuizNum;
     console.log("toto nam treba teraZ" + ans, ans.answerContent, correct, question, chosen);
     
     ans.chosen = chosen;
@@ -299,18 +358,42 @@ export class QuizComponent implements OnInit {
       console.log("Incorrect answer, score 0");
     }
     
-    this.quizNum = this.quizNum + 1;
+  
+    if(this.quiz.questionList.length > this.quizNum ){
+      this.quizNum = this.quizNum + 1;
+      console.log(this.quizNum, this.quiz.questionList.length);
+    }
 
-    if(this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
-      this.imageId = this.quiz.questionList[this.quizNum].image.id;
-      this.getImage(this.imageId);
+    if(this.quizNum > this.prevQuizNum && this.quizNum < this.quiz.questionList.length){
+      //this.getImage(this.imageId);
+      if(this.quiz.questionList[this.quizNum ].image == null){
+        this.switch = false;
+        this.getImage(this.imageId +1); 
+      } else if (this.quiz.questionList[this.quizNum ].image != null) {
+        this.switch = true;
+      }
     } 
 
+    // if( this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image == null){
+    //   this.switch = false
+    //   this.getImage(this.imageId +1); 
+    // } else if (this.quiz.questionList.length == this.quizNum +1 && this.quiz.questionList[this.quizNum].image != null){
+    //   this.switch = true
+    // }
+
+    if( this.quizNum < this.quiz.questionList.length && this.quiz.questionList[this.quizNum].image != null){
+        
+      this.imageId = this.quiz.questionList[this.quizNum].image.id;
+      this.getImage(this.imageId);
+      console.log(this.quizNum + "tu by to malo uz ist :)" + this.imageId);
+    } 
     if (this.quizNum === this.questionList.length) {
       this.quizService.setScore(this.dataServise.getResultQuizId(), this.score);
       this.result = true;
       console.log("Quiz result: ", this.dataServise.getResultQuizId(), this.score);
     }
+
+    this.prevQuizNum = this.quizNum;
 
     //this.startTimer();
   }

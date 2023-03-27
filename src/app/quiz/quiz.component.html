@@ -58,8 +58,8 @@
     
             <h1 class="text-lg text-gray-700">{{quiz.questionList[quizNum].questionContent}}  </h1>
 
-            <div class="quiz-image" *ngIf="retrievedImage != null">
-                <img [src]="retrievedImage" (click)="openFullSize(imageId)">
+            <div class="quiz-image" *ngIf="switch">
+                <img [src]="retrievedImage" >  <!-- (click)="openFullSize(imageId)" -->
             </div>  
 
             <h1 id="timer" class="text-lg text-white"> 60 s <mat-icon id="timer-icon"> timer</mat-icon></h1>

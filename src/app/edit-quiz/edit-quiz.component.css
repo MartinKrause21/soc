@@ -305,3 +305,9 @@ mat-button-toggle-group {
     background-color: #512ca07f;
     color: white;
 }
+
+#icon-image{
+    display: flex;
+    margin-top: 12px;
+    margin-left: 12px;
+}

@@ -36,6 +36,8 @@ export class AdminUserDetail2Component implements OnInit {
   retrieveResonse: any;
   imageId: number;
 
+  isImage: any
+
   ngOnInit(): void {
 
     this.resultQuizId =Number(this.route.snapshot.paramMap.get('id'));
@@ -50,6 +52,10 @@ export class AdminUserDetail2Component implements OnInit {
       this.score = resultt.score;
       this.percentage = resultt.percentage;
       this.contentLoaded = false;
+      
+      this.isImage = resultt.resultQuiz.questionList[0].image;
+
+      console.log(resultt);
 
       for (let i = 0; i < this.resultQuiz[0].length; i++) { // use a for loop to iterate over the resultQuiz array
         const imageId = this.resultQuiz[0][i].image.id;

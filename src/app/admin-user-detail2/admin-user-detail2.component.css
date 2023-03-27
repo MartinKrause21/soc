@@ -15,7 +15,7 @@
 
 #card {
     border-radius: 8px;
-    margin-bottom: 8px;
+    margin-top: 8px;
     padding: 15px;
     padding-right: 15px;
 }
@@ -81,6 +81,37 @@ p{
 #profile-img{
     margin-top: 6px;
     margin-bottom: -119px;
+}
+
+.quiz-image img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+  }
+
+  .quiz-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #expansion{
+    border: 2px solid rgba(112, 103, 103, 0.285);
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  #title-ex{
+    margin-left: 15px;
+  }
+
+  .mat-expansion-panel-header:not([aria-disabled=true]) {
+    cursor: pointer;
+    padding-left: 0px;
 }
 
 
