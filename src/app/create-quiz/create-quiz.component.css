@@ -326,6 +326,7 @@ mat-button-toggle-group {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-bottom: 5px;
+    color: rgba(112, 103, 103, 0.715);
 }
 
 

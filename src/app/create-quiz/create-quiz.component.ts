@@ -78,7 +78,7 @@ export class CreateQuizComponent  {
       questionContent: '',  
       questionNumber: index, 
       imageId: this.imageId,
-      timeLimit: '',
+      //timeLimit: '',
       answerList: this.formBuilder.array([]) , 
     })  
   } 
@@ -94,9 +94,16 @@ export class CreateQuizComponent  {
     const questionIndex = this.questionList.length + 1;
     this.questionList.push(this.newQuestion(questionIndex));  
   }
-  removeQuestion(questionIndex:number) {  
-    this.questionList.removeAt(questionIndex);  
-  }  
+  removeQuestion(questionIndex: number) {
+    this.questionList.removeAt(questionIndex);
+    for (let i = questionIndex; i < this.questionList.length; i++) {
+      const questionNumberControl = this.questionList.controls[i].get('questionNumber');
+      if (questionNumberControl) {
+        questionNumberControl.setValue(i+1);
+      }
+    }
+  }
+  
 
   // -----------------------------------------------//  
 
@@ -241,12 +248,7 @@ export class CreateQuizComponent  {
           // update the imageId field
           questionFormGroup.patchValue({ imageId });
         }
-  
-        if (response.status === 200) {
-          console.log('Image uploaded successfully');
-        } else {
-          console.log('Image not uploaded');
-        }
+
       });
   }
   

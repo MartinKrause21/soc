@@ -79,6 +79,7 @@ export class QuizComponent implements OnInit {
       this.quiz = response;
       this.questionList = response.questionList;
       this.timeLimit = response.questionList[0].timeLimit;
+      this.emptyQuestion = response.questionList[0].questionContent;
       
       if( response.questionList[0].image.id != null ){
         this.imageId = response.questionList[0].image.id;
@@ -118,6 +119,8 @@ export class QuizComponent implements OnInit {
 
    timerID: any;
 
+   emptyQuestion: string;
+
    startTimer() {
     console.log("Starting timer");
     clearInterval(this.timerID); // clear the old interval
@@ -132,6 +135,7 @@ export class QuizComponent implements OnInit {
       else {
         // stop the interval
         console.log("Interval stopped");
+        this.getQuestionContent(this.emptyQuestion);
         this.quizNum++;
         if (this.quizNum < this.quiz.questionList.length){
           this.timeLimit = this.quiz.questionList[this.quizNum].timeLimit;
@@ -155,12 +159,18 @@ export class QuizComponent implements OnInit {
   restartTimer() {
     console.log("Restarting timer");
     clearInterval(this.timerID); // clear the old interval
-    this.quizNum++; // increment quiz number or set to 0 if necessary
-    this.timeLimit = this.quiz.questionList[this.quizNum].timeLimit; // set new time limit
+    //this.quizNum++; // increment quiz number or set to 0 if necessary
+
+    if(this.quizNum < this.quiz.questionList.length) {
+      this.timeLimit = this.quiz.questionList[this.quizNum].timeLimit; 
+     
+    } else {
+      this.timeLimit = 0 ;
+      
+    }
     console.log("New time limit: ", this.timeLimit);
     this.startTimer(); // start new timer
   }
-  
   
 
   qrCodeDialog() {
@@ -173,7 +183,7 @@ export class QuizComponent implements OnInit {
     this.quizStart = !this.quizStart;
     this.quizShow = !this.quizShow;
 
-    this.startTimer();
+    // this.startTimer();
   }
 
   setGuestName() {
@@ -195,15 +205,10 @@ export class QuizComponent implements OnInit {
 
     sendAns(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
 
-      // if(this.timeLimit == 0) {
-      //   this.quizService.updateResultQuiz(ansList, question);
-      //   console.log("dosiel cas "+ansList, question, this.quizName, chosen, ans.answerContent);
-      // }
-     
 
-      if(this.timeLimit > 0) {
-        this.restartTimer();
-      }
+      // if(this.timeLimit > 0) {
+      //   this.restartTimer();
+      // }
     
       this.quizNum = this.prevQuizNum
 
@@ -270,14 +275,14 @@ export class QuizComponent implements OnInit {
 
      
 
-      this.startTimer();
+      // this.startTimer();
     }
 
     sendAnsInput(correctAns: any, answerModelContent: any, question : string){
 
-      if(this.timeLimit > 0) {
-        this.restartTimer();
-      }
+      // if(this.timeLimit > 0) {
+      //   this.restartTimer();
+      // }
 
       this.quizNum = this.prevQuizNum;
       //this.quizService.updateResultQuiz(ans, question);
@@ -351,15 +356,15 @@ export class QuizComponent implements OnInit {
     }
 
     this.prevQuizNum = this.quizNum;
-    this.startTimer();
+    // this.startTimer();
   }
 
 
   multipleAnswersAdd(ans: any, correct: boolean , question : string, chosen: boolean, ansList: any){
 
-    if(this.timeLimit > 0) {
-      this.restartTimer();
-    }
+    // if(this.timeLimit > 0) {
+    //   this.restartTimer();
+    // }
 
     this.quizNum = this.prevQuizNum;
     console.log("toto nam treba teraZ" + ans, ans.answerContent, correct, question, chosen);
@@ -454,8 +459,21 @@ export class QuizComponent implements OnInit {
 
     this.prevQuizNum = this.quizNum;
 
-    this.startTimer();
+    // this.startTimer();
   }
 
+  emptyAnswer: any
+  emptyAnswerList: any[] = [];
+
+  getQuestionContent(emptyQuestion: string) {
+
+    this.emptyAnswerList
+
+     if(this.timeLimit == 0) {
+        this.quizService.updateResultQuiz(this.emptyAnswerList, emptyQuestion);
+        console.log("dosiel cas "+ emptyQuestion);
+      }
+
+  }
 
 }

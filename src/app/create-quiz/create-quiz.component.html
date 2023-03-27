@@ -118,12 +118,12 @@
                                                             <button id="close-button" *ngIf="fileSelected[questionIndex]" (click)="onUpload(questionIndex)"> Save </button>
                                                         </div>  
                                                                         
-                                                        <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
+                                                        <!-- <mat-form-field id="form-field-info" appearance="outline" class="h-10 w-full mb-4">
                                                             <mat-label> Time for question </mat-label>
                                                             <input matInput  formControlName="timeLimit" type="number" class="form-control">
                                                             <mat-icon matSuffix>timer</mat-icon>
                                                         </mat-form-field>
-                                                                        
+                                                                         -->
                                                     </div>
 
                                                     <!-- <button (click)="robko()">test</button>  -->
@@ -218,8 +218,8 @@
                 </div>
             </div>
 
-             <br />
-        {{this.quizForm.value | json}} 
+             <!-- <br />
+        {{this.quizForm.value | json}}  -->
         </div>
 
     </div>

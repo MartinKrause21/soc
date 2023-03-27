@@ -181,13 +181,16 @@
                                                                 <mat-icon matSuffix> text_fields</mat-icon>
                                                             </mat-form-field>
 
-                                                            <td >
-                                                                <input id="button-del"
-                                                                formControlName="nameOfImage"
-                                                                    class="btn btn-danger">
 
+                                                            <td *ngIf="questionList.controls[questionIndex].get('nameOfImage')?.value">
+                                                                <button id="button-del"
+                                                                        matTooltip="{{questionList.controls[questionIndex].get('nameOfImage')?.value}}"
+                                                                       formControlName="nameOfImage"
+                                                                       class="btn btn-danger">
+                                                                       <mat-icon matSuffix> image</mat-icon>
+                                                                </button>
                                                             </td>
-    
+                                                            
 
                                                             <td>
                                                                 <button id="button-del"
@@ -289,8 +292,8 @@
     
                     </div>
                 </div>
-<br>
-                {{this.quizForm.value | json}} 
+<!-- <br>
+                {{this.quizForm.value | json}}  -->
             </div>
     
         </div>
